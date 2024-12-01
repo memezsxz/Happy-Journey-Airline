@@ -16,6 +16,7 @@ namespace HappyJourneyAirline.Tabs
         private TabPage travellerBookingsTab;
         private Label label13;
         private TabPage travellerSettingsTab;
+        private Button button1;
         private Label label14;
 
         public EmployerTabs()
@@ -34,6 +35,7 @@ namespace HappyJourneyAirline.Tabs
             this.label13 = new System.Windows.Forms.Label();
             this.travellerSettingsTab = new System.Windows.Forms.TabPage();
             this.label14 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.travellerFlightsTab.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
@@ -57,6 +59,7 @@ namespace HappyJourneyAirline.Tabs
             // travellerFlightsTab
             // 
             this.travellerFlightsTab.BackColor = System.Drawing.Color.White;
+            this.travellerFlightsTab.Controls.Add(this.button1);
             this.travellerFlightsTab.Controls.Add(this.label22);
             this.travellerFlightsTab.Controls.Add(this.label12);
             this.travellerFlightsTab.Controls.Add(this.label11);
@@ -74,9 +77,10 @@ namespace HappyJourneyAirline.Tabs
             this.label22.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label22.Location = new System.Drawing.Point(31, 84);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(313, 19);
+            this.label22.Size = new System.Drawing.Size(333, 19);
             this.label22.TabIndex = 3;
-            this.label22.Text = "Book Your Next Flight Easily Through This Page";
+            this.label22.Text = "Book Your Next Flight Easily Through This Page 22";
+            this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // label12
             // 
@@ -103,7 +107,7 @@ namespace HappyJourneyAirline.Tabs
             this.travellerBookingsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerBookingsTab.Name = "travellerBookingsTab";
             this.travellerBookingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.travellerBookingsTab.Size = new System.Drawing.Size(891, 708);
+            this.travellerBookingsTab.Size = new System.Drawing.Size(891, 720);
             this.travellerBookingsTab.TabIndex = 1;
             this.travellerBookingsTab.Text = "Bookings";
             this.travellerBookingsTab.UseVisualStyleBackColor = true;
@@ -123,7 +127,7 @@ namespace HappyJourneyAirline.Tabs
             this.travellerSettingsTab.Controls.Add(this.label14);
             this.travellerSettingsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerSettingsTab.Name = "travellerSettingsTab";
-            this.travellerSettingsTab.Size = new System.Drawing.Size(891, 708);
+            this.travellerSettingsTab.Size = new System.Drawing.Size(891, 720);
             this.travellerSettingsTab.TabIndex = 2;
             this.travellerSettingsTab.Text = "Settings";
             this.travellerSettingsTab.UseVisualStyleBackColor = true;
@@ -138,10 +142,19 @@ namespace HappyJourneyAirline.Tabs
             this.label14.TabIndex = 3;
             this.label14.Text = "Settings";
             // 
-            // TravellerTabs
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(216, 257);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Test";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // EmployerTabs
             // 
             this.Controls.Add(this.tabControl1);
-            this.Name = "TravellerTabs";
+            this.Name = "EmployerTabs";
             this.Size = new System.Drawing.Size(921, 728);
             this.tabControl1.ResumeLayout(false);
             this.travellerFlightsTab.ResumeLayout(false);
@@ -155,6 +168,11 @@ namespace HappyJourneyAirline.Tabs
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
         {
 
         }
