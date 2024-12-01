@@ -11,7 +11,6 @@ namespace HappyJourneyAirline.Tabs
         private TabControl tabControl1;
         private TabPage travellerFlightsTab;
         private Label label22;
-        private Label label12;
         private Label label11;
         private TabPage travellerBookingsTab;
         private Label label13;
@@ -22,6 +21,7 @@ namespace HappyJourneyAirline.Tabs
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;
+        private Label label1;
         private Label label14;
 
         public AdminTabs()
@@ -34,7 +34,6 @@ namespace HappyJourneyAirline.Tabs
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.travellerFlightsTab = new System.Windows.Forms.TabPage();
             this.label22 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.travellerBookingsTab = new System.Windows.Forms.TabPage();
             this.label13 = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@ namespace HappyJourneyAirline.Tabs
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.travellerFlightsTab.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
@@ -75,7 +75,6 @@ namespace HappyJourneyAirline.Tabs
             // 
             this.travellerFlightsTab.BackColor = System.Drawing.Color.Gainsboro;
             this.travellerFlightsTab.Controls.Add(this.label22);
-            this.travellerFlightsTab.Controls.Add(this.label12);
             this.travellerFlightsTab.Controls.Add(this.label11);
             this.travellerFlightsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerFlightsTab.Name = "travellerFlightsTab";
@@ -96,15 +95,6 @@ namespace HappyJourneyAirline.Tabs
             this.label22.TabIndex = 3;
             this.label22.Text = "Book Your Next Flight Easily Through This Page";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(367, 323);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(0, 59);
-            this.label12.TabIndex = 2;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -117,6 +107,7 @@ namespace HappyJourneyAirline.Tabs
             // 
             // travellerBookingsTab
             // 
+            this.travellerBookingsTab.Controls.Add(this.label1);
             this.travellerBookingsTab.Controls.Add(this.label13);
             this.travellerBookingsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerBookingsTab.Name = "travellerBookingsTab";
@@ -178,6 +169,7 @@ namespace HappyJourneyAirline.Tabs
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 7;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // pictureBox4
             // 
@@ -221,6 +213,17 @@ namespace HappyJourneyAirline.Tabs
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(24, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(244, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "You can here modify bookings easily";
             // 
             // AdminTabs
             // 
@@ -268,6 +271,11 @@ namespace HappyJourneyAirline.Tabs
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             tabControl1.SelectTab(2);
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
