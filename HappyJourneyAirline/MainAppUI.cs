@@ -12,6 +12,23 @@ namespace ProjectSample
 {
     public partial class MainAppUI : Form
     {
+
+        private enum APP_ROUTES : int
+        {
+            MAIN_MENU_ROUTE = 0,
+            LOGIN_ROUTE = 1,
+            REGISTER_ROUTE = 2,
+            TRAVELLER_DASHBOARD_ROUTE = 3,
+            EMPLOYER_DASHBOARD_ROUTE = 4,
+            ADMIN_DASHBOARD_ROUTE = 5
+        }
+
+        private int getAppRoute(APP_ROUTES appRoute)
+        {
+            return (int) appRoute;
+        }
+
+
         public MainAppUI()
         {
             InitializeComponent();
@@ -49,17 +66,17 @@ namespace ProjectSample
 
         private void label5_Click(object sender, EventArgs e)
         {
-            appTabs.SelectTab(2);
+            appTabs.SelectTab(getAppRoute(APP_ROUTES.REGISTER_ROUTE) );
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            appTabs.SelectTab(2);
+            appTabs.SelectTab(getAppRoute(APP_ROUTES.REGISTER_ROUTE) );
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            appTabs.SelectTab(1);
+            appTabs.SelectTab(getAppRoute(APP_ROUTES.LOGIN_ROUTE) );
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -69,7 +86,24 @@ namespace ProjectSample
 
         private void label9_Click(object sender, EventArgs e)
         {
-            appTabs.SelectTab(1);
+            appTabs.SelectTab(getAppRoute(APP_ROUTES.LOGIN_ROUTE) );
+        }
+
+        private void registerTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            String username = registerUsernameInput.Text;
+            String password = passwordRegisterInput.Text;
+            String firstName = firstNameRegisterInput.Text;
+            String lastName = lastNameRegisterInput.Text;
+            String phoneNumber = phoneNumberRegisterInput.Text;
+
+
+            appTabs.SelectTab(getAppRoute(APP_ROUTES.TRAVELLER_DASHBOARD_ROUTE) );
         }
     }
 }
