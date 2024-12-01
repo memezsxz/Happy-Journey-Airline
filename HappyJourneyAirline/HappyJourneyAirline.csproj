@@ -51,6 +51,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tabs\AdminTabs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\TravellerTabs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -66,6 +72,12 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\AdminTabs.resx">
+      <DependentUpon>AdminTabs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\TravellerTabs.resx">
+      <DependentUpon>TravellerTabs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

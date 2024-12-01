@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HappyJourneyAirline.Tabs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +33,18 @@ namespace ProjectSample
         public MainAppUI()
         {
             InitializeComponent();
+
+            TravellerTabs travelTab = new TravellerTabs();
+            TabPage travelTabPage = new TabPage("Traveller Dashboard");
+            travelTabPage.Controls.Add(travelTab);
+            appTabs.TabPages.Add(travelTabPage);
+
+            AdminTabs adminTab = new AdminTabs();
+            TabPage adminTabPage = new TabPage("Admin Dashboard");
+            adminTabPage.Controls.Add(adminTab);
+            appTabs.TabPages.Add(adminTabPage);
+
+
         }
 
         private void Login_Load(object sender, EventArgs e)
