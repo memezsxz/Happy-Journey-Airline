@@ -45,6 +45,11 @@ namespace ProjectSample
             appTabs.TabPages.Add(adminTabPage);
 
 
+            EmployerTabs employerTab = new EmployerTabs();
+            TabPage employerTabPage = new TabPage("Employer Dashboad");
+            employerTabPage.Controls.Add(employerTab);
+            appTabs.TabPages.Add(employerTabPage);
+
         }
 
         private void Login_Load(object sender, EventArgs e)
