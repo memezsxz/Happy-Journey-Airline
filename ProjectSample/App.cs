@@ -12,7 +12,7 @@ namespace ProjectSample
         static void Main(string[] args)
         {
             
-            Application.Run(new Login());
+            Application.Run(new MainAppUI());
             Console.ReadLine();
         }
     }

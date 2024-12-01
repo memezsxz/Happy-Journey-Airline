@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjectSample
 {
-    public partial class Login : Form
+    public partial class MainAppUI : Form
     {
-        public Login()
+        public MainAppUI()
         {
             InitializeComponent();
         }
@@ -44,7 +44,12 @@ namespace ProjectSample
 
         private void button1_Click(object sender, EventArgs e)
         {
+            appTabs.SelectTab(2);
+        }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
+            appTabs.SelectTab(1);
         }
     }
 }
