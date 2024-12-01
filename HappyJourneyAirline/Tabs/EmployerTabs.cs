@@ -16,6 +16,7 @@ namespace HappyJourneyAirline.Tabs
         private TabPage travellerBookingsTab;
         private Label label13;
         private TabPage travellerSettingsTab;
+        private Button button1;
         private Label label14;
 
         public EmployerTabs()
@@ -34,6 +35,7 @@ namespace HappyJourneyAirline.Tabs
             this.label13 = new System.Windows.Forms.Label();
             this.travellerSettingsTab = new System.Windows.Forms.TabPage();
             this.label14 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.travellerFlightsTab.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
@@ -57,6 +59,7 @@ namespace HappyJourneyAirline.Tabs
             // travellerFlightsTab
             // 
             this.travellerFlightsTab.BackColor = System.Drawing.Color.White;
+            this.travellerFlightsTab.Controls.Add(this.button1);
             this.travellerFlightsTab.Controls.Add(this.label22);
             this.travellerFlightsTab.Controls.Add(this.label12);
             this.travellerFlightsTab.Controls.Add(this.label11);
@@ -74,9 +77,13 @@ namespace HappyJourneyAirline.Tabs
             this.label22.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label22.Location = new System.Drawing.Point(31, 84);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(313, 19);
+            this.label22.Size = new System.Drawing.Size(333, 19);
             this.label22.TabIndex = 3;
+<<<<<<< HEAD
             this.label22.Text = "Book Your Next Flight Easily Through This Page";
+=======
+            this.label22.Text = "Book Your Next Flight Easily Through This Page 22";
+>>>>>>> 403526d830c3de5f5f685757dfba702a99287b59
             this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // label12
@@ -139,6 +146,18 @@ namespace HappyJourneyAirline.Tabs
             this.label14.TabIndex = 3;
             this.label14.Text = "Settings";
             // 
+<<<<<<< HEAD
+=======
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(216, 257);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Test";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+>>>>>>> 403526d830c3de5f5f685757dfba702a99287b59
             // EmployerTabs
             // 
             this.Controls.Add(this.tabControl1);
