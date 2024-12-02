@@ -79,11 +79,7 @@ namespace HappyJourneyAirline.Tabs
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(333, 19);
             this.label22.TabIndex = 3;
-<<<<<<< HEAD
             this.label22.Text = "Book Your Next Flight Easily Through This Page";
-=======
-            this.label22.Text = "Book Your Next Flight Easily Through This Page 22";
->>>>>>> 403526d830c3de5f5f685757dfba702a99287b59
             this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // label12
@@ -146,18 +142,6 @@ namespace HappyJourneyAirline.Tabs
             this.label14.TabIndex = 3;
             this.label14.Text = "Settings";
             // 
-<<<<<<< HEAD
-=======
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(216, 257);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Test";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
->>>>>>> 403526d830c3de5f5f685757dfba702a99287b59
             // EmployerTabs
             // 
             this.Controls.Add(this.tabControl1);
