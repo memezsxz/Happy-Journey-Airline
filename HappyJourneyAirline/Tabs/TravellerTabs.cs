@@ -39,12 +39,22 @@ namespace HappyJourneyAirline.Tabs
         public TravellerTabs()
         {
             InitializeComponent();
+
+            // display time insted of date in time
+            time.Format = DateTimePickerFormat.Custom;
+            time.CustomFormat = "HH:mm";
+            time.ShowUpDown = true;
+
+            // when time change console log the time
+
+
         }
 
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TravellerTabs));
             this.travellerFlightsTab = new System.Windows.Forms.TabPage();
+            this.time = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.date = new System.Windows.Forms.DateTimePicker();
             this.cancelIcon = new System.Windows.Forms.PictureBox();
@@ -70,7 +80,6 @@ namespace HappyJourneyAirline.Tabs
             this.flightsTab = new System.Windows.Forms.PictureBox();
             this.logoIcon = new System.Windows.Forms.PictureBox();
             this.bookingTab = new System.Windows.Forms.PictureBox();
-            this.time = new System.Windows.Forms.DateTimePicker();
             this.travellerFlightsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cancelIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchIcon)).BeginInit();
@@ -109,6 +118,13 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.TabIndex = 0;
             this.travellerFlightsTab.Text = "Flights";
             // 
+            // time
+            // 
+            this.time.Location = new System.Drawing.Point(363, 313);
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(173, 20);
+            this.time.TabIndex = 44;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
@@ -140,6 +156,7 @@ namespace HappyJourneyAirline.Tabs
             this.cancelIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.cancelIcon.TabIndex = 41;
             this.cancelIcon.TabStop = false;
+            this.cancelIcon.Click += new System.EventHandler(this.cancelIcon_Click);
             // 
             // label3
             // 
@@ -370,13 +387,6 @@ namespace HappyJourneyAirline.Tabs
             this.bookingTab.TabStop = false;
             this.bookingTab.Click += new System.EventHandler(this.bookingTab_Click);
             // 
-            // time
-            // 
-            this.time.Location = new System.Drawing.Point(363, 313);
-            this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(173, 20);
-            this.time.TabIndex = 44;
-            // 
             // TravellerTabs
             // 
             this.Controls.Add(this.panel1);
@@ -441,6 +451,11 @@ namespace HappyJourneyAirline.Tabs
         private void searchIcon_Click(object sender, EventArgs e)
         {
             tabControl1.SelectTab(1);
+            Console.WriteLine(time.Value);
+        }
+
+        private void cancelIcon_Click(object sender, EventArgs e)
+        {
         }
     }
 

@@ -95,9 +95,9 @@ namespace HappyJourneyAirline.Tabs
             // tabControl1
             // 
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabControl1.Controls.Add(this.travellerFlightsTab);
             this.tabControl1.Controls.Add(this.travellerBookingsTab);
             this.tabControl1.Controls.Add(this.travellerSettingsTab);
+            this.tabControl1.Controls.Add(this.travellerFlightsTab);
             this.tabControl1.Location = new System.Drawing.Point(137, -4);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";

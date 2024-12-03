@@ -121,7 +121,7 @@
   <data name="logOutIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACwAAAAtCAYAAADV2ImkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAbhJREFUaEPtmNFRwkAQhm8uuRseLYESUoIlWIIdSAfagXZACZTAgxzhzRIogRL0
+        DwAACw8BkvkDpQAAAbhJREFUaEPtmNFRwkAQhm8uuRseLYESUoIlWIIdSAfagXZACZTAgxzhzRIogRL0
         ft0jK8NB9HYJOvlm/peF3fsmuWSSmJGR/8rSmKat/Hxt/fZcWusfqW0Y1tY9rCv//pNQ6+WJR3Z6TOhU
         Qu1eqP3ybCq/2MtY//Za17ftZDI9FWodhlC5XRJuzcAyfdgf3RgqXTej8AFx7t2mds+4uKlUhqZwlLxh
         87ci0mygijC/qGPKpdkwlS0RnGtEpdkgtYtOVJoNURMGYtJsgKowEJFmzerCoFiaNV5EGBRJs6azwhi6
@@ -134,7 +134,7 @@
   <data name="settingTab.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGAAAABSCAYAAACrKtGeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAB4hJREFUeF7tnIux40QQRV8IZAAhEAIhEAIZLBlABpABZAAZbAiEQAiEAHNe7aXu
+        DwAACw8BkvkDpQAAB4hJREFUeF7tnIux40QQRV8IZAAhEAIhEAIZLBlABpABZAAZbAiEQAiEAHNe7aXu
         9vZ8JMuW5Zlb1bWyNN/bX4399u3C+OaTLDwQXxX5pcg/Rf79JFz/VmQp486A4L+LiPgoPFtKuCMi+Xx2
         T0A+Flm4A74v4kR/V0T4oYgrwp8tHIRfi4hg4n3Ez0X0nLYLgyCp/lgEApGa9f5eRARj8RHc0/NMQczz
         U5E/ihCmSOTT5wtIEGkuWTL1+J8piXt6TjhyfCgSc4WENUyJGvkSCMOqif1YtD/DmiO45yT/VQTPin0z
@@ -172,7 +172,7 @@
   <data name="flightsTab.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAE0AAABZCAYAAAB7Tqk9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAABVdJREFUeF7tnAvR1DAUhX8JOAAJSEACEpCAA3AADsABOEACEpCABMg3s2fmNJu0
+        DwAACw8BkvkDpQAABVdJREFUeF7tnAvR1DAUhX8JOAAJSEACEpCAA3AADsABOEACEpCABMg3s2fmNJu0
         STbbZ76ZO0vz6s3ZPG7T/XkZDAaDwaF4FexjsF/Bfgd7E2yQAKE+BEOof5F9DTa4gVDvgv0I9jdYLJYM
         MS8PQn0JNieUG+JeklqhZN+CXYq3wT4F+xMsJQhG3vcoze19sNPDVEKo1IIuY7SxuDP62BlzopJ+WjxE
         SHUec6FESjCfvqebmnMhggwB2BkRKl7MU4LRnqe5wIeFjtMRhJpb0MlHgFgokROMtnV9+KlJZ5Z2PoRi
@@ -201,7 +201,7 @@
   <data name="bookingTab.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGoAAABnCAYAAADov9dJAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAABeFJREFUeF7tnYttLEUQRV8IZAAhEAIhEAIZPDKADCADXgaQASEQAiEQAvSRuNbd
+        DwAACw8BkvkDpQAABeFJREFUeF7tnYttLEUQRV8IZAAhEAIhEAIZPDKADCADXgaQASEQAiEQAvSRuNbd
         dvVsb3vXvdbcI5Vsz/Snqm7/1prRfgohhBBCODPfNPu22XcT9lWz8M58bvZXs39vtL+b/dAsvAO/NatE
         uMV+aRYeyE/NPOH/NGNm/TlhlPW6PzcLD4D9yBP9a7Nb9x3EUX2Ey771AL5vpiSz16zC7FI72a8egM+G
         tyxbzMR7tBMG3Euoe7UTBkSoJ4BN/doHVz+W83tVZsZuaQefcuBocJKrjs7PZgiKr6eE0frsArnhKz6f
