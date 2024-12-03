@@ -62,14 +62,14 @@ namespace HappyJourneyAirline.Tabs
             // tabControl1
             // 
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tabControl1.Controls.Add(this.travellerFlightsTab);
             this.tabControl1.Controls.Add(this.travellerBookingsTab);
             this.tabControl1.Controls.Add(this.travellerSettingsTab);
-            this.tabControl1.Controls.Add(this.travellerFlightsTab);
-            this.tabControl1.Location = new System.Drawing.Point(136, 3);
+            this.tabControl1.Location = new System.Drawing.Point(136, 0);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(782, 725);
+            this.tabControl1.Size = new System.Drawing.Size(782, 728);
             this.tabControl1.TabIndex = 1;
             // 
             // travellerBookingsTab
@@ -133,7 +133,7 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerFlightsTab.Name = "travellerFlightsTab";
             this.travellerFlightsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.travellerFlightsTab.Size = new System.Drawing.Size(755, 717);
+            this.travellerFlightsTab.Size = new System.Drawing.Size(755, 720);
             this.travellerFlightsTab.TabIndex = 0;
             this.travellerFlightsTab.Text = "Flights";
             this.travellerFlightsTab.Click += new System.EventHandler(this.travellerFlightsTab_Click);
@@ -262,7 +262,7 @@ namespace HappyJourneyAirline.Tabs
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(2);
+            tabControl1.SelectTab(0);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -272,7 +272,7 @@ namespace HappyJourneyAirline.Tabs
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(0);
+            tabControl1.SelectTab(2);
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
