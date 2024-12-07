@@ -22,6 +22,10 @@ namespace HappyJourneyAirline.Tabs
         private PictureBox settingTab;
         private PictureBox logOutIcon;
         private Label label1;
+        private TabPage tabPage1;
+        private PictureBox users;
+        private Label label2;
+        private Label label3;
         private Label label14;
 
         public AdminTabs()
@@ -33,25 +37,31 @@ namespace HappyJourneyAirline.Tabs
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminTabs));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.travellerFlightsTab = new System.Windows.Forms.TabPage();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.travellerBookingsTab = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.travellerSettingsTab = new System.Windows.Forms.TabPage();
             this.label14 = new System.Windows.Forms.Label();
-            this.travellerFlightsTab = new System.Windows.Forms.TabPage();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.users = new System.Windows.Forms.PictureBox();
             this.logOutIcon = new System.Windows.Forms.PictureBox();
             this.settingTab = new System.Windows.Forms.PictureBox();
             this.flightsTab = new System.Windows.Forms.PictureBox();
             this.logoIcon = new System.Windows.Forms.PictureBox();
             this.bookingTab = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
+            this.travellerFlightsTab.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
             this.travellerSettingsTab.SuspendLayout();
-            this.travellerFlightsTab.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.users)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flightsTab)).BeginInit();
@@ -65,12 +75,47 @@ namespace HappyJourneyAirline.Tabs
             this.tabControl1.Controls.Add(this.travellerFlightsTab);
             this.tabControl1.Controls.Add(this.travellerBookingsTab);
             this.tabControl1.Controls.Add(this.travellerSettingsTab);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(136, 0);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(782, 728);
             this.tabControl1.TabIndex = 1;
+            // 
+            // travellerFlightsTab
+            // 
+            this.travellerFlightsTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.travellerFlightsTab.Controls.Add(this.label22);
+            this.travellerFlightsTab.Controls.Add(this.label11);
+            this.travellerFlightsTab.Location = new System.Drawing.Point(23, 4);
+            this.travellerFlightsTab.Name = "travellerFlightsTab";
+            this.travellerFlightsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.travellerFlightsTab.Size = new System.Drawing.Size(755, 720);
+            this.travellerFlightsTab.TabIndex = 0;
+            this.travellerFlightsTab.Text = "Flights";
+            this.travellerFlightsTab.Click += new System.EventHandler(this.travellerFlightsTab_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label22.Location = new System.Drawing.Point(31, 84);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(187, 19);
+            this.label22.TabIndex = 3;
+            this.label22.Text = "Add and modify flights here";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(24, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(156, 59);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Flights";
             // 
             // travellerBookingsTab
             // 
@@ -80,7 +125,7 @@ namespace HappyJourneyAirline.Tabs
             this.travellerBookingsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerBookingsTab.Name = "travellerBookingsTab";
             this.travellerBookingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.travellerBookingsTab.Size = new System.Drawing.Size(755, 717);
+            this.travellerBookingsTab.Size = new System.Drawing.Size(755, 720);
             this.travellerBookingsTab.TabIndex = 1;
             this.travellerBookingsTab.Text = "Bookings";
             // 
@@ -111,7 +156,7 @@ namespace HappyJourneyAirline.Tabs
             this.travellerSettingsTab.Controls.Add(this.label14);
             this.travellerSettingsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerSettingsTab.Name = "travellerSettingsTab";
-            this.travellerSettingsTab.Size = new System.Drawing.Size(755, 717);
+            this.travellerSettingsTab.Size = new System.Drawing.Size(755, 720);
             this.travellerSettingsTab.TabIndex = 2;
             this.travellerSettingsTab.Text = "Settings";
             // 
@@ -125,43 +170,21 @@ namespace HappyJourneyAirline.Tabs
             this.label14.TabIndex = 3;
             this.label14.Text = "Settings";
             // 
-            // travellerFlightsTab
+            // tabPage1
             // 
-            this.travellerFlightsTab.BackColor = System.Drawing.Color.Gainsboro;
-            this.travellerFlightsTab.Controls.Add(this.label22);
-            this.travellerFlightsTab.Controls.Add(this.label11);
-            this.travellerFlightsTab.Location = new System.Drawing.Point(23, 4);
-            this.travellerFlightsTab.Name = "travellerFlightsTab";
-            this.travellerFlightsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.travellerFlightsTab.Size = new System.Drawing.Size(755, 720);
-            this.travellerFlightsTab.TabIndex = 0;
-            this.travellerFlightsTab.Text = "Flights";
-            this.travellerFlightsTab.Click += new System.EventHandler(this.travellerFlightsTab_Click);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label22.Location = new System.Drawing.Point(31, 84);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(313, 19);
-            this.label22.TabIndex = 3;
-            this.label22.Text = "Book Your Next Flight Easily Through This Page";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(24, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(156, 59);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Flights";
+            this.tabPage1.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Location = new System.Drawing.Point(23, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(755, 720);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Users";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.users);
             this.panel1.Controls.Add(this.logOutIcon);
             this.panel1.Controls.Add(this.settingTab);
             this.panel1.Controls.Add(this.flightsTab);
@@ -171,6 +194,17 @@ namespace HappyJourneyAirline.Tabs
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(160, 736);
             this.panel1.TabIndex = 4;
+            // 
+            // users
+            // 
+            this.users.Image = global::HappyJourneyAirline.Properties.Resources.Group_13;
+            this.users.Location = new System.Drawing.Point(32, 392);
+            this.users.Name = "users";
+            this.users.Size = new System.Drawing.Size(104, 80);
+            this.users.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.users.TabIndex = 8;
+            this.users.TabStop = false;
+            this.users.Click += new System.EventHandler(this.users_Click);
             // 
             // logOutIcon
             // 
@@ -227,6 +261,27 @@ namespace HappyJourneyAirline.Tabs
             this.bookingTab.TabStop = false;
             this.bookingTab.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(26, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(181, 19);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Manage users in this Page";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(19, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(134, 59);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Users";
+            // 
             // AdminTabs
             // 
             this.Controls.Add(this.panel1);
@@ -234,13 +289,16 @@ namespace HappyJourneyAirline.Tabs
             this.Name = "AdminTabs";
             this.Size = new System.Drawing.Size(921, 728);
             this.tabControl1.ResumeLayout(false);
+            this.travellerFlightsTab.ResumeLayout(false);
+            this.travellerFlightsTab.PerformLayout();
             this.travellerBookingsTab.ResumeLayout(false);
             this.travellerBookingsTab.PerformLayout();
             this.travellerSettingsTab.ResumeLayout(false);
             this.travellerSettingsTab.PerformLayout();
-            this.travellerFlightsTab.ResumeLayout(false);
-            this.travellerFlightsTab.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.users)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingTab)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.flightsTab)).EndInit();
@@ -283,6 +341,11 @@ namespace HappyJourneyAirline.Tabs
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void users_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(3);
         }
     }
 
