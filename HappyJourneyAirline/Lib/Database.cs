@@ -11,7 +11,7 @@ namespace HappyJourneyAirline.Lib
     public  class Database
     {
 
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Hussain\source\repos\the0xahmed\HappyJourneyAirline\HappyJourneyAirline\database.mdf;Integrated Security=True";
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\database.mdf;Integrated Security=True";
 
         // Method to connect to the database and execute a simple query
         public void ConnectAndQuery()
