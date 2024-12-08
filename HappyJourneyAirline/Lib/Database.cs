@@ -2,38 +2,28 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HappyJourneyAirline.Lib
 {
-    public  class Database
+    public class Database
     {
-
         private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\database.mdf;Integrated Security=True";
 
-        // Method to connect to the database and execute a simple query
-        public void ConnectAndQuery()
+        // Generic method to execute a query and return a list of results
+        public List<T> Query<T>(string query, Func<SqlDataReader, T> map)
         {
+            var results = new List<T>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    // Open the connection
                     connection.Open();
-                    Console.WriteLine("Connection established successfully.");
-
-                    // Example query to fetch data (You can replace this with your own query)
-                    string query = "SELECT * FROM USERS";  // Replace "YourTableName" with actual table name
-
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         SqlDataReader reader = command.ExecuteReader();
-                        // Reading the data (for demonstration, assuming we are printing it)
                         while (reader.Read())
                         {
-                            Console.WriteLine("The username is :" + reader[1].ToString()); // Replace with the actual columns of your table
+                            results.Add(map(reader));
                         }
                     }
 
@@ -42,13 +32,36 @@ namespace HappyJourneyAirline.Lib
                 {
                     Console.WriteLine("An error occurred: " + ex.Message);
                 }
-                finally
+            }
+            return results;
+        }
+
+        // Generic method to execute non-query commands (INSERT, UPDATE, DELETE)
+        public int ExecuteNonQuery(string query, Dictionary<string, object> parameters = null)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
                 {
-                    // The connection will be closed automatically by the 'using' block
-                    Console.WriteLine("Connection closed.");
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        if (parameters != null)
+                        {
+                            foreach (var param in parameters)
+                            {
+                                command.Parameters.AddWithValue(param.Key, param.Value);
+                            }
+                        }
+                        return command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                    return -1;
                 }
             }
         }
     }
-    
 }
