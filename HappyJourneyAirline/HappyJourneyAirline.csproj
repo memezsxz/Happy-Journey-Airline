@@ -62,6 +62,13 @@
     <Compile Include="MainAppUI.Designer.cs">
       <DependentUpon>MainAppUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
+    <Compile Include="Models\Plane.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,6 +127,14 @@
   <ItemGroup>
     <None Include="Resources\Group 13.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>database.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

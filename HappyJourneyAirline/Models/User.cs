@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
@@ -10,83 +8,115 @@ namespace HappyJourneyAirline.Models
     public class User
     {
         public long Id { get; set; }
-        public string FullName { get; set; } // Nullable fields handled explicitly
-        public string Username { get; set; }
-        public string Email { get; set; }
+        public string FirstName { get; set; } // Nullable
+        public string LastName { get; set; } // Nullable
+        public string Username { get; set; } // Unique
+        public string Email { get; set; } // Unique
         public string Password { get; set; }
-        public string Type { get; set; } // Nullable fields handled explicitly
-        public long? AgencyID { get; set; }
-        public string CompanyName { get; set; } // Nullable fields handled explicitly
-
-        private readonly Database _database;
-
-        public User()
-        {
-            _database = new Database();
-        }
+        public string Type { get; set; } = "traveller"; // Default value
+        public long? AgencyID { get; set; } // Nullable
+        public string CompanyName { get; set; } // Nullable
+        public string PhoneNumber { get; set; } // NOT NULL
 
         // Fetch all users
         public List<User> GetAllUsers()
         {
-            string query = "SELECT id, fullName, username, email, password, type, agencyID, companyName FROM users";
-            return _database.Query(query, reader => new User
+            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber FROM users";
+            return Database.Instance.Query(query, reader => new User
             {
                 Id = reader.GetInt64(0),
-                FullName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
-                Username = reader.GetString(2),
-                Email = reader.GetString(3),
-                Password = reader.GetString(4),
-                Type = !reader.IsDBNull(5) ? reader.GetString(5) : null,
-                AgencyID = !reader.IsDBNull(6) ? (long?)reader.GetInt64(6) : null,
-                CompanyName = !reader.IsDBNull(7) ? reader.GetString(7) : null
+                FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
+                LastName = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null,
+                Username = reader.GetString(3),
+                Email = reader.GetString(4),
+                Password = reader.GetString(5),
+                Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
+                AgencyID = !reader.IsDBNull(7) ? (long?)reader.GetInt64(7) : null,
+                CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
+                PhoneNumber = reader.GetString(9)
             });
         }
 
         // Add a new user
-        public bool AddUser(User user)
+        public long AddUser(User user)
         {
             string query = @"
-                INSERT INTO users (id, fullName, username, email, password, type, agencyID, companyName)
-                VALUES (@Id, @FullName, @Username, @Email, @Password, @Type, @AgencyID, @CompanyName)";
+    INSERT INTO users (firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber)
+    OUTPUT INSERTED.id
+    VALUES (@FirstName, @LastName, @Username, @Email, @Password, @Type, @AgencyID, @CompanyName, @PhoneNumber)";
+
             var parameters = new Dictionary<string, object>
+    {
+        { "@FirstName", (object)user.FirstName ?? DBNull.Value },
+        { "@LastName", (object)user.LastName ?? DBNull.Value },
+        { "@Username", user.Username },
+        { "@Email", user.Email },
+        { "@Password", user.Password },
+        { "@Type", (object)user.Type ?? "traveller" },
+        { "@AgencyID", (object)user.AgencyID ?? DBNull.Value },
+        { "@CompanyName", (object)user.CompanyName ?? DBNull.Value },
+        { "@PhoneNumber", user.PhoneNumber }
+    };
+
+            using (SqlConnection connection = new SqlConnection(Database.connectionString))
             {
-                { "@Id", user.Id },
-                { "@FullName", (object)user.FullName ?? DBNull.Value },
-                { "@Username", user.Username },
-                { "@Email", user.Email },
-                { "@Password", user.Password },
-                { "@Type", (object)user.Type ?? DBNull.Value },
-                { "@AgencyID", (object)user.AgencyID ?? DBNull.Value },
-                { "@CompanyName", (object)user.CompanyName ?? DBNull.Value }
-            };
-            return _database.ExecuteNonQuery(query, parameters) > 0;
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        foreach (var param in parameters)
+                        {
+                            command.Parameters.AddWithValue(param.Key, param.Value);
+                        }
+
+                        // Execute the query and return the inserted ID
+                        object result = command.ExecuteScalar();
+                        if (result != null && long.TryParse(result.ToString(), out long insertedId))
+                        {
+                            return insertedId;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
+            }
+
+            return -1; // Return -1 if the insertion failed
         }
+
 
         // Update an existing user
         public bool UpdateUser(User user)
         {
             string query = @"
                 UPDATE users
-                SET fullName = @FullName,
+                SET firstName = @FirstName,
+                    lastName = @LastName,
                     username = @Username,
                     email = @Email,
                     password = @Password,
                     type = @Type,
                     agencyID = @AgencyID,
-                    companyName = @CompanyName
+                    companyName = @CompanyName,
+                    phoneNumber = @PhoneNumber
                 WHERE id = @Id";
             var parameters = new Dictionary<string, object>
             {
                 { "@Id", user.Id },
-                { "@FullName", (object)user.FullName ?? DBNull.Value },
+                { "@FirstName", (object)user.FirstName ?? DBNull.Value },
+                { "@LastName", (object)user.LastName ?? DBNull.Value },
                 { "@Username", user.Username },
                 { "@Email", user.Email },
                 { "@Password", user.Password },
-                { "@Type", (object)user.Type ?? DBNull.Value },
+                { "@Type", (object)user.Type ?? "traveller" },
                 { "@AgencyID", (object)user.AgencyID ?? DBNull.Value },
-                { "@CompanyName", (object)user.CompanyName ?? DBNull.Value }
+                { "@CompanyName", (object)user.CompanyName ?? DBNull.Value },
+                { "@PhoneNumber", user.PhoneNumber }
             };
-            return _database.ExecuteNonQuery(query, parameters) > 0;
+            return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
         // Delete a user
@@ -97,27 +127,54 @@ namespace HappyJourneyAirline.Models
             {
                 { "@Id", id }
             };
-            return _database.ExecuteNonQuery(query, parameters) > 0;
+            return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
         // Find a user by ID
         public User GetUserById(long id)
         {
-            string query = "SELECT id, fullName, username, email, password, type, agencyID, companyName FROM users WHERE id = @Id";
+            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber FROM users WHERE id = @Id";
             var parameters = new Dictionary<string, object>
             {
                 { "@Id", id }
             };
-            var result = _database.Query(query, reader => new User
+            var result = Database.Instance.Query(query,parameters, reader => new User
             {
                 Id = reader.GetInt64(0),
-                FullName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
-                Username = reader.GetString(2),
-                Email = reader.GetString(3),
-                Password = reader.GetString(4),
-                Type = !reader.IsDBNull(5) ? reader.GetString(5) : null,
-                AgencyID = !reader.IsDBNull(6) ? (long?)reader.GetInt64(6) : null,
-                CompanyName = !reader.IsDBNull(7) ? reader.GetString(7) : null
+                FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
+                LastName = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null,
+                Username = reader.GetString(3),
+                Email = reader.GetString(4),
+                Password = reader.GetString(5),
+                Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
+                AgencyID = !reader.IsDBNull(7) ? (long?)reader.GetInt64(7) : null,
+                CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
+                PhoneNumber = reader.GetString(9)
+            });
+            return result.Count > 0 ? result[0] : null;
+        }
+
+        // Login method
+        public User Login(string username, string password)
+        {
+            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber FROM users WHERE username = @Username AND password = @Password";
+            var parameters = new Dictionary<string, object>
+            {
+                { "@Username", username },
+                { "@Password", password }
+            };
+            var result = Database.Instance.Query(query, parameters, reader => new User
+            {
+                Id = reader.GetInt64(0),
+                FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
+                LastName = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null,
+                Username = reader.GetString(3),
+                Email = reader.GetString(4),
+                Password = reader.GetString(5),
+                Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
+                AgencyID = !reader.IsDBNull(7) ? (long?)reader.GetInt64(7) : null,
+                CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
+                PhoneNumber = reader.GetString(9)
             });
             return result.Count > 0 ? result[0] : null;
         }

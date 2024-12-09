@@ -1,4 +1,5 @@
-﻿using HappyJourneyAirline.Tabs;
+﻿using HappyJourneyAirline.Models;
+using HappyJourneyAirline.Tabs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,6 +80,18 @@ namespace ProjectSample
 
         private void button1_Click(object sender, EventArgs e)
         {
+            String username = textBox1.Text;
+            String password = textBox2.Text;
+            User userHandler = new User();
+            User loggedInUser = userHandler.Login(username, password);
+
+            if (loggedInUser == null) {
+                Console.WriteLine("Incorrect Credintials");
+                return;
+            }
+
+            Console.WriteLine("Logged in user: " + loggedInUser.Email);
+
             appTabs.SelectTab(3);
         }
 
@@ -119,9 +132,41 @@ namespace ProjectSample
             String firstName = firstNameRegisterInput.Text;
             String lastName = lastNameRegisterInput.Text;
             String phoneNumber = phoneNumberRegisterInput.Text;
+            String email = emailRegisterInput.Text;
 
+            User userHandler = new User();
 
-            appTabs.SelectTab(getAppRoute(APP_ROUTES.TRAVELLER_DASHBOARD_ROUTE) );
+            User newUser = new User
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Username = username,
+                Password = password,
+                Email = email,
+                Type = "traveller",
+                PhoneNumber = phoneNumber,
+                CompanyName = null,
+            };
+
+            long newUserId = userHandler.AddUser(newUser);
+
+            if (newUserId > 0)
+            {
+                Console.WriteLine($"User created successfully! User ID: {newUserId}");
+
+                appTabs.SelectTab(getAppRoute(APP_ROUTES.TRAVELLER_DASHBOARD_ROUTE));
+            }
+            else
+            {
+                Console.WriteLine("Failed to create user.");
+            }
+
+            
+        }
+
+        private void emailRegisterInput_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
