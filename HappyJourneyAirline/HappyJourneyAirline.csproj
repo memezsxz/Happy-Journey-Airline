@@ -106,9 +106,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -121,9 +118,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Group 13.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -131,6 +125,22 @@
       <DependentUpon>database.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Visa.png" />
+    <None Include="Resources\AmericanExpress.png" />
+    <None Include="Resources\CreditCard.png" />
+    <None Include="Resources\Users_Active.png" />
+    <None Include="Resources\Users.png" />
+    <None Include="Resources\Travelers_Active.png" />
+    <None Include="Resources\Settings_Active.png" />
+    <None Include="Resources\Notification_Active.png" />
+    <None Include="Resources\Flights_Active.png" />
+    <None Include="Resources\Bookings_Active.png" />
+    <None Include="Resources\log-out.png" />
+    <None Include="Resources\Settings Icon.png" />
+    <None Include="Resources\Notification.png" />
+    <None Include="Resources\Bookings.png" />
+    <None Include="Resources\Flights.png" />
+    <None Include="Resources\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
