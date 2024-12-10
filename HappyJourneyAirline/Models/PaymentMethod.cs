@@ -36,7 +36,7 @@ namespace HappyJourneyAirline.Models
                 { "@Details", (object)paymentMethod.Details ?? DBNull.Value }
             };
 
-            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(Database.connectionString))
             {
                 try
                 {

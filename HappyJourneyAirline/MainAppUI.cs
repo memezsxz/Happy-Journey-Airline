@@ -1,4 +1,5 @@
-﻿using HappyJourneyAirline.Models;
+﻿using HappyJourneyAirline.Lib;
+using HappyJourneyAirline.Models;
 using HappyJourneyAirline.Tabs;
 using System;
 using System.Collections.Generic;
@@ -55,7 +56,23 @@ namespace ProjectSample
 
         private void Login_Load(object sender, EventArgs e)
         {
+            if (AuthService.IsUserLoggedIn())
+            {
+                User userHandler = new User();
 
+                User currentLoggedInUser = userHandler.GetUserById(AuthService.GetCurrentUserId());
+
+                if(currentLoggedInUser.Type == "traveller")
+                {
+                    appTabs.SelectTab(3);
+                }else if (currentLoggedInUser.Type == "admin")
+                {
+                    appTabs.SelectTab(4);
+                }else if (currentLoggedInUser.Type == "agency")
+                {
+                    appTabs.SelectTab(5);
+                }
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -89,10 +106,21 @@ namespace ProjectSample
                 Console.WriteLine("Incorrect Credintials");
                 return;
             }
-
+            AuthService.StoreUserId(loggedInUser.Id);
             Console.WriteLine("Logged in user: " + loggedInUser.Email);
 
-            appTabs.SelectTab(3);
+            if (loggedInUser.Type == "traveller")
+            {
+                appTabs.SelectTab(3);
+            }
+            else if (loggedInUser.Type == "admin")
+            {
+                appTabs.SelectTab(4);
+            }
+            else if (loggedInUser.Type == "agency")
+            {
+                appTabs.SelectTab(5);
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -153,6 +181,7 @@ namespace ProjectSample
             if (newUserId > 0)
             {
                 Console.WriteLine($"User created successfully! User ID: {newUserId}");
+                AuthService.StoreUserId(newUserId);
 
                 appTabs.SelectTab(getAppRoute(APP_ROUTES.TRAVELLER_DASHBOARD_ROUTE));
             }

@@ -14,7 +14,8 @@ namespace HappyJourneyAirline.Lib
         private static readonly object _lock = new object();
 
         // Connection string
-        public static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\database.mdf;Integrated Security=True";
+        public static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\202203193\Source\Repos\HappyJourneyAirline\HappyJourneyAirline\database.mdf;Integrated Security=True;";
+        // public static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\database.mdf;Integrated Security=True";
 
         // Private constructor to prevent instantiation from outside
         private Database() { }

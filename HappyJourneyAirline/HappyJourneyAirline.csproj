@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Lib\AuthService.cs" />
     <Compile Include="Lib\Database.cs" />
     <Compile Include="MainAppUI.cs">
       <SubType>Form</SubType>
