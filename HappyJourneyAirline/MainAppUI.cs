@@ -1,4 +1,6 @@
-﻿using HappyJourneyAirline.Tabs;
+﻿using HappyJourneyAirline.Lib;
+using HappyJourneyAirline.Models;
+using HappyJourneyAirline.Tabs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,7 +56,23 @@ namespace ProjectSample
 
         private void Login_Load(object sender, EventArgs e)
         {
+            if (AuthService.IsUserLoggedIn())
+            {
+                User userHandler = new User();
 
+                User currentLoggedInUser = userHandler.GetUserById(AuthService.GetCurrentUserId());
+
+                if(currentLoggedInUser.Type == "traveller")
+                {
+                    appTabs.SelectTab(3);
+                }else if (currentLoggedInUser.Type == "admin")
+                {
+                    appTabs.SelectTab(4);
+                }else if (currentLoggedInUser.Type == "agency")
+                {
+                    appTabs.SelectTab(5);
+                }
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -79,7 +97,30 @@ namespace ProjectSample
 
         private void button1_Click(object sender, EventArgs e)
         {
-            appTabs.SelectTab(3);
+            String username = textBox1.Text;
+            String password = textBox2.Text;
+            User userHandler = new User();
+            User loggedInUser = userHandler.Login(username, password);
+
+            if (loggedInUser == null) {
+                Console.WriteLine("Incorrect Credintials");
+                return;
+            }
+            AuthService.StoreUserId(loggedInUser.Id);
+            Console.WriteLine("Logged in user: " + loggedInUser.Email);
+
+            if (loggedInUser.Type == "traveller")
+            {
+                appTabs.SelectTab(3);
+            }
+            else if (loggedInUser.Type == "admin")
+            {
+                appTabs.SelectTab(4);
+            }
+            else if (loggedInUser.Type == "agency")
+            {
+                appTabs.SelectTab(5);
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -119,9 +160,42 @@ namespace ProjectSample
             String firstName = firstNameRegisterInput.Text;
             String lastName = lastNameRegisterInput.Text;
             String phoneNumber = phoneNumberRegisterInput.Text;
+            String email = emailRegisterInput.Text;
 
+            User userHandler = new User();
 
-            appTabs.SelectTab(getAppRoute(APP_ROUTES.TRAVELLER_DASHBOARD_ROUTE) );
+            User newUser = new User
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Username = username,
+                Password = password,
+                Email = email,
+                Type = "traveller",
+                PhoneNumber = phoneNumber,
+                CompanyName = null,
+            };
+
+            long newUserId = userHandler.AddUser(newUser);
+
+            if (newUserId > 0)
+            {
+                Console.WriteLine($"User created successfully! User ID: {newUserId}");
+                AuthService.StoreUserId(newUserId);
+
+                appTabs.SelectTab(getAppRoute(APP_ROUTES.TRAVELLER_DASHBOARD_ROUTE));
+            }
+            else
+            {
+                Console.WriteLine("Failed to create user.");
+            }
+
+            
+        }
+
+        private void emailRegisterInput_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

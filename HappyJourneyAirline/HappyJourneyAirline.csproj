@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Lib\AuthService.cs" />
     <Compile Include="Lib\Database.cs" />
     <Compile Include="MainAppUI.cs">
       <SubType>Form</SubType>
@@ -62,6 +63,20 @@
     <Compile Include="MainAppUI.Designer.cs">
       <DependentUpon>MainAppUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Airport.cs" />
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\FlightStatus.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
+    <Compile Include="Models\PaymentStatus.cs" />
+    <Compile Include="Models\Plane.cs" />
+    <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\TicketClass.cs" />
+    <Compile Include="Models\TicketStatus.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,6 +156,15 @@
     <None Include="Resources\Bookings.png" />
     <None Include="Resources\Flights.png" />
     <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>database.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
