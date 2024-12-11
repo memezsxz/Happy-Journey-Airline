@@ -62,15 +62,24 @@ namespace ProjectSample
 
                 User currentLoggedInUser = userHandler.GetUserById(AuthService.GetCurrentUserId());
 
-                if(currentLoggedInUser.Type == "traveller")
+                try
                 {
-                    appTabs.SelectTab(3);
-                }else if (currentLoggedInUser.Type == "admin")
+                    if (currentLoggedInUser?.Type == "traveller")
+                    {
+                        appTabs.SelectTab(3);
+                    }
+                    else if (currentLoggedInUser?.Type == "admin")
+                    {
+                        appTabs.SelectTab(4);
+                    }
+                    else if (currentLoggedInUser.Type == "agency")
+                    {
+                        appTabs.SelectTab(5);
+                    }
+                }
+                catch (Exception)
                 {
-                    appTabs.SelectTab(4);
-                }else if (currentLoggedInUser.Type == "agency")
-                {
-                    appTabs.SelectTab(5);
+
                 }
             }
         }
