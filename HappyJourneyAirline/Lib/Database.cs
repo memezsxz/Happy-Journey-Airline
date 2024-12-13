@@ -12,9 +12,6 @@ namespace HappyJourneyAirline.Lib
         // Singleton instance
         private static Database _instance;
 
-        private SqlConnection connection;
-        private SqlCommand command;
-        private SqlDataReader reader;
 
         // Lock object for thread safety
         private static readonly object _lock = new object();
@@ -27,7 +24,7 @@ namespace HappyJourneyAirline.Lib
 
         // Private constructor to prevent instantiation from outside
         private Database() {
-            Connection = new SqlConnection(connectionString);
+
         }
 
         // Public static method to get the singleton instance
@@ -50,9 +47,7 @@ namespace HappyJourneyAirline.Lib
             }
         }
 
-        public SqlConnection Connection { get => connection; set => connection = value; }
-        public SqlCommand Command { get => command; set => command = value; }
-        public SqlDataReader Reader { get => reader; set => reader = value; }
+  
 
         // Generic method to execute a query and return a list of results
         public List<T> Query<T>(string query, Func<SqlDataReader, T> map)
