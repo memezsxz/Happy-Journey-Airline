@@ -7,8 +7,14 @@ namespace HappyJourneyAirline.Lib
 {
     public class Database
     {
+
+
         // Singleton instance
         private static Database _instance;
+
+        private SqlConnection connection;
+        private SqlCommand command;
+        private SqlDataReader reader;
 
         // Lock object for thread safety
         private static readonly object _lock = new object();
@@ -16,10 +22,13 @@ namespace HappyJourneyAirline.Lib
         // Connection string
         //public static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=|DataDirectory|\database.mdf;Integrated Security=True;Connect Timeout=30";
         //public static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\202203193\Source\Repos\HappyJourneyAirline\HappyJourneyAirline\database.mdf;Integrated Security=True;";
-         public static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\database.mdf;Integrated Security=True";
+        //public static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\database.mdf;Integrated Security=True";
+        public static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\ffoof\\OneDrive\\Documents\\New folder\\HappyJourneyAirline\\database.mdf\";Integrated Security=True";
 
         // Private constructor to prevent instantiation from outside
-        private Database() { }
+        private Database() {
+            Connection = new SqlConnection(connectionString);
+        }
 
         // Public static method to get the singleton instance
         public static Database Instance
@@ -40,6 +49,10 @@ namespace HappyJourneyAirline.Lib
                 return _instance;
             }
         }
+
+        public SqlConnection Connection { get => connection; set => connection = value; }
+        public SqlCommand Command { get => command; set => command = value; }
+        public SqlDataReader Reader { get => reader; set => reader = value; }
 
         // Generic method to execute a query and return a list of results
         public List<T> Query<T>(string query, Func<SqlDataReader, T> map)
