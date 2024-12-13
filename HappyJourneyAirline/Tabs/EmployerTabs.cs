@@ -9,6 +9,8 @@ using System.Data.SqlClient;
 using HappyJourneyAirline.Models;
 using System.Data;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using System.Drawing;
+using System.Reflection;
 namespace HappyJourneyAirline.Tabs
 {
     public partial class EmployerTabs : UserControl
@@ -107,6 +109,7 @@ namespace HappyJourneyAirline.Tabs
         private Button bdAddTravelerBtn;
         private DataGridView gridflightsData;
         private ComboBox time;
+        private DataGridView dataGridViewNotification;
         private PictureBox bookingTab;
 
         public EmployerTabs()
@@ -118,6 +121,8 @@ namespace HappyJourneyAirline.Tabs
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployerTabs));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.notificationTab = new System.Windows.Forms.PictureBox();
             this.logOutIcon = new System.Windows.Forms.PictureBox();
@@ -171,6 +176,7 @@ namespace HappyJourneyAirline.Tabs
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.travellerNotificationTab = new System.Windows.Forms.TabPage();
+            this.dataGridViewNotification = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.travellerSettingsTab = new System.Windows.Forms.TabPage();
@@ -197,6 +203,7 @@ namespace HappyJourneyAirline.Tabs
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.travellerFlightsTab = new System.Windows.Forms.TabPage();
+            this.time = new System.Windows.Forms.ComboBox();
             this.gridflightsData = new System.Windows.Forms.DataGridView();
             this.dateCheck = new System.Windows.Forms.CheckBox();
             this.timeCheck = new System.Windows.Forms.CheckBox();
@@ -212,7 +219,6 @@ namespace HappyJourneyAirline.Tabs
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabController = new System.Windows.Forms.TabControl();
-            this.time = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.notificationTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -223,6 +229,7 @@ namespace HappyJourneyAirline.Tabs
             this.flightDetails.SuspendLayout();
             this.bookingDetailsTab.SuspendLayout();
             this.travellerNotificationTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotification)).BeginInit();
             this.travellerSettingsTab.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
             this.travellerFlightsTab.SuspendLayout();
@@ -919,6 +926,7 @@ namespace HappyJourneyAirline.Tabs
             // travellerNotificationTab
             // 
             this.travellerNotificationTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.travellerNotificationTab.Controls.Add(this.dataGridViewNotification);
             this.travellerNotificationTab.Controls.Add(this.label2);
             this.travellerNotificationTab.Controls.Add(this.label3);
             this.travellerNotificationTab.Location = new System.Drawing.Point(25, 4);
@@ -926,6 +934,37 @@ namespace HappyJourneyAirline.Tabs
             this.travellerNotificationTab.Size = new System.Drawing.Size(753, 720);
             this.travellerNotificationTab.TabIndex = 3;
             this.travellerNotificationTab.Text = "Notification";
+            this.travellerNotificationTab.Paint += new System.Windows.Forms.PaintEventHandler(this.travellerNotificationTab_Paint);
+            // 
+            // dataGridViewNotification
+            // 
+            this.dataGridViewNotification.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewNotification.BackgroundColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewNotification.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewNotification.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewNotification.ColumnHeadersVisible = false;
+            this.dataGridViewNotification.Location = new System.Drawing.Point(20, 128);
+            this.dataGridViewNotification.Name = "dataGridViewNotification";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewNotification.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewNotification.RowHeadersVisible = false;
+            this.dataGridViewNotification.RowHeadersWidth = 51;
+            this.dataGridViewNotification.RowTemplate.Height = 24;
+            this.dataGridViewNotification.Size = new System.Drawing.Size(718, 448);
+            this.dataGridViewNotification.TabIndex = 6;
             // 
             // label2
             // 
@@ -1254,13 +1293,29 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.Click += new System.EventHandler(this.travellerFlightsTab_Click);
             this.travellerFlightsTab.Paint += new System.Windows.Forms.PaintEventHandler(this.travellerFlightsTab_Paint);
             // 
+            // time
+            // 
+            this.time.Enabled = false;
+            this.time.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time.FormattingEnabled = true;
+            this.time.Items.AddRange(new object[] {
+            "Morning",
+            "Night"});
+            this.time.Location = new System.Drawing.Point(356, 263);
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(287, 32);
+            this.time.TabIndex = 61;
+            // 
             // gridflightsData
             // 
+            this.gridflightsData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gridflightsData.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridflightsData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridflightsData.Location = new System.Drawing.Point(16, 317);
             this.gridflightsData.Name = "gridflightsData";
+            this.gridflightsData.RowHeadersVisible = false;
             this.gridflightsData.RowHeadersWidth = 51;
-            this.gridflightsData.RowTemplate.Height = 24;
+            this.gridflightsData.RowTemplate.Height = 30;
             this.gridflightsData.Size = new System.Drawing.Size(721, 346);
             this.gridflightsData.TabIndex = 59;
             // 
@@ -1413,18 +1468,6 @@ namespace HappyJourneyAirline.Tabs
             this.tabController.Size = new System.Drawing.Size(782, 728);
             this.tabController.TabIndex = 5;
             // 
-            // time
-            // 
-            this.time.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time.FormattingEnabled = true;
-            this.time.Items.AddRange(new object[] {
-            "Morning",
-            "Night"});
-            this.time.Location = new System.Drawing.Point(356, 263);
-            this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(287, 32);
-            this.time.TabIndex = 61;
-            // 
             // EmployerTabs
             // 
             this.Controls.Add(this.tabController);
@@ -1444,6 +1487,7 @@ namespace HappyJourneyAirline.Tabs
             this.bookingDetailsTab.PerformLayout();
             this.travellerNotificationTab.ResumeLayout(false);
             this.travellerNotificationTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotification)).EndInit();
             this.travellerSettingsTab.ResumeLayout(false);
             this.travellerSettingsTab.PerformLayout();
             this.travellerBookingsTab.ResumeLayout(false);
@@ -1472,7 +1516,6 @@ namespace HappyJourneyAirline.Tabs
 
 
                 airportList = handeler.GetAllAirports();
-                Console.WriteLine("list: " + airportList);
 
 
                 if (airportList == null || airportList.Count == 0)
@@ -1694,7 +1737,7 @@ namespace HappyJourneyAirline.Tabs
 
         private void travellerFlightsTab_Paint(object sender, PaintEventArgs e)
         {
-            time.Enabled = false;
+            gridflightsData.Font = new Font(gridflightsData.Font.FontFamily, 12);
             flightDataLoad();
         }
 
@@ -1783,7 +1826,6 @@ namespace HappyJourneyAirline.Tabs
 
                 try
                 {
-                    Console.WriteLine(query);
                     // Assign final query to command
                     cmd.CommandText = query;
 
@@ -1901,6 +1943,46 @@ namespace HappyJourneyAirline.Tabs
             {
                 time.Enabled = false;
             }
+        }
+
+        private void travellerNotificationTab_Paint(object sender, PaintEventArgs e)
+        {
+
+            dataGridViewNotification.RowTemplate.Height = 60; // Sets all rows to 40 pixels
+            dataGridViewNotification.Font = new Font(gridflightsData.Font.FontFamily, 12);
+            Notification notificationHandeler = new Notification();
+
+            User handerler = new User();
+            List<Notification> notificationsList =notificationHandeler.GetNotificationsByUserId(AuthService.GetCurrentUserId());
+
+            dataGridViewNotification.DataSource = notificationsList;
+
+
+            // Disable automatic column generation
+            dataGridViewNotification.AutoGenerateColumns = false;
+
+            // Clear existing columns
+            dataGridViewNotification.Columns.Clear();
+
+            // Add the "title" column
+            dataGridViewNotification.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "title",
+                HeaderText = "Title",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            // Add the "description" column
+            dataGridViewNotification.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "description",
+                HeaderText = "Description",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            // Bind the data
+            dataGridViewNotification.DataSource = notificationsList;
+
         }
     }
 

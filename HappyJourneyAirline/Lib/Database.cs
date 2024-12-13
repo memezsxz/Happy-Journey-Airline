@@ -22,8 +22,8 @@ namespace HappyJourneyAirline.Lib
         // Connection string
         //public static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=|DataDirectory|\database.mdf;Integrated Security=True;Connect Timeout=30";
         //public static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\202203193\Source\Repos\HappyJourneyAirline\HappyJourneyAirline\database.mdf;Integrated Security=True;";
-        //public static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\database.mdf;Integrated Security=True";
-        public static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\ffoof\\OneDrive\\Documents\\New folder\\HappyJourneyAirline\\database.mdf\";Integrated Security=True";
+        public static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\database.mdf;Integrated Security=True";
+        //public static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\ffoof\\OneDrive\\Documents\\New folder\\HappyJourneyAirline\\database.mdf\";Integrated Security=True";
 
         // Private constructor to prevent instantiation from outside
         private Database() {
