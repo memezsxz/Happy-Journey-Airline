@@ -7,7 +7,7 @@ namespace HappyJourneyAirline.Models
 {
     public class Flight
     {
-        public long Id { get; set; } // Primary Key
+        public int Id { get; set; } // Primary Key
         public int SourceAirportID { get; set; } // Foreign Key
         public int DestinationAirportID { get; set; } // Foreign Key
         public DateTime DepartureTimestamp { get; set; } // NOT NULL
@@ -21,11 +21,11 @@ namespace HappyJourneyAirline.Models
         {
             string query = @"
                 SELECT Id, sourceAirportID, destinationAirportID, departureTimestamp, arrivalTimestamp, 
-                       flightStatusID, planeID, basePrice 
+                       flightStatusID, planeID, BasePrice 
                 FROM flights";
             return Database.Instance.Query(query, reader => new Flight
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 SourceAirportID = reader.GetInt32(1),
                 DestinationAirportID = reader.GetInt32(2),
                 DepartureTimestamp = reader.GetDateTime(3),
@@ -135,7 +135,7 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new Flight
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 SourceAirportID = reader.GetInt32(1),
                 DestinationAirportID = reader.GetInt32(2),
                 DepartureTimestamp = reader.GetDateTime(3),

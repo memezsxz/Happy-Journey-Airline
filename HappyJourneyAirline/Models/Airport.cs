@@ -9,7 +9,7 @@ namespace HappyJourneyAirline.Models
     {
         public int Id { get; set; } // Primary Key
         public string Name { get; set; } // NOT NULL
-        public string CityId { get; set; } // Foreign Key
+        public int CityId { get; set; } // Foreign Key
         public decimal Latitude { get; set; } // NOT NULL
         public decimal Longitude { get; set; } // NOT NULL
 
@@ -21,7 +21,7 @@ namespace HappyJourneyAirline.Models
             {
                 Id = reader.GetInt32(0),
                 Name = reader.GetString(1).Trim(),
-                CityId = reader.GetString(2),
+                CityId = reader.GetInt32(2),
                 Latitude = reader.GetDecimal(3),
                 Longitude = reader.GetDecimal(4)
             });
@@ -115,7 +115,7 @@ namespace HappyJourneyAirline.Models
             {
                 Id = reader.GetInt32(0),
                 Name = reader.GetString(1).Trim(),
-                CityId = reader.GetString(2),
+                CityId = reader.GetInt32(2),
                 Latitude = reader.GetDecimal(3),
                 Longitude = reader.GetDecimal(4)
             });
@@ -134,7 +134,7 @@ namespace HappyJourneyAirline.Models
             {
                 Id = reader.GetInt32(0),
                 Name = reader.GetString(1).Trim(),
-                CityId = reader.GetString(2),
+                CityId = reader.GetInt32(2),
                 Latitude = reader.GetDecimal(3),
                 Longitude = reader.GetDecimal(4)
             });

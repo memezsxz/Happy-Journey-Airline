@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using HappyJourneyAirline.Lib;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Models;
+using System.Data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 namespace HappyJourneyAirline.Tabs
 {
     public partial class EmployerTabs : UserControl
@@ -90,7 +92,6 @@ namespace HappyJourneyAirline.Tabs
         private TabPage travellerFlightsTab;
         private CheckBox dateCheck;
         private CheckBox timeCheck;
-        private DateTimePicker time;
         private DateTimePicker date;
         private PictureBox cancelIcon;
         private Label label4;
@@ -104,6 +105,8 @@ namespace HappyJourneyAirline.Tabs
         private Label label11;
         private TabControl tabController;
         private Button bdAddTravelerBtn;
+        private DataGridView gridflightsData;
+        private ComboBox time;
         private PictureBox bookingTab;
 
         public EmployerTabs()
@@ -194,9 +197,9 @@ namespace HappyJourneyAirline.Tabs
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.travellerFlightsTab = new System.Windows.Forms.TabPage();
+            this.gridflightsData = new System.Windows.Forms.DataGridView();
             this.dateCheck = new System.Windows.Forms.CheckBox();
             this.timeCheck = new System.Windows.Forms.CheckBox();
-            this.time = new System.Windows.Forms.DateTimePicker();
             this.date = new System.Windows.Forms.DateTimePicker();
             this.cancelIcon = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -209,6 +212,7 @@ namespace HappyJourneyAirline.Tabs
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabController = new System.Windows.Forms.TabControl();
+            this.time = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.notificationTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -222,6 +226,7 @@ namespace HappyJourneyAirline.Tabs
             this.travellerSettingsTab.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
             this.travellerFlightsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridflightsData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cancelIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchIcon)).BeginInit();
             this.tabController.SuspendLayout();
@@ -1225,9 +1230,10 @@ namespace HappyJourneyAirline.Tabs
             // travellerFlightsTab
             // 
             this.travellerFlightsTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.travellerFlightsTab.Controls.Add(this.time);
+            this.travellerFlightsTab.Controls.Add(this.gridflightsData);
             this.travellerFlightsTab.Controls.Add(this.dateCheck);
             this.travellerFlightsTab.Controls.Add(this.timeCheck);
-            this.travellerFlightsTab.Controls.Add(this.time);
             this.travellerFlightsTab.Controls.Add(this.date);
             this.travellerFlightsTab.Controls.Add(this.cancelIcon);
             this.travellerFlightsTab.Controls.Add(this.label4);
@@ -1245,58 +1251,66 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.Size = new System.Drawing.Size(753, 720);
             this.travellerFlightsTab.TabIndex = 0;
             this.travellerFlightsTab.Text = "Flights";
+            this.travellerFlightsTab.Click += new System.EventHandler(this.travellerFlightsTab_Click);
+            this.travellerFlightsTab.Paint += new System.Windows.Forms.PaintEventHandler(this.travellerFlightsTab_Paint);
+            // 
+            // gridflightsData
+            // 
+            this.gridflightsData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridflightsData.Location = new System.Drawing.Point(16, 317);
+            this.gridflightsData.Name = "gridflightsData";
+            this.gridflightsData.RowHeadersWidth = 51;
+            this.gridflightsData.RowTemplate.Height = 24;
+            this.gridflightsData.Size = new System.Drawing.Size(721, 346);
+            this.gridflightsData.TabIndex = 59;
             // 
             // dateCheck
             // 
             this.dateCheck.AutoSize = true;
-            this.dateCheck.Location = new System.Drawing.Point(132, 275);
+            this.dateCheck.Location = new System.Drawing.Point(16, 275);
             this.dateCheck.Name = "dateCheck";
             this.dateCheck.Size = new System.Drawing.Size(18, 17);
             this.dateCheck.TabIndex = 58;
             this.dateCheck.UseVisualStyleBackColor = true;
+            this.dateCheck.CheckedChanged += new System.EventHandler(this.dateCheck_CheckedChanged);
             // 
             // timeCheck
             // 
             this.timeCheck.AutoSize = true;
-            this.timeCheck.Location = new System.Drawing.Point(346, 275);
+            this.timeCheck.Location = new System.Drawing.Point(333, 275);
             this.timeCheck.Name = "timeCheck";
             this.timeCheck.Size = new System.Drawing.Size(18, 17);
             this.timeCheck.TabIndex = 57;
             this.timeCheck.UseVisualStyleBackColor = true;
-            // 
-            // time
-            // 
-            this.time.Enabled = false;
-            this.time.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.time.Location = new System.Drawing.Point(369, 266);
-            this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(150, 40);
-            this.time.TabIndex = 56;
+            this.timeCheck.CheckedChanged += new System.EventHandler(this.timeCheck_CheckedChanged);
             // 
             // date
             // 
             this.date.Enabled = false;
-            this.date.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.date.Location = new System.Drawing.Point(153, 266);
+            this.date.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.date.Location = new System.Drawing.Point(37, 266);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(152, 40);
+            this.date.Size = new System.Drawing.Size(284, 29);
             this.date.TabIndex = 55;
+            this.date.ValueChanged += new System.EventHandler(this.date_ValueChanged);
             // 
             // cancelIcon
             // 
             this.cancelIcon.Image = ((System.Drawing.Image)(resources.GetObject("cancelIcon.Image")));
-            this.cancelIcon.Location = new System.Drawing.Point(546, 231);
+            this.cancelIcon.Location = new System.Drawing.Point(666, 254);
             this.cancelIcon.Name = "cancelIcon";
             this.cancelIcon.Size = new System.Drawing.Size(72, 52);
             this.cancelIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.cancelIcon.TabIndex = 54;
             this.cancelIcon.TabStop = false;
+            this.cancelIcon.Click += new System.EventHandler(this.cancelIcon_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(343, 231);
+            this.label4.Location = new System.Drawing.Point(353, 231);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 31);
             this.label4.TabIndex = 53;
@@ -1306,7 +1320,7 @@ namespace HappyJourneyAirline.Tabs
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(129, 231);
+            this.label5.Location = new System.Drawing.Point(13, 231);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 31);
             this.label5.TabIndex = 52;
@@ -1315,18 +1329,19 @@ namespace HappyJourneyAirline.Tabs
             // searchIcon
             // 
             this.searchIcon.Image = ((System.Drawing.Image)(resources.GetObject("searchIcon.Image")));
-            this.searchIcon.Location = new System.Drawing.Point(546, 157);
+            this.searchIcon.Location = new System.Drawing.Point(665, 180);
             this.searchIcon.Name = "searchIcon";
             this.searchIcon.Size = new System.Drawing.Size(72, 52);
             this.searchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.searchIcon.TabIndex = 51;
             this.searchIcon.TabStop = false;
+            this.searchIcon.Click += new System.EventHandler(this.searchIcon_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(343, 157);
+            this.label6.Location = new System.Drawing.Point(350, 157);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(178, 31);
             this.label6.TabIndex = 50;
@@ -1334,18 +1349,18 @@ namespace HappyJourneyAirline.Tabs
             // 
             // arrivalDrop
             // 
-            this.arrivalDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.arrivalDrop.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arrivalDrop.FormattingEnabled = true;
-            this.arrivalDrop.Location = new System.Drawing.Point(346, 188);
+            this.arrivalDrop.Location = new System.Drawing.Point(356, 188);
             this.arrivalDrop.Name = "arrivalDrop";
-            this.arrivalDrop.Size = new System.Drawing.Size(173, 40);
+            this.arrivalDrop.Size = new System.Drawing.Size(287, 32);
             this.arrivalDrop.TabIndex = 49;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(129, 157);
+            this.label7.Location = new System.Drawing.Point(15, 157);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(222, 31);
             this.label7.TabIndex = 48;
@@ -1353,12 +1368,13 @@ namespace HappyJourneyAirline.Tabs
             // 
             // depDrop
             // 
-            this.depDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.depDrop.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.depDrop.FormattingEnabled = true;
-            this.depDrop.Location = new System.Drawing.Point(132, 188);
+            this.depDrop.Location = new System.Drawing.Point(21, 188);
             this.depDrop.Name = "depDrop";
-            this.depDrop.Size = new System.Drawing.Size(173, 40);
+            this.depDrop.Size = new System.Drawing.Size(300, 32);
             this.depDrop.TabIndex = 47;
+            this.depDrop.SelectedIndexChanged += new System.EventHandler(this.depDrop_SelectedIndexChanged);
             // 
             // label22
             // 
@@ -1397,6 +1413,18 @@ namespace HappyJourneyAirline.Tabs
             this.tabController.Size = new System.Drawing.Size(782, 728);
             this.tabController.TabIndex = 5;
             // 
+            // time
+            // 
+            this.time.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time.FormattingEnabled = true;
+            this.time.Items.AddRange(new object[] {
+            "Morning",
+            "Night"});
+            this.time.Location = new System.Drawing.Point(356, 263);
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(287, 32);
+            this.time.TabIndex = 61;
+            // 
             // EmployerTabs
             // 
             this.Controls.Add(this.tabController);
@@ -1422,6 +1450,7 @@ namespace HappyJourneyAirline.Tabs
             this.travellerBookingsTab.PerformLayout();
             this.travellerFlightsTab.ResumeLayout(false);
             this.travellerFlightsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridflightsData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cancelIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchIcon)).EndInit();
             this.tabController.ResumeLayout(false);
@@ -1433,6 +1462,39 @@ namespace HappyJourneyAirline.Tabs
             tabController.SelectTab(0);
             defultIcons();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
+            try
+            {
+                depDrop.Items.Clear();
+                arrivalDrop.Items.Clear();
+
+                List<Airport> airportList = new List<Airport>();
+                Airport handeler = new Airport();
+
+
+                airportList = handeler.GetAllAirports();
+                Console.WriteLine("list: " + airportList);
+
+
+                if (airportList == null || airportList.Count == 0)
+                {
+                    Console.WriteLine("No airports found.");
+                    return;
+                }
+                else
+                {
+                    depDrop.DataSource = airportList;
+                    depDrop.DisplayMember = "Name";
+
+                    arrivalDrop.DataSource = airportList;
+                    arrivalDrop.DisplayMember = "Name";
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
         }
 
         private void bookingTab_Click(object sender, EventArgs e)
@@ -1523,7 +1585,8 @@ namespace HappyJourneyAirline.Tabs
                 valid = false;
             }
 
-            if (setFirstNameTxt.Text == "") {
+            if (setFirstNameTxt.Text == "")
+            {
                 list.Add("First Name");
                 valid = false;
             }
@@ -1543,17 +1606,18 @@ namespace HappyJourneyAirline.Tabs
             if (setEmailTxt.Text == "")
             {
                 list.Add("Email");
-                valid = false; 
+                valid = false;
             }
 
-            if (setPhoneTxt.Text == "") {
+            if (setPhoneTxt.Text == "")
+            {
                 list.Add("Phone Number");
-                valid = false; 
+                valid = false;
             }
 
             if (valid == false)
             {
-                
+
                 string message = list[0];
 
                 for (int i = 1; i < list.Count(); i++)
@@ -1563,11 +1627,12 @@ namespace HappyJourneyAirline.Tabs
 
                 setErrorLbl.Visible = true;
                 setErrorLbl.Text = "Error: Please fill the follwing fileds: " + message;
-               
+
                 MessageBox.Show("Error", "All fileds are required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
-            else {
+            else
+            {
 
 
                 currentUser.PhoneNumber = setPhoneTxt.Text;
@@ -1578,7 +1643,7 @@ namespace HappyJourneyAirline.Tabs
                 currentUser.LastName = setLastNameTxt.Text;
                 currentUser.UpdateUser(currentUser);
 
-                MessageBox.Show("User Info Saved", "",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User Info Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -1597,7 +1662,8 @@ namespace HappyJourneyAirline.Tabs
             if (result == DialogResult.Yes)
             {
 
-                if (currentUser.DeleteUser(currentUser.Id)) {
+                if (currentUser.DeleteUser(currentUser.Id))
+                {
                     MessageBox.Show("User has been successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -1608,11 +1674,233 @@ namespace HappyJourneyAirline.Tabs
                 }
 
             }
-            else {
+            else
+            {
                 MessageBox.Show("Delete operation canceled.", "Cancellation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
+        }
+
+        private void depDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void travellerFlightsTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void travellerFlightsTab_Paint(object sender, PaintEventArgs e)
+        {
+            time.Enabled = false;
+            flightDataLoad();
+        }
+
+        private void searchIcon_Click(object sender, EventArgs e)
+        {
+
+            // Get selected dropdown values
+            Airport selectedSource = depDrop.SelectedItem as Airport;
+            Airport selectedDestination = arrivalDrop.SelectedItem as Airport;
+
+            // Validate selections
+            if (selectedSource == null || selectedDestination == null)
+            {
+                MessageBox.Show("Please select valid departure and arrival airports.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Initialize SQL connection and command
+            using (SqlConnection conn = new SqlConnection(Database.connectionString))
+            using (SqlCommand cmd = conn.CreateCommand())
+            {
+                // Base query
+                string query = @"
+            SELECT f.Id, 
+                   sa.name AS sourceAirportName, 
+                   da.name AS destinationAirportName, 
+                   f.departureTimestamp, 
+                   f.arrivalTimestamp, 
+                   fs.name AS flightStatus, 
+                   f.planeID, 
+                   f.BasePrice
+            FROM flights f
+            LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id
+            LEFT JOIN airports sa ON f.sourceAirportID = sa.Id
+            LEFT JOIN airports da ON f.destinationAirportID = da.Id
+            WHERE 1 = 1"; // Always true to simplify adding conditions
+
+                // Add conditions for airports
+                if (selectedSource.Name != "All")
+                {
+                    query += " AND sa.Id = @sourceID";
+                    cmd.Parameters.AddWithValue("@sourceID", selectedSource.Id);
+                }
+                if (selectedDestination.Name != "All")
+                {
+                    query += " AND da.Id = @destinationID";
+                    cmd.Parameters.AddWithValue("@destinationID", selectedDestination.Id);
+                }
+
+                // Add condition for date and time if checked
+                if (dateCheck.Checked || timeCheck.Checked)
+                {
+                    string dateAndTime = " ";
+
+                    if (dateCheck.Checked)
+                    {
+                        dateAndTime = date.Value.ToString("MM/dd/yyyy");
+
+                        query += " AND CAST(f.departureTimestamp AS DATE) = CONVERT(DATE, @selectedDate, 101)";
+                        string checkDate = date.Value.ToString();
+                        cmd.Parameters.AddWithValue("@selectedDate", checkDate);
+                        // Ensure proper date format
+                    }
+
+                    if (timeCheck.Checked)
+                    {
+                        // Append the condition to the query
+                        string selectedTime = time.Text;
+                        if (selectedTime == "Morning")
+                        {
+                            query += " AND RIGHT(CONVERT(VARCHAR, f.departureTimestamp, 100), 2) = 'AM'";
+
+                        }
+                        else if (selectedTime == "Night")
+                        {
+                            query += " AND RIGHT(CONVERT(VARCHAR, f.departureTimestamp, 100), 2) = 'PM'";
+                        }
+                        else {
+                            MessageBox.Show("Value must be selected in the Time filed", "Missing Field", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        }
+
+
+                    }
+
+                }
+
+                try
+                {
+                    Console.WriteLine(query);
+                    // Assign final query to command
+                    cmd.CommandText = query;
+
+                    // Execute the query and bind the results to the grid
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    gridflightsData.DataSource = dt;
+                }
+                catch { 
+                
+                }
+            }
+        }
+
+        private void flightDataLoad()
+        {
+
+            try
+            {
+
+                List<Airport> airportList = new List<Airport>();
+                Airport handeler = new Airport();
+
+
+                airportList = handeler.GetAllAirports();
+                List<Airport> airportList2 = handeler.GetAllAirports();
+
+                if (airportList == null || airportList.Count == 0)
+                {
+                    Console.WriteLine("No airports found.");
+                    return;
+                }
+                else
+                {
+                    Airport allOption = new Airport
+                    {
+                        Id = 0, // Use an ID that won't conflict with real airport IDs
+                        Name = "All"
+                    };
+
+                    // Insert the "All" option at the beginning of the airportList
+                    airportList.Insert(0, allOption);
+                    airportList2.Insert(0, allOption);
+
+                    depDrop.DataSource = null;
+                    depDrop.DataSource = airportList;
+                    depDrop.DisplayMember = "Name";
+
+                    arrivalDrop.DataSource = null;
+                    arrivalDrop.DataSource = airportList2;
+                    arrivalDrop.DisplayMember = "Name";
+                }
+
+
+
+
+                SqlConnection conn = new SqlConnection(Database.connectionString);
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT f.Id, sa.name AS sourceAirportName, da.name AS destinationAirportName, f.departureTimestamp, f.arrivalTimestamp, fs.name, f.planeID, f.BasePrice FROM flights f LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id LEFT JOIN airports sa ON f.sourceAirportID = sa.Id LEFT JOIN airports da ON f.destinationAirportID = da.Id";
+                SqlDataAdapter ad = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                ad.Fill(dt);
+
+
+                gridflightsData.DataSource = dt;
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void cancelIcon_Click(object sender, EventArgs e)
+        {
+            dateCheck.CheckState = CheckState.Unchecked;
+            timeCheck.CheckState = CheckState.Unchecked;
+            arrivalDrop.SelectedIndex = 0;
+            depDrop.SelectedIndex = 0;
+
+            depDrop.SelectedIndex = 0;
+            arrivalDrop.SelectedIndex = 0;
+            flightDataLoad();
+            return;
+        }
+
+        private void dateCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dateCheck.Checked)
+            {
+                date.Enabled = true;
+            }
+            else
+            {
+                date.Enabled = false;
+            }
+
+        }
+
+        private void date_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timeCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (timeCheck.Checked)
+            {
+                time.Enabled = true;
+                time.Text = "Select Time";
+            }
+            else
+            {
+                time.Enabled = false;
+            }
         }
     }
 
