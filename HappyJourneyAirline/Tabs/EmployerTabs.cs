@@ -110,6 +110,7 @@ namespace HappyJourneyAirline.Tabs
         private DataGridView gridflightsData;
         private ComboBox time;
         private DataGridView dataGridViewNotification;
+        private Button button2;
         private PictureBox bookingTab;
 
         public EmployerTabs()
@@ -123,6 +124,7 @@ namespace HappyJourneyAirline.Tabs
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployerTabs));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.notificationTab = new System.Windows.Forms.PictureBox();
             this.logOutIcon = new System.Windows.Forms.PictureBox();
@@ -219,6 +221,7 @@ namespace HappyJourneyAirline.Tabs
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabController = new System.Windows.Forms.TabControl();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.notificationTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -926,6 +929,7 @@ namespace HappyJourneyAirline.Tabs
             // travellerNotificationTab
             // 
             this.travellerNotificationTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.travellerNotificationTab.Controls.Add(this.button2);
             this.travellerNotificationTab.Controls.Add(this.dataGridViewNotification);
             this.travellerNotificationTab.Controls.Add(this.label2);
             this.travellerNotificationTab.Controls.Add(this.label3);
@@ -939,32 +943,25 @@ namespace HappyJourneyAirline.Tabs
             // dataGridViewNotification
             // 
             this.dataGridViewNotification.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewNotification.BackgroundColor = System.Drawing.Color.Gainsboro;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewNotification.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewNotification.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewNotification.ColumnHeadersVisible = false;
-            this.dataGridViewNotification.Location = new System.Drawing.Point(20, 128);
+            this.dataGridViewNotification.Location = new System.Drawing.Point(20, 121);
             this.dataGridViewNotification.Name = "dataGridViewNotification";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewNotification.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewNotification.RowHeadersVisible = false;
             this.dataGridViewNotification.RowHeadersWidth = 51;
-            this.dataGridViewNotification.RowTemplate.Height = 24;
-            this.dataGridViewNotification.Size = new System.Drawing.Size(718, 448);
-            this.dataGridViewNotification.TabIndex = 6;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewNotification.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewNotification.RowTemplate.Height = 28;
+            this.dataGridViewNotification.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewNotification.Size = new System.Drawing.Size(706, 472);
+            this.dataGridViewNotification.TabIndex = 8;
             // 
             // label2
             // 
@@ -1310,6 +1307,14 @@ namespace HappyJourneyAirline.Tabs
             // 
             this.gridflightsData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gridflightsData.BackgroundColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridflightsData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gridflightsData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridflightsData.Location = new System.Drawing.Point(16, 317);
             this.gridflightsData.Name = "gridflightsData";
@@ -1467,6 +1472,22 @@ namespace HappyJourneyAirline.Tabs
             this.tabController.SelectedIndex = 0;
             this.tabController.Size = new System.Drawing.Size(782, 728);
             this.tabController.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(469, 617);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(257, 43);
+            this.button2.TabIndex = 76;
+            this.button2.Text = "Show Selected Notification ";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // EmployerTabs
             // 
@@ -1949,13 +1970,26 @@ namespace HappyJourneyAirline.Tabs
         {
 
             dataGridViewNotification.RowTemplate.Height = 60; // Sets all rows to 40 pixels
-            dataGridViewNotification.Font = new Font(gridflightsData.Font.FontFamily, 12);
-            Notification notificationHandeler = new Notification();
+           
+            Notification handeler = new Notification();
+            List<Notification> list = handeler.GetNotificationsByUserId(AuthService.GetCurrentUserId());
 
-            User handerler = new User();
-            List<Notification> notificationsList =notificationHandeler.GetNotificationsByUserId(AuthService.GetCurrentUserId());
+            dataGridViewNotification.DataSource = list;
 
-            dataGridViewNotification.DataSource = notificationsList;
+
+
+
+            //SqlConnection conn = new SqlConnection(Database.connectionString);
+            //SqlCommand cmd = conn.CreateCommand();
+
+            //cmd.CommandText = "select title, description from notifications where user_id = @id";
+            //cmd.Parameters.AddWithValue("id",AuthService.GetCurrentUserId());
+            //SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+
+            //adapter.Fill(dt);
+
+            //dataGridViewNotification.DataSource = dt;
 
 
             // Disable automatic column generation
@@ -1969,7 +2003,7 @@ namespace HappyJourneyAirline.Tabs
             {
                 DataPropertyName = "title",
                 HeaderText = "Title",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             });
 
             // Add the "description" column
@@ -1981,8 +2015,26 @@ namespace HappyJourneyAirline.Tabs
             });
 
             // Bind the data
-            dataGridViewNotification.DataSource = notificationsList;
+            dataGridViewNotification.DataSource = list;
 
+        }
+
+        private void dataGridViewNotification_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedObject = dataGridViewNotification.SelectedCells[0].OwningRow.DataBoundItem as Notification;
+
+                if (selectedObject != null) {
+                    MessageBox.Show(selectedObject.Description, selectedObject.Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            } catch { }
         }
     }
 
