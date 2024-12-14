@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System;
 using System.Windows.Forms;
+using HappyJourneyAirline.Models;
 namespace HappyJourneyAirline.Tabs
 {
     public partial class TravellerTabs : UserControl
@@ -128,6 +129,12 @@ namespace HappyJourneyAirline.Tabs
         private Label label49;
         private Label setErrorLbl;
         private Label paymentErrorLbl;
+        private DataGridView bookingTable;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn from;
+        private DataGridViewTextBoxColumn to;
+        private DataGridViewTextBoxColumn dateTime;
+        private DataGridViewButtonColumn bookDetails;
         private PictureBox bookingTab;
 
         public TravellerTabs()
@@ -163,6 +170,12 @@ namespace HappyJourneyAirline.Tabs
             this.label11 = new System.Windows.Forms.Label();
             this.tabController = new System.Windows.Forms.TabControl();
             this.travellerBookingsTab = new System.Windows.Forms.TabPage();
+            this.bookingTable = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.from = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.to = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookDetails = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.travellerSettingsTab = new System.Windows.Forms.TabPage();
@@ -271,6 +284,7 @@ namespace HappyJourneyAirline.Tabs
             ((System.ComponentModel.ISupportInitialize)(this.searchIcon)).BeginInit();
             this.tabController.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingTable)).BeginInit();
             this.travellerSettingsTab.SuspendLayout();
             this.travellerNotificationTab.SuspendLayout();
             this.flightDetails.SuspendLayout();
@@ -469,6 +483,7 @@ namespace HappyJourneyAirline.Tabs
             // travellerBookingsTab
             // 
             this.travellerBookingsTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.travellerBookingsTab.Controls.Add(this.bookingTable);
             this.travellerBookingsTab.Controls.Add(this.label1);
             this.travellerBookingsTab.Controls.Add(this.label13);
             this.travellerBookingsTab.Location = new System.Drawing.Point(23, 4);
@@ -477,6 +492,53 @@ namespace HappyJourneyAirline.Tabs
             this.travellerBookingsTab.Size = new System.Drawing.Size(757, 720);
             this.travellerBookingsTab.TabIndex = 1;
             this.travellerBookingsTab.Text = "Bookings";
+            // 
+            // bookingTable
+            // 
+            this.bookingTable.AllowUserToAddRows = false;
+            this.bookingTable.AllowUserToDeleteRows = false;
+            this.bookingTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.bookingTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.from,
+            this.to,
+            this.dateTime,
+            this.bookDetails});
+            this.bookingTable.Location = new System.Drawing.Point(52, 166);
+            this.bookingTable.Name = "bookingTable";
+            this.bookingTable.ReadOnly = true;
+            this.bookingTable.Size = new System.Drawing.Size(650, 441);
+            this.bookingTable.TabIndex = 5;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // from
+            // 
+            this.from.HeaderText = "From";
+            this.from.Name = "from";
+            this.from.ReadOnly = true;
+            // 
+            // to
+            // 
+            this.to.HeaderText = "To";
+            this.to.Name = "to";
+            this.to.ReadOnly = true;
+            // 
+            // dateTime
+            // 
+            this.dateTime.HeaderText = "Date and Time";
+            this.dateTime.Name = "dateTime";
+            this.dateTime.ReadOnly = true;
+            // 
+            // bookDetails
+            // 
+            this.bookDetails.HeaderText = "Booking Details";
+            this.bookDetails.Name = "bookDetails";
+            this.bookDetails.ReadOnly = true;
             // 
             // label1
             // 
@@ -1778,6 +1840,7 @@ namespace HappyJourneyAirline.Tabs
             this.tabController.ResumeLayout(false);
             this.travellerBookingsTab.ResumeLayout(false);
             this.travellerBookingsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingTable)).EndInit();
             this.travellerSettingsTab.ResumeLayout(false);
             this.travellerSettingsTab.PerformLayout();
             this.travellerNotificationTab.ResumeLayout(false);
@@ -1814,6 +1877,19 @@ namespace HappyJourneyAirline.Tabs
             tabController.SelectTab(1);
             defultIcons();
             bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
+
+            // display Booking list
+            Ticket handler = new Ticket();
+            //List<Ticket> tickets = new List<Ticket>();
+            Ticket ticket = handler.GetTicketById(2);
+
+            Flight flightHandler = new Flight();
+            Flight flight = flightHandler.GetFlightById(ticket.FlightID);
+
+            bookingTable.Rows.Add(ticket.Id, flight.SourceAirportID, flight.DestinationAirportID, flight.DepartureTimestamp, "View Details");
+
+            //bookingTable.Rows.Add("ticket.Id", "Bahrain", "ticket.To", "ticket.Date", "View Details");  
+
         }
 
         private void settingTab_Click(object sender, EventArgs e)
