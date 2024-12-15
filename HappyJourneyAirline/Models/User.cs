@@ -10,15 +10,14 @@ namespace HappyJourneyAirline.Models
         public long Id { get; set; }
         public string FirstName { get; set; } // Nullable
         public string LastName { get; set; } // Nullable
-        public string Username { get; set; } // Unique
-        public string Email { get; set; } // Unique
-        public string Password { get; set; }
-        public string Type { get; set; } = "traveller"; // Default value
+        public string PhoneNumber { get; set; } // NOT NULL
+        public string Username { get; set; } // NOT NULL, Unique
+        public string Email { get; set; } // NOT NULL, Unique
+        public string Password { get; set; } // NOT NULL
+        public string Type { get; set; } = "traveller"; // Default Value
         public long? AgencyID { get; set; } // Nullable
         public string CompanyName { get; set; } // Nullable
-        public string PhoneNumber { get; set; } // NOT NULL
-        public string Cpr { get; set; }; // Default value
-    
+        public string Cpr { get; set; } // Nullable
 
         // Fetch all users
         public List<User> GetAllUsers()
@@ -35,7 +34,6 @@ namespace HappyJourneyAirline.Models
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
                 AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
-
                 PhoneNumber = reader.GetString(9),
                 cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
             });
@@ -53,13 +51,13 @@ namespace HappyJourneyAirline.Models
             {
                 { "@FirstName", (object)user.FirstName ?? DBNull.Value },
                 { "@LastName", (object)user.LastName ?? DBNull.Value },
+                { "@PhoneNumber", user.PhoneNumber },
                 { "@Username", user.Username },
                 { "@Email", user.Email },
                 { "@Password", user.Password },
                 { "@Type", (object)user.Type ?? "traveller" },
                 { "@AgencyID", (object)user.AgencyID ?? DBNull.Value },
                 { "@CompanyName", (object)user.CompanyName ?? DBNull.Value },
-                { "@PhoneNumber", user.PhoneNumber },
                 { "@Cpr", (object)user.Cpr ?? DBNull.Value }
             };
 
@@ -98,14 +96,14 @@ namespace HappyJourneyAirline.Models
                 UPDATE users
                 SET firstName = @FirstName,
                     lastName = @LastName,
+                    phoneNumber = @PhoneNumber,
                     username = @Username,
                     email = @Email,
                     password = @Password,
                     type = @Type,
                     agencyID = @AgencyID,
                     companyName = @CompanyName,
-                    phoneNumber = @PhoneNumber,
-                    cpr = @Cpr,
+                    cpr = @Cpr
                 WHERE id = @Id";
 
             var parameters = new Dictionary<string, object>
@@ -113,13 +111,13 @@ namespace HappyJourneyAirline.Models
                 { "@Id", user.Id },
                 { "@FirstName", (object)user.FirstName ?? DBNull.Value },
                 { "@LastName", (object)user.LastName ?? DBNull.Value },
+                { "@PhoneNumber", user.PhoneNumber },
                 { "@Username", user.Username },
                 { "@Email", user.Email },
                 { "@Password", user.Password },
                 { "@Type", (object)user.Type ?? "traveller" },
                 { "@AgencyID", (object)user.AgencyID ?? DBNull.Value },
                 { "@CompanyName", (object)user.CompanyName ?? DBNull.Value },
-                { "@PhoneNumber", user.PhoneNumber },
                 { "@Cpr", (object)user.Cpr ?? DBNull.Value }
             };
 
@@ -130,10 +128,12 @@ namespace HappyJourneyAirline.Models
         public bool DeleteUser(long id)
         {
             string query = "DELETE FROM users WHERE id = @Id";
+            string query2 = "DELETE FROM tickets where userID = @Id or agencyID = @Id";
             var parameters = new Dictionary<string, object>
             {
                 { "@Id", id }
             };
+            Database.Instance.ExecuteNonQuery(query2, parameters);
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
