@@ -17,11 +17,13 @@ namespace HappyJourneyAirline.Models
         public long? AgencyID { get; set; } // Nullable
         public string CompanyName { get; set; } // Nullable
         public string PhoneNumber { get; set; } // NOT NULL
+        public string Cpr { get; set; }; // Default value
+    
 
         // Fetch all users
         public List<User> GetAllUsers()
         {
-                string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber FROM users";
+            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr, FROM users";
             return Database.Instance.Query(query, reader => new User
             {
                 Id = reader.GetInt64(0),
@@ -33,7 +35,9 @@ namespace HappyJourneyAirline.Models
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
                 AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
-                PhoneNumber = !reader.IsDBNull(9) ? reader.GetString(9) : null
+
+                PhoneNumber = reader.GetString(9),
+                cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
             });
         }
 
@@ -41,22 +45,23 @@ namespace HappyJourneyAirline.Models
         public long AddUser(User user)
         {
             string query = @"
-    INSERT INTO users (firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber)
+    INSERT INTO users (firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr)
     OUTPUT INSERTED.id
-    VALUES (@FirstName, @LastName, @Username, @Email, @Password, @Type, @AgencyID, @CompanyName, @PhoneNumber)";
+    VALUES (@FirstName, @LastName, @Username, @Email, @Password, @Type, @AgencyID, @CompanyName, @PhoneNumber, @Cpr)";
 
             var parameters = new Dictionary<string, object>
-    {
-        { "@FirstName", (object)user.FirstName ?? DBNull.Value },
-        { "@LastName", (object)user.LastName ?? DBNull.Value },
-        { "@Username", user.Username },
-        { "@Email", user.Email },
-        { "@Password", user.Password },
-        { "@Type", (object)user.Type ?? "traveller" },
-        { "@AgencyID", (object)user.AgencyID ?? DBNull.Value },
-        { "@CompanyName", (object)user.CompanyName ?? DBNull.Value },
-        { "@PhoneNumber", user.PhoneNumber }
-    };
+            {
+                { "@FirstName", (object)user.FirstName ?? DBNull.Value },
+                { "@LastName", (object)user.LastName ?? DBNull.Value },
+                { "@Username", user.Username },
+                { "@Email", user.Email },
+                { "@Password", user.Password },
+                { "@Type", (object)user.Type ?? "traveller" },
+                { "@AgencyID", (object)user.AgencyID ?? DBNull.Value },
+                { "@CompanyName", (object)user.CompanyName ?? DBNull.Value },
+                { "@PhoneNumber", user.PhoneNumber },
+                { "@Cpr", (object)user.Cpr ?? DBNull.Value }
+            };
 
             using (SqlConnection connection = new SqlConnection(Database.connectionString))
             {
@@ -70,7 +75,6 @@ namespace HappyJourneyAirline.Models
                             command.Parameters.AddWithValue(param.Key, param.Value);
                         }
 
-                        // Execute the query and return the inserted ID
                         object result = command.ExecuteScalar();
                         if (result != null && long.TryParse(result.ToString(), out long insertedId))
                         {
@@ -84,9 +88,8 @@ namespace HappyJourneyAirline.Models
                 }
             }
 
-            return -1; // Return -1 if the insertion failed
+            return -1;
         }
-
 
         // Update an existing user
         public bool UpdateUser(User user)
@@ -101,8 +104,10 @@ namespace HappyJourneyAirline.Models
                     type = @Type,
                     agencyID = @AgencyID,
                     companyName = @CompanyName,
-                    phoneNumber = @PhoneNumber
+                    phoneNumber = @PhoneNumber,
+                    cpr = @Cpr,
                 WHERE id = @Id";
+
             var parameters = new Dictionary<string, object>
             {
                 { "@Id", user.Id },
@@ -114,8 +119,10 @@ namespace HappyJourneyAirline.Models
                 { "@Type", (object)user.Type ?? "traveller" },
                 { "@AgencyID", (object)user.AgencyID ?? DBNull.Value },
                 { "@CompanyName", (object)user.CompanyName ?? DBNull.Value },
-                { "@PhoneNumber", user.PhoneNumber }
+                { "@PhoneNumber", user.PhoneNumber },
+                { "@Cpr", (object)user.Cpr ?? DBNull.Value }
             };
+
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
@@ -133,12 +140,12 @@ namespace HappyJourneyAirline.Models
         // Find a user by ID
         public User GetUserById(long id)
         {
-            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber FROM users WHERE id = @Id";
+            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr FROM users WHERE id = @Id";
             var parameters = new Dictionary<string, object>
             {
                 { "@Id", id }
             };
-            var result = Database.Instance.Query(query,parameters, reader => new User
+            var result = Database.Instance.Query(query, parameters, reader => new User
             {
                 Id = reader.GetInt64(0),
                 FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
@@ -149,7 +156,8 @@ namespace HappyJourneyAirline.Models
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
                 AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
-                PhoneNumber = reader.GetString(9)
+                PhoneNumber = reader.GetString(9),
+                Cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
             });
             return result.Count > 0 ? result[0] : null;
         }
@@ -157,7 +165,7 @@ namespace HappyJourneyAirline.Models
         // Login method
         public User Login(string username, string password)
         {
-            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber FROM users WHERE username = @Username AND password = @Password";
+            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr FROM users WHERE username = @Username AND password = @Password";
             var parameters = new Dictionary<string, object>
             {
                 { "@Username", username },
@@ -174,7 +182,8 @@ namespace HappyJourneyAirline.Models
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
                 AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
-                PhoneNumber = reader.GetString(9)
+                PhoneNumber = reader.GetString(9),
+                Cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
             });
             return result.Count > 0 ? result[0] : null;
         }

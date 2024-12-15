@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
@@ -145,6 +146,30 @@ namespace HappyJourneyAirline.Models
             return result.Count > 0 ? result[0] : null;
         }
 
+
+        // Fetch all tickets by the user id 
+        public List<Ticket> GetTicketsByUserId(int userId)
+        {
+            string query = @"
+                SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
+                FROM tickets 
+                WHERE userID = @userID";
+            var parameters = new Dictionary<string, object>
+            {
+                { "@userId", userId }
+            };
+            return Database.Instance.Query(query, parameters, reader => new Ticket
+            {
+                Id = reader.GetInt32(0),
+                FlightID = reader.GetInt32(1),
+                UserID = reader.GetInt64(2),
+                Seat = reader.GetString(3),
+                TicketClassID = reader.GetInt32(4),
+                TicketStatusID = reader.GetInt32(5),
+                PaymentID = reader.GetInt32(6),
+                AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
+            });
+        }
         // Fetch all tickets for a specific flight
         public List<Ticket> GetTicketsByFlightId(int flightId)
         {
