@@ -7,7 +7,7 @@ namespace HappyJourneyAirline.Models
 {
     public class City
     {
-        public int Id { get; set; } // Primary Key
+        public long Id { get; set; } // Primary Key
         public string Name { get; set; } // Nullable
         public int CountryId { get; set; } // Foreign Key
 
@@ -17,7 +17,7 @@ namespace HappyJourneyAirline.Models
             string query = "SELECT Id, name, country_id FROM cities";
             return Database.Instance.Query(query, reader => new City
             {
-                Id = reader.GetInt32(0),
+                Id = reader.GetInt64(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 CountryId = reader.GetInt32(2)
             });
@@ -27,11 +27,11 @@ namespace HappyJourneyAirline.Models
         public bool AddCity(City city)
         {
             string query = @"
-    INSERT INTO cities (name, country_id)
+
+    INSERT INTO cities ( name, country_id)
     VALUES (@Name, @CountryId)";
             var parameters = new Dictionary<string, object>
             {
-                //{ "@Id", city.Id },
                 { "@Name", (object)city.Name ?? DBNull.Value },
                 { "@CountryId", city.CountryId }
             };
@@ -77,7 +77,7 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new City
             {
-                Id = reader.GetInt32(0),
+                Id = reader.GetInt64(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 CountryId = reader.GetInt32(2)
             });
@@ -94,7 +94,7 @@ namespace HappyJourneyAirline.Models
             };
             return Database.Instance.Query(query, parameters, reader => new City
             {
-                Id = reader.GetInt32(0),
+                Id = reader.GetInt64(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 CountryId = reader.GetInt32(2)
             });
