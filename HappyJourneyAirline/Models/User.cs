@@ -20,7 +20,7 @@ namespace HappyJourneyAirline.Models
         public string Cpr { get; set; } // Nullable
 
         // Fetch all users
-        public List<User> GetAllUsers()
+        public static List<User> GetAllUsers()
         {
             string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr, FROM users";
             return Database.Instance.Query(query, reader => new User
@@ -40,7 +40,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new user
-        public long AddUser(User user)
+        public static long AddUser(User user)
         {
             string query = @"
     INSERT INTO users (firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr)
@@ -90,7 +90,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing user
-        public bool UpdateUser(User user)
+        public static bool UpdateUser(User user)
         {
             string query = @"
                 UPDATE users
@@ -125,7 +125,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a user
-        public bool DeleteUser(long id)
+        public static bool DeleteUser(long id)
         {
             string query = "DELETE FROM users WHERE id = @Id";
             string query2 = "DELETE FROM tickets where userID = @Id or agencyID = @Id";
@@ -138,7 +138,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a user by ID
-        public User GetUserById(long id)
+        public static User GetUserById(long id)
         {
             string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr FROM users WHERE id = @Id";
             var parameters = new Dictionary<string, object>

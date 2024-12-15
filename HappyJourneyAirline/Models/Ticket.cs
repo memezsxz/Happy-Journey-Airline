@@ -18,7 +18,7 @@ namespace HappyJourneyAirline.Models
         public long? AgencyID { get; set; } // Nullable Foreign Key (Agency)
 
         // Fetch all tickets
-        public List<Ticket> GetAllTickets()
+        public static List<Ticket> GetAllTickets()
         {
             string query = @"
                 SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
@@ -37,7 +37,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new ticket
-        public int AddTicket(Ticket ticket)
+        public static int AddTicket(Ticket ticket)
         {
             string query = @"
     INSERT INTO tickets (flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID)
@@ -84,7 +84,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing ticket
-        public bool UpdateTicket(Ticket ticket)
+        public static bool UpdateTicket(Ticket ticket)
         {
             string query = @"
                 UPDATE tickets
@@ -111,7 +111,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a ticket
-        public bool DeleteTicket(int id)
+        public static bool DeleteTicket(int id)
         {
             string query = "DELETE FROM tickets WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -122,7 +122,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a ticket by ID
-        public Ticket GetTicketById(int id)
+        public static Ticket GetTicketById(int id)
         {
             string query = @"
                 SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
@@ -148,7 +148,7 @@ namespace HappyJourneyAirline.Models
 
 
         // Fetch all tickets by the user id 
-        public List<Ticket> GetTicketsByUserId(int userId)
+        public static List<Ticket> GetTicketsByUserId(int userId)
         {
             string query = @"
                 SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
@@ -171,7 +171,7 @@ namespace HappyJourneyAirline.Models
             });
         }
         // Fetch all tickets for a specific flight
-        public List<Ticket> GetTicketsByFlightId(int flightId)
+        public static List<Ticket> GetTicketsByFlightId(int flightId)
         {
             string query = @"
                 SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 

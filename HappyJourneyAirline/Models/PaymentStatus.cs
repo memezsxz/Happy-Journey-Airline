@@ -12,7 +12,7 @@ namespace HappyJourneyAirline.Models
         public string Description { get; set; } // Nullable
 
         // Fetch all payment statuses
-        public List<PaymentStatus> GetAllPaymentStatuses()
+        public static List<PaymentStatus> GetAllPaymentStatuses()
         {
             string query = "SELECT Id, name, description FROM payment_statuses";
             return Database.Instance.Query(query, reader => new PaymentStatus
@@ -24,7 +24,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new payment status
-        public int AddPaymentStatus(PaymentStatus paymentStatus)
+        public static int AddPaymentStatus(PaymentStatus paymentStatus)
         {
             string query = @"
     INSERT INTO payment_statuses (name, description)
@@ -66,7 +66,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing payment status
-        public bool UpdatePaymentStatus(PaymentStatus paymentStatus)
+        public static bool UpdatePaymentStatus(PaymentStatus paymentStatus)
         {
             string query = @"
                 UPDATE payment_statuses
@@ -83,7 +83,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a payment status
-        public bool DeletePaymentStatus(int id)
+        public static bool DeletePaymentStatus(int id)
         {
             string query = "DELETE FROM payment_statuses WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -94,7 +94,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a payment status by ID
-        public PaymentStatus GetPaymentStatusById(int id)
+        public static PaymentStatus GetPaymentStatusById(int id)
         {
             string query = "SELECT Id, name, description FROM payment_statuses WHERE Id = @Id";
             var parameters = new Dictionary<string, object>

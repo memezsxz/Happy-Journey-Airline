@@ -12,7 +12,7 @@ namespace HappyJourneyAirline.Models
         public int Capacity { get; set; } // NOT NULL
 
         // Fetch all planes
-        public List<Plane> GetAllPlanes()
+        public static List<Plane> GetAllPlanes()
         {
             string query = "SELECT Id, model, capacity FROM planes";
             return Database.Instance.Query(query, reader => new Plane
@@ -24,7 +24,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new plane
-        public long AddPlane(Plane plane)
+        public static long AddPlane(Plane plane)
         {
             string query = @"
     INSERT INTO planes (model, capacity)
@@ -66,7 +66,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing plane
-        public bool UpdatePlane(Plane plane)
+        public static bool UpdatePlane(Plane plane)
         {
             string query = @"
                 UPDATE planes
@@ -83,7 +83,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a plane
-        public bool DeletePlane(long id)
+        public static bool DeletePlane(long id)
         {
             string query = "DELETE FROM planes WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -94,7 +94,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a plane by ID
-        public Plane GetPlaneById(long id)
+        public static Plane GetPlaneById(long id)
         {
             string query = "SELECT Id, model, capacity FROM planes WHERE Id = @Id";
             var parameters = new Dictionary<string, object>

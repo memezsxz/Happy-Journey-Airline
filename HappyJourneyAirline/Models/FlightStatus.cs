@@ -12,7 +12,7 @@ namespace HappyJourneyAirline.Models
         public string Description { get; set; } // NOT NULL
 
         // Fetch all flight statuses
-        public List<FlightStatus> GetAllFlightStatuses()
+        public static List<FlightStatus> GetAllFlightStatuses()
         {
             string query = "SELECT Id, name, description FROM flight_statuses";
             return Database.Instance.Query(query, reader => new FlightStatus
@@ -24,7 +24,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new flight status
-        public int AddFlightStatus(FlightStatus flightStatus)
+        public static int AddFlightStatus(FlightStatus flightStatus)
         {
             string query = @"
     INSERT INTO flight_statuses (name, description)
@@ -66,7 +66,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing flight status
-        public bool UpdateFlightStatus(FlightStatus flightStatus)
+        public static bool UpdateFlightStatus(FlightStatus flightStatus)
         {
             string query = @"
                 UPDATE flight_statuses
@@ -83,7 +83,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a flight status
-        public bool DeleteFlightStatus(int id)
+        public static bool DeleteFlightStatus(int id)
         {
             string query = "DELETE FROM flight_statuses WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -94,7 +94,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a flight status by ID
-        public FlightStatus GetFlightStatusById(int id)
+        public static FlightStatus GetFlightStatusById(int id)
         {
             string query = "SELECT Id, name, description FROM flight_statuses WHERE Id = @Id";
             var parameters = new Dictionary<string, object>

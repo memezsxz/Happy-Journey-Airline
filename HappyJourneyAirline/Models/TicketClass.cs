@@ -14,7 +14,7 @@ namespace HappyJourneyAirline.Models
         public decimal ExtraPrice { get; set; } // Default to 0.00
 
         // Fetch all ticket classes
-        public List<TicketClass> GetAllTicketClasses()
+        public static List<TicketClass> GetAllTicketClasses()
         {
             string query = "SELECT Id, name, description, services, extraPrice FROM ticket_classes";
             return Database.Instance.Query(query, reader => new TicketClass
@@ -28,7 +28,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new ticket class
-        public int AddTicketClass(TicketClass ticketClass)
+        public static int AddTicketClass(TicketClass ticketClass)
         {
             string query = @"
     INSERT INTO ticket_classes (name, description, services, extraPrice)
@@ -72,7 +72,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing ticket class
-        public bool UpdateTicketClass(TicketClass ticketClass)
+        public static bool UpdateTicketClass(TicketClass ticketClass)
         {
             string query = @"
                 UPDATE ticket_classes
@@ -93,7 +93,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a ticket class
-        public bool DeleteTicketClass(int id)
+        public static bool DeleteTicketClass(int id)
         {
             string query = "DELETE FROM ticket_classes WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -104,7 +104,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a ticket class by ID
-        public TicketClass GetTicketClassById(int id)
+        public static TicketClass GetTicketClassById(int id)
         {
             string query = "SELECT Id, name, description, services, extraPrice FROM ticket_classes WHERE Id = @Id";
             var parameters = new Dictionary<string, object>

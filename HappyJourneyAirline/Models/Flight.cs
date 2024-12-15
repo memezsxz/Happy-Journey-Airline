@@ -111,7 +111,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a flight
-        public static bool DeleteFlight(int id)
+        public static bool DeleteFlight(long id)
         {
             string query = "DELETE FROM flights WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -123,6 +123,7 @@ namespace HappyJourneyAirline.Models
 
         // Find a flight by ID
         public static Flight GetFlightById(int id)
+        public static Flight GetFlightById(long id)
         {
             string query = @"
                 SELECT Id, sourceAirportID, destinationAirportID, departureTimestamp, arrivalTimestamp, 
@@ -161,8 +162,7 @@ namespace HappyJourneyAirline.Models
         }
 
 
-
-        public List<User> GetTravellersByAgencyID(long agencyID)
+        public static List<User> GetTravellersByAgencyID(long agencyID)
         {
             string query = @"
         SELECT DISTINCT u.Id, u.FirstName, u.LastName, u.Email, u.PhoneNumber

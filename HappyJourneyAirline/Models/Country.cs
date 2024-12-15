@@ -11,7 +11,7 @@ namespace HappyJourneyAirline.Models
         public string Name { get; set; } // Nullable
 
         // Fetch all countries
-        public List<Country> GetAllCountries()
+        public static List<Country> GetAllCountries()
         {
             string query = "SELECT Id, name FROM countries";
             return Database.Instance.Query(query, reader => new Country
@@ -22,7 +22,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new country
-        public bool AddCountry(Country country)
+        public static bool AddCountry(Country country)
         {
             string query = @"
     INSERT INTO countries (name)
@@ -37,7 +37,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing country
-        public bool UpdateCountry(Country country)
+        public static bool UpdateCountry(Country country)
         {
             string query = @"
                 UPDATE countries
@@ -52,7 +52,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a country
-        public bool DeleteCountry(string id)
+        public static bool DeleteCountry(long id)
         {
             string query = "DELETE FROM countries WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -63,7 +63,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a country by ID
-        public Country GetCountryById(string id)
+        public static Country GetCountryById(long id)
         {
             string query = "SELECT Id, name FROM countries WHERE Id = @Id";
             var parameters = new Dictionary<string, object>

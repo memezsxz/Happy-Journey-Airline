@@ -14,7 +14,7 @@ namespace HappyJourneyAirline.Models
         public int PaymentMethodID { get; set; } // Foreign Key
 
         // Fetch all payments
-        public List<Payment> GetAllPayments()
+        public static List<Payment> GetAllPayments()
         {
             string query = "SELECT Id, amount, date, paymentStatusID, paymentMethodID FROM payments";
             return Database.Instance.Query(query, reader => new Payment
@@ -28,7 +28,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new payment
-        public int AddPayment(Payment payment)
+        public static int AddPayment(Payment payment)
         {
             string query = @"
     INSERT INTO payments (amount, date, paymentStatusID, paymentMethodID)
@@ -72,7 +72,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing payment
-        public bool UpdatePayment(Payment payment)
+        public static bool UpdatePayment(Payment payment)
         {
             string query = @"
                 UPDATE payments
@@ -93,7 +93,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a payment
-        public bool DeletePayment(int id)
+        public static bool DeletePayment(int id)
         {
             string query = "DELETE FROM payments WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -104,7 +104,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a payment by ID
-        public Payment GetPaymentById(int id)
+        public static Payment GetPaymentById(int id)
         {
             string query = "SELECT Id, amount, date, paymentStatusID, paymentMethodID FROM payments WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -123,7 +123,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Fetch all payments for a specific payment status
-        public List<Payment> GetPaymentsByStatusId(int paymentStatusId)
+        public static List<Payment> GetPaymentsByStatusId(int paymentStatusId)
         {
             string query = "SELECT Id, amount, date, paymentStatusID, paymentMethodID FROM payments WHERE paymentStatusID = @PaymentStatusID";
             var parameters = new Dictionary<string, object>
