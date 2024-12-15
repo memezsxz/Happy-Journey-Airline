@@ -147,6 +147,7 @@ namespace HappyJourneyAirline.Models
             return result.Count > 0 ? result[0] : null;
         }
 
+
         public override string ToString()
         {
             return $"Flight Information:\n" +
@@ -159,5 +160,33 @@ namespace HappyJourneyAirline.Models
                    $"Flight Status ID: {FlightStatusID}";
         }
 
+
+
+        public List<User> GetTravellersByAgencyID(long agencyID)
+        {
+            string query = @"
+        SELECT DISTINCT u.Id, u.FirstName, u.LastName, u.Email, u.PhoneNumber
+        FROM users u
+        JOIN tickets t ON u.Id = t.UserID
+        JOIN flights f ON t.FlightID = f.Id
+        WHERE f.AgencyID = @AgencyID";
+
+            var parameters = new Dictionary<string, object>
+    {
+        { "@AgencyID", agencyID }
+    };
+
+            return Database.Instance.Query(query, parameters, reader => new User
+            {
+                Id = reader.GetInt64(0),
+                FirstName = reader.GetString(1),
+                LastName = reader.GetString(2),
+                Email = reader.GetString(3),
+                PhoneNumber = reader.GetString(4)
+            });
+        }
+
     }
+
+
 }
