@@ -14,7 +14,7 @@ namespace HappyJourneyAirline.Models
         public decimal Longitude { get; set; } // NOT NULL
 
         // Fetch all airports
-        public List<Airport> GetAllAirports()
+        public static List<Airport> GetAllAirports()
         {
             string query = "SELECT Id, name, cityId, latitude, longitude FROM airports";
             return Database.Instance.Query(query, reader => new Airport
@@ -28,7 +28,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new airport
-        public int AddAirport(Airport airport)
+        public static int AddAirport(Airport airport)
         {
             string query = @"
     INSERT INTO airports (name, cityId, latitude, longitude)
@@ -72,7 +72,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing airport
-        public bool UpdateAirport(Airport airport)
+        public static bool UpdateAirport(Airport airport)
         {
             string query = @"
                 UPDATE airports
@@ -93,7 +93,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete an airport
-        public bool DeleteAirport(int id)
+        public static bool DeleteAirport(int id)
         {
             string query = "DELETE FROM airports WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -104,7 +104,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find an airport by ID
-        public Airport GetAirportById(int id)
+        public static Airport GetAirportById(int id)
         {
             string query = "SELECT Id, name, cityId, latitude, longitude FROM airports WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -123,7 +123,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Fetch all airports in a specific city
-        public List<Airport> GetAirportsByCityId(int cityId)
+        public static List<Airport> GetAirportsByCityId(string cityId)
         {
             string query = "SELECT Id, name, cityId, latitude, longitude FROM airports WHERE cityId = @CityId";
             var parameters = new Dictionary<string, object>

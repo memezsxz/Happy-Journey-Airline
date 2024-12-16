@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
@@ -17,7 +18,7 @@ namespace HappyJourneyAirline.Models
         public long? AgencyID { get; set; } // Nullable Foreign Key (Agency)
 
         // Fetch all tickets
-        public List<Ticket> GetAllTickets()
+        public static List<Ticket> GetAllTickets()
         {
             string query = @"
                 SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
@@ -36,7 +37,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new ticket
-        public int AddTicket(Ticket ticket)
+        public static int AddTicket(Ticket ticket)
         {
             string query = @"
     INSERT INTO tickets (flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID)
@@ -83,7 +84,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing ticket
-        public bool UpdateTicket(Ticket ticket)
+        public static bool UpdateTicket(Ticket ticket)
         {
             string query = @"
                 UPDATE tickets
@@ -110,7 +111,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a ticket
-        public bool DeleteTicket(int id)
+        public static bool DeleteTicket(int id)
         {
             string query = "DELETE FROM tickets WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -121,7 +122,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a ticket by ID
-        public Ticket GetTicketById(int id)
+        public static Ticket GetTicketById(int id)
         {
             string query = @"
                 SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
@@ -145,8 +146,32 @@ namespace HappyJourneyAirline.Models
             return result.Count > 0 ? result[0] : null;
         }
 
+
+        // Fetch all tickets by the user id 
+        public static List<Ticket> GetTicketsByUserId(int userId)
+        {
+            string query = @"
+                SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
+                FROM tickets 
+                WHERE userID = @userID";
+            var parameters = new Dictionary<string, object>
+            {
+                { "@userId", userId }
+            };
+            return Database.Instance.Query(query, parameters, reader => new Ticket
+            {
+                Id = reader.GetInt32(0),
+                FlightID = reader.GetInt32(1),
+                UserID = reader.GetInt64(2),
+                Seat = reader.GetString(3),
+                TicketClassID = reader.GetInt32(4),
+                TicketStatusID = reader.GetInt32(5),
+                PaymentID = reader.GetInt32(6),
+                AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
+            });
+        }
         // Fetch all tickets for a specific flight
-        public List<Ticket> GetTicketsByFlightId(int flightId)
+        public static List<Ticket> GetTicketsByFlightId(int flightId)
         {
             string query = @"
                 SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 

@@ -12,7 +12,7 @@ namespace HappyJourneyAirline.Models
         public string Details { get; set; } // Nullable
 
         // Fetch all payment methods
-        public List<PaymentMethod> GetAllPaymentMethods()
+        public static List<PaymentMethod> GetAllPaymentMethods()
         {
             string query = "SELECT Id, name, details FROM payment_methods";
             return Database.Instance.Query(query, reader => new PaymentMethod
@@ -24,7 +24,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new payment method
-        public long AddPaymentMethod(PaymentMethod paymentMethod)
+        public static long AddPaymentMethod(PaymentMethod paymentMethod)
         {
             string query = @"
     INSERT INTO payment_methods (name, details)
@@ -66,7 +66,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing payment method
-        public bool UpdatePaymentMethod(PaymentMethod paymentMethod)
+        public static bool UpdatePaymentMethod(PaymentMethod paymentMethod)
         {
             string query = @"
                 UPDATE payment_methods
@@ -83,7 +83,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a payment method
-        public bool DeletePaymentMethod(long id)
+        public static bool DeletePaymentMethod(long id)
         {
             string query = "DELETE FROM payment_methods WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -94,7 +94,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a payment method by ID
-        public PaymentMethod GetPaymentMethodById(long id)
+        public static PaymentMethod GetPaymentMethodById(long id)
         {
             string query = "SELECT Id, name, details FROM payment_methods WHERE Id = @Id";
             var parameters = new Dictionary<string, object>

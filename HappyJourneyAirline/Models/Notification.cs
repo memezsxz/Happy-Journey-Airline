@@ -15,7 +15,7 @@ namespace HappyJourneyAirline.Models
         public long UserId { get; set; } // Foreign Key (NOT NULL)
 
         // Fetch all notifications
-        public List<Notification> GetAllNotifications()
+        public static List<Notification> GetAllNotifications()
         {
             string query = "SELECT Id, source, type, title, description, user_id FROM notifications";
             return Database.Instance.Query(query, reader => new Notification
@@ -30,7 +30,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new notification
-        public long AddNotification(Notification notification)
+        public static long AddNotification(Notification notification)
         {
             string query = @"
     INSERT INTO notifications (source, type, title, description, user_id)
@@ -75,7 +75,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing notification
-        public bool UpdateNotification(Notification notification)
+        public static bool UpdateNotification(Notification notification)
         {
             string query = @"
                 UPDATE notifications
@@ -98,7 +98,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a notification
-        public bool DeleteNotification(long id)
+        public static bool DeleteNotification(long id)
         {
             string query = "DELETE FROM notifications WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -109,7 +109,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a notification by ID
-        public Notification GetNotificationById(long id)
+        public static Notification GetNotificationById(long id)
         {
             string query = "SELECT Id, source, type, title, description, user_id FROM notifications WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -129,7 +129,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Fetch all notifications for a specific user
-        public List<Notification> GetNotificationsByUserId(long userId)
+        public static List<Notification> GetNotificationsByUserId(long userId)
         {
             string query = "SELECT Id, source, type, title, description, user_id FROM notifications WHERE user_id = @UserId";
             var parameters = new Dictionary<string, object>

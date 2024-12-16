@@ -12,7 +12,7 @@ namespace HappyJourneyAirline.Models
         public string Description { get; set; } // Nullable
 
         // Fetch all ticket statuses
-        public List<TicketStatus> GetAllTicketStatuses()
+        public static List<TicketStatus> GetAllTicketStatuses()
         {
             string query = "SELECT Id, name, description FROM ticket_statuses";
             return Database.Instance.Query(query, reader => new TicketStatus
@@ -24,7 +24,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new ticket status
-        public int AddTicketStatus(TicketStatus ticketStatus)
+        public static int AddTicketStatus(TicketStatus ticketStatus)
         {
             string query = @"
     INSERT INTO ticket_statuses (name, description)
@@ -66,7 +66,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing ticket status
-        public bool UpdateTicketStatus(TicketStatus ticketStatus)
+        public static bool UpdateTicketStatus(TicketStatus ticketStatus)
         {
             string query = @"
                 UPDATE ticket_statuses
@@ -83,7 +83,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a ticket status
-        public bool DeleteTicketStatus(int id)
+        public static bool DeleteTicketStatus(int id)
         {
             string query = "DELETE FROM ticket_statuses WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -94,7 +94,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a ticket status by ID
-        public TicketStatus GetTicketStatusById(int id)
+        public static TicketStatus GetTicketStatusById(int id)
         {
             string query = "SELECT Id, name, description FROM ticket_statuses WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
