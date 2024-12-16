@@ -509,33 +509,40 @@ namespace HappyJourneyAirline.Tabs
             this.bookingTable.ReadOnly = true;
             this.bookingTable.Size = new System.Drawing.Size(650, 441);
             this.bookingTable.TabIndex = 5;
+            this.bookingTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bookingTable_CellContentClick);
             // 
             // ID
             // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
+            this.ID.Width = 43;
             // 
             // from
             // 
+            this.from.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.from.HeaderText = "From";
             this.from.Name = "from";
             this.from.ReadOnly = true;
             // 
             // to
             // 
+            this.to.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.to.HeaderText = "To";
             this.to.Name = "to";
             this.to.ReadOnly = true;
             // 
             // dateTime
             // 
+            this.dateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dateTime.HeaderText = "Date and Time";
             this.dateTime.Name = "dateTime";
             this.dateTime.ReadOnly = true;
             // 
             // bookDetails
             // 
+            this.bookDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.bookDetails.HeaderText = "Booking Details";
             this.bookDetails.Name = "bookDetails";
             this.bookDetails.ReadOnly = true;
@@ -1179,6 +1186,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdBackBtn.Text = "Back to bookings";
             this.bdBackBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.bdBackBtn.UseVisualStyleBackColor = false;
+            this.bdBackBtn.Click += new System.EventHandler(this.bdBackBtn_Click);
             // 
             // bdCancelBtn
             // 
@@ -1878,14 +1886,27 @@ namespace HappyJourneyAirline.Tabs
             defultIcons();
             bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
 
+            bookingTable.Rows.Clear();
+
             // display Booking list
             Ticket handler = new Ticket();
-            //List<Ticket> tickets = new List<Ticket>();
-            Ticket ticket = handler.GetTicketById(2);
+            List<Ticket> tickets = new List<Ticket>();
 
-            Flight flight = Flight.GetFlightById(ticket.FlightID);
+            tickets = handler.GetAllTickets();
 
-            bookingTable.Rows.Add(ticket.Id, flight.SourceAirportID, flight.DestinationAirportID, flight.DepartureTimestamp, "View Details");
+            foreach (Ticket ticket in tickets)
+            {
+                Flight flight = Flight.GetFlightById(ticket.FlightID);
+
+                Airport airHandler = new Airport();
+
+                String source = airHandler.GetAirportById(flight.SourceAirportID).Name;
+                String destination = airHandler.GetAirportById(flight.DestinationAirportID).Name;
+
+                bookingTable.Rows.Add(ticket.Id, source, destination, flight.DepartureTimestamp, "View Details");
+            }
+
+            
 
             //bookingTable.Rows.Add("ticket.Id", "Bahrain", "ticket.To", "ticket.Date", "View Details");  
 
@@ -1947,6 +1968,57 @@ namespace HappyJourneyAirline.Tabs
             tabController.SelectTab(0);
             defultIcons();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
+        }
+
+        private void bookingTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                //TODO - Button Clicked - Execute Code Here
+                int Ticketid = Convert.ToInt32(bookingTable.Rows[e.RowIndex].Cells[0].Value);
+                Ticket ticket = new Ticket();
+                ticket = ticket.GetTicketById(Ticketid);
+
+
+
+                Flight flight = new Flight();
+                flight = Flight.GetFlightById(ticket.FlightID);
+
+                string dep = flight.DepartureTimestamp.ToString();
+                string arr = flight.ArrivalTimestamp.ToString();
+
+                Airport airHandler = new Airport();
+                Airport source  = airHandler.GetAirportById(flight.SourceAirportID);
+                Airport destination = airHandler.GetAirportById(flight.DestinationAirportID);
+
+                //City sourceCity = City.GetCityById("1");
+                //City destinationCity = cityHandler.GetCityById(destination.CityId);
+
+                //Country countryHandler = new Country();
+                //Console.WriteLine(sourceCity.CountryId.ToString());
+                //Country sourceCountry = countryHandler.GetCountryById(sourceCity.CountryId.ToString());
+                //Country destinationCountry = countryHandler.GetCountryById(destinationCity.CountryId.ToString());
+
+                bdIDTxt.Text = ticket.Id.ToString();
+                bdFlightNumTxt.Text = ticket.FlightID.ToString();
+                bdDateTxt.Text = dep;
+                bdDepTimeTxt.Text = dep;
+                bdArrTimeTxt.Text = arr;
+                //bdFromTxt.Text = sourceCity.Name.ToString() + " (" + sourceCountry.Name.ToString() + ")";
+                //bdToTxt.Text = destinationCity.Name.ToString() + " (" + destinationCountry.Name.ToString() +")";
+                bdDepTxt.Text = source.Name.ToString();
+                bdArrTxt.Text = destination.Name.ToString();
+
+                tabController.SelectTab(5);
+            }
+        }
+
+        private void bdBackBtn_Click(object sender, EventArgs e)
+        {
+            tabController.SelectTab(1);
         }
     }
 
