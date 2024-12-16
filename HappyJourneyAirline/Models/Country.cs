@@ -7,7 +7,7 @@ namespace HappyJourneyAirline.Models
 {
     public class Country
     {
-        public string Id { get; set; } // Primary Key
+        public int Id { get; set; } // Primary Key
         public string Name { get; set; } // Nullable
 
         // Fetch all countries
@@ -16,7 +16,7 @@ namespace HappyJourneyAirline.Models
             string query = "SELECT Id, name FROM countries";
             return Database.Instance.Query(query, reader => new Country
             {
-                Id = reader.GetString(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null
             });
         }
@@ -25,11 +25,11 @@ namespace HappyJourneyAirline.Models
         public bool AddCountry(Country country)
         {
             string query = @"
-    INSERT INTO countries (Id, name)
-    VALUES (@Id, @Name)";
+    INSERT INTO countries (name)
+    VALUES (@Name)";
             var parameters = new Dictionary<string, object>
             {
-                { "@Id", country.Id },
+                //{ "@Id", country.Id },
                 { "@Name", (object)country.Name ?? DBNull.Value }
             };
 
@@ -72,7 +72,7 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new Country
             {
-                Id = reader.GetString(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null
             });
             return result.Count > 0 ? result[0] : null;

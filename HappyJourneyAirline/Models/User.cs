@@ -21,19 +21,19 @@ namespace HappyJourneyAirline.Models
         // Fetch all users
         public List<User> GetAllUsers()
         {
-            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber FROM users";
+                string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber FROM users";
             return Database.Instance.Query(query, reader => new User
             {
                 Id = reader.GetInt64(0),
                 FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 LastName = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null,
-                Username = reader.GetString(3),
-                Email = reader.GetString(4),
-                Password = reader.GetString(5),
+                Username = !reader.IsDBNull(3) ? reader.GetString(3) : null,
+                Email = !reader.IsDBNull(4) ? reader.GetString(4) : null,
+                Password = !reader.IsDBNull(5) ? reader.GetString(5) : null,
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
-                AgencyID = !reader.IsDBNull(7) ? (long?)reader.GetInt64(7) : null,
+                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
-                PhoneNumber = reader.GetString(9)
+                PhoneNumber = !reader.IsDBNull(9) ? reader.GetString(9) : null
             });
         }
 
@@ -147,7 +147,7 @@ namespace HappyJourneyAirline.Models
                 Email = reader.GetString(4),
                 Password = reader.GetString(5),
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
-                AgencyID = !reader.IsDBNull(7) ? (long?)reader.GetInt64(7) : null,
+                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                 PhoneNumber = reader.GetString(9)
             });
@@ -172,7 +172,7 @@ namespace HappyJourneyAirline.Models
                 Email = reader.GetString(4),
                 Password = reader.GetString(5),
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
-                AgencyID = !reader.IsDBNull(7) ? (long?)reader.GetInt64(7) : null,
+                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                 PhoneNumber = reader.GetString(9)
             });

@@ -123,7 +123,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Fetch all airports in a specific city
-        public List<Airport> GetAirportsByCityId(string cityId)
+        public List<Airport> GetAirportsByCityId(int cityId)
         {
             string query = "SELECT Id, name, cityId, latitude, longitude FROM airports WHERE cityId = @CityId";
             var parameters = new Dictionary<string, object>

@@ -146,5 +146,18 @@ namespace HappyJourneyAirline.Models
             });
             return result.Count > 0 ? result[0] : null;
         }
+
+        public override string ToString()
+        {
+            return $"Flight Information:\n" +
+                   $"Plane ID: {PlaneID}\n" +
+                   $"Departure: {DepartureTimestamp}\n" +
+                   $"Arrival: {ArrivalTimestamp}\n" +
+                   $"Base Price: {BasePrice:C}\n" + // Format as currency
+                   $"Source Airport ID: {SourceAirportID}\n" +
+                   $"Destination Airport ID: {DestinationAirportID}\n" +
+                   $"Flight Status ID: {FlightStatusID}";
+        }
+
     }
 }

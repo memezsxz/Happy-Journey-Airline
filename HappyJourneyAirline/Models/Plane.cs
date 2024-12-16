@@ -7,7 +7,7 @@ namespace HappyJourneyAirline.Models
 {
     public class Plane
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Model { get; set; } // NOT NULL
         public int Capacity { get; set; } // NOT NULL
 
@@ -17,8 +17,8 @@ namespace HappyJourneyAirline.Models
             string query = "SELECT Id, model, capacity FROM planes";
             return Database.Instance.Query(query, reader => new Plane
             {
-                Id = reader.GetInt64(0),
-                Model = reader.GetString(1),
+                Id = reader.GetInt32(0),
+                Model = reader.GetString(1).Trim(),
                 Capacity = reader.GetInt32(2)
             });
         }
@@ -103,7 +103,7 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new Plane
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 Model = reader.GetString(1),
                 Capacity = reader.GetInt32(2)
             });

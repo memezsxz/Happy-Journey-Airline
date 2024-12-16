@@ -7,9 +7,9 @@ namespace HappyJourneyAirline.Models
 {
     public class City
     {
-        public string Id { get; set; } // Primary Key
+        public int Id { get; set; } // Primary Key
         public string Name { get; set; } // Nullable
-        public string CountryId { get; set; } // Foreign Key
+        public int CountryId { get; set; } // Foreign Key
 
         // Fetch all cities
         public List<City> GetAllCities()
@@ -17,9 +17,9 @@ namespace HappyJourneyAirline.Models
             string query = "SELECT Id, name, country_id FROM cities";
             return Database.Instance.Query(query, reader => new City
             {
-                Id = reader.GetString(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
-                CountryId = reader.GetString(2)
+                CountryId = reader.GetInt32(2)
             });
         }
 
@@ -27,11 +27,11 @@ namespace HappyJourneyAirline.Models
         public bool AddCity(City city)
         {
             string query = @"
-    INSERT INTO cities (Id, name, country_id)
-    VALUES (@Id, @Name, @CountryId)";
+    INSERT INTO cities (name, country_id)
+    VALUES (@Name, @CountryId)";
             var parameters = new Dictionary<string, object>
             {
-                { "@Id", city.Id },
+                //{ "@Id", city.Id },
                 { "@Name", (object)city.Name ?? DBNull.Value },
                 { "@CountryId", city.CountryId }
             };
@@ -77,15 +77,15 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new City
             {
-                Id = reader.GetString(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
-                CountryId = reader.GetString(2)
+                CountryId = reader.GetInt32(2)
             });
             return result.Count > 0 ? result[0] : null;
         }
 
         // Fetch all cities for a specific country
-        public List<City> GetCitiesByCountryId(string countryId)
+        public List<City> GetCitiesByCountryId(int countryId)
         {
             string query = "SELECT Id, name, country_id FROM cities WHERE country_id = @CountryId";
             var parameters = new Dictionary<string, object>
@@ -94,9 +94,9 @@ namespace HappyJourneyAirline.Models
             };
             return Database.Instance.Query(query, parameters, reader => new City
             {
-                Id = reader.GetString(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
-                CountryId = reader.GetString(2)
+                CountryId = reader.GetInt32(2)
             });
         }
     }
