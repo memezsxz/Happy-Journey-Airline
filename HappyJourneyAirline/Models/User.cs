@@ -22,7 +22,7 @@ namespace HappyJourneyAirline.Models
         // Fetch all users
         public static List<User> GetAllUsers()
         {
-            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr, FROM users";
+            string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr FROM users";
             return Database.Instance.Query(query, reader => new User
             {
                 Id = reader.GetInt64(0),
@@ -35,7 +35,7 @@ namespace HappyJourneyAirline.Models
                 AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                 PhoneNumber = reader.GetString(9),
-                cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
+                Cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
             });
         }
 

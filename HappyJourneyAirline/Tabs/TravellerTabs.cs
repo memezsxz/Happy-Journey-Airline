@@ -33,7 +33,7 @@ namespace HappyJourneyAirline.Tabs
         private Label label5;
         private ComboBox depDrop;
         private DateTimePicker time;
-        private System.ComponentModel.IContainer components;
+        //private System.ComponentModel.IContainer components;
         private PictureBox notificationTab;
         private TabPage travellerNotificationTab;
         private Label label6;
@@ -1889,19 +1889,14 @@ namespace HappyJourneyAirline.Tabs
             bookingTable.Rows.Clear();
 
             // display Booking list
-            Ticket handler = new Ticket();
-            List<Ticket> tickets = new List<Ticket>();
-
-            tickets = handler.GetAllTickets();
+            List<Ticket> tickets = Ticket.GetAllTickets();
 
             foreach (Ticket ticket in tickets)
             {
                 Flight flight = Flight.GetFlightById(ticket.FlightID);
 
-                Airport airHandler = new Airport();
-
-                String source = airHandler.GetAirportById(flight.SourceAirportID).Name;
-                String destination = airHandler.GetAirportById(flight.DestinationAirportID).Name;
+                String source = Airport.GetAirportById(flight.SourceAirportID).Name;
+                String destination = Airport.GetAirportById(flight.DestinationAirportID).Name;
 
                 bookingTable.Rows.Add(ticket.Id, source, destination, flight.DepartureTimestamp, "View Details");
             }
@@ -1979,20 +1974,17 @@ namespace HappyJourneyAirline.Tabs
             {
                 //TODO - Button Clicked - Execute Code Here
                 int Ticketid = Convert.ToInt32(bookingTable.Rows[e.RowIndex].Cells[0].Value);
-                Ticket ticket = new Ticket();
-                ticket = ticket.GetTicketById(Ticketid);
+                Ticket ticket = Ticket.GetTicketById(Ticketid);
 
 
 
-                Flight flight = new Flight();
-                flight = Flight.GetFlightById(ticket.FlightID);
+                Flight flight = Flight.GetFlightById(ticket.FlightID);
 
                 string dep = flight.DepartureTimestamp.ToString();
                 string arr = flight.ArrivalTimestamp.ToString();
 
-                Airport airHandler = new Airport();
-                Airport source  = airHandler.GetAirportById(flight.SourceAirportID);
-                Airport destination = airHandler.GetAirportById(flight.DestinationAirportID);
+                Airport source  = Airport.GetAirportById(flight.SourceAirportID);
+                Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
 
                 //City sourceCity = City.GetCityById("1");
                 //City destinationCity = cityHandler.GetCityById(destination.CityId);

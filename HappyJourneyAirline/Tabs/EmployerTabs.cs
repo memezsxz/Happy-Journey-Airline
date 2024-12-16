@@ -1583,7 +1583,7 @@ namespace HappyJourneyAirline.Tabs
                 Airport handeler = new Airport();
 
 
-                airportList = handeler.GetAllAirports();
+                airportList = Airport.GetAllAirports();
 
 
                 if (airportList == null || airportList.Count == 0)
@@ -1600,7 +1600,7 @@ namespace HappyJourneyAirline.Tabs
                     arrivalDrop.DisplayMember = "Name";
                 }
             }
-            catch (Exception ex)
+            catch 
             {
 
             }
@@ -1622,8 +1622,7 @@ namespace HappyJourneyAirline.Tabs
             settingTab.Image = global::HappyJourneyAirline.Properties.Resources.Settings_Active;
 
             long id = AuthService.GetCurrentUserId();
-            User handler = new User();
-            User currentUser = handler.GetUserById(id);
+            User currentUser = User.GetUserById(id);
 
             setUsernameTxt.Text = currentUser.Username;
             setFirstNameTxt.Text = currentUser.FirstName;
@@ -1656,8 +1655,7 @@ namespace HappyJourneyAirline.Tabs
             defultIcons();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
             long id = AuthService.GetCurrentUserId();
-            User handler = new User();
-            User currentUser = handler.GetUserById(id);
+            User currentUser = User.GetUserById(id);
 
             setUsernameTxt.Text = currentUser.Username;
             setFirstNameTxt.Text = currentUser.FirstName;
@@ -1684,8 +1682,7 @@ namespace HappyJourneyAirline.Tabs
         {
 
             long id = AuthService.GetCurrentUserId();
-            User handler = new User();
-            User currentUser = handler.GetUserById(id);
+            User currentUser = User.GetUserById(id);
 
             List<string> list = new List<string>();
             Boolean valid = true;
@@ -1752,7 +1749,7 @@ namespace HappyJourneyAirline.Tabs
                 currentUser.Password = setPasswordTxt.Text;
                 currentUser.FirstName = setFirstNameTxt.Text;
                 currentUser.LastName = setLastNameTxt.Text;
-                currentUser.UpdateUser(currentUser);
+                User.UpdateUser(currentUser);
 
                 MessageBox.Show("User Info Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -1761,8 +1758,7 @@ namespace HappyJourneyAirline.Tabs
         private void setDeleteBtn_Click(object sender, EventArgs e)
         {
             long id = AuthService.GetCurrentUserId();
-            User handler = new User();
-            User currentUser = handler.GetUserById(id);
+            User currentUser = User.GetUserById(id);
 
             DialogResult result = MessageBox.Show(
         "Warning! Are you sure you want to delete this user? This action cannot be undone.",
@@ -1773,7 +1769,7 @@ namespace HappyJourneyAirline.Tabs
             if (result == DialogResult.Yes)
             {
 
-                if (currentUser.DeleteUser(currentUser.Id))
+                if (User.DeleteUser(currentUser.Id))
                 {
                     MessageBox.Show("User has been successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -1812,7 +1808,7 @@ namespace HappyJourneyAirline.Tabs
         private void searchIcon_Click(object sender, EventArgs e)
         {
 
-            // Get selected dropdown values
+            // Get selected dropdown values 
             Airport selectedSource = depDrop.SelectedItem as Airport;
             Airport selectedDestination = arrivalDrop.SelectedItem as Airport;
 
@@ -1919,8 +1915,8 @@ namespace HappyJourneyAirline.Tabs
                 Airport handeler = new Airport();
 
 
-                airportList = handeler.GetAllAirports();
-                List<Airport> airportList2 = handeler.GetAllAirports();
+                airportList = Airport.GetAllAirports();
+                List<Airport> airportList2 = Airport.GetAllAirports();
 
                 if (airportList == null || airportList.Count == 0)
                 {
@@ -1963,7 +1959,7 @@ namespace HappyJourneyAirline.Tabs
 
 
             }
-            catch (Exception ex)
+            catch
             {
 
             }
@@ -2018,8 +2014,7 @@ namespace HappyJourneyAirline.Tabs
 
             dataGridViewNotification.RowTemplate.Height = 60; // Sets all rows to 40 pixels
            
-            Notification handeler = new Notification();
-            List<Notification> list = handeler.GetNotificationsByUserId(AuthService.GetCurrentUserId());
+            List<Notification> list = Notification.GetNotificationsByUserId(AuthService.GetCurrentUserId());
 
             dataGridViewNotification.DataSource = list;
 

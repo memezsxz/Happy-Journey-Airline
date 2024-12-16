@@ -9,7 +9,6 @@ namespace HappyJourneyAirline.Models
     {
         public long Id { get; set; } // Primary Key
         public string Name { get; set; } // Nullable
-        public int CountryId { get; set; } // Foreign Key
         public long CountryId { get; set; } // Foreign Key
 
         // Fetch all cities

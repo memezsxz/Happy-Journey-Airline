@@ -122,7 +122,6 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a flight by ID
-        public static Flight GetFlightById(int id)
         public static Flight GetFlightById(long id)
         {
             string query = @"

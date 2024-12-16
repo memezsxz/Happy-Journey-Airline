@@ -57,9 +57,7 @@ namespace ProjectSample
         {
             if (AuthService.IsUserLoggedIn())
             {
-                User userHandler = new User();
-
-                User currentLoggedInUser = userHandler.GetUserById(AuthService.GetCurrentUserId());
+                User currentLoggedInUser = User.GetUserById(AuthService.GetCurrentUserId());
 
                 try
                 {
@@ -170,7 +168,6 @@ namespace ProjectSample
             String phoneNumber = phoneNumberRegisterInput.Text;
             String email = emailRegisterInput.Text;
 
-            User userHandler = new User();
 
             User newUser = new User
             {
@@ -184,7 +181,7 @@ namespace ProjectSample
                 CompanyName = null,
             };
 
-            long newUserId = userHandler.AddUser(newUser);
+            long newUserId = User.AddUser(newUser);
 
             if (newUserId > 0)
             {

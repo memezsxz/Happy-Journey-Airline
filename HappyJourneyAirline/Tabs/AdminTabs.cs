@@ -225,20 +225,12 @@ namespace HappyJourneyAirline.Tabs
         private Label label65;
         private Button addBackBtn;
         private PictureBox usersIcon;
-
+        private ComboBox efStatusDrop;
+        private Label label71;
+        private Label efPriceErrorLbl;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private DataGridView flightsDataGridView;
         #endregion attrebutes
-
-
-        #region Managers // to be removed
-        private Airport airportManager = new Airport();
-        private Flight flightManager = new Flight();
-        private Plane planeManager = new Plane();
-        private FlightStatus flightStatusManager = new FlightStatus();
-        private Country countryManager = new Country();
-        private City cityManager = new City();
-        private User userManager = new User();
-        #endregion
-
 
         #region AddedAtributes
         private BindingList<Plane> planes = new BindingList<Plane>();
@@ -249,13 +241,9 @@ namespace HappyJourneyAirline.Tabs
         private BindingList<User> users = new BindingList<User>();
         private BindingList<Flight> flights = new BindingList<Flight>();
         private User selectedUser = null;
-        private DataGridView flightsDataGridView;
         private Flight selectedFlight = null;
-        private ComboBox efStatusDrop;
-        private Label label71;
-        private Label efPriceErrorLbl;
-        private FlowLayoutPanel flowLayoutPanel4;
-        private static double rand = new Random().NextDouble();
+
+        private static readonly double rand = new Random().NextDouble();
         #endregion
         public AdminTabs()
         {
@@ -339,6 +327,21 @@ namespace HappyJourneyAirline.Tabs
             this.addBackBtn = new System.Windows.Forms.Button();
             this.label52 = new System.Windows.Forms.Label();
             this.createUserTab = new System.Windows.Forms.TabPage();
+            this.cuPhoneNumberErrorLbl = new System.Windows.Forms.Label();
+            this.cuEmailErrorLbl = new System.Windows.Forms.Label();
+            this.cuFCoumpanyNameErrorLbl = new System.Windows.Forms.Label();
+            this.cuPasswordErrorLbl = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cuFNamePanel = new System.Windows.Forms.Panel();
+            this.label47 = new System.Windows.Forms.Label();
+            this.cuFnameTxt = new System.Windows.Forms.TextBox();
+            this.cuLNamePanel = new System.Windows.Forms.Panel();
+            this.label46 = new System.Windows.Forms.Label();
+            this.cuLnameTxt = new System.Windows.Forms.TextBox();
+            this.cuLNameErrorLbl = new System.Windows.Forms.Label();
+            this.cuCompanyNamePanel = new System.Windows.Forms.Panel();
+            this.cuCoumpanyNameTxt = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
             this.cuUserNameErrorLbl = new System.Windows.Forms.Label();
             this.cuUserTypeDrop = new System.Windows.Forms.ComboBox();
             this.label51 = new System.Windows.Forms.Label();
@@ -347,26 +350,26 @@ namespace HappyJourneyAirline.Tabs
             this.cuCreateUserBtn = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.cuPhoneTxt = new System.Windows.Forms.TextBox();
             this.cuEmailTxt = new System.Windows.Forms.TextBox();
-            this.cuLnameTxt = new System.Windows.Forms.TextBox();
-            this.cuFnameTxt = new System.Windows.Forms.TextBox();
             this.cuPasswordTxt = new System.Windows.Forms.TextBox();
             this.cuUsernameTxt = new System.Windows.Forms.TextBox();
             this.editFlightTab = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.efDeleteBtn = new System.Windows.Forms.Button();
+            this.efEditBtn = new System.Windows.Forms.Button();
+            this.efCancelBtn = new System.Windows.Forms.Button();
+            this.efPriceErrorLbl = new System.Windows.Forms.Label();
+            this.efStatusDrop = new System.Windows.Forms.ComboBox();
+            this.label71 = new System.Windows.Forms.Label();
             this.efArrTimePick = new System.Windows.Forms.DateTimePicker();
             this.efDepTimePick = new System.Windows.Forms.DateTimePicker();
             this.efArrTxt = new System.Windows.Forms.TextBox();
             this.efDepTxt = new System.Windows.Forms.TextBox();
             this.efPriceTxt = new System.Windows.Forms.TextBox();
             this.efFlightNumTxt = new System.Windows.Forms.TextBox();
-            this.efCancelBtn = new System.Windows.Forms.Button();
-            this.efEditBtn = new System.Windows.Forms.Button();
             this.efDatePick = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -452,27 +455,12 @@ namespace HappyJourneyAirline.Tabs
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.travellerFlightsTab = new System.Windows.Forms.TabPage();
+            this.flightsDataGridView = new System.Windows.Forms.DataGridView();
             this.addAirCityCouBtn = new System.Windows.Forms.Button();
             this.creatFlightBtn = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabControler = new System.Windows.Forms.TabControl();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cuFNamePanel = new System.Windows.Forms.Panel();
-            this.cuLNamePanel = new System.Windows.Forms.Panel();
-            this.cuCompanyNamePanel = new System.Windows.Forms.Panel();
-            this.label70 = new System.Windows.Forms.Label();
-            this.cuCoumpanyNameTxt = new System.Windows.Forms.TextBox();
-            this.cuPasswordErrorLbl = new System.Windows.Forms.Label();
-            this.cuFCoumpanyNameErrorLbl = new System.Windows.Forms.Label();
-            this.cuLNameErrorLbl = new System.Windows.Forms.Label();
-            this.cuEmailErrorLbl = new System.Windows.Forms.Label();
-            this.cuPhoneNumberErrorLbl = new System.Windows.Forms.Label();
-            this.flightsDataGridView = new System.Windows.Forms.DataGridView();
-            this.efStatusDrop = new System.Windows.Forms.ComboBox();
-            this.label71 = new System.Windows.Forms.Label();
-            this.efPriceErrorLbl = new System.Windows.Forms.Label();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -492,7 +480,12 @@ namespace HappyJourneyAirline.Tabs
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.createUserTab.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.cuFNamePanel.SuspendLayout();
+            this.cuLNamePanel.SuspendLayout();
+            this.cuCompanyNamePanel.SuspendLayout();
             this.editFlightTab.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.createFlightTab.SuspendLayout();
             this.bookingDetailsTab.SuspendLayout();
             this.travellerUsersTab.SuspendLayout();
@@ -500,13 +493,8 @@ namespace HappyJourneyAirline.Tabs
             this.travellerSettingsTab.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
             this.travellerFlightsTab.SuspendLayout();
-            this.tabControler.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.cuFNamePanel.SuspendLayout();
-            this.cuLNamePanel.SuspendLayout();
-            this.cuCompanyNamePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flightsDataGridView)).BeginInit();
-            this.flowLayoutPanel4.SuspendLayout();
+            this.tabControler.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1320,6 +1308,174 @@ namespace HappyJourneyAirline.Tabs
             this.createUserTab.TabIndex = 7;
             this.createUserTab.Text = "Create User";
             // 
+            // cuPhoneNumberErrorLbl
+            // 
+            this.cuPhoneNumberErrorLbl.AutoSize = true;
+            this.cuPhoneNumberErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuPhoneNumberErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuPhoneNumberErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuPhoneNumberErrorLbl.Location = new System.Drawing.Point(327, 519);
+            this.cuPhoneNumberErrorLbl.Name = "cuPhoneNumberErrorLbl";
+            this.cuPhoneNumberErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuPhoneNumberErrorLbl.TabIndex = 117;
+            this.cuPhoneNumberErrorLbl.Text = "Error: Please fix..";
+            this.cuPhoneNumberErrorLbl.Visible = false;
+            // 
+            // cuEmailErrorLbl
+            // 
+            this.cuEmailErrorLbl.AutoSize = true;
+            this.cuEmailErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuEmailErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuEmailErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuEmailErrorLbl.Location = new System.Drawing.Point(24, 517);
+            this.cuEmailErrorLbl.Name = "cuEmailErrorLbl";
+            this.cuEmailErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuEmailErrorLbl.TabIndex = 116;
+            this.cuEmailErrorLbl.Text = "Error: Please fix..";
+            this.cuEmailErrorLbl.Visible = false;
+            // 
+            // cuFCoumpanyNameErrorLbl
+            // 
+            this.cuFCoumpanyNameErrorLbl.AutoSize = true;
+            this.cuFCoumpanyNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuFCoumpanyNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuFCoumpanyNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuFCoumpanyNameErrorLbl.Location = new System.Drawing.Point(25, 409);
+            this.cuFCoumpanyNameErrorLbl.Name = "cuFCoumpanyNameErrorLbl";
+            this.cuFCoumpanyNameErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuFCoumpanyNameErrorLbl.TabIndex = 114;
+            this.cuFCoumpanyNameErrorLbl.Text = "Error: Please fix..";
+            this.cuFCoumpanyNameErrorLbl.Visible = false;
+            // 
+            // cuPasswordErrorLbl
+            // 
+            this.cuPasswordErrorLbl.AutoSize = true;
+            this.cuPasswordErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuPasswordErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuPasswordErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuPasswordErrorLbl.Location = new System.Drawing.Point(327, 299);
+            this.cuPasswordErrorLbl.Name = "cuPasswordErrorLbl";
+            this.cuPasswordErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuPasswordErrorLbl.TabIndex = 113;
+            this.cuPasswordErrorLbl.Text = "Error: Please fix..";
+            this.cuPasswordErrorLbl.Visible = false;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.cuFNamePanel);
+            this.flowLayoutPanel2.Controls.Add(this.cuLNamePanel);
+            this.flowLayoutPanel2.Controls.Add(this.cuCompanyNamePanel);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(22, 337);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(701, 110);
+            this.flowLayoutPanel2.TabIndex = 112;
+            // 
+            // cuFNamePanel
+            // 
+            this.cuFNamePanel.Controls.Add(this.label47);
+            this.cuFNamePanel.Controls.Add(this.cuFnameTxt);
+            this.cuFNamePanel.Location = new System.Drawing.Point(3, 3);
+            this.cuFNamePanel.Name = "cuFNamePanel";
+            this.cuFNamePanel.Size = new System.Drawing.Size(290, 100);
+            this.cuFNamePanel.TabIndex = 113;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.BackColor = System.Drawing.Color.Transparent;
+            this.label47.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(0, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(188, 51);
+            this.label47.TabIndex = 45;
+            this.label47.Text = "First Name:";
+            this.label47.UseCompatibleTextRendering = true;
+            // 
+            // cuFnameTxt
+            // 
+            this.cuFnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuFnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuFnameTxt.Location = new System.Drawing.Point(0, 35);
+            this.cuFnameTxt.Name = "cuFnameTxt";
+            this.cuFnameTxt.Size = new System.Drawing.Size(281, 51);
+            this.cuFnameTxt.TabIndex = 39;
+            this.cuFnameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            // 
+            // cuLNamePanel
+            // 
+            this.cuLNamePanel.Controls.Add(this.label46);
+            this.cuLNamePanel.Controls.Add(this.cuLnameTxt);
+            this.cuLNamePanel.Controls.Add(this.cuLNameErrorLbl);
+            this.cuLNamePanel.Location = new System.Drawing.Point(299, 3);
+            this.cuLNamePanel.Name = "cuLNamePanel";
+            this.cuLNamePanel.Size = new System.Drawing.Size(297, 96);
+            this.cuLNamePanel.TabIndex = 114;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.BackColor = System.Drawing.Color.Transparent;
+            this.label46.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(3, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(183, 51);
+            this.label46.TabIndex = 46;
+            this.label46.Text = "Last Name:";
+            this.label46.UseCompatibleTextRendering = true;
+            // 
+            // cuLnameTxt
+            // 
+            this.cuLnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuLnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuLnameTxt.Location = new System.Drawing.Point(7, 35);
+            this.cuLnameTxt.Name = "cuLnameTxt";
+            this.cuLnameTxt.Size = new System.Drawing.Size(271, 51);
+            this.cuLnameTxt.TabIndex = 40;
+            this.cuLnameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            // 
+            // cuLNameErrorLbl
+            // 
+            this.cuLNameErrorLbl.AutoSize = true;
+            this.cuLNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuLNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuLNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuLNameErrorLbl.Location = new System.Drawing.Point(9, 68);
+            this.cuLNameErrorLbl.Name = "cuLNameErrorLbl";
+            this.cuLNameErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuLNameErrorLbl.TabIndex = 115;
+            this.cuLNameErrorLbl.Text = "Error: Please fix..";
+            this.cuLNameErrorLbl.Visible = false;
+            // 
+            // cuCompanyNamePanel
+            // 
+            this.cuCompanyNamePanel.Controls.Add(this.cuCoumpanyNameTxt);
+            this.cuCompanyNamePanel.Controls.Add(this.label70);
+            this.cuCompanyNamePanel.Location = new System.Drawing.Point(3, 109);
+            this.cuCompanyNamePanel.Name = "cuCompanyNamePanel";
+            this.cuCompanyNamePanel.Size = new System.Drawing.Size(336, 100);
+            this.cuCompanyNamePanel.TabIndex = 152;
+            // 
+            // cuCoumpanyNameTxt
+            // 
+            this.cuCoumpanyNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuCoumpanyNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuCoumpanyNameTxt.Location = new System.Drawing.Point(3, 36);
+            this.cuCoumpanyNameTxt.Name = "cuCoumpanyNameTxt";
+            this.cuCoumpanyNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.cuCoumpanyNameTxt.TabIndex = 153;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.BackColor = System.Drawing.Color.Transparent;
+            this.label70.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(3, -1);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(265, 51);
+            this.label70.TabIndex = 146;
+            this.label70.Text = "Company Name:";
+            this.label70.UseCompatibleTextRendering = true;
+            // 
             // cuUserNameErrorLbl
             // 
             this.cuUserNameErrorLbl.AutoSize = true;
@@ -1421,30 +1577,6 @@ namespace HappyJourneyAirline.Tabs
             this.label45.Text = "Email:";
             this.label45.UseCompatibleTextRendering = true;
             // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.BackColor = System.Drawing.Color.Transparent;
-            this.label46.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(3, 0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(183, 51);
-            this.label46.TabIndex = 46;
-            this.label46.Text = "Last Name:";
-            this.label46.UseCompatibleTextRendering = true;
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.BackColor = System.Drawing.Color.Transparent;
-            this.label47.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(0, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(188, 51);
-            this.label47.TabIndex = 45;
-            this.label47.Text = "First Name:";
-            this.label47.UseCompatibleTextRendering = true;
-            // 
             // label48
             // 
             this.label48.AutoSize = true;
@@ -1488,26 +1620,6 @@ namespace HappyJourneyAirline.Tabs
             this.cuEmailTxt.Size = new System.Drawing.Size(283, 51);
             this.cuEmailTxt.TabIndex = 41;
             this.cuEmailTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmailTextBox_KeyPress);
-            // 
-            // cuLnameTxt
-            // 
-            this.cuLnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuLnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuLnameTxt.Location = new System.Drawing.Point(7, 35);
-            this.cuLnameTxt.Name = "cuLnameTxt";
-            this.cuLnameTxt.Size = new System.Drawing.Size(271, 51);
-            this.cuLnameTxt.TabIndex = 40;
-            this.cuLnameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
-            // 
-            // cuFnameTxt
-            // 
-            this.cuFnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuFnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuFnameTxt.Location = new System.Drawing.Point(0, 35);
-            this.cuFnameTxt.Name = "cuFnameTxt";
-            this.cuFnameTxt.Size = new System.Drawing.Size(281, 51);
-            this.cuFnameTxt.TabIndex = 39;
-            this.cuFnameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
             // 
             // cuPasswordTxt
             // 
@@ -1559,6 +1671,16 @@ namespace HappyJourneyAirline.Tabs
             this.editFlightTab.TabIndex = 6;
             this.editFlightTab.Text = "Edit Flight";
             // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.efDeleteBtn);
+            this.flowLayoutPanel4.Controls.Add(this.efEditBtn);
+            this.flowLayoutPanel4.Controls.Add(this.efCancelBtn);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(23, 636);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(494, 56);
+            this.flowLayoutPanel4.TabIndex = 134;
+            // 
             // efDeleteBtn
             // 
             this.efDeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
@@ -1574,6 +1696,72 @@ namespace HappyJourneyAirline.Tabs
             this.efDeleteBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.efDeleteBtn.UseVisualStyleBackColor = false;
             this.efDeleteBtn.Click += new System.EventHandler(this.efDeleteBtn_Click);
+            // 
+            // efEditBtn
+            // 
+            this.efEditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.efEditBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.efEditBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.efEditBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efEditBtn.ForeColor = System.Drawing.Color.White;
+            this.efEditBtn.Location = new System.Drawing.Point(148, 3);
+            this.efEditBtn.Name = "efEditBtn";
+            this.efEditBtn.Size = new System.Drawing.Size(139, 43);
+            this.efEditBtn.TabIndex = 123;
+            this.efEditBtn.Text = "Save Edits";
+            this.efEditBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.efEditBtn.UseVisualStyleBackColor = false;
+            this.efEditBtn.Click += new System.EventHandler(this.efEditBtn_Click);
+            // 
+            // efCancelBtn
+            // 
+            this.efCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
+            this.efCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.efCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.efCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efCancelBtn.ForeColor = System.Drawing.Color.White;
+            this.efCancelBtn.Location = new System.Drawing.Point(293, 3);
+            this.efCancelBtn.Name = "efCancelBtn";
+            this.efCancelBtn.Size = new System.Drawing.Size(139, 43);
+            this.efCancelBtn.TabIndex = 124;
+            this.efCancelBtn.Text = "Cancel";
+            this.efCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.efCancelBtn.UseVisualStyleBackColor = false;
+            this.efCancelBtn.Click += new System.EventHandler(this.efCancelBtn_Click);
+            // 
+            // efPriceErrorLbl
+            // 
+            this.efPriceErrorLbl.AutoSize = true;
+            this.efPriceErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.efPriceErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efPriceErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.efPriceErrorLbl.Location = new System.Drawing.Point(379, 505);
+            this.efPriceErrorLbl.Name = "efPriceErrorLbl";
+            this.efPriceErrorLbl.Size = new System.Drawing.Size(446, 44);
+            this.efPriceErrorLbl.TabIndex = 133;
+            this.efPriceErrorLbl.Text = "Error: Input Must be number";
+            this.efPriceErrorLbl.Visible = false;
+            // 
+            // efStatusDrop
+            // 
+            this.efStatusDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.efStatusDrop.FormattingEnabled = true;
+            this.efStatusDrop.Location = new System.Drawing.Point(387, 572);
+            this.efStatusDrop.Name = "efStatusDrop";
+            this.efStatusDrop.Size = new System.Drawing.Size(338, 52);
+            this.efStatusDrop.TabIndex = 132;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.BackColor = System.Drawing.Color.Transparent;
+            this.label71.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Location = new System.Drawing.Point(384, 537);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(118, 51);
+            this.label71.TabIndex = 131;
+            this.label71.Text = "Status:";
+            this.label71.UseCompatibleTextRendering = true;
             // 
             // efArrTimePick
             // 
@@ -1645,38 +1833,6 @@ namespace HappyJourneyAirline.Tabs
             this.efFlightNumTxt.Size = new System.Drawing.Size(246, 44);
             this.efFlightNumTxt.TabIndex = 107;
             this.efFlightNumTxt.Text = "123";
-            // 
-            // efCancelBtn
-            // 
-            this.efCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
-            this.efCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.efCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.efCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efCancelBtn.ForeColor = System.Drawing.Color.White;
-            this.efCancelBtn.Location = new System.Drawing.Point(293, 3);
-            this.efCancelBtn.Name = "efCancelBtn";
-            this.efCancelBtn.Size = new System.Drawing.Size(139, 43);
-            this.efCancelBtn.TabIndex = 124;
-            this.efCancelBtn.Text = "Cancel";
-            this.efCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.efCancelBtn.UseVisualStyleBackColor = false;
-            this.efCancelBtn.Click += new System.EventHandler(this.efCancelBtn_Click);
-            // 
-            // efEditBtn
-            // 
-            this.efEditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.efEditBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.efEditBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.efEditBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efEditBtn.ForeColor = System.Drawing.Color.White;
-            this.efEditBtn.Location = new System.Drawing.Point(148, 3);
-            this.efEditBtn.Name = "efEditBtn";
-            this.efEditBtn.Size = new System.Drawing.Size(139, 43);
-            this.efEditBtn.TabIndex = 123;
-            this.efEditBtn.Text = "Save Edits";
-            this.efEditBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.efEditBtn.UseVisualStyleBackColor = false;
-            this.efEditBtn.Click += new System.EventHandler(this.efEditBtn_Click);
             // 
             // efDatePick
             // 
@@ -2447,7 +2603,6 @@ namespace HappyJourneyAirline.Tabs
             this.usersDataGridView.TabIndex = 39;
             this.usersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersDataGridView_CellClick);
             this.usersDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
-            this.usersDataGridView.SelectionChanged += new System.EventHandler(this.usersDataGridView_SelectionChanged);
             // 
             // userCreateUserBtn
             // 
@@ -2751,6 +2906,21 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.TabIndex = 0;
             this.travellerFlightsTab.Text = "Flights";
             // 
+            // flightsDataGridView
+            // 
+            this.flightsDataGridView.AllowUserToAddRows = false;
+            this.flightsDataGridView.AllowUserToDeleteRows = false;
+            this.flightsDataGridView.AllowUserToOrderColumns = true;
+            this.flightsDataGridView.AllowUserToResizeRows = false;
+            this.flightsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.flightsDataGridView.Location = new System.Drawing.Point(18, 231);
+            this.flightsDataGridView.Name = "flightsDataGridView";
+            this.flightsDataGridView.RowHeadersWidth = 70;
+            this.flightsDataGridView.RowTemplate.Height = 30;
+            this.flightsDataGridView.Size = new System.Drawing.Size(702, 455);
+            this.flightsDataGridView.TabIndex = 38;
+            this.flightsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.flightsDataGridView_CellClick);
+            // 
             // addAirCityCouBtn
             // 
             this.addAirCityCouBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
@@ -2824,189 +2994,6 @@ namespace HappyJourneyAirline.Tabs
             this.tabControler.Size = new System.Drawing.Size(782, 728);
             this.tabControler.TabIndex = 1;
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.cuFNamePanel);
-            this.flowLayoutPanel2.Controls.Add(this.cuLNamePanel);
-            this.flowLayoutPanel2.Controls.Add(this.cuCompanyNamePanel);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(22, 337);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(701, 110);
-            this.flowLayoutPanel2.TabIndex = 112;
-            // 
-            // cuFNamePanel
-            // 
-            this.cuFNamePanel.Controls.Add(this.label47);
-            this.cuFNamePanel.Controls.Add(this.cuFnameTxt);
-            this.cuFNamePanel.Location = new System.Drawing.Point(3, 3);
-            this.cuFNamePanel.Name = "cuFNamePanel";
-            this.cuFNamePanel.Size = new System.Drawing.Size(290, 100);
-            this.cuFNamePanel.TabIndex = 113;
-            // 
-            // cuLNamePanel
-            // 
-            this.cuLNamePanel.Controls.Add(this.label46);
-            this.cuLNamePanel.Controls.Add(this.cuLnameTxt);
-            this.cuLNamePanel.Controls.Add(this.cuLNameErrorLbl);
-            this.cuLNamePanel.Location = new System.Drawing.Point(299, 3);
-            this.cuLNamePanel.Name = "cuLNamePanel";
-            this.cuLNamePanel.Size = new System.Drawing.Size(297, 96);
-            this.cuLNamePanel.TabIndex = 114;
-            // 
-            // cuCompanyNamePanel
-            // 
-            this.cuCompanyNamePanel.Controls.Add(this.cuCoumpanyNameTxt);
-            this.cuCompanyNamePanel.Controls.Add(this.label70);
-            this.cuCompanyNamePanel.Location = new System.Drawing.Point(3, 109);
-            this.cuCompanyNamePanel.Name = "cuCompanyNamePanel";
-            this.cuCompanyNamePanel.Size = new System.Drawing.Size(336, 100);
-            this.cuCompanyNamePanel.TabIndex = 152;
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.BackColor = System.Drawing.Color.Transparent;
-            this.label70.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.Location = new System.Drawing.Point(3, -1);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(265, 51);
-            this.label70.TabIndex = 146;
-            this.label70.Text = "Company Name:";
-            this.label70.UseCompatibleTextRendering = true;
-            // 
-            // cuCoumpanyNameTxt
-            // 
-            this.cuCoumpanyNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuCoumpanyNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuCoumpanyNameTxt.Location = new System.Drawing.Point(3, 36);
-            this.cuCoumpanyNameTxt.Name = "cuCoumpanyNameTxt";
-            this.cuCoumpanyNameTxt.Size = new System.Drawing.Size(246, 51);
-            this.cuCoumpanyNameTxt.TabIndex = 153;
-            // 
-            // cuPasswordErrorLbl
-            // 
-            this.cuPasswordErrorLbl.AutoSize = true;
-            this.cuPasswordErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuPasswordErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuPasswordErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuPasswordErrorLbl.Location = new System.Drawing.Point(327, 299);
-            this.cuPasswordErrorLbl.Name = "cuPasswordErrorLbl";
-            this.cuPasswordErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuPasswordErrorLbl.TabIndex = 113;
-            this.cuPasswordErrorLbl.Text = "Error: Please fix..";
-            this.cuPasswordErrorLbl.Visible = false;
-            // 
-            // cuFCoumpanyNameErrorLbl
-            // 
-            this.cuFCoumpanyNameErrorLbl.AutoSize = true;
-            this.cuFCoumpanyNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuFCoumpanyNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuFCoumpanyNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuFCoumpanyNameErrorLbl.Location = new System.Drawing.Point(25, 409);
-            this.cuFCoumpanyNameErrorLbl.Name = "cuFCoumpanyNameErrorLbl";
-            this.cuFCoumpanyNameErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuFCoumpanyNameErrorLbl.TabIndex = 114;
-            this.cuFCoumpanyNameErrorLbl.Text = "Error: Please fix..";
-            this.cuFCoumpanyNameErrorLbl.Visible = false;
-            // 
-            // cuLNameErrorLbl
-            // 
-            this.cuLNameErrorLbl.AutoSize = true;
-            this.cuLNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuLNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuLNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuLNameErrorLbl.Location = new System.Drawing.Point(9, 68);
-            this.cuLNameErrorLbl.Name = "cuLNameErrorLbl";
-            this.cuLNameErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuLNameErrorLbl.TabIndex = 115;
-            this.cuLNameErrorLbl.Text = "Error: Please fix..";
-            this.cuLNameErrorLbl.Visible = false;
-            // 
-            // cuEmailErrorLbl
-            // 
-            this.cuEmailErrorLbl.AutoSize = true;
-            this.cuEmailErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuEmailErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuEmailErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuEmailErrorLbl.Location = new System.Drawing.Point(24, 517);
-            this.cuEmailErrorLbl.Name = "cuEmailErrorLbl";
-            this.cuEmailErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuEmailErrorLbl.TabIndex = 116;
-            this.cuEmailErrorLbl.Text = "Error: Please fix..";
-            this.cuEmailErrorLbl.Visible = false;
-            // 
-            // cuPhoneNumberErrorLbl
-            // 
-            this.cuPhoneNumberErrorLbl.AutoSize = true;
-            this.cuPhoneNumberErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuPhoneNumberErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuPhoneNumberErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuPhoneNumberErrorLbl.Location = new System.Drawing.Point(327, 519);
-            this.cuPhoneNumberErrorLbl.Name = "cuPhoneNumberErrorLbl";
-            this.cuPhoneNumberErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuPhoneNumberErrorLbl.TabIndex = 117;
-            this.cuPhoneNumberErrorLbl.Text = "Error: Please fix..";
-            this.cuPhoneNumberErrorLbl.Visible = false;
-            // 
-            // flightsDataGridView
-            // 
-            this.flightsDataGridView.AllowUserToAddRows = false;
-            this.flightsDataGridView.AllowUserToDeleteRows = false;
-            this.flightsDataGridView.AllowUserToOrderColumns = true;
-            this.flightsDataGridView.AllowUserToResizeRows = false;
-            this.flightsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.flightsDataGridView.Location = new System.Drawing.Point(18, 231);
-            this.flightsDataGridView.Name = "flightsDataGridView";
-            this.flightsDataGridView.RowHeadersWidth = 70;
-            this.flightsDataGridView.RowTemplate.Height = 30;
-            this.flightsDataGridView.Size = new System.Drawing.Size(702, 455);
-            this.flightsDataGridView.TabIndex = 38;
-            this.flightsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.flightsDataGridView_CellClick);
-            // 
-            // efStatusDrop
-            // 
-            this.efStatusDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.efStatusDrop.FormattingEnabled = true;
-            this.efStatusDrop.Location = new System.Drawing.Point(387, 572);
-            this.efStatusDrop.Name = "efStatusDrop";
-            this.efStatusDrop.Size = new System.Drawing.Size(338, 52);
-            this.efStatusDrop.TabIndex = 132;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.BackColor = System.Drawing.Color.Transparent;
-            this.label71.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label71.Location = new System.Drawing.Point(384, 537);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(118, 51);
-            this.label71.TabIndex = 131;
-            this.label71.Text = "Status:";
-            this.label71.UseCompatibleTextRendering = true;
-            // 
-            // efPriceErrorLbl
-            // 
-            this.efPriceErrorLbl.AutoSize = true;
-            this.efPriceErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.efPriceErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efPriceErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.efPriceErrorLbl.Location = new System.Drawing.Point(379, 505);
-            this.efPriceErrorLbl.Name = "efPriceErrorLbl";
-            this.efPriceErrorLbl.Size = new System.Drawing.Size(446, 44);
-            this.efPriceErrorLbl.TabIndex = 133;
-            this.efPriceErrorLbl.Text = "Error: Input Must be number";
-            this.efPriceErrorLbl.Visible = false;
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.efDeleteBtn);
-            this.flowLayoutPanel4.Controls.Add(this.efEditBtn);
-            this.flowLayoutPanel4.Controls.Add(this.efCancelBtn);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(23, 636);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(494, 56);
-            this.flowLayoutPanel4.TabIndex = 134;
-            // 
             // AdminTabs
             // 
             this.Controls.Add(this.tabControler);
@@ -3042,8 +3029,16 @@ namespace HappyJourneyAirline.Tabs
             this.groupBox1.PerformLayout();
             this.createUserTab.ResumeLayout(false);
             this.createUserTab.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.cuFNamePanel.ResumeLayout(false);
+            this.cuFNamePanel.PerformLayout();
+            this.cuLNamePanel.ResumeLayout(false);
+            this.cuLNamePanel.PerformLayout();
+            this.cuCompanyNamePanel.ResumeLayout(false);
+            this.cuCompanyNamePanel.PerformLayout();
             this.editFlightTab.ResumeLayout(false);
             this.editFlightTab.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
             this.createFlightTab.ResumeLayout(false);
             this.createFlightTab.PerformLayout();
             this.bookingDetailsTab.ResumeLayout(false);
@@ -3057,16 +3052,8 @@ namespace HappyJourneyAirline.Tabs
             this.travellerBookingsTab.PerformLayout();
             this.travellerFlightsTab.ResumeLayout(false);
             this.travellerFlightsTab.PerformLayout();
-            this.tabControler.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.cuFNamePanel.ResumeLayout(false);
-            this.cuFNamePanel.PerformLayout();
-            this.cuLNamePanel.ResumeLayout(false);
-            this.cuLNamePanel.PerformLayout();
-            this.cuCompanyNamePanel.ResumeLayout(false);
-            this.cuCompanyNamePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flightsDataGridView)).EndInit();
-            this.flowLayoutPanel4.ResumeLayout(false);
+            this.tabControler.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3113,8 +3100,8 @@ namespace HappyJourneyAirline.Tabs
 
         private void creatFlightBtn_Click(object sender, EventArgs e)
         {
-            planes = new BindingList<Plane>(planeManager.GetAllPlanes());
-            airports = new BindingList<Airport>(airportManager.GetAllAirports());
+            planes = new BindingList<Plane>(Plane.GetAllPlanes());
+            airports = new BindingList<Airport>(Airport.GetAllAirports());
 
             if (airports.Count < 2)
             {
@@ -3215,7 +3202,7 @@ namespace HappyJourneyAirline.Tabs
         // should be in db
         private void loadFlights()
         {
-            flights = new BindingList<Flight>(flightManager.GetAllFlights());
+            flights = new BindingList<Flight>(Flight.GetAllFlights());
 
             string connection = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\database.mdf;Integrated Security=True";
 
@@ -3253,7 +3240,7 @@ namespace HappyJourneyAirline.Tabs
         {
             if (e.ColumnIndex == 0)
             {
-                selectedFlight = flightManager.GetFlightById((int)(flightsDataGridView.Rows[e.RowIndex].Cells[1].Value));
+                selectedFlight = Flight.GetFlightById((int)(flightsDataGridView.Rows[e.RowIndex].Cells[1].Value));
                 setupEditFlight();
                 tabControler.SelectTab(6);
             }
@@ -3271,26 +3258,26 @@ namespace HappyJourneyAirline.Tabs
             efArrTimePick.ShowUpDown = true;
             efArrTimePick.Value = selectedFlight.ArrivalTimestamp;
 
-            efDepTxt.Text = airportManager.GetAirportById(selectedFlight.SourceAirportID).Name;
-            efArrTxt.Text = airportManager.GetAirportById(selectedFlight.DestinationAirportID).Name;
+            efDepTxt.Text = Airport.GetAirportById(selectedFlight.SourceAirportID).Name;
+            efArrTxt.Text = Airport.GetAirportById(selectedFlight.DestinationAirportID).Name;
 
             efFlightNumTxt.Text = $"{selectedFlight.Id}";
 
             efDatePick.MinDate = selectedFlight.DepartureTimestamp;
             efDatePick.Value = selectedFlight.DepartureTimestamp;
 
-            flightsStatuses = new BindingList<FlightStatus>(flightStatusManager.GetAllFlightStatuses());
-            efStatusDrop.DataSource = flightStatusManager.GetAllFlightStatuses();
+            flightsStatuses = new BindingList<FlightStatus>(FlightStatus.GetAllFlightStatuses());
+            efStatusDrop.DataSource = FlightStatus.GetAllFlightStatuses();
             efStatusDrop.DisplayMember = "Name";
             efStatusDrop.SelectedIndex = flightsStatuses.ToList().FindIndex(s => s.Id == selectedFlight.FlightStatusID);
 
-            planes = new BindingList<Plane>(planeManager.GetAllPlanes());
+            planes = new BindingList<Plane>(Plane.GetAllPlanes());
             efPlaneIdDrop.DataSource = planes;
             efPlaneIdDrop.DisplayMember = "Id";
             efPlaneIdDrop.SelectedIndex = planes.ToList().FindIndex(p => p.Id == selectedFlight.PlaneID);
 
 
-            string flightStatus = flightStatusManager.GetFlightStatusById((int)selectedFlight.FlightStatusID).Name.ToLower();
+            string flightStatus = FlightStatus.GetFlightStatusById((int)selectedFlight.FlightStatusID).Name.ToLower();
 
             if (flightStatus == "scheduled")
             {
@@ -3337,8 +3324,8 @@ namespace HappyJourneyAirline.Tabs
         private void efDepTimePick_ValueChanged(object sender, EventArgs e)
         {
             efDepTimePick.Value = efDatePick.Value.Date.Add(efDepTimePick.Value.TimeOfDay);
-            Airport dep = airportManager.GetAirportById(selectedFlight.SourceAirportID);
-            Airport arr = airportManager.GetAirportById(selectedFlight.DestinationAirportID);
+            Airport dep = Airport.GetAirportById(selectedFlight.SourceAirportID);
+            Airport arr = Airport.GetAirportById(selectedFlight.DestinationAirportID);
 
             double distance = CalculateDistance((double)dep.Latitude, (double)dep.Longitude, (double)arr.Latitude, (double)arr.Longitude);
             double speed = rand * (900 - 800) + 800; ; // Speed in km/h
@@ -3352,7 +3339,7 @@ namespace HappyJourneyAirline.Tabs
         private void efDeleteBtn_Click(object sender, EventArgs e)
         {
 
-            bool result = flightManager.DeleteFlight(selectedFlight.Id);
+            bool result = Flight.DeleteFlight(selectedFlight.Id);
 
             if (!result)
             {
@@ -3382,7 +3369,7 @@ namespace HappyJourneyAirline.Tabs
                 selectedFlight.FlightStatusID = (efStatusDrop.SelectedItem as FlightStatus).Id;
             }
 
-            bool result = flightManager.UpdateFlight(selectedFlight);
+            bool result = Flight.UpdateFlight(selectedFlight);
 
             if (!result)
             {
@@ -3407,7 +3394,7 @@ namespace HappyJourneyAirline.Tabs
         }
         private void addLoadCountries()
         {
-            countries = new BindingList<Country>(countryManager.GetAllCountries());
+            countries = new BindingList<Country>(Country.GetAllCountries());
 
             BindingSource source1 = new BindingSource();
 
@@ -3424,7 +3411,7 @@ namespace HappyJourneyAirline.Tabs
         }
         private void addLoadCities()
         {
-            cities = new BindingList<City>(cityManager.GetAllCities());
+            cities = new BindingList<City>(City.GetAllCities());
 
             addAirportCityDrop.DataSource = cities;
             addAirportCityDrop.DisplayMember = "Name";
@@ -3449,7 +3436,7 @@ namespace HappyJourneyAirline.Tabs
             ShowError(addContErrorLbl, string.Empty);
 
 
-            bool result = countryManager.AddCountry(new Country
+            bool result = Country.AddCountry(new Country
             {
                 Name = addContNameTxt.Text
             });
@@ -3490,7 +3477,7 @@ namespace HappyJourneyAirline.Tabs
             }
             ShowError(addCityErrorLbl, string.Empty); // Hide error
 
-            bool result = cityManager.AddCity(new City { Name = cityName, CountryId = country.Id });
+            bool result = City.AddCity(new City { Name = cityName, CountryId = country.Id });
 
             if (!result)
             {
@@ -3512,8 +3499,8 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
-                cities = new BindingList<City>(cityManager.GetAllCities());
-                addAirportCityDrop.DataSource = new BindingList<City>(cityManager.GetCitiesByCountryId(c.Id));
+                cities = new BindingList<City>(City.GetAllCities());
+                addAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
                 addAirportCityDrop.DisplayMember = "Name";
             }
         }
@@ -3547,7 +3534,7 @@ namespace HappyJourneyAirline.Tabs
                 return;
             }
 
-            if (airportManager.GetAirportsByCityId(city.Id).Any(a =>
+            if (Airport.GetAirportsByCityId(city.Id).Any(a =>
                     a.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
                     ))
             {
@@ -3592,7 +3579,7 @@ namespace HappyJourneyAirline.Tabs
 
             ShowError(addAirportErrorLbl, string.Empty);
 
-            int result = airportManager.AddAirport(new Airport
+            int result = Airport.AddAirport(new Airport
             {
                 Name = name,
                 CityId = city.Id,
@@ -3610,12 +3597,12 @@ namespace HappyJourneyAirline.Tabs
         #region Create Flight Screen
         private void setupCreateFlightTab()
         {
-            cfFlightNumTxt.Text = $"{flightManager.GetAllFlights().Count + 1}";
+            cfFlightNumTxt.Text = $"{Flight.GetAllFlights().Count + 1}";
             cfDatePick.MinDate = DateTime.Today;
 
             cfDatePick.Value = DateTime.Now + TimeSpan.FromDays(7);
             cfPriceTxt.Text = "300";
-            cfStatusDrop.DataSource = flightStatusManager.GetAllFlightStatuses();
+            cfStatusDrop.DataSource = FlightStatus.GetAllFlightStatuses();
             cfStatusDrop.DisplayMember = "Name";
             cfStatusDrop.SelectedIndex = 0;
 
@@ -3641,13 +3628,17 @@ namespace HappyJourneyAirline.Tabs
         }
         private void cfLoadAirports()
         {
-            BindingSource depSource = new BindingSource();
-            depSource.DataSource = airports;
+            BindingSource depSource = new BindingSource
+            {
+                DataSource = airports
+            };
             cfDepDrop.DataSource = depSource;
             cfDepDrop.DisplayMember = "Name";
 
-            BindingSource arrSource = new BindingSource();
-            arrSource.DataSource = airports;
+            BindingSource arrSource = new BindingSource
+            {
+                DataSource = airports
+            };
             cfArrDrop.DataSource = arrSource;
             cfArrDrop.DisplayMember = "Name";
 
@@ -3740,7 +3731,7 @@ namespace HappyJourneyAirline.Tabs
                 FlightStatusID = 1
             };
 
-            flightManager.AddFlight(flight);
+            Flight.AddFlight(flight);
             flightsTab_Click(sender, e);
         }
         private void cfPriceTxt_TextChanged(object sender, EventArgs e)
@@ -3785,9 +3776,8 @@ namespace HappyJourneyAirline.Tabs
                 return;
             }
 
-            TextBox textBox = sender as TextBox;
 
-            if (textBox != null)
+            if (sender is TextBox textBox)
             {
                 string txt = textBox.Text + e.KeyChar;
 
@@ -3899,7 +3889,7 @@ namespace HappyJourneyAirline.Tabs
         private void setupUsers()
         {
             //usersDataGridView.SelectionMode = DataGridViewSelectionMode;
-            users = new BindingList<User>(userManager.GetAllUsers());
+            users = new BindingList<User>(User.GetAllUsers());
 
             usersDataGridView.DataSource = users;
             usersDataGridView.ClearSelection();
@@ -3921,11 +3911,13 @@ namespace HappyJourneyAirline.Tabs
         }
         private DataGridViewTextBoxColumn AddEditColumn()
         {
-            DataGridViewTextBoxColumn editColumn = new DataGridViewTextBoxColumn();
-            editColumn.Name = "EditColumn";
-            editColumn.HeaderText = "Edit";
-            editColumn.ReadOnly = true;
-            editColumn.DefaultCellStyle = usersDataGridView.Columns[2].DefaultCellStyle.Clone();
+            DataGridViewTextBoxColumn editColumn = new DataGridViewTextBoxColumn
+            {
+                Name = "EditColumn",
+                HeaderText = "Edit",
+                ReadOnly = true,
+                DefaultCellStyle = usersDataGridView.Columns[2].DefaultCellStyle.Clone()
+            };
             editColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             editColumn.DefaultCellStyle.ForeColor = Color.Blue;
             return editColumn;
@@ -3980,7 +3972,7 @@ namespace HappyJourneyAirline.Tabs
             DialogResult result = MessageBox.Show("Attention if you delete your account all your information will be deleted and cant be restored", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
             {
-                bool val = userManager.DeleteUser(selectedUser.Id);
+                bool val = User.DeleteUser(selectedUser.Id);
                 if (val)
                 {
                     users_Click(null, null);
@@ -3997,94 +3989,6 @@ namespace HappyJourneyAirline.Tabs
         }
 
         #endregion view user screen
-
-        //private void usersDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        //{
-        //    string txt = e.FormattedValue.ToString().Trim();
-        //    Console.WriteLine(txt);
-
-        //    if (usersDataGridView.Columns[e.ColumnIndex].Name == "FirstName" || usersDataGridView.Columns[e.ColumnIndex].Name == "LastName")
-        //    {
-
-        //        if (txt.Length == 0)
-        //        {
-        //            MessageBox.Show("First name cannot be empty.");
-        //            e.Cancel = true;
-        //        }
-
-        //        if (txt.Any(c => !char.IsLetter(c) && !char.IsControl(c) && c != ' '))
-        //        {
-        //            MessageBox.Show("First name cannot contain numbers or spicial charecters.");
-        //            e.Cancel = true;
-        //        }
-        //    }
-        //    else if (usersDataGridView.Columns[e.ColumnIndex].Name == "Username")
-        //    {
-        //        if (txt.Length < 6)
-        //        {
-        //            MessageBox.Show("User name must contain at least 6 charecters.");
-        //            e.Cancel = true;
-        //        }
-
-        //        if (txt.Any(c => !(c == '@' || c == '.' || c == '-' || c == '_' || char.IsLetterOrDigit(c))))
-        //        {
-        //            MessageBox.Show("The only special characters allowed are @, ., -, and _.");
-        //            e.Cancel = true;
-        //        }
-
-        //    }
-        //    else if (usersDataGridView.Columns[e.ColumnIndex].Name == "Email")
-        //    {
-        //        if (txt.Any(c => !(c == '@' || c == '.' || c == '-' || c == '_' || char.IsLetterOrDigit(c))))
-        //        {
-        //            MessageBox.Show("The only special characters allowed in the email are @, ., -, and _.");
-        //            e.Cancel = true;
-        //            return;
-        //        }
-
-        //        if (!txt.Contains('@') || txt.Split('@').Length != 2 || !txt.Split('@')[1].Contains('.'))
-        //        {
-        //            MessageBox.Show("Invalid email format. The email should contain one '@' and at least one '.' after '@'.");
-        //            e.Cancel = true;
-        //            return;
-        //        }
-
-        //        string domain = txt.Split('@')[1];
-        //        if (domain.StartsWith("."))
-        //        {
-        //            MessageBox.Show("The domain part of the email should not start with a period.");
-        //            e.Cancel = true;
-        //            return;
-        //        }
-
-
-        //        if (txt.Contains("-"))
-        //        {
-        //            if (txt.StartsWith("-") || txt.EndsWith("-") || txt.Contains("-."))
-        //            {
-        //                MessageBox.Show("Hyphens cannot be placed at the start, end, or adjacent to a period.");
-        //                e.Cancel = true;
-        //                return;
-        //            }
-        //        }
-        //        Console.WriteLine("fsdf");
-        //        if (users.Any(u => u.Email.Equals(txt, StringComparison.OrdinalIgnoreCase) && $"{u.Id}" != usersDataGridView.SelectedRows[0].Cells[0].Value))
-        //        {
-        //            MessageBox.Show("Email entered is already in use.");
-        //            e.Cancel = true;
-        //            return;
-        //        }
-        //    }
-        //}
-
-        private void usersDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            if (usersDataGridView.SelectedRows.Count > 0 && usersDataGridView.SelectedCells[0].ColumnIndex == 0) // Check if any row is selected
-            {
-                // Access the first selected row
-                DataGridViewRow selectedRow = usersDataGridView.SelectedRows[0];
-            }
-        }
 
         private void usersDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -4120,7 +4024,7 @@ namespace HappyJourneyAirline.Tabs
             {
                 cuCompanyNamePanel.Visible = false;
                 cuCoumpanyNameTxt.Text = "";
-                cuEmailTxt.Text = $"admin{userManager.GetAllUsers().Count() + 1}@happy.airlines.org";
+                cuEmailTxt.Text = $"admin{User.GetAllUsers().Count() + 1}@happy.airlines.org";
                 cuEmailTxt.ReadOnly = true;
                 cuFNamePanel.Visible = true;
                 cuLNamePanel.Visible = true;
@@ -4254,7 +4158,7 @@ namespace HappyJourneyAirline.Tabs
 
             if (isValidData)
             {
-                long result = userManager.AddUser(user);
+                long result = User.AddUser(user);
 
                 if (result == -1)
                 {
@@ -4262,7 +4166,7 @@ namespace HappyJourneyAirline.Tabs
                 }
                 else
                 {
-                    selectedUser = userManager.GetUserById(result);
+                    selectedUser = User.GetUserById(result);
                     setupViewUser();
                     tabControler.SelectTab(9);
                 }
