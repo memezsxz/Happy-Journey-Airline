@@ -1883,8 +1883,7 @@ namespace HappyJourneyAirline.Tabs
             //List<Ticket> tickets = new List<Ticket>();
             Ticket ticket = handler.GetTicketById(2);
 
-            Flight flightHandler = new Flight();
-            Flight flight = flightHandler.GetFlightById(ticket.FlightID);
+            Flight flight = Flight.GetFlightById(ticket.FlightID);
 
             bookingTable.Rows.Add(ticket.Id, flight.SourceAirportID, flight.DestinationAirportID, flight.DepartureTimestamp, "View Details");
 

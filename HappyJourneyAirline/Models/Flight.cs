@@ -17,7 +17,7 @@ namespace HappyJourneyAirline.Models
         public decimal BasePrice { get; set; } // NOT NULL
 
         // Fetch all flights
-        public List<Flight> GetAllFlights()
+        public static List<Flight> GetAllFlights()
         {
             string query = @"
                 SELECT Id, sourceAirportID, destinationAirportID, departureTimestamp, arrivalTimestamp, 
@@ -37,7 +37,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Add a new flight
-        public long AddFlight(Flight flight)
+        public static long AddFlight(Flight flight)
         {
             string query = @"
     INSERT INTO flights (sourceAirportID, destinationAirportID, departureTimestamp, arrivalTimestamp, flightStatusID, planeID, basePrice)
@@ -84,7 +84,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Update an existing flight
-        public bool UpdateFlight(Flight flight)
+        public static bool UpdateFlight(Flight flight)
         {
             string query = @"
                 UPDATE flights
@@ -111,7 +111,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Delete a flight
-        public bool DeleteFlight(long id)
+        public static bool DeleteFlight(int id)
         {
             string query = "DELETE FROM flights WHERE Id = @Id";
             var parameters = new Dictionary<string, object>
@@ -122,7 +122,7 @@ namespace HappyJourneyAirline.Models
         }
 
         // Find a flight by ID
-        public Flight GetFlightById(long id)
+        public static Flight GetFlightById(int id)
         {
             string query = @"
                 SELECT Id, sourceAirportID, destinationAirportID, departureTimestamp, arrivalTimestamp, 
