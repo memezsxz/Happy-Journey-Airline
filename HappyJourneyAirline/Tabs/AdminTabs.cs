@@ -3263,6 +3263,7 @@ namespace HappyJourneyAirline.Tabs
             this.editLocationDelete.Text = "Delete Locatopn";
             this.editLocationDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.editLocationDelete.UseVisualStyleBackColor = false;
+            this.editLocationDelete.Click += new System.EventHandler(this.editLocationDelete_Click);
             // 
             // editLocationBack
             // 
@@ -5079,6 +5080,39 @@ namespace HappyJourneyAirline.Tabs
                 addAirportCityDrop.DisplayMember = "Name";
             }
 
+        }
+
+        private void editLocationDelete_Click(object sender, EventArgs e)
+        {
+            bool result = false;
+
+            DialogResult r = MessageBox.Show("Attention if you delete this location all its information and other locations related to it will be deleted and can't be restored", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (r == DialogResult.OK)
+            {
+
+                if (AirportGroupBox.Visible)
+                {
+                    result = Airport.DeleteAirport(selectedAirport.Id);
+                }
+                else if (cityGroupBox.Visible)
+                {
+                    result = City.DeleteCity(selectedCity.Id);
+                }
+                else
+                {
+                    result = Country.DeleteCountry(selectedCountry.Id);
+                }
+
+
+                if (!result)
+                {
+                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    tabControler.SelectTab(10);
+                }
+            }
         }
     }
 }
