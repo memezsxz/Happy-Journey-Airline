@@ -96,10 +96,12 @@ namespace HappyJourneyAirline.Models
         public static bool DeleteAirport(int id)
         {
             string query = "DELETE FROM airports WHERE Id = @Id";
+            string query2 = "DELETE FROM flights WHERE destinationAirportID = @Id";
             var parameters = new Dictionary<string, object>
             {
                 { "@Id", id }
             };
+            Database.Instance.ExecuteNonQuery(query2, parameters);
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
