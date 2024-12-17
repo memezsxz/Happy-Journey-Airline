@@ -20,12 +20,12 @@ namespace HappyJourneyAirline.Models
             string query = "SELECT Id, source, type, title, description, user_id FROM notifications";
             return Database.Instance.Query(query, reader => new Notification
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 Source = reader.GetString(1),
                 Type = reader.GetString(2),
                 Title = reader.GetString(3),
                 Description = reader.GetString(4),
-                UserId = reader.GetInt64(5)
+                UserId = reader.GetInt32(5)
             });
         }
 
@@ -118,12 +118,12 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new Notification
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 Source = reader.GetString(1),
                 Type = reader.GetString(2),
                 Title = reader.GetString(3),
                 Description = reader.GetString(4),
-                UserId = reader.GetInt64(5)
+                UserId = reader.GetInt32(5)
             });
             return result.Count > 0 ? result[0] : null;
         }
@@ -138,12 +138,12 @@ namespace HappyJourneyAirline.Models
             };
             return Database.Instance.Query(query, parameters, reader => new Notification
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 Source = reader.GetString(1),
                 Type = reader.GetString(2),
                 Title = reader.GetString(3),
                 Description = reader.GetString(4),
-                UserId = reader.GetInt64(5)
+                UserId = reader.GetInt32(5)
             });
         }
     }

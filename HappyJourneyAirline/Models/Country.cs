@@ -16,7 +16,7 @@ namespace HappyJourneyAirline.Models
             string query = "SELECT Id, name FROM countries";
             return Database.Instance.Query(query, reader => new Country
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null
             });
         }
@@ -72,7 +72,7 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new Country
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null
             });
             return result.Count > 0 ? result[0] : null;

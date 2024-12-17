@@ -17,7 +17,7 @@ namespace HappyJourneyAirline.Models
             string query = "SELECT Id, name, details FROM payment_methods";
             return Database.Instance.Query(query, reader => new PaymentMethod
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 Details = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null
             });
@@ -103,7 +103,7 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new PaymentMethod
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 Details = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null
             });

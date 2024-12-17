@@ -32,7 +32,7 @@ namespace HappyJourneyAirline.Models
                 TicketClassID = reader.GetInt32(4),
                 TicketStatusID = reader.GetInt32(5),
                 PaymentID = reader.GetInt32(6),
-                AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
+                AgencyID = !reader.IsDBNull(7) ? reader.GetInt32(7) : (long?)null
             });
         }
 
@@ -136,12 +136,12 @@ namespace HappyJourneyAirline.Models
             {
                 Id = reader.GetInt32(0),
                 FlightID = reader.GetInt32(1),
-                UserID = reader.GetInt64(2),
+                UserID = reader.GetInt32(2),
                 Seat = reader.GetString(3),
                 TicketClassID = reader.GetInt32(4),
                 TicketStatusID = reader.GetInt32(5),
                 PaymentID = reader.GetInt32(6),
-                AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
+                AgencyID = !reader.IsDBNull(7) ? reader.GetInt32(7) : (long?)null
             });
             return result.Count > 0 ? result[0] : null;
         }
@@ -162,12 +162,12 @@ namespace HappyJourneyAirline.Models
             {
                 Id = reader.GetInt32(0),
                 FlightID = reader.GetInt32(1),
-                UserID = reader.GetInt64(2),
+                UserID = reader.GetInt32(2),
                 Seat = reader.GetString(3),
                 TicketClassID = reader.GetInt32(4),
                 TicketStatusID = reader.GetInt32(5),
                 PaymentID = reader.GetInt32(6),
-                AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
+                AgencyID = !reader.IsDBNull(7) ? reader.GetInt32(7) : (long?)null
             });
         }
         // Fetch all tickets for a specific flight
@@ -185,12 +185,12 @@ namespace HappyJourneyAirline.Models
             {
                 Id = reader.GetInt32(0),
                 FlightID = reader.GetInt32(1),
-                UserID = reader.GetInt64(2),
+                UserID = reader.GetInt32(2),
                 Seat = reader.GetString(3),
                 TicketClassID = reader.GetInt32(4),
                 TicketStatusID = reader.GetInt32(5),
                 PaymentID = reader.GetInt32(6),
-                AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
+                AgencyID = !reader.IsDBNull(7) ? reader.GetInt32(7) : (long?)null
             });
         }
     }

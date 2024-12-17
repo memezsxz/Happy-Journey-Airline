@@ -25,14 +25,14 @@ namespace HappyJourneyAirline.Models
             string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr FROM users";
             return Database.Instance.Query(query, reader => new User
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 LastName = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null,
                 Username = !reader.IsDBNull(3) ? reader.GetString(3) : null,
                 Email = !reader.IsDBNull(4) ? reader.GetString(4) : null,
                 Password = !reader.IsDBNull(5) ? reader.GetString(5) : null,
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
-                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
+                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt32(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                 PhoneNumber = !reader.IsDBNull(5) ? reader.GetString(5) : null,
                 Cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
@@ -147,14 +147,14 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new User
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 LastName = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null,
                 Username = reader.GetString(3),
                 Email = reader.GetString(4),
                 Password = reader.GetString(5),
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
-                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
+                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt32(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                 PhoneNumber = reader.GetString(9),
                 Cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
@@ -173,14 +173,14 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new User
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 LastName = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null,
                 Username = reader.GetString(3),
                 Email = reader.GetString(4),
                 Password = reader.GetString(5),
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
-                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
+                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt32(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                 PhoneNumber = reader.GetString(9),
                 Cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
