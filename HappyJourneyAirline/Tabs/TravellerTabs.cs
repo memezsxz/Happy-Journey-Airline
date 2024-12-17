@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System;
 using System.Windows.Forms;
 using HappyJourneyAirline.Models;
+using HappyJourneyAirline.Lib;
 namespace HappyJourneyAirline.Tabs
 {
     public partial class TravellerTabs : UserControl
@@ -955,7 +956,7 @@ namespace HappyJourneyAirline.Tabs
             this.fdDepTxt.Size = new System.Drawing.Size(246, 26);
             this.fdDepTxt.TabIndex = 27;
             this.fdDepTxt.Text = "Cairo International Airport";
-            this.fdDepTxt.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
+
             // 
             // fdToTxt
             // 
@@ -1202,6 +1203,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdCancelBtn.Text = "Cancel the booking";
             this.bdCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.bdCancelBtn.UseVisualStyleBackColor = false;
+            this.bdCancelBtn.Click += new System.EventHandler(this.bdCancelBtn_Click);
             // 
             // bdArrTxt
             // 
@@ -1492,7 +1494,6 @@ namespace HappyJourneyAirline.Tabs
             this.label48.TabIndex = 79;
             this.label48.Text = "Total will be:";
             this.label48.UseCompatibleTextRendering = true;
-            this.label48.Click += new System.EventHandler(this.label48_Click);
             // 
             // ppDatePick
             // 
@@ -1690,7 +1691,6 @@ namespace HappyJourneyAirline.Tabs
             this.label42.TabIndex = 60;
             this.label42.Text = "Passport number:";
             this.label42.UseCompatibleTextRendering = true;
-            this.label42.Click += new System.EventHandler(this.label42_Click);
             // 
             // ppPasportNumTxt
             // 
@@ -1700,7 +1700,6 @@ namespace HappyJourneyAirline.Tabs
             this.ppPasportNumTxt.Name = "ppPasportNumTxt";
             this.ppPasportNumTxt.Size = new System.Drawing.Size(246, 33);
             this.ppPasportNumTxt.TabIndex = 59;
-            this.ppPasportNumTxt.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label41
             // 
@@ -1886,24 +1885,7 @@ namespace HappyJourneyAirline.Tabs
             defultIcons();
             bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
 
-            bookingTable.Rows.Clear();
-
-            // display Booking list
-            List<Ticket> tickets = Ticket.GetAllTickets();
-
-            foreach (Ticket ticket in tickets)
-            {
-                Flight flight = Flight.GetFlightById(ticket.FlightID);
-
-                String source = Airport.GetAirportById(flight.SourceAirportID).Name;
-                String destination = Airport.GetAirportById(flight.DestinationAirportID).Name;
-
-                bookingTable.Rows.Add(ticket.Id, source, destination, flight.DepartureTimestamp, "View Details");
-            }
-
-            
-
-            //bookingTable.Rows.Add("ticket.Id", "Bahrain", "ticket.To", "ticket.Date", "View Details");  
+            loadBookingTable();
 
         }
 
@@ -1928,6 +1910,59 @@ namespace HappyJourneyAirline.Tabs
             notificationTab.Image = global::HappyJourneyAirline.Properties.Resources.Notification;
         }
 
+        private void loadBookingTable() {
+            bookingTable.Rows.Clear();
+            // display Booking list
+            List<Ticket> tickets = new List<Ticket>();
+            tickets = Ticket.GetTicketsByUserId((Int32)AuthService.GetCurrentUserId());
+
+            foreach (Ticket ticket in tickets)
+            {
+                //Console.WriteLine("-, "+ticket.Id);
+                Flight flight = Flight.GetFlightById(ticket.FlightID);
+                //Console.WriteLine("--, " + flight.SourceAirportID);
+                Airport source = Airport.GetAirportById(flight.SourceAirportID);
+                Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
+                bookingTable.Rows.Add(ticket.Id, source.Name, destination.Name, flight.DepartureTimestamp, "View Details");
+            }
+        }
+
+        private void bookingTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                //TODO - Button Clicked - Execute Code Here
+                int Ticketid = Convert.ToInt32(bookingTable.Rows[e.RowIndex].Cells[0].Value);
+
+                Ticket ticket = Ticket.GetTicketById(Ticketid);
+                Flight flight = Flight.GetFlightById(ticket.FlightID);
+
+                string dep = flight.DepartureTimestamp.ToString();
+                string arr = flight.ArrivalTimestamp.ToString();
+
+                Airport source = Airport.GetAirportById(flight.SourceAirportID);
+                Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
+
+                City sourceCity = City.GetCityById(source.CityId);
+                City destinationCity = City.GetCityById(destination.CityId);
+                Country sourceCountry = Country.GetCountryById(sourceCity.CountryId);
+                Country destinationCountry = Country.GetCountryById(destinationCity.CountryId);
+
+                bdIDTxt.Text = ticket.Id.ToString();
+                bdFlightNumTxt.Text = ticket.FlightID.ToString();
+                bdDateTxt.Text = dep.Split(' ')[0];
+                bdDepTimeTxt.Text = dep;
+                bdArrTimeTxt.Text = arr;
+                bdFromTxt.Text = sourceCity.Name.ToString() + " (" + sourceCountry.Name.ToString() + ")";
+                bdToTxt.Text = destinationCity.Name.ToString() + " (" + destinationCountry.Name.ToString() +")";
+                bdDepTxt.Text = source.Name.ToString();
+                bdArrTxt.Text = destination.Name.ToString();
+                tabController.SelectTab(5);
+            }
+        }
+
         private void dateCheck_CheckedChanged(object sender, EventArgs e)
         {
             date.Enabled = dateCheck.Checked;
@@ -1938,26 +1973,6 @@ namespace HappyJourneyAirline.Tabs
             time.Enabled = timeCheck.Checked;
         }
 
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label42_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label48_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void setCancelBtn_Click(object sender, EventArgs e)
         {
             tabController.SelectTab(0);
@@ -1965,52 +1980,56 @@ namespace HappyJourneyAirline.Tabs
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
         }
 
-        private void bookingTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var senderGrid = (DataGridView)sender;
-
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
-            {
-                //TODO - Button Clicked - Execute Code Here
-                int Ticketid = Convert.ToInt32(bookingTable.Rows[e.RowIndex].Cells[0].Value);
-                Ticket ticket = Ticket.GetTicketById(Ticketid);
-
-
-
-                Flight flight = Flight.GetFlightById(ticket.FlightID);
-
-                string dep = flight.DepartureTimestamp.ToString();
-                string arr = flight.ArrivalTimestamp.ToString();
-
-                Airport source  = Airport.GetAirportById(flight.SourceAirportID);
-                Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
-
-                //City sourceCity = City.GetCityById("1");
-                //City destinationCity = cityHandler.GetCityById(destination.CityId);
-
-                //Country countryHandler = new Country();
-                //Console.WriteLine(sourceCity.CountryId.ToString());
-                //Country sourceCountry = countryHandler.GetCountryById(sourceCity.CountryId.ToString());
-                //Country destinationCountry = countryHandler.GetCountryById(destinationCity.CountryId.ToString());
-
-                bdIDTxt.Text = ticket.Id.ToString();
-                bdFlightNumTxt.Text = ticket.FlightID.ToString();
-                bdDateTxt.Text = dep;
-                bdDepTimeTxt.Text = dep;
-                bdArrTimeTxt.Text = arr;
-                //bdFromTxt.Text = sourceCity.Name.ToString() + " (" + sourceCountry.Name.ToString() + ")";
-                //bdToTxt.Text = destinationCity.Name.ToString() + " (" + destinationCountry.Name.ToString() +")";
-                bdDepTxt.Text = source.Name.ToString();
-                bdArrTxt.Text = destination.Name.ToString();
-
-                tabController.SelectTab(5);
-            }
-        }
-
         private void bdBackBtn_Click(object sender, EventArgs e)
         {
             tabController.SelectTab(1);
+            loadBookingTable();
+        }
+
+        private void bdCancelBtn_Click(object sender, EventArgs e)
+        {
+            // Validate input and parse Ticket ID
+            if (!int.TryParse(bdIDTxt.Text, out int ticketId) || ticketId <= 0)
+            {
+                MessageBox.Show("Please enter a valid Ticket ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Confirm deletion with the user
+            var confirmResult = MessageBox.Show(
+                $"Are you sure you want to delete Ticket ID {ticketId}?",
+                "Confirm Deletion",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                try
+                {
+                    // Attempt to delete the ticket
+                    bool isDeleted = Ticket.DeleteTicket(ticketId);
+
+                    if (isDeleted)
+                    {
+                        MessageBox.Show("Ticket deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadBookingTable();
+                        tabController.SelectTab(1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ticket could not be deleted. Please check if the Ticket ID is correct.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle any unexpected errors
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Deletion cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 
