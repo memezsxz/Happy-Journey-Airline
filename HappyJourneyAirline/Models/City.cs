@@ -94,7 +94,7 @@ namespace HappyJourneyAirline.Models
             };
             return Database.Instance.Query(query, parameters, reader => new City
             {
-                Id = reader.GetInt64(0),
+                Id = reader.GetInt32(0),
                 Name = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 CountryId = reader.GetInt32(2)
             });

@@ -34,7 +34,7 @@ namespace HappyJourneyAirline.Models
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
                 AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt32(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
-                PhoneNumber = !reader.IsDBNull(5) ? reader.GetString(5) : null,
+                PhoneNumber = !reader.IsDBNull(9) ? reader.GetString(9) : null,
                 Cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
             });
         }
