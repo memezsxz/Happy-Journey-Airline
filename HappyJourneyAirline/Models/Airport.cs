@@ -21,7 +21,7 @@ namespace HappyJourneyAirline.Models
             {
                 Id = reader.GetInt32(0),
                 Name = reader.GetString(1).Trim(),
-                CityId = reader.GetInt64(2),
+                CityId = reader.GetInt32(2),
                 Latitude = reader.GetDecimal(3),
                 Longitude = reader.GetDecimal(4)
             });
@@ -115,7 +115,7 @@ namespace HappyJourneyAirline.Models
             {
                 Id = reader.GetInt32(0),
                 Name = reader.GetString(1).Trim(),
-                CityId = reader.GetInt64(2),
+                CityId = reader.GetInt32(2),
                 Latitude = reader.GetDecimal(3),
                 Longitude = reader.GetDecimal(4)
             });
@@ -134,7 +134,7 @@ namespace HappyJourneyAirline.Models
             {
                 Id = reader.GetInt32(0),
                 Name = reader.GetString(1).Trim(),
-                CityId = reader.GetInt64(2),
+                CityId = reader.GetInt32(2),
                 Latitude = reader.GetDecimal(3),
                 Longitude = reader.GetDecimal(4)
             });
