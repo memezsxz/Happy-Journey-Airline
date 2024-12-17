@@ -32,6 +32,46 @@ namespace HappyJourneyAirline.Tabs
     {
 
         #region attrebutes
+        private TabPage veAirCouCity;
+        private Button addAirCityCouBtn;
+        private Label label72;
+        private Label Locations;
+        private GroupBox groupBox4;
+        private GroupBox groupBox5;
+        private GroupBox groupBox6;
+        private DataGridView countriesDataGridView;
+        private DataGridView citiesDataGridView;
+        private DataGridView airportsDataGridView;
+        private TabPage viewLocation;
+        private FlowLayoutPanel flowLayoutPanel6;
+        private Button editLocationDelete;
+        private Button editLocationBack;
+        private Label label79;
+        private Label label83;
+        private FlowLayoutPanel flowLayoutPanel5;
+        private GroupBox countryGroupBox;
+        private Label label73;
+        private Label editContErrorLbl;
+        private TextBox editContNameTxt;
+        private GroupBox AirportGroupBox;
+        private Label label78;
+        private ComboBox editAirportConDrop;
+        private TextBox editAirportNameTxt;
+        private Label label80;
+        private TextBox editAirportLongitudeTxt;
+        private Label label81;
+        private Label label82;
+        private ComboBox editAirportCityDrop;
+        private TextBox editAirportLatitudeTxt;
+        private Label editAirportErrorLbl;
+        private Label label85;
+        private GroupBox cityGroupBox;
+        private Label label75;
+        private TextBox editCitytNameTxt;
+        private Label editCityErrorLbl;
+        private Label label77;
+        private ComboBox editConDrop;
+        private Button editLocationSave;
         private FlowLayoutPanel flowLayoutPanel1;
         private TextBox mtUsernameTxt;
         private Label label69;
@@ -213,7 +253,7 @@ namespace HappyJourneyAirline.Tabs
         private Label label1;
         private Label label13;
         private TabPage travellerFlightsTab;
-        private Button addAirCityCouBtn;
+        private Button viewAirCityCouBtn;
         private System.Windows.Forms.Button creatFlightBtn;
         private Label label22;
         private Label label11;
@@ -242,7 +282,9 @@ namespace HappyJourneyAirline.Tabs
         private BindingList<Flight> flights = new BindingList<Flight>();
         private User selectedUser = null;
         private Flight selectedFlight = null;
-
+        private City selectedCity = null;
+        private Country selectedCountry = null;
+        private Airport selectedAirport = null;
         private static readonly double rand = new Random().NextDouble();
         #endregion
         public AdminTabs()
@@ -252,6 +294,9 @@ namespace HappyJourneyAirline.Tabs
             usersDataGridView.DataSource = users;
             loadFlights();
             usersDataGridView.Columns.Insert(0, AddEditColumn());
+            countriesDataGridView.Columns.Insert(0, AddEditColumn());
+            citiesDataGridView.Columns.Insert(0, AddEditColumn());
+            airportsDataGridView.Columns.Insert(0, AddEditColumn());
 
         }
 
@@ -456,11 +501,51 @@ namespace HappyJourneyAirline.Tabs
             this.label13 = new System.Windows.Forms.Label();
             this.travellerFlightsTab = new System.Windows.Forms.TabPage();
             this.flightsDataGridView = new System.Windows.Forms.DataGridView();
-            this.addAirCityCouBtn = new System.Windows.Forms.Button();
+            this.viewAirCityCouBtn = new System.Windows.Forms.Button();
             this.creatFlightBtn = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabControler = new System.Windows.Forms.TabControl();
+            this.veAirCouCity = new System.Windows.Forms.TabPage();
+            this.addAirCityCouBtn = new System.Windows.Forms.Button();
+            this.label72 = new System.Windows.Forms.Label();
+            this.Locations = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.countriesDataGridView = new System.Windows.Forms.DataGridView();
+            this.citiesDataGridView = new System.Windows.Forms.DataGridView();
+            this.airportsDataGridView = new System.Windows.Forms.DataGridView();
+            this.viewLocation = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.editLocationDelete = new System.Windows.Forms.Button();
+            this.editLocationBack = new System.Windows.Forms.Button();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.countryGroupBox = new System.Windows.Forms.GroupBox();
+            this.label73 = new System.Windows.Forms.Label();
+            this.editContErrorLbl = new System.Windows.Forms.Label();
+            this.editContNameTxt = new System.Windows.Forms.TextBox();
+            this.cityGroupBox = new System.Windows.Forms.GroupBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.editLocationSave = new System.Windows.Forms.Button();
+            this.editCitytNameTxt = new System.Windows.Forms.TextBox();
+            this.editCityErrorLbl = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.editConDrop = new System.Windows.Forms.ComboBox();
+            this.AirportGroupBox = new System.Windows.Forms.GroupBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.editAirportConDrop = new System.Windows.Forms.ComboBox();
+            this.editAirportNameTxt = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.editAirportLongitudeTxt = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.editAirportCityDrop = new System.Windows.Forms.ComboBox();
+            this.editAirportLatitudeTxt = new System.Windows.Forms.TextBox();
+            this.editAirportErrorLbl = new System.Windows.Forms.Label();
+            this.label85 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -495,6 +580,19 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flightsDataGridView)).BeginInit();
             this.tabControler.SuspendLayout();
+            this.veAirCouCity.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countriesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.airportsDataGridView)).BeginInit();
+            this.viewLocation.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            this.countryGroupBox.SuspendLayout();
+            this.cityGroupBox.SuspendLayout();
+            this.AirportGroupBox.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1264,7 +1362,7 @@ namespace HappyJourneyAirline.Tabs
             this.addBackBtn.Name = "addBackBtn";
             this.addBackBtn.Size = new System.Drawing.Size(139, 43);
             this.addBackBtn.TabIndex = 135;
-            this.addBackBtn.Text = "Back To Flights";
+            this.addBackBtn.Text = "Back To Locations";
             this.addBackBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.addBackBtn.UseVisualStyleBackColor = false;
             this.addBackBtn.Click += new System.EventHandler(this.addBackBtn_Click);
@@ -1273,7 +1371,7 @@ namespace HappyJourneyAirline.Tabs
             // 
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.Location = new System.Drawing.Point(19, 39);
+            this.label52.Location = new System.Drawing.Point(19, 25);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(946, 100);
             this.label52.TabIndex = 108;
@@ -2895,7 +2993,7 @@ namespace HappyJourneyAirline.Tabs
             // 
             this.travellerFlightsTab.BackColor = System.Drawing.Color.Gainsboro;
             this.travellerFlightsTab.Controls.Add(this.flightsDataGridView);
-            this.travellerFlightsTab.Controls.Add(this.addAirCityCouBtn);
+            this.travellerFlightsTab.Controls.Add(this.viewAirCityCouBtn);
             this.travellerFlightsTab.Controls.Add(this.creatFlightBtn);
             this.travellerFlightsTab.Controls.Add(this.label22);
             this.travellerFlightsTab.Controls.Add(this.label11);
@@ -2921,21 +3019,21 @@ namespace HappyJourneyAirline.Tabs
             this.flightsDataGridView.TabIndex = 38;
             this.flightsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.flightsDataGridView_CellClick);
             // 
-            // addAirCityCouBtn
+            // viewAirCityCouBtn
             // 
-            this.addAirCityCouBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.addAirCityCouBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.addAirCityCouBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.addAirCityCouBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAirCityCouBtn.ForeColor = System.Drawing.Color.White;
-            this.addAirCityCouBtn.Location = new System.Drawing.Point(480, 158);
-            this.addAirCityCouBtn.Name = "addAirCityCouBtn";
-            this.addAirCityCouBtn.Size = new System.Drawing.Size(223, 55);
-            this.addAirCityCouBtn.TabIndex = 37;
-            this.addAirCityCouBtn.Text = "Add(Airport/City/Country)";
-            this.addAirCityCouBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.addAirCityCouBtn.UseVisualStyleBackColor = false;
-            this.addAirCityCouBtn.Click += new System.EventHandler(this.addAirCityCouBtn_Click);
+            this.viewAirCityCouBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.viewAirCityCouBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.viewAirCityCouBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.viewAirCityCouBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewAirCityCouBtn.ForeColor = System.Drawing.Color.White;
+            this.viewAirCityCouBtn.Location = new System.Drawing.Point(480, 158);
+            this.viewAirCityCouBtn.Name = "viewAirCityCouBtn";
+            this.viewAirCityCouBtn.Size = new System.Drawing.Size(223, 55);
+            this.viewAirCityCouBtn.TabIndex = 37;
+            this.viewAirCityCouBtn.Text = "View Locations";
+            this.viewAirCityCouBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.viewAirCityCouBtn.UseVisualStyleBackColor = false;
+            this.viewAirCityCouBtn.Click += new System.EventHandler(this.addAirCityCouBtn_Click);
             // 
             // creatFlightBtn
             // 
@@ -2987,12 +3085,510 @@ namespace HappyJourneyAirline.Tabs
             this.tabControler.Controls.Add(this.createUserTab);
             this.tabControler.Controls.Add(this.AddAirCityConTab);
             this.tabControler.Controls.Add(this.tabPage1);
+            this.tabControler.Controls.Add(this.veAirCouCity);
+            this.tabControler.Controls.Add(this.viewLocation);
             this.tabControler.Location = new System.Drawing.Point(136, 0);
             this.tabControler.Multiline = true;
             this.tabControler.Name = "tabControler";
             this.tabControler.SelectedIndex = 0;
             this.tabControler.Size = new System.Drawing.Size(782, 728);
             this.tabControler.TabIndex = 1;
+            // 
+            // veAirCouCity
+            // 
+            this.veAirCouCity.BackColor = System.Drawing.Color.Gainsboro;
+            this.veAirCouCity.Controls.Add(this.groupBox4);
+            this.veAirCouCity.Controls.Add(this.groupBox5);
+            this.veAirCouCity.Controls.Add(this.groupBox6);
+            this.veAirCouCity.Controls.Add(this.addAirCityCouBtn);
+            this.veAirCouCity.Controls.Add(this.label72);
+            this.veAirCouCity.Controls.Add(this.Locations);
+            this.veAirCouCity.Location = new System.Drawing.Point(58, 4);
+            this.veAirCouCity.Name = "veAirCouCity";
+            this.veAirCouCity.Padding = new System.Windows.Forms.Padding(3);
+            this.veAirCouCity.Size = new System.Drawing.Size(720, 720);
+            this.veAirCouCity.TabIndex = 10;
+            this.veAirCouCity.Text = "veAirCouCity";
+            // 
+            // addAirCityCouBtn
+            // 
+            this.addAirCityCouBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.addAirCityCouBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addAirCityCouBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.addAirCityCouBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAirCityCouBtn.ForeColor = System.Drawing.Color.White;
+            this.addAirCityCouBtn.Location = new System.Drawing.Point(480, 97);
+            this.addAirCityCouBtn.Name = "addAirCityCouBtn";
+            this.addAirCityCouBtn.Size = new System.Drawing.Size(223, 55);
+            this.addAirCityCouBtn.TabIndex = 39;
+            this.addAirCityCouBtn.Text = "Add Location";
+            this.addAirCityCouBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.addAirCityCouBtn.UseVisualStyleBackColor = false;
+            this.addAirCityCouBtn.Click += new System.EventHandler(this.addAirCityCouBtn_Click_1);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label72.Location = new System.Drawing.Point(31, 84);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(369, 35);
+            this.label72.TabIndex = 38;
+            this.label72.Text = "View and edit all locations here";
+            // 
+            // Locations
+            // 
+            this.Locations.AutoSize = true;
+            this.Locations.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Locations.Location = new System.Drawing.Point(24, 25);
+            this.Locations.Name = "Locations";
+            this.Locations.Size = new System.Drawing.Size(363, 100);
+            this.Locations.TabIndex = 37;
+            this.Locations.Text = "Locations";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.countriesDataGridView);
+            this.groupBox4.Location = new System.Drawing.Point(7, 153);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(707, 150);
+            this.groupBox4.TabIndex = 147;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Country";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.citiesDataGridView);
+            this.groupBox5.Location = new System.Drawing.Point(7, 304);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(707, 155);
+            this.groupBox5.TabIndex = 146;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "City";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.airportsDataGridView);
+            this.groupBox6.Location = new System.Drawing.Point(7, 462);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(707, 237);
+            this.groupBox6.TabIndex = 145;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Airport";
+            // 
+            // countriesDataGridView
+            // 
+            this.countriesDataGridView.AllowUserToAddRows = false;
+            this.countriesDataGridView.AllowUserToDeleteRows = false;
+            this.countriesDataGridView.AllowUserToOrderColumns = true;
+            this.countriesDataGridView.AllowUserToResizeRows = false;
+            this.countriesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.countriesDataGridView.Location = new System.Drawing.Point(7, 23);
+            this.countriesDataGridView.Name = "countriesDataGridView";
+            this.countriesDataGridView.RowHeadersWidth = 70;
+            this.countriesDataGridView.RowTemplate.Height = 30;
+            this.countriesDataGridView.Size = new System.Drawing.Size(694, 121);
+            this.countriesDataGridView.TabIndex = 0;
+            this.countriesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.countriesDataGridView_CellClick);
+            this.countriesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
+            // 
+            // citiesDataGridView
+            // 
+            this.citiesDataGridView.AllowUserToAddRows = false;
+            this.citiesDataGridView.AllowUserToDeleteRows = false;
+            this.citiesDataGridView.AllowUserToOrderColumns = true;
+            this.citiesDataGridView.AllowUserToResizeRows = false;
+            this.citiesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.citiesDataGridView.Location = new System.Drawing.Point(6, 23);
+            this.citiesDataGridView.Name = "citiesDataGridView";
+            this.citiesDataGridView.RowHeadersWidth = 70;
+            this.citiesDataGridView.RowTemplate.Height = 30;
+            this.citiesDataGridView.Size = new System.Drawing.Size(694, 126);
+            this.citiesDataGridView.TabIndex = 1;
+            this.citiesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.citiesDataGridView_CellClick);
+            this.citiesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
+            // 
+            // airportsDataGridView
+            // 
+            this.airportsDataGridView.AllowUserToAddRows = false;
+            this.airportsDataGridView.AllowUserToDeleteRows = false;
+            this.airportsDataGridView.AllowUserToOrderColumns = true;
+            this.airportsDataGridView.AllowUserToResizeRows = false;
+            this.airportsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.airportsDataGridView.Location = new System.Drawing.Point(7, 23);
+            this.airportsDataGridView.Name = "airportsDataGridView";
+            this.airportsDataGridView.RowHeadersWidth = 70;
+            this.airportsDataGridView.RowTemplate.Height = 30;
+            this.airportsDataGridView.Size = new System.Drawing.Size(694, 208);
+            this.airportsDataGridView.TabIndex = 2;
+            this.airportsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.airportsDataGridView_CellClick);
+            this.airportsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
+            // 
+            // viewLocation
+            // 
+            this.viewLocation.BackColor = System.Drawing.Color.Gainsboro;
+            this.viewLocation.Controls.Add(this.flowLayoutPanel5);
+            this.viewLocation.Controls.Add(this.flowLayoutPanel6);
+            this.viewLocation.Controls.Add(this.label79);
+            this.viewLocation.Controls.Add(this.label83);
+            this.viewLocation.Location = new System.Drawing.Point(58, 4);
+            this.viewLocation.Name = "viewLocation";
+            this.viewLocation.Padding = new System.Windows.Forms.Padding(3);
+            this.viewLocation.Size = new System.Drawing.Size(720, 720);
+            this.viewLocation.TabIndex = 11;
+            this.viewLocation.Text = "veLocation";
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.Controls.Add(this.editLocationDelete);
+            this.flowLayoutPanel6.Controls.Add(this.editLocationSave);
+            this.flowLayoutPanel6.Controls.Add(this.editLocationBack);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(23, 611);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(537, 57);
+            this.flowLayoutPanel6.TabIndex = 160;
+            // 
+            // editLocationDelete
+            // 
+            this.editLocationDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editLocationDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.editLocationDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.editLocationDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editLocationDelete.ForeColor = System.Drawing.Color.White;
+            this.editLocationDelete.Location = new System.Drawing.Point(3, 3);
+            this.editLocationDelete.Name = "editLocationDelete";
+            this.editLocationDelete.Size = new System.Drawing.Size(139, 43);
+            this.editLocationDelete.TabIndex = 128;
+            this.editLocationDelete.Text = "Delete Locatopn";
+            this.editLocationDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.editLocationDelete.UseVisualStyleBackColor = false;
+            // 
+            // editLocationBack
+            // 
+            this.editLocationBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
+            this.editLocationBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.editLocationBack.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.editLocationBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editLocationBack.ForeColor = System.Drawing.Color.White;
+            this.editLocationBack.Location = new System.Drawing.Point(293, 3);
+            this.editLocationBack.Name = "editLocationBack";
+            this.editLocationBack.Size = new System.Drawing.Size(139, 43);
+            this.editLocationBack.TabIndex = 129;
+            this.editLocationBack.Text = "Back";
+            this.editLocationBack.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.editLocationBack.UseVisualStyleBackColor = false;
+            this.editLocationBack.Click += new System.EventHandler(this.editLocationBack_Click);
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label79.Location = new System.Drawing.Point(17, 584);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(1444, 35);
+            this.label79.TabIndex = 157;
+            this.label79.Text = "Attention if you delete this location all its information and other locations rel" +
+    "ated to it will be deleted and can\'t be restored";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label83.Location = new System.Drawing.Point(9, 30);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(624, 100);
+            this.label83.TabIndex = 153;
+            this.label83.Text = "Manage Location";
+            // 
+            // countryGroupBox
+            // 
+            this.countryGroupBox.Controls.Add(this.label73);
+            this.countryGroupBox.Controls.Add(this.editContErrorLbl);
+            this.countryGroupBox.Controls.Add(this.editContNameTxt);
+            this.countryGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.countryGroupBox.Name = "countryGroupBox";
+            this.countryGroupBox.Size = new System.Drawing.Size(707, 150);
+            this.countryGroupBox.TabIndex = 147;
+            this.countryGroupBox.TabStop = false;
+            this.countryGroupBox.Text = "Country";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.BackColor = System.Drawing.Color.Transparent;
+            this.label73.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.Location = new System.Drawing.Point(20, 24);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(243, 51);
+            this.label73.TabIndex = 111;
+            this.label73.Text = "Country Name:";
+            this.label73.UseCompatibleTextRendering = true;
+            // 
+            // editContErrorLbl
+            // 
+            this.editContErrorLbl.AutoSize = true;
+            this.editContErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.editContErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editContErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editContErrorLbl.Location = new System.Drawing.Point(278, 64);
+            this.editContErrorLbl.Name = "editContErrorLbl";
+            this.editContErrorLbl.Size = new System.Drawing.Size(429, 44);
+            this.editContErrorLbl.TabIndex = 132;
+            this.editContErrorLbl.Text = "Error: Country already Exist";
+            this.editContErrorLbl.Visible = false;
+            // 
+            // editContNameTxt
+            // 
+            this.editContNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editContNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editContNameTxt.Location = new System.Drawing.Point(20, 57);
+            this.editContNameTxt.Name = "editContNameTxt";
+            this.editContNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.editContNameTxt.TabIndex = 109;
+            this.editContNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            // 
+            // cityGroupBox
+            // 
+            this.cityGroupBox.Controls.Add(this.label75);
+            this.cityGroupBox.Controls.Add(this.editCitytNameTxt);
+            this.cityGroupBox.Controls.Add(this.editCityErrorLbl);
+            this.cityGroupBox.Controls.Add(this.label77);
+            this.cityGroupBox.Controls.Add(this.editConDrop);
+            this.cityGroupBox.Location = new System.Drawing.Point(3, 402);
+            this.cityGroupBox.Name = "cityGroupBox";
+            this.cityGroupBox.Size = new System.Drawing.Size(707, 155);
+            this.cityGroupBox.TabIndex = 146;
+            this.cityGroupBox.TabStop = false;
+            this.cityGroupBox.Text = "City";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.BackColor = System.Drawing.Color.Transparent;
+            this.label75.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(20, 29);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(180, 51);
+            this.label75.TabIndex = 117;
+            this.label75.Text = "City Name:";
+            this.label75.UseCompatibleTextRendering = true;
+            // 
+            // editLocationSave
+            // 
+            this.editLocationSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.editLocationSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.editLocationSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.editLocationSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editLocationSave.ForeColor = System.Drawing.Color.White;
+            this.editLocationSave.Location = new System.Drawing.Point(148, 3);
+            this.editLocationSave.Name = "editLocationSave";
+            this.editLocationSave.Size = new System.Drawing.Size(139, 43);
+            this.editLocationSave.TabIndex = 119;
+            this.editLocationSave.Text = "Save Edits";
+            this.editLocationSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.editLocationSave.UseVisualStyleBackColor = false;
+            this.editLocationSave.Click += new System.EventHandler(this.editLocationSave_Click);
+            // 
+            // editCitytNameTxt
+            // 
+            this.editCitytNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editCitytNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCitytNameTxt.Location = new System.Drawing.Point(20, 62);
+            this.editCitytNameTxt.Name = "editCitytNameTxt";
+            this.editCitytNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.editCitytNameTxt.TabIndex = 115;
+            this.editCitytNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            // 
+            // editCityErrorLbl
+            // 
+            this.editCityErrorLbl.AutoSize = true;
+            this.editCityErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.editCityErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editCityErrorLbl.Location = new System.Drawing.Point(302, 114);
+            this.editCityErrorLbl.Name = "editCityErrorLbl";
+            this.editCityErrorLbl.Size = new System.Drawing.Size(368, 44);
+            this.editCityErrorLbl.TabIndex = 133;
+            this.editCityErrorLbl.Text = "Error: City already Exist";
+            this.editCityErrorLbl.Visible = false;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.BackColor = System.Drawing.Color.Transparent;
+            this.label77.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(293, 29);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(243, 51);
+            this.label77.TabIndex = 127;
+            this.label77.Text = "Country Name:";
+            this.label77.UseCompatibleTextRendering = true;
+            // 
+            // editConDrop
+            // 
+            this.editConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.editConDrop.FormattingEnabled = true;
+            this.editConDrop.Location = new System.Drawing.Point(293, 61);
+            this.editConDrop.Name = "editConDrop";
+            this.editConDrop.Size = new System.Drawing.Size(246, 52);
+            this.editConDrop.TabIndex = 130;
+            // 
+            // AirportGroupBox
+            // 
+            this.AirportGroupBox.Controls.Add(this.label78);
+            this.AirportGroupBox.Controls.Add(this.editAirportConDrop);
+            this.AirportGroupBox.Controls.Add(this.editAirportNameTxt);
+            this.AirportGroupBox.Controls.Add(this.label80);
+            this.AirportGroupBox.Controls.Add(this.editAirportLongitudeTxt);
+            this.AirportGroupBox.Controls.Add(this.label81);
+            this.AirportGroupBox.Controls.Add(this.label82);
+            this.AirportGroupBox.Controls.Add(this.editAirportCityDrop);
+            this.AirportGroupBox.Controls.Add(this.editAirportLatitudeTxt);
+            this.AirportGroupBox.Controls.Add(this.editAirportErrorLbl);
+            this.AirportGroupBox.Controls.Add(this.label85);
+            this.AirportGroupBox.Location = new System.Drawing.Point(3, 159);
+            this.AirportGroupBox.Name = "AirportGroupBox";
+            this.AirportGroupBox.Size = new System.Drawing.Size(707, 237);
+            this.AirportGroupBox.TabIndex = 145;
+            this.AirportGroupBox.TabStop = false;
+            this.AirportGroupBox.Text = "Airport";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.BackColor = System.Drawing.Color.Transparent;
+            this.label78.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(20, 24);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(231, 51);
+            this.label78.TabIndex = 123;
+            this.label78.Text = "Airport Name:";
+            this.label78.UseCompatibleTextRendering = true;
+            // 
+            // editAirportConDrop
+            // 
+            this.editAirportConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editAirportConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.editAirportConDrop.FormattingEnabled = true;
+            this.editAirportConDrop.Location = new System.Drawing.Point(293, 57);
+            this.editAirportConDrop.Name = "editAirportConDrop";
+            this.editAirportConDrop.Size = new System.Drawing.Size(246, 52);
+            this.editAirportConDrop.TabIndex = 141;
+            this.editAirportConDrop.SelectedIndexChanged += new System.EventHandler(this.editAirportConDrop_SelectedIndexChanged);
+            // 
+            // editAirportNameTxt
+            // 
+            this.editAirportNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editAirportNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportNameTxt.Location = new System.Drawing.Point(20, 57);
+            this.editAirportNameTxt.Name = "editAirportNameTxt";
+            this.editAirportNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.editAirportNameTxt.TabIndex = 121;
+            this.editAirportNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.BackColor = System.Drawing.Color.Transparent;
+            this.label80.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.Location = new System.Drawing.Point(293, 25);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(243, 51);
+            this.label80.TabIndex = 140;
+            this.label80.Text = "Country Name:";
+            this.label80.UseCompatibleTextRendering = true;
+            // 
+            // editAirportLongitudeTxt
+            // 
+            this.editAirportLongitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editAirportLongitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportLongitudeTxt.Location = new System.Drawing.Point(494, 146);
+            this.editAirportLongitudeTxt.Name = "editAirportLongitudeTxt";
+            this.editAirportLongitudeTxt.Size = new System.Drawing.Size(175, 51);
+            this.editAirportLongitudeTxt.TabIndex = 138;
+            this.editAirportLongitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.BackColor = System.Drawing.Color.Transparent;
+            this.label81.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Location = new System.Drawing.Point(20, 113);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(180, 51);
+            this.label81.TabIndex = 129;
+            this.label81.Text = "City Name:";
+            this.label81.UseCompatibleTextRendering = true;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.BackColor = System.Drawing.Color.Transparent;
+            this.label82.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.Location = new System.Drawing.Point(494, 113);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(175, 51);
+            this.label82.TabIndex = 139;
+            this.label82.Text = "Longitude:";
+            this.label82.UseCompatibleTextRendering = true;
+            // 
+            // editAirportCityDrop
+            // 
+            this.editAirportCityDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editAirportCityDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.editAirportCityDrop.FormattingEnabled = true;
+            this.editAirportCityDrop.Location = new System.Drawing.Point(20, 145);
+            this.editAirportCityDrop.Name = "editAirportCityDrop";
+            this.editAirportCityDrop.Size = new System.Drawing.Size(246, 52);
+            this.editAirportCityDrop.TabIndex = 131;
+            // 
+            // editAirportLatitudeTxt
+            // 
+            this.editAirportLatitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editAirportLatitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportLatitudeTxt.Location = new System.Drawing.Point(293, 146);
+            this.editAirportLatitudeTxt.Name = "editAirportLatitudeTxt";
+            this.editAirportLatitudeTxt.Size = new System.Drawing.Size(175, 51);
+            this.editAirportLatitudeTxt.TabIndex = 136;
+            this.editAirportLatitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
+            // 
+            // editAirportErrorLbl
+            // 
+            this.editAirportErrorLbl.AutoSize = true;
+            this.editAirportErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.editAirportErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editAirportErrorLbl.Location = new System.Drawing.Point(178, 196);
+            this.editAirportErrorLbl.Name = "editAirportErrorLbl";
+            this.editAirportErrorLbl.Size = new System.Drawing.Size(418, 44);
+            this.editAirportErrorLbl.TabIndex = 134;
+            this.editAirportErrorLbl.Text = "Error: Airport already Exist";
+            this.editAirportErrorLbl.Visible = false;
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.BackColor = System.Drawing.Color.Transparent;
+            this.label85.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label85.Location = new System.Drawing.Point(293, 113);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(149, 51);
+            this.label85.TabIndex = 137;
+            this.label85.Text = "Latitude:";
+            this.label85.UseCompatibleTextRendering = true;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.countryGroupBox);
+            this.flowLayoutPanel5.Controls.Add(this.AirportGroupBox);
+            this.flowLayoutPanel5.Controls.Add(this.cityGroupBox);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(13, 123);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(724, 458);
+            this.flowLayoutPanel5.TabIndex = 161;
             // 
             // AdminTabs
             // 
@@ -3054,6 +3650,24 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flightsDataGridView)).EndInit();
             this.tabControler.ResumeLayout(false);
+            this.veAirCouCity.ResumeLayout(false);
+            this.veAirCouCity.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.countriesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.airportsDataGridView)).EndInit();
+            this.viewLocation.ResumeLayout(false);
+            this.viewLocation.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.countryGroupBox.ResumeLayout(false);
+            this.countryGroupBox.PerformLayout();
+            this.cityGroupBox.ResumeLayout(false);
+            this.cityGroupBox.PerformLayout();
+            this.AirportGroupBox.ResumeLayout(false);
+            this.AirportGroupBox.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3122,7 +3736,7 @@ namespace HappyJourneyAirline.Tabs
      MessageBoxIcon.Error);
                 return;
             }
-        cfArrTimePick.Format = DateTimePickerFormat.Time;
+            cfArrTimePick.Format = DateTimePickerFormat.Time;
             cfDatePick.Value = DateTime.Now.Date + TimeSpan.FromDays(7);
 
             cfArrTimePick.ShowUpDown = true;
@@ -3137,7 +3751,7 @@ namespace HappyJourneyAirline.Tabs
 
             cfDepDrop_SelectedIndexChanged(null, null);
             tabControler.SelectTab(5);
-    
+
         }
 
         private void cuCancelBtn_Click(object sender, EventArgs e)
@@ -3175,13 +3789,17 @@ namespace HappyJourneyAirline.Tabs
 
         private void addAirCityCouBtn_Click(object sender, EventArgs e)
         {
+            setupViewAirCityCou();
+            tabControler.SelectTab(10);
+        }
+        private void addAirCityCouBtn_Click_1(object sender, EventArgs e)
+        {
             setupAddAirCityCou();
             tabControler.SelectTab(8);
         }
-
         private void addBackBtn_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab(0);
+            tabControler.SelectTab(10);
         }
 
 
@@ -3391,6 +4009,15 @@ namespace HappyJourneyAirline.Tabs
             addAirportConDrop_SelectedIndexChanged(null, null);
             addLoadCities();
 
+            addContNameTxt.Text = string.Empty;
+            addCitytNameTxt.Text = string.Empty;
+            addAirportNameTxt.Text = string.Empty;
+            addAirportLatitudeTxt.Text = string.Empty;
+            addAirportLongitudeTxt.Text = string.Empty;
+
+            addContErrorLbl.Visible = false;
+            addCityErrorLbl.Visible = false;
+            addAirportErrorLbl.Visible = false;
         }
         private void addLoadCountries()
         {
@@ -3416,22 +4043,43 @@ namespace HappyJourneyAirline.Tabs
             addAirportCityDrop.DataSource = cities;
             addAirportCityDrop.DisplayMember = "Name";
         }
-        private void addAddCountryBtn_Click(object sender, EventArgs e)
+
+        private void validateCountry(TextBox nameTextBox, Label errorLabel,  out bool isValid, out string countryName)
         {
-            string name = addContNameTxt.Text.Trim();
+            isValid = false;
+            countryName = null;
+
+            string name = nameTextBox.Text.Trim();
 
             if (name.Length == 0)
             {
-                ShowError(addContErrorLbl, "Error: Invalid country name");
+                ShowError(errorLabel, "Error: Invalid country name");
                 return;
             }
 
-
-            if (countries.Any(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
+            if (nameTextBox == addCitytNameTxt)
             {
-                ShowError(addContErrorLbl, "Error: Country already Exist");
-                return;
+                if (countries.Any(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    ShowError(errorLabel, "Error: Country already Exist");
+                    return;
+                }
             }
+            ShowError(errorLabel, string.Empty);
+
+            isValid = true;
+            countryName = name;
+            return;
+        }
+        private void addAddCountryBtn_Click(object sender, EventArgs e)
+        {
+            bool isValid = false;
+            string countryName = null;
+
+            validateCountry(addContNameTxt, addContErrorLbl, out isValid, out countryName);
+
+            if (!isValid) { return; }
+
 
             ShowError(addContErrorLbl, string.Empty);
 
@@ -3453,31 +4101,55 @@ namespace HappyJourneyAirline.Tabs
             }
 
         }
-        private void addAddCityBtn_Click(object sender, EventArgs e)
-        {
-            var cityName = addCitytNameTxt.Text.Trim();
-            var country = addConDrop.SelectedItem as Country;
 
-            if (string.IsNullOrEmpty(cityName))
+       private void validateCity(TextBox nameTextBox, Label errorLabel, ComboBox countryComboBox, out bool isValid, out string cityName, out long? countryId)
+        {
+            isValid = false;
+            cityName = null;
+            countryId = null;
+
+            string inCityName = nameTextBox.Text.Trim();
+            Country country = countryComboBox.SelectedItem as Country;
+
+            if (string.IsNullOrEmpty(inCityName))
             {
-                ShowError(addCityErrorLbl, "Error: Invalid city name");
+                ShowError(errorLabel, "Error: Invalid city name");
                 return;
             }
 
             if (country == null)
             {
-                ShowError(addCityErrorLbl, "Error: Invalid country name");
+                ShowError(errorLabel, "Error: Invalid country name");
                 return;
             }
 
-            if (cities.Any(c => c.Name.Equals(cityName, StringComparison.OrdinalIgnoreCase) && c.CountryId == country.Id))
+            if (nameTextBox == addCitytNameTxt)
             {
-                ShowError(addCityErrorLbl, "Error: City already exists");
-                return;
+                if (cities.Any(c => c.Name.Equals(inCityName, StringComparison.OrdinalIgnoreCase) && c.CountryId == country.Id))
+                {
+                    ShowError(addCityErrorLbl, "Error: City already exists");
+                    return;
+                }
             }
+            isValid = true;
+            cityName = inCityName;
+            countryId = country.Id;
+            return;
+        }
+        private void addAddCityBtn_Click(object sender, EventArgs e)
+        {
+
+            bool isValid = false;
+            string cityName = string.Empty;
+            long? countryId = null;
+
+            validateCity(addCitytNameTxt, addCityErrorLbl, addConDrop, out isValid, out cityName, out countryId);
+
+            if (!isValid) { return; }
+
             ShowError(addCityErrorLbl, string.Empty); // Hide error
 
-            bool result = City.AddCity(new City { Name = cityName, CountryId = country.Id });
+            bool result = City.AddCity(new City { Name = cityName, CountryId = (long)countryId });
 
             if (!result)
             {
@@ -3504,92 +4176,124 @@ namespace HappyJourneyAirline.Tabs
                 addAirportCityDrop.DisplayMember = "Name";
             }
         }
-        private void addAddAirportBtn_Click(object sender, EventArgs e)
+
+        private void validateAirport(TextBox nameTextBox, Label errorLabel, ComboBox countryComboBox, ComboBox cityComboBox, TextBox latitudeTextBox, TextBox longitudeTextBox,
+            out bool isValid, out string airportName, out long? airportCityId, out decimal? airportLatitude, out decimal? airportLongitude)
         {
-            string name = addAirportNameTxt.Text.Trim();
+            isValid = false;
+            airportName = null;
+            airportCityId = null;
+            airportLatitude = null;
+            airportLongitude = null;
+
+            string name = nameTextBox.Text.Trim();
             if (name.Length == 0)
             {
-                ShowError(addAirportErrorLbl, "Error: Airport name cannot be empty");
+                ShowError(errorLabel, "Error: Airport name cannot be empty");
                 return;
             }
 
             if (!name.Any(c => char.IsLetter(c)))
             {
-                ShowError(addAirportErrorLbl, "Error: Airport name must contain at least one letter");
+                ShowError(errorLabel, "Error: Airport name must contain at least one letter");
                 return;
             }
 
-            Country country = addAirportConDrop.SelectedItem as Country;
-            City city = addAirportCityDrop.SelectedItem as City;
+            Country country = countryComboBox.SelectedItem as Country;
+            City city = cityComboBox.SelectedItem as City;
 
             if (country == null)
             {
-                ShowError(addAirportErrorLbl, "Error: Invalid country name");
+                ShowError(errorLabel, "Error: Invalid country name");
                 return;
             }
 
             if (city == null)
             {
-                ShowError(addAirportErrorLbl, "Error: Invalid city name");
+                ShowError(errorLabel, "Error: Invalid city name");
                 return;
             }
-
-            if (Airport.GetAirportsByCityId(city.Id).Any(a =>
-                    a.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
-                    ))
+            
+            if (nameTextBox == addAirportNameTxt)
             {
-                ShowError(addAirportErrorLbl, "Error: Airport Already exists");
-                return;
+                if (Airport.GetAirportsByCityId(city.Id).Any(a =>
+        a.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
+        ))
+                {
+                    ShowError(errorLabel, "Error: Airport Already exists");
+                    return;
+                }
             }
 
             decimal la = 0;
             decimal lo = 0;
 
-            string laText = addAirportLatitudeTxt.Text.Trim();
-            string loText = addAirportLongitudeTxt.Text.Trim();
+            string laText = latitudeTextBox.Text.Trim();
+            string loText = longitudeTextBox.Text.Trim();
 
             if (laText.Length == 0 || loText.Length == 0)
             {
-                ShowError(addAirportErrorLbl, "Error: latitude and longitude coordinates are not provided");
+                ShowError(errorLabel, "Error: latitude and longitude coordinates are not provided");
                 return;
             }
 
             try
             {
-                la = decimal.Parse(addAirportLatitudeTxt.Text.Trim());
-                lo = decimal.Parse(addAirportLongitudeTxt.Text.Trim());
+                la = decimal.Parse(laText);
+                lo = decimal.Parse(loText);
             }
             catch
             {
-                ShowError(addAirportErrorLbl, "Error: numbers are too big");
+                ShowError(errorLabel, "Error: numbers are too big");
                 return;
             }
 
             if (la < -90 || la > 90)
             {
-                ShowError(addAirportErrorLbl, "Error: Latitude range should be between -90 and 90");
+                ShowError(errorLabel, "Error: Latitude range should be between -90 and 90");
                 return;
             }
 
             if (lo < -180 || lo > 180)
             {
-                ShowError(addAirportErrorLbl, "Error: Longitude range should be between -180 and 180");
+                ShowError(errorLabel, "Error: Longitude range should be between -180 and 180");
                 return;
             }
 
-            ShowError(addAirportErrorLbl, string.Empty);
+            isValid = true;
+            airportName = nameTextBox.Text.Trim();
+            airportCityId = city.Id;
+            airportLatitude = la;
+            airportLongitude = lo;
+        }
+        private void addAddAirportBtn_Click(object sender, EventArgs e)
+        {
+            bool isValid = false ;
+            string airportName = string.Empty;
+            long? airportCityId = 0;
+            decimal? airportLatitude = 0; 
+            decimal? airportLongitude = 0;
 
-            int result = Airport.AddAirport(new Airport
-            {
-                Name = name,
-                CityId = city.Id,
-                Latitude = la,
-                Longitude = lo
-            });
+            validateAirport(addAirportNameTxt, addAirportErrorLbl, addAirportConDrop, addAirportCityDrop, addAirportLatitudeTxt,
+                addAirportLongitudeTxt, out isValid, out airportName, out airportCityId, out airportLatitude, out airportLongitude);
 
-            if (result == -1)
+
+            if (isValid)
             {
-                MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(addAirportErrorLbl, string.Empty);
+
+                int result = Airport.AddAirport(new Airport
+                {
+                    Name = airportName,
+                    CityId = (long) airportCityId,
+                    Latitude = (decimal) airportLatitude,
+                    Longitude = (decimal) airportLongitude
+                });
+
+                if (result == -1)
+                {
+                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         #endregion
@@ -3605,6 +4309,10 @@ namespace HappyJourneyAirline.Tabs
             cfStatusDrop.DataSource = FlightStatus.GetAllFlightStatuses();
             cfStatusDrop.DisplayMember = "Name";
             cfStatusDrop.SelectedIndex = 0;
+
+            cfTimeErrorLbl.Visible = false;
+            cfAirportsErrorLbl.Visible = false;
+            cfPriceErrorLbl.Visible = false;
 
             cfLoadPlanes();
             cfLoadAirports();
@@ -3833,7 +4541,7 @@ namespace HappyJourneyAirline.Tabs
                 e.Handled = true;
             }
         }
-       // for airport name
+        // for airport name
         private void txtOnlyDotUnderscore_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsControl(e.KeyChar))
@@ -3888,7 +4596,6 @@ namespace HappyJourneyAirline.Tabs
         #region users screen
         private void setupUsers()
         {
-            //usersDataGridView.SelectionMode = DataGridViewSelectionMode;
             users = new BindingList<User>(User.GetAllUsers());
 
             usersDataGridView.DataSource = users;
@@ -3992,7 +4699,7 @@ namespace HappyJourneyAirline.Tabs
 
         private void usersDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            foreach (DataGridViewRow row in usersDataGridView.Rows)
+            foreach (DataGridViewRow row in (sender as DataGridView).Rows)
             {
                 row.Cells[0].Value = "Edit";
             }
@@ -4015,6 +4722,14 @@ namespace HappyJourneyAirline.Tabs
             cuCoumpanyNameTxt.Text = string.Empty;
             cuEmailTxt.Text = string.Empty;
             cuPhoneTxt.Text = string.Empty;
+
+
+            cuUserNameErrorLbl.Visible = false;
+            cuPasswordErrorLbl.Visible = false;
+            cuFCoumpanyNameErrorLbl.Visible = false;
+            cuLNameErrorLbl.Visible = false;
+            cuEmailErrorLbl.Visible = false;
+            cuPhoneNumberErrorLbl.Visible = false;
 
             cuUserTypeDrop_SelectedIndexChanged(null, null);
         }
@@ -4175,10 +4890,195 @@ namespace HappyJourneyAirline.Tabs
 
 
 
+
+
         #endregion create user screen
 
         #endregion users screen
 
+        private void setupViewAirCityCou()
+        {
+            countries = new BindingList<Country>( Country.GetAllCountries());
+            countriesDataGridView.DataSource = countries;
 
+            cities = new BindingList<City>(City.GetAllCities());
+            citiesDataGridView.DataSource = cities;
+
+            airports = new BindingList<Airport>(Airport.GetAllAirports());
+            airportsDataGridView.DataSource = airports;
+        }
+
+        private void citiesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                selectedCity = citiesDataGridView.Rows[e.RowIndex].DataBoundItem as City;
+                cityGroupBox.Visible = true;
+                countryGroupBox.Visible = false;
+                AirportGroupBox.Visible = false;
+
+                editCitytNameTxt.Text = selectedCity.Name;
+                countries = new BindingList<Country>(Country.GetAllCountries());
+                editConDrop.DataSource = countries;
+                editConDrop.DisplayMember = "Name";
+                editConDrop.SelectedItem = countries.First(c => c.Id == selectedCity.CountryId);
+                tabControler.SelectTab(11);
+            }
+        }
+
+        private void airportsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                selectedAirport = airportsDataGridView.Rows[e.RowIndex].DataBoundItem as Airport;
+                cityGroupBox.Visible = false;
+                countryGroupBox.Visible = false;
+                AirportGroupBox.Visible = true;
+
+                editAirportNameTxt.Text = selectedAirport.Name;
+
+                City city = City.GetCityById(selectedAirport.CityId);
+                cities = new BindingList<City>(City.GetCitiesByCountryId(city.CountryId));
+                editAirportCityDrop.DataSource = cities;
+                editAirportCityDrop.DisplayMember = "Name";
+                editAirportCityDrop.SelectedItem = cities.First(c => c.Id == selectedAirport.CityId);
+
+                countries = new BindingList<Country>(Country.GetAllCountries());
+                editAirportConDrop.DataSource = countries;
+                editAirportConDrop.DisplayMember = "Name";
+                editAirportConDrop.SelectedItem = countries.First(c => c.Id == city.CountryId);
+
+                editAirportLatitudeTxt.Text = $"{selectedAirport.Latitude}";
+                editAirportLongitudeTxt.Text = $"{selectedAirport.Longitude}";
+
+                tabControler.SelectTab(11);
+            }
+        }
+
+        private void editLocationBack_Click(object sender, EventArgs e)
+        {
+            tabControler.SelectTab(10);
+            selectedAirport = null;
+            selectedCity = null;
+            selectedCountry = null;
+        }
+
+        private void countriesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                selectedCountry = countriesDataGridView.Rows[e.RowIndex].DataBoundItem as Country;
+                cityGroupBox.Visible = false;
+                countryGroupBox.Visible = true;
+                AirportGroupBox.Visible = false;
+
+                editContNameTxt.Text = selectedCountry.Name;
+                tabControler.SelectTab(11);
+            }
+        }
+
+        private void editLocationSave_Click(object sender, EventArgs e)
+        {
+            if (AirportGroupBox.Visible)
+            {
+                bool isValid = false;
+                string airportName = string.Empty;
+                long? airportCityId = 0;
+                decimal? airportLatitude = 0;
+                decimal? airportLongitude = 0;
+
+                validateAirport(editAirportNameTxt, editAirportErrorLbl, editAirportConDrop, editAirportCityDrop, editAirportLatitudeTxt,
+                    editAirportLongitudeTxt, out isValid, out airportName, out airportCityId, out airportLatitude, out airportLongitude);
+
+
+                if (!isValid) { return; }
+                
+                    ShowError(editAirportErrorLbl, string.Empty);
+
+                    selectedAirport.Name = airportName;
+                    selectedAirport.CityId = (long)airportCityId;
+                    selectedAirport.Latitude = (decimal)airportLatitude;
+                    selectedAirport.Longitude = (decimal)airportLongitude;
+
+                    bool result = Airport.UpdateAirport(selectedAirport);
+
+                    if (!result)
+                    {
+                        MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                else
+                {
+                    tabControler.SelectTab(10);
+
+                }
+            }
+            else if (cityGroupBox.Visible)
+            {
+                bool isValid = false;
+                string cityName = string.Empty;
+                long? countryId = null;
+
+                validateCity(editCitytNameTxt, editCityErrorLbl, editConDrop, out isValid, out cityName, out countryId);
+
+                if (!isValid) { return; }
+
+                ShowError(editCityErrorLbl, string.Empty); // Hide error
+
+                selectedCity.Name = cityName;
+                selectedCity.CountryId = (long) countryId;
+
+                bool result = City.UpdateCity(selectedCity);
+
+                if (!result)
+                {
+                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    tabControler.SelectTab(10);
+                }
+            }
+            else
+            {
+                bool isValid = false;
+                string countryName = null;
+
+                validateCountry(editContNameTxt, editContErrorLbl,  out isValid, out countryName);
+
+                if (!isValid) { return; }
+
+                ShowError(editContErrorLbl, string.Empty);
+
+                selectedCountry.Name = countryName;
+
+                bool result = Country.UpdateCountry(selectedCountry);
+
+                if (!result)
+                {
+                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    tabControler.SelectTab(10);
+                }
+
+            }
+        }
+
+        private void editAirportConDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Country c = editAirportConDrop.SelectedItem as Country;
+            if (c == null)
+            {
+                Console.WriteLine("No country selected.");
+            }
+            else
+            {
+                cities = new BindingList<City>(City.GetAllCities());
+                addAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
+                addAirportCityDrop.DisplayMember = "Name";
+            }
+
+        }
     }
 }
