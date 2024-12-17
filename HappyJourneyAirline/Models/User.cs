@@ -147,7 +147,7 @@ namespace HappyJourneyAirline.Models
             };
             var result = Database.Instance.Query(query, parameters, reader => new User
             {
-                Id = reader.GetInt32(0),
+                Id = reader.GetInt64(0),
                 FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 LastName = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null,
                 Username = reader.GetString(3),
