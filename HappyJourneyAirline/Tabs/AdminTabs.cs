@@ -3907,7 +3907,8 @@ namespace HappyJourneyAirline.Tabs
                 efStatusDrop.Enabled = true;
                 efEditBtn.Visible = true;
                 efDeleteBtn.Visible = false;
-            } else
+            }
+            else
             {
                 efDepTimePick.Enabled = false;
                 efPlaneIdDrop.Enabled = false;
@@ -4002,50 +4003,230 @@ namespace HappyJourneyAirline.Tabs
 
         #endregion edit flight
 
-
-        #region Add [Country, City, Airport]
-        private void setupAddAirCityCou()
-        {
-            addLoadCountries();
-            addAirportConDrop_SelectedIndexChanged(null, null);
-            addLoadCities();
-
-            addContNameTxt.Text = string.Empty;
-            addCitytNameTxt.Text = string.Empty;
-            addAirportNameTxt.Text = string.Empty;
-            addAirportLatitudeTxt.Text = string.Empty;
-            addAirportLongitudeTxt.Text = string.Empty;
-
-            addContErrorLbl.Visible = false;
-            addCityErrorLbl.Visible = false;
-            addAirportErrorLbl.Visible = false;
-        }
-        private void addLoadCountries()
+        #region View [Airport, Country, City]
+        private void setupViewAirCityCou()
         {
             countries = new BindingList<Country>(Country.GetAllCountries());
+            countriesDataGridView.DataSource = countries;
 
-            BindingSource source1 = new BindingSource();
-
-            BindingSource source2 = new BindingSource();
-
-            source2.DataSource = countries;
-            source1.DataSource = countries;
-
-            addConDrop.DataSource = source1;
-            addConDrop.DisplayMember = "Name";
-
-            addAirportConDrop.DataSource = source2;
-            addAirportConDrop.DisplayMember = "Name";
-        }
-        private void addLoadCities()
-        {
             cities = new BindingList<City>(City.GetAllCities());
+            citiesDataGridView.DataSource = cities;
 
-            addAirportCityDrop.DataSource = cities;
-            addAirportCityDrop.DisplayMember = "Name";
+            airports = new BindingList<Airport>(Airport.GetAllAirports());
+            airportsDataGridView.DataSource = airports;
+        }
+        private void citiesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                selectedCity = citiesDataGridView.Rows[e.RowIndex].DataBoundItem as City;
+                cityGroupBox.Visible = true;
+                countryGroupBox.Visible = false;
+                AirportGroupBox.Visible = false;
+
+                editCitytNameTxt.Text = selectedCity.Name;
+                countries = new BindingList<Country>(Country.GetAllCountries());
+                editConDrop.DataSource = countries;
+                editConDrop.DisplayMember = "Name";
+                editConDrop.SelectedItem = countries.First(c => c.Id == selectedCity.CountryId);
+                tabControler.SelectTab(11);
+            }
+        }
+        private void airportsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                selectedAirport = airportsDataGridView.Rows[e.RowIndex].DataBoundItem as Airport;
+                cityGroupBox.Visible = false;
+                countryGroupBox.Visible = false;
+                AirportGroupBox.Visible = true;
+
+                editAirportNameTxt.Text = selectedAirport.Name;
+
+                City city = City.GetCityById(selectedAirport.CityId);
+                cities = new BindingList<City>(City.GetCitiesByCountryId(city.CountryId));
+                editAirportCityDrop.DataSource = cities;
+                editAirportCityDrop.DisplayMember = "Name";
+                editAirportCityDrop.SelectedItem = cities.First(c => c.Id == selectedAirport.CityId);
+
+                countries = new BindingList<Country>(Country.GetAllCountries());
+                editAirportConDrop.DataSource = countries;
+                editAirportConDrop.DisplayMember = "Name";
+                editAirportConDrop.SelectedItem = countries.First(c => c.Id == city.CountryId);
+
+                editAirportLatitudeTxt.Text = $"{selectedAirport.Latitude}";
+                editAirportLongitudeTxt.Text = $"{selectedAirport.Longitude}";
+
+                tabControler.SelectTab(11);
+            }
+        }
+        private void countriesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                selectedCountry = countriesDataGridView.Rows[e.RowIndex].DataBoundItem as Country;
+                cityGroupBox.Visible = false;
+                countryGroupBox.Visible = true;
+                AirportGroupBox.Visible = false;
+
+                editContNameTxt.Text = selectedCountry.Name;
+                tabControler.SelectTab(11);
+            }
         }
 
-        private void validateCountry(TextBox nameTextBox, Label errorLabel,  out bool isValid, out string countryName)
+        #endregion View [Airport, Country, City]
+
+        #region Edit [Airport, Country, City]
+
+        private void editLocationBack_Click(object sender, EventArgs e)
+        {
+            tabControler.SelectTab(10);
+            selectedAirport = null;
+            selectedCity = null;
+            selectedCountry = null;
+        }
+
+        private void editLocationSave_Click(object sender, EventArgs e)
+        {
+            if (AirportGroupBox.Visible)
+            {
+                bool isValid = false;
+                string airportName = string.Empty;
+                long? airportCityId = 0;
+                decimal? airportLatitude = 0;
+                decimal? airportLongitude = 0;
+
+                validateAirport(editAirportNameTxt, editAirportErrorLbl, editAirportConDrop, editAirportCityDrop, editAirportLatitudeTxt,
+                    editAirportLongitudeTxt, out isValid, out airportName, out airportCityId, out airportLatitude, out airportLongitude);
+
+
+                if (!isValid) { return; }
+
+                ShowError(editAirportErrorLbl, string.Empty);
+
+                selectedAirport.Name = airportName;
+                selectedAirport.CityId = (long)airportCityId;
+                selectedAirport.Latitude = (decimal)airportLatitude;
+                selectedAirport.Longitude = (decimal)airportLongitude;
+
+                bool result = Airport.UpdateAirport(selectedAirport);
+
+                if (!result)
+                {
+                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    tabControler.SelectTab(10);
+
+                }
+            }
+            else if (cityGroupBox.Visible)
+            {
+                bool isValid = false;
+                string cityName = string.Empty;
+                long? countryId = null;
+
+                validateCity(editCitytNameTxt, editCityErrorLbl, editConDrop, out isValid, out cityName, out countryId);
+
+                if (!isValid) { return; }
+
+                ShowError(editCityErrorLbl, string.Empty); // Hide error
+
+                selectedCity.Name = cityName;
+                selectedCity.CountryId = (long)countryId;
+
+                bool result = City.UpdateCity(selectedCity);
+
+                if (!result)
+                {
+                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    tabControler.SelectTab(10);
+                }
+            }
+            else
+            {
+                bool isValid = false;
+                string countryName = null;
+
+                validateCountry(editContNameTxt, editContErrorLbl, out isValid, out countryName);
+
+                if (!isValid) { return; }
+
+                ShowError(editContErrorLbl, string.Empty);
+
+                selectedCountry.Name = countryName;
+
+                bool result = Country.UpdateCountry(selectedCountry);
+
+                if (!result)
+                {
+                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    tabControler.SelectTab(10);
+                }
+
+            }
+        }
+
+        private void editAirportConDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Country c = editAirportConDrop.SelectedItem as Country;
+            if (c == null)
+            {
+                Console.WriteLine("No country selected.");
+            }
+            else
+            {
+                cities = new BindingList<City>(City.GetAllCities());
+                addAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
+                addAirportCityDrop.DisplayMember = "Name";
+            }
+
+        }
+
+        private void editLocationDelete_Click(object sender, EventArgs e)
+        {
+            bool result = false;
+
+            DialogResult r = MessageBox.Show("Attention if you delete this location all its information and other locations related to it will be deleted and can't be restored", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (r == DialogResult.OK)
+            {
+
+                if (AirportGroupBox.Visible)
+                {
+                    result = Airport.DeleteAirport(selectedAirport.Id);
+                }
+                else if (cityGroupBox.Visible)
+                {
+                    result = City.DeleteCity(selectedCity.Id);
+                }
+                else
+                {
+                    result = Country.DeleteCountry(selectedCountry.Id);
+                }
+
+
+                if (!result)
+                {
+                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    tabControler.SelectTab(10);
+                }
+            }
+        }
+
+        #endregion Edit [Airport, Country, City]
+
+        #region [Country, City, Airport] Validation
+        private void validateCountry(TextBox nameTextBox, Label errorLabel, out bool isValid, out string countryName)
         {
             isValid = false;
             countryName = null;
@@ -4072,38 +4253,7 @@ namespace HappyJourneyAirline.Tabs
             countryName = name;
             return;
         }
-        private void addAddCountryBtn_Click(object sender, EventArgs e)
-        {
-            bool isValid = false;
-            string countryName = null;
-
-            validateCountry(addContNameTxt, addContErrorLbl, out isValid, out countryName);
-
-            if (!isValid) { return; }
-
-
-            ShowError(addContErrorLbl, string.Empty);
-
-
-            bool result = Country.AddCountry(new Country
-            {
-                Name = addContNameTxt.Text
-            });
-
-            if (!result)
-            {
-                MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                addLoadCountries();
-                addConDrop.SelectedIndex = addConDrop.Items.Count - 1;
-                addAirportConDrop.SelectedIndex = addAirportConDrop.Items.Count - 1;
-            }
-
-        }
-
-       private void validateCity(TextBox nameTextBox, Label errorLabel, ComboBox countryComboBox, out bool isValid, out string cityName, out long? countryId)
+        private void validateCity(TextBox nameTextBox, Label errorLabel, ComboBox countryComboBox, out bool isValid, out string cityName, out long? countryId)
         {
             isValid = false;
             cityName = null;
@@ -4137,49 +4287,8 @@ namespace HappyJourneyAirline.Tabs
             countryId = country.Id;
             return;
         }
-        private void addAddCityBtn_Click(object sender, EventArgs e)
-        {
-
-            bool isValid = false;
-            string cityName = string.Empty;
-            long? countryId = null;
-
-            validateCity(addCitytNameTxt, addCityErrorLbl, addConDrop, out isValid, out cityName, out countryId);
-
-            if (!isValid) { return; }
-
-            ShowError(addCityErrorLbl, string.Empty); // Hide error
-
-            bool result = City.AddCity(new City { Name = cityName, CountryId = (long)countryId });
-
-            if (!result)
-            {
-                MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                addAirportConDrop_SelectedIndexChanged(null, null);
-                addAirportCityDrop.SelectedIndex = addAirportCityDrop.Items.Count - 1;
-            }
-
-        }
-        private void addAirportConDrop_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Country c = addAirportConDrop.SelectedItem as Country;
-            if (c == null)
-            {
-                Console.WriteLine("No country selected.");
-            }
-            else
-            {
-                cities = new BindingList<City>(City.GetAllCities());
-                addAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
-                addAirportCityDrop.DisplayMember = "Name";
-            }
-        }
-
         private void validateAirport(TextBox nameTextBox, Label errorLabel, ComboBox countryComboBox, ComboBox cityComboBox, TextBox latitudeTextBox, TextBox longitudeTextBox,
-            out bool isValid, out string airportName, out long? airportCityId, out decimal? airportLatitude, out decimal? airportLongitude)
+    out bool isValid, out string airportName, out long? airportCityId, out decimal? airportLatitude, out decimal? airportLongitude)
         {
             isValid = false;
             airportName = null;
@@ -4214,7 +4323,7 @@ namespace HappyJourneyAirline.Tabs
                 ShowError(errorLabel, "Error: Invalid city name");
                 return;
             }
-            
+
             if (nameTextBox == addAirportNameTxt)
             {
                 if (Airport.GetAirportsByCityId(city.Id).Any(a =>
@@ -4267,12 +4376,130 @@ namespace HappyJourneyAirline.Tabs
             airportLatitude = la;
             airportLongitude = lo;
         }
+
+        #endregion
+
+
+        #region Add [Country, City, Airport]
+        private void setupAddAirCityCou()
+        {
+            addLoadCountries();
+            addAirportConDrop_SelectedIndexChanged(null, null);
+            addLoadCities();
+
+            addContNameTxt.Text = string.Empty;
+            addCitytNameTxt.Text = string.Empty;
+            addAirportNameTxt.Text = string.Empty;
+            addAirportLatitudeTxt.Text = string.Empty;
+            addAirportLongitudeTxt.Text = string.Empty;
+
+            addContErrorLbl.Visible = false;
+            addCityErrorLbl.Visible = false;
+            addAirportErrorLbl.Visible = false;
+        }
+        private void addLoadCountries()
+        {
+            countries = new BindingList<Country>(Country.GetAllCountries());
+
+            BindingSource source1 = new BindingSource();
+
+            BindingSource source2 = new BindingSource();
+
+            source2.DataSource = countries;
+            source1.DataSource = countries;
+
+            addConDrop.DataSource = source1;
+            addConDrop.DisplayMember = "Name";
+
+            addAirportConDrop.DataSource = source2;
+            addAirportConDrop.DisplayMember = "Name";
+        }
+        private void addLoadCities()
+        {
+            cities = new BindingList<City>(City.GetAllCities());
+
+            addAirportCityDrop.DataSource = cities;
+            addAirportCityDrop.DisplayMember = "Name";
+        }
+
+        private void addAddCountryBtn_Click(object sender, EventArgs e)
+        {
+            bool isValid = false;
+            string countryName = null;
+
+            validateCountry(addContNameTxt, addContErrorLbl, out isValid, out countryName);
+
+            if (!isValid) { return; }
+
+
+            ShowError(addContErrorLbl, string.Empty);
+
+
+            bool result = Country.AddCountry(new Country
+            {
+                Name = addContNameTxt.Text
+            });
+
+            if (!result)
+            {
+                MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                addLoadCountries();
+                addConDrop.SelectedIndex = addConDrop.Items.Count - 1;
+                addAirportConDrop.SelectedIndex = addAirportConDrop.Items.Count - 1;
+            }
+
+        }
+
+        private void addAddCityBtn_Click(object sender, EventArgs e)
+        {
+
+            bool isValid = false;
+            string cityName = string.Empty;
+            long? countryId = null;
+
+            validateCity(addCitytNameTxt, addCityErrorLbl, addConDrop, out isValid, out cityName, out countryId);
+
+            if (!isValid) { return; }
+
+            ShowError(addCityErrorLbl, string.Empty); // Hide error
+
+            bool result = City.AddCity(new City { Name = cityName, CountryId = (long)countryId });
+
+            if (!result)
+            {
+                MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                addAirportConDrop_SelectedIndexChanged(null, null);
+                addAirportCityDrop.SelectedIndex = addAirportCityDrop.Items.Count - 1;
+            }
+
+        }
+        private void addAirportConDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Country c = addAirportConDrop.SelectedItem as Country;
+            if (c == null)
+            {
+                Console.WriteLine("No country selected.");
+            }
+            else
+            {
+                cities = new BindingList<City>(City.GetAllCities());
+                addAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
+                addAirportCityDrop.DisplayMember = "Name";
+            }
+        }
+
         private void addAddAirportBtn_Click(object sender, EventArgs e)
         {
-            bool isValid = false ;
+            bool isValid = false;
             string airportName = string.Empty;
             long? airportCityId = 0;
-            decimal? airportLatitude = 0; 
+            decimal? airportLatitude = 0;
             decimal? airportLongitude = 0;
 
             validateAirport(addAirportNameTxt, addAirportErrorLbl, addAirportConDrop, addAirportCityDrop, addAirportLatitudeTxt,
@@ -4286,9 +4513,9 @@ namespace HappyJourneyAirline.Tabs
                 int result = Airport.AddAirport(new Airport
                 {
                     Name = airportName,
-                    CityId = (long) airportCityId,
-                    Latitude = (decimal) airportLatitude,
-                    Longitude = (decimal) airportLongitude
+                    CityId = (long)airportCityId,
+                    Latitude = (decimal)airportLatitude,
+                    Longitude = (decimal)airportLongitude
                 });
 
                 if (result == -1)
@@ -4889,230 +5116,10 @@ namespace HappyJourneyAirline.Tabs
             }
         }
 
-
-
-
-
         #endregion create user screen
 
         #endregion users screen
 
-        private void setupViewAirCityCou()
-        {
-            countries = new BindingList<Country>( Country.GetAllCountries());
-            countriesDataGridView.DataSource = countries;
 
-            cities = new BindingList<City>(City.GetAllCities());
-            citiesDataGridView.DataSource = cities;
-
-            airports = new BindingList<Airport>(Airport.GetAllAirports());
-            airportsDataGridView.DataSource = airports;
-        }
-
-        private void citiesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                selectedCity = citiesDataGridView.Rows[e.RowIndex].DataBoundItem as City;
-                cityGroupBox.Visible = true;
-                countryGroupBox.Visible = false;
-                AirportGroupBox.Visible = false;
-
-                editCitytNameTxt.Text = selectedCity.Name;
-                countries = new BindingList<Country>(Country.GetAllCountries());
-                editConDrop.DataSource = countries;
-                editConDrop.DisplayMember = "Name";
-                editConDrop.SelectedItem = countries.First(c => c.Id == selectedCity.CountryId);
-                tabControler.SelectTab(11);
-            }
-        }
-
-        private void airportsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                selectedAirport = airportsDataGridView.Rows[e.RowIndex].DataBoundItem as Airport;
-                cityGroupBox.Visible = false;
-                countryGroupBox.Visible = false;
-                AirportGroupBox.Visible = true;
-
-                editAirportNameTxt.Text = selectedAirport.Name;
-
-                City city = City.GetCityById(selectedAirport.CityId);
-                cities = new BindingList<City>(City.GetCitiesByCountryId(city.CountryId));
-                editAirportCityDrop.DataSource = cities;
-                editAirportCityDrop.DisplayMember = "Name";
-                editAirportCityDrop.SelectedItem = cities.First(c => c.Id == selectedAirport.CityId);
-
-                countries = new BindingList<Country>(Country.GetAllCountries());
-                editAirportConDrop.DataSource = countries;
-                editAirportConDrop.DisplayMember = "Name";
-                editAirportConDrop.SelectedItem = countries.First(c => c.Id == city.CountryId);
-
-                editAirportLatitudeTxt.Text = $"{selectedAirport.Latitude}";
-                editAirportLongitudeTxt.Text = $"{selectedAirport.Longitude}";
-
-                tabControler.SelectTab(11);
-            }
-        }
-
-        private void editLocationBack_Click(object sender, EventArgs e)
-        {
-            tabControler.SelectTab(10);
-            selectedAirport = null;
-            selectedCity = null;
-            selectedCountry = null;
-        }
-
-        private void countriesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                selectedCountry = countriesDataGridView.Rows[e.RowIndex].DataBoundItem as Country;
-                cityGroupBox.Visible = false;
-                countryGroupBox.Visible = true;
-                AirportGroupBox.Visible = false;
-
-                editContNameTxt.Text = selectedCountry.Name;
-                tabControler.SelectTab(11);
-            }
-        }
-
-        private void editLocationSave_Click(object sender, EventArgs e)
-        {
-            if (AirportGroupBox.Visible)
-            {
-                bool isValid = false;
-                string airportName = string.Empty;
-                long? airportCityId = 0;
-                decimal? airportLatitude = 0;
-                decimal? airportLongitude = 0;
-
-                validateAirport(editAirportNameTxt, editAirportErrorLbl, editAirportConDrop, editAirportCityDrop, editAirportLatitudeTxt,
-                    editAirportLongitudeTxt, out isValid, out airportName, out airportCityId, out airportLatitude, out airportLongitude);
-
-
-                if (!isValid) { return; }
-                
-                    ShowError(editAirportErrorLbl, string.Empty);
-
-                    selectedAirport.Name = airportName;
-                    selectedAirport.CityId = (long)airportCityId;
-                    selectedAirport.Latitude = (decimal)airportLatitude;
-                    selectedAirport.Longitude = (decimal)airportLongitude;
-
-                    bool result = Airport.UpdateAirport(selectedAirport);
-
-                    if (!result)
-                    {
-                        MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                else
-                {
-                    tabControler.SelectTab(10);
-
-                }
-            }
-            else if (cityGroupBox.Visible)
-            {
-                bool isValid = false;
-                string cityName = string.Empty;
-                long? countryId = null;
-
-                validateCity(editCitytNameTxt, editCityErrorLbl, editConDrop, out isValid, out cityName, out countryId);
-
-                if (!isValid) { return; }
-
-                ShowError(editCityErrorLbl, string.Empty); // Hide error
-
-                selectedCity.Name = cityName;
-                selectedCity.CountryId = (long) countryId;
-
-                bool result = City.UpdateCity(selectedCity);
-
-                if (!result)
-                {
-                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    tabControler.SelectTab(10);
-                }
-            }
-            else
-            {
-                bool isValid = false;
-                string countryName = null;
-
-                validateCountry(editContNameTxt, editContErrorLbl,  out isValid, out countryName);
-
-                if (!isValid) { return; }
-
-                ShowError(editContErrorLbl, string.Empty);
-
-                selectedCountry.Name = countryName;
-
-                bool result = Country.UpdateCountry(selectedCountry);
-
-                if (!result)
-                {
-                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    tabControler.SelectTab(10);
-                }
-
-            }
-        }
-
-        private void editAirportConDrop_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Country c = editAirportConDrop.SelectedItem as Country;
-            if (c == null)
-            {
-                Console.WriteLine("No country selected.");
-            }
-            else
-            {
-                cities = new BindingList<City>(City.GetAllCities());
-                addAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
-                addAirportCityDrop.DisplayMember = "Name";
-            }
-
-        }
-
-        private void editLocationDelete_Click(object sender, EventArgs e)
-        {
-            bool result = false;
-
-            DialogResult r = MessageBox.Show("Attention if you delete this location all its information and other locations related to it will be deleted and can't be restored", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (r == DialogResult.OK)
-            {
-
-                if (AirportGroupBox.Visible)
-                {
-                    result = Airport.DeleteAirport(selectedAirport.Id);
-                }
-                else if (cityGroupBox.Visible)
-                {
-                    result = City.DeleteCity(selectedCity.Id);
-                }
-                else
-                {
-                    result = Country.DeleteCountry(selectedCountry.Id);
-                }
-
-
-                if (!result)
-                {
-                    MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    tabControler.SelectTab(10);
-                }
-            }
-        }
     }
 }

@@ -69,7 +69,7 @@ namespace ProjectSample
                     {
                         appTabs.SelectTab(4);
                     }
-                    else if (currentLoggedInUser.Type == "agency")
+                    else if (currentLoggedInUser?.Type == "agency")
                     {
                         appTabs.SelectTab(5);
                     }

@@ -2064,6 +2064,322 @@ namespace HappyJourneyAirline.Tabs
 
         #endregion Sidebar Navigation
 
+        #region Flights Tab
+        private void searchIcon_Click(object sender, EventArgs e)
+        {
+            // Get selected dropdown values 
+            Airport selectedSource = depDrop.SelectedItem as Airport;
+            Airport selectedDestination = arrivalDrop.SelectedItem as Airport;
+
+            // Validate selections
+            if (selectedSource == null || selectedDestination == null)
+            {
+                MessageBox.Show("Please select valid departure and arrival airports.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Initialize SQL connection and command
+            using (SqlConnection conn = new SqlConnection(Database.connectionString))
+            using (SqlCommand cmd = conn.CreateCommand())
+            {
+                // Base query
+                string query = @"SELECT 
+                    'View' as 'View', 
+                    f.Id AS 'Flight ID',
+                    sa.name AS 'Source Airport Name', 
+                    da.name AS 'Destination Airport Name',
+                    f.departureTimestamp AS 'Departure Timestamp', 
+                    f.arrivalTimestamp AS 'Arrival Timestamp', 
+                    fs.name AS 'Flight Status', 
+                    f.planeID AS 'Plane ID',
+                    f.BasePrice AS 'Base Price'
+            FROM flights f
+            LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id
+            LEFT JOIN airports sa ON f.sourceAirportID = sa.Id
+            LEFT JOIN airports da ON f.destinationAirportID = da.Id
+            WHERE fs.name IN ('Scheduled', 'Delayed')"; // Always true to simplify adding conditions
+
+                // Add conditions for airports
+                if (selectedSource.Name != "All")
+                {
+                    query += " AND sa.Id = @sourceID";
+                    cmd.Parameters.AddWithValue("@sourceID", selectedSource.Id);
+                }
+                if (selectedDestination.Name != "All")
+                {
+                    query += " AND da.Id = @destinationID";
+                    cmd.Parameters.AddWithValue("@destinationID", selectedDestination.Id);
+                }
+
+                // Add condition for date and time if checked
+                if (dateCheck.Checked || timeCheck.Checked)
+                {
+                    string dateAndTime = " ";
+
+                    if (dateCheck.Checked)
+                    {
+                        dateAndTime = date.Value.ToString("MM/dd/yyyy");
+
+                        query += " AND CAST(f.departureTimestamp AS DATE) = CONVERT(DATE, @selectedDate, 101)";
+                        string checkDate = date.Value.ToString();
+                        cmd.Parameters.AddWithValue("@selectedDate", checkDate);
+                        // Ensure proper date format
+                    }
+
+                    if (timeCheck.Checked)
+                    {
+                        // Append the condition to the query
+                        string selectedTime = time.Text;
+                        if (selectedTime == "Morning")
+                        {
+                            query += " AND RIGHT(CONVERT(VARCHAR, f.departureTimestamp, 100), 2) = 'AM'";
+
+                        }
+                        else if (selectedTime == "Night")
+                        {
+                            query += " AND RIGHT(CONVERT(VARCHAR, f.departureTimestamp, 100), 2) = 'PM'";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Value must be selected in the Time filed", "Missing Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+
+                    }
+
+                }
+
+                try
+                {
+                    // Assign final query to command
+                    cmd.CommandText = query;
+
+                    Console.WriteLine(cmd.CommandText);
+                    // Execute the query and bind the results to the grid
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    gridflightsData.DataSource = dt;
+
+                    DataGridViewColumn viewColumn = gridflightsData.Columns[0];
+                    viewColumn.DefaultCellStyle = gridflightsData.Columns[2].DefaultCellStyle.Clone();
+                    viewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    viewColumn.DefaultCellStyle.ForeColor = Color.Blue;
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine(error);
+                }
+            }
+        }
+
+        private void flightDataLoad()
+        {
+
+            try
+            {
+
+                List<Airport> airportList = new List<Airport>();
+
+                airportList = Airport.GetAllAirports();
+                List<Airport> airportList2 = Airport.GetAllAirports();
+
+                if (airportList == null || airportList.Count == 0)
+                {
+                    Console.WriteLine("No airports found.");
+                    return;
+                }
+                else
+                {
+                    Airport allOption = new Airport
+                    {
+                        Id = 0,
+                        Name = "All"
+                    };
+
+
+                    airportList.Insert(0, allOption);
+                    airportList2.Insert(0, allOption);
+
+                    depDrop.DataSource = null;
+                    depDrop.DataSource = airportList;
+                    depDrop.DisplayMember = "Name";
+
+                    arrivalDrop.DataSource = null;
+                    arrivalDrop.DataSource = airportList2;
+                    arrivalDrop.DisplayMember = "Name";
+                }
+
+
+
+
+                SqlConnection conn = new SqlConnection(Database.connectionString);
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = $"SELECT " +
+                    $"'View' as 'View', " +
+                    $"f.Id AS 'Flight ID', " +
+                    $"sa.name AS 'Source Airport Name', " +
+                    $"da.name AS 'Destination Airport Name', " +
+                    $"f.departureTimestamp AS 'Departure Timestamp', " +
+                    $"f.arrivalTimestamp AS 'Arrival Timestamp', " +
+                    $"fs.name AS 'Flight Status', " +
+                    $"f.planeID AS 'Plane ID', " +
+                    $"f.BasePrice AS 'Base Price'" +
+                    $"FROM flights f " +
+                    $"LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id " +
+                    $"LEFT JOIN airports sa ON f.sourceAirportID = sa.Id " +
+                    $"LEFT JOIN airports da ON f.destinationAirportID = da.Id " +
+                    $"WHERE fs.name IN ('Scheduled', 'Delayed')";
+                SqlDataAdapter ad = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                ad.Fill(dt);
+
+                gridflightsData.DataSource = dt;
+
+                DataGridViewColumn viewColumn = gridflightsData.Columns[0];
+                viewColumn.DefaultCellStyle = gridflightsData.Columns[2].DefaultCellStyle.Clone();
+                viewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                viewColumn.DefaultCellStyle.ForeColor = Color.Blue;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void cancelIcon_Click(object sender, EventArgs e)
+        {
+            dateCheck.CheckState = CheckState.Unchecked;
+            timeCheck.CheckState = CheckState.Unchecked;
+            arrivalDrop.SelectedIndex = 0;
+            depDrop.SelectedIndex = 0;
+
+            depDrop.SelectedIndex = 0;
+            arrivalDrop.SelectedIndex = 0;
+            flightDataLoad();
+            return;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedObject = dataGridViewNotification.SelectedCells[0].OwningRow.DataBoundItem as Notification;
+
+                if (selectedObject != null)
+                {
+                    MessageBox.Show(selectedObject.Description, selectedObject.Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+            catch { }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int selectedId = Convert.ToInt32(gridflightsData.SelectedCells[0].OwningRow.Cells[0].Value);
+            tabController.SelectTab(1);
+            defultIcons();
+            bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
+
+
+            selectedFlight = Flight.GetFlightById(selectedId);
+            label40.Text = "Selected flight id is " + selectedFlight.Id;// test
+        }
+
+        private void travellerFlightsTab_Paint(object sender, PaintEventArgs e)
+        {
+            flightDataLoad();
+        }
+
+        private void gridflightsData_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            //foreach (DataGridViewRow row in (sender as DataGridView).Rows)
+            //{
+            //    row.Cells[0].Value = "View";
+            //}
+        }
+
+        private void gridflightsData_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                selectedFlight = Flight.GetFlightById((int)(gridflightsData.Rows[e.RowIndex].Cells[1].Value));
+                sutupFlightDetails();
+                tabController.SelectTab(4);
+            }
+        }
+
+        private void dateCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            //date.Enabled = dateCheck.Checked;
+            if (dateCheck.Checked)
+            {
+                date.Enabled = true;
+            }
+            else
+            {
+                date.Enabled = false;
+            }
+        }
+
+        private void timeCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            //time.Enabled = timeCheck.Checked;
+            if (timeCheck.Checked)
+            {
+                time.Enabled = true;
+                time.Text = "Select Time";
+            }
+            else
+            {
+                time.Enabled = false;
+            }
+        }
+
+        #endregion Flights Tab
+
+        #region Flight Details Tab
+        private void sutupFlightDetails()
+        {
+            fdFlightNumTxt.Text = $"{selectedFlight.Id}";
+
+            Airport depAirport = Airport.GetAirportById(selectedFlight.SourceAirportID);
+            Airport destAirport = Airport.GetAirportById(selectedFlight.DestinationAirportID);
+
+            City depCity = City.GetCityById(depAirport.CityId);
+            City destCity = City.GetCityById(destAirport.CityId);
+
+            Country depCountry = Country.GetCountryById(depCity.CountryId);
+            Country destCountry = Country.GetCountryById(destCity.CountryId);
+
+            fdArrTxt.Text = destAirport.Name;
+            fdDepTxt.Text = depAirport.Name;
+
+            fdFromTxt.Text = $"{depCity.Name} ({depCountry.Name})";
+            fdToTxt.Text = $"{destCity.Name} ({destCountry.Name})";
+
+            fdArrTimeTxt.Text = $"{selectedFlight.ArrivalTimestamp}";
+            fdDepTimeTxt.Text = $"{selectedFlight.DepartureTimestamp}";
+
+
+        }
+
+        private void fdCancelBtn_Click(object sender, EventArgs e)
+        {
+            selectedFlight = null; 
+
+            tabController.SelectTab(0);
+        }
+
+        private void fdBookBtn_Click(object sender, EventArgs e)
+        {
+            ppFlightNumTxt.Text = $"{selectedFlight.Id}";
+            tabController.SelectTab(6);
+        }
+
+        #endregion Flight Details Tab
+
         #region Booking Screen
         private void loadBookingTable() {
             bookingTable.Rows.Clear();
@@ -2308,320 +2624,6 @@ namespace HappyJourneyAirline.Tabs
         }
         #endregion Settings Tab
 
-        #region Flights Tab
-        private void searchIcon_Click(object sender, EventArgs e)
-        {
-            // Get selected dropdown values 
-            Airport selectedSource = depDrop.SelectedItem as Airport;
-            Airport selectedDestination = arrivalDrop.SelectedItem as Airport;
-
-            // Validate selections
-            if (selectedSource == null || selectedDestination == null)
-            {
-                MessageBox.Show("Please select valid departure and arrival airports.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Initialize SQL connection and command
-            using (SqlConnection conn = new SqlConnection(Database.connectionString))
-            using (SqlCommand cmd = conn.CreateCommand())
-            {
-                // Base query
-                string query = @"SELECT 
-                    'View' as 'View', 
-                    f.Id AS 'Flight ID',
-                    sa.name AS 'Source Airport Name', 
-                    da.name AS 'Destination Airport Name',
-                    f.departureTimestamp AS 'Departure Timestamp', 
-                    f.arrivalTimestamp AS 'Arrival Timestamp', 
-                    fs.name AS 'Flight Status', 
-                    f.planeID AS 'Plane ID',
-                    f.BasePrice AS 'Base Price'
-            FROM flights f
-            LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id
-            LEFT JOIN airports sa ON f.sourceAirportID = sa.Id
-            LEFT JOIN airports da ON f.destinationAirportID = da.Id
-            WHERE 1 = 1"; // Always true to simplify adding conditions
-
-                // Add conditions for airports
-                if (selectedSource.Name != "All")
-                {
-                    query += " AND sa.Id = @sourceID";
-                    cmd.Parameters.AddWithValue("@sourceID", selectedSource.Id);
-                }
-                if (selectedDestination.Name != "All")
-                {
-                    query += " AND da.Id = @destinationID";
-                    cmd.Parameters.AddWithValue("@destinationID", selectedDestination.Id);
-                }
-
-                // Add condition for date and time if checked
-                if (dateCheck.Checked || timeCheck.Checked)
-                {
-                    string dateAndTime = " ";
-
-                    if (dateCheck.Checked)
-                    {
-                        dateAndTime = date.Value.ToString("MM/dd/yyyy");
-
-                        query += " AND CAST(f.departureTimestamp AS DATE) = CONVERT(DATE, @selectedDate, 101)";
-                        string checkDate = date.Value.ToString();
-                        cmd.Parameters.AddWithValue("@selectedDate", checkDate);
-                        // Ensure proper date format
-                    }
-
-                    if (timeCheck.Checked)
-                    {
-                        // Append the condition to the query
-                        string selectedTime = time.Text;
-                        if (selectedTime == "Morning")
-                        {
-                            query += " AND RIGHT(CONVERT(VARCHAR, f.departureTimestamp, 100), 2) = 'AM'";
-
-                        }
-                        else if (selectedTime == "Night")
-                        {
-                            query += " AND RIGHT(CONVERT(VARCHAR, f.departureTimestamp, 100), 2) = 'PM'";
-                        }
-                        else
-                        {
-                            MessageBox.Show("Value must be selected in the Time filed", "Missing Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-
-
-                    }
-
-                }
-
-                try
-                {
-                    // Assign final query to command
-                    cmd.CommandText = query;
-
-                    Console.WriteLine(cmd.CommandText);
-                    // Execute the query and bind the results to the grid
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    gridflightsData.DataSource = dt;
-
-                    DataGridViewColumn viewColumn = gridflightsData.Columns[0];
-                    viewColumn.DefaultCellStyle = gridflightsData.Columns[2].DefaultCellStyle.Clone();
-                    viewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    viewColumn.DefaultCellStyle.ForeColor = Color.Blue;
-                }
-                catch (Exception error)
-                {
-                    Console.WriteLine(error);
-                }
-            }
-        }
-
-        private void flightDataLoad()
-        {
-
-            try
-            {
-
-                List<Airport> airportList = new List<Airport>();
-
-                airportList = Airport.GetAllAirports();
-                List<Airport> airportList2 = Airport.GetAllAirports();
-
-                if (airportList == null || airportList.Count == 0)
-                {
-                    Console.WriteLine("No airports found.");
-                    return;
-                }
-                else
-                {
-                    Airport allOption = new Airport
-                    {
-                        Id = 0,
-                        Name = "All"
-                    };
-
-
-                    airportList.Insert(0, allOption);
-                    airportList2.Insert(0, allOption);
-
-                    depDrop.DataSource = null;
-                    depDrop.DataSource = airportList;
-                    depDrop.DisplayMember = "Name";
-
-                    arrivalDrop.DataSource = null;
-                    arrivalDrop.DataSource = airportList2;
-                    arrivalDrop.DisplayMember = "Name";
-                }
-
-
-
-
-                SqlConnection conn = new SqlConnection(Database.connectionString);
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = $"SELECT " +
-                    $"'View' as 'View', " +
-                    $"f.Id AS 'Flight ID', " +
-                    $"sa.name AS 'Source Airport Name', " +
-                    $"da.name AS 'Destination Airport Name', " +
-                    $"f.departureTimestamp AS 'Departure Timestamp', " +
-                    $"f.arrivalTimestamp AS 'Arrival Timestamp', " +
-                    $"fs.name AS 'Flight Status', " +
-                    $"f.planeID AS 'Plane ID', " +
-                    $"f.BasePrice AS 'Base Price'" +
-                    $"FROM flights f " +
-                    $"LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id " +
-                    $"LEFT JOIN airports sa ON f.sourceAirportID = sa.Id " +
-                    $"LEFT JOIN airports da ON f.destinationAirportID = da.Id";
-                SqlDataAdapter ad = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                ad.Fill(dt);
-
-                gridflightsData.DataSource = dt;
-
-                DataGridViewColumn viewColumn = gridflightsData.Columns[0];
-                viewColumn.DefaultCellStyle = gridflightsData.Columns[2].DefaultCellStyle.Clone();
-                viewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                viewColumn.DefaultCellStyle.ForeColor = Color.Blue;
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void cancelIcon_Click(object sender, EventArgs e)
-        {
-            dateCheck.CheckState = CheckState.Unchecked;
-            timeCheck.CheckState = CheckState.Unchecked;
-            arrivalDrop.SelectedIndex = 0;
-            depDrop.SelectedIndex = 0;
-
-            depDrop.SelectedIndex = 0;
-            arrivalDrop.SelectedIndex = 0;
-            flightDataLoad();
-            return;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var selectedObject = dataGridViewNotification.SelectedCells[0].OwningRow.DataBoundItem as Notification;
-
-                if (selectedObject != null)
-                {
-                    MessageBox.Show(selectedObject.Description, selectedObject.Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-            }
-            catch { }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int selectedId = Convert.ToInt32(gridflightsData.SelectedCells[0].OwningRow.Cells[0].Value);
-            tabController.SelectTab(1);
-            defultIcons();
-            bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
-
-
-            selectedFlight = Flight.GetFlightById(selectedId);
-            label40.Text = "Selected flight id is " + selectedFlight.Id;// test
-        }
-
-        private void travellerFlightsTab_Paint(object sender, PaintEventArgs e)
-        {
-            flightDataLoad();
-        }
-
-        private void gridflightsData_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            //foreach (DataGridViewRow row in (sender as DataGridView).Rows)
-            //{
-            //    row.Cells[0].Value = "View";
-            //}
-        }
-
-        private void gridflightsData_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                selectedFlight = Flight.GetFlightById((int)(gridflightsData.Rows[e.RowIndex].Cells[1].Value));
-                sutupFlightDetails();
-                tabController.SelectTab(4);
-            }
-        }
-
-        private void dateCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            //date.Enabled = dateCheck.Checked;
-            if (dateCheck.Checked)
-            {
-                date.Enabled = true;
-            }
-            else
-            {
-                date.Enabled = false;
-            }
-        }
-
-        private void timeCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            //time.Enabled = timeCheck.Checked;
-            if (timeCheck.Checked)
-            {
-                time.Enabled = true;
-                time.Text = "Select Time";
-            }
-            else
-            {
-                time.Enabled = false;
-            }
-        }
-
-        #endregion Flights Tab
-
-        #region Flight Details Tab
-        private void sutupFlightDetails()
-        {
-            fdFlightNumTxt.Text = $"{selectedFlight.Id}";
-
-            Airport depAirport = Airport.GetAirportById(selectedFlight.SourceAirportID);
-            Airport destAirport = Airport.GetAirportById(selectedFlight.DestinationAirportID);
-
-            City depCity = City.GetCityById(depAirport.CityId);
-            City destCity = City.GetCityById(destAirport.CityId);
-
-            Country depCountry = Country.GetCountryById(depCity.CountryId);
-            Country destCountry = Country.GetCountryById(destCity.CountryId);
-
-            fdArrTxt.Text = destAirport.Name;
-            fdDepTxt.Text = depAirport.Name;
-
-            fdFromTxt.Text = $"{depCity.Name} ({depCountry.Name})";
-            fdToTxt.Text = $"{destCity.Name} ({destCountry.Name})";
-
-            fdArrTimeTxt.Text = $"{selectedFlight.ArrivalTimestamp}";
-            fdDepTimeTxt.Text = $"{selectedFlight.DepartureTimestamp}";
-
-
-        }
-
-        private void fdCancelBtn_Click(object sender, EventArgs e)
-        {
-            selectedFlight = null; 
-
-            tabController.SelectTab(0);
-        }
-
-        private void fdBookBtn_Click(object sender, EventArgs e)
-        {
-            ppFlightNumTxt.Text = $"{selectedFlight.Id}";
-            tabController.SelectTab(6);
-        }
-
-        #endregion Flight Details Tab
     
     }
 

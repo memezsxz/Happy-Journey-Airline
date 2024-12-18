@@ -168,7 +168,7 @@ namespace HappyJourneyAirline.Models
         FROM users u
         JOIN tickets t ON u.Id = t.UserID
         JOIN flights f ON t.FlightID = f.Id
-        WHERE f.AgencyID = @AgencyID";
+        WHERE t.AgencyID = @AgencyID";
 
             var parameters = new Dictionary<string, object>
     {
@@ -182,6 +182,34 @@ namespace HappyJourneyAirline.Models
                 LastName = reader.GetString(2),
                 Email = reader.GetString(3),
                 PhoneNumber = reader.GetString(4)
+            });
+        }
+
+        public static List<User> GetTravellersForFlightByAgencyID(long agencyID, long flightID)
+        {
+            string query = @"
+        SELECT DISTINCT u.Id, u.FirstName, u.LastName, u.Email, u.PhoneNumber, u.cpr
+FROM users u
+JOIN tickets t ON u.Id = t.UserID
+JOIN flights f ON t.FlightID = f.Id
+WHERE t.FlightID = @FlightID
+  AND t.AgencyID = @AgencyID;
+";
+
+            var parameters = new Dictionary<string, object>
+    {
+        { "@AgencyID", agencyID },
+        { "@FlightID", flightID }
+    };
+
+            return Database.Instance.Query(query, parameters, reader => new User
+            {
+                Id = reader.GetInt64(0),
+                FirstName = reader.GetString(1),
+                LastName = reader.GetString(2),
+                Email = reader.GetString(3),
+                PhoneNumber = reader.GetString(4),
+                Cpr = reader.GetString(5)
             });
         }
 
