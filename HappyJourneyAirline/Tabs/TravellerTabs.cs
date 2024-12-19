@@ -9,6 +9,7 @@ using HappyJourneyAirline.Lib;
 using System.Data.SqlClient;
 using System.Data;
 using System.Drawing;
+using System.Net;
 namespace HappyJourneyAirline.Tabs
 {
     public partial class TravellerTabs : UserControl
@@ -103,7 +104,6 @@ namespace HappyJourneyAirline.Tabs
         private Label label42;
         private TextBox ppPasportNumTxt;
         private Label label41;
-        private TextBox ppNumofTicketsTxt;
         private Label label39;
         private TextBox ppFlightNumTxt;
         private RadioButton ppAeRadio;
@@ -142,6 +142,7 @@ namespace HappyJourneyAirline.Tabs
         private DataGridView dataGridViewNotification;
         private Button button2;
         private PictureBox bookingTab;
+        private ComboBox ppTicketClassDrop;
         #endregion
 
         #region Added Atrebutes
@@ -159,14 +160,15 @@ namespace HappyJourneyAirline.Tabs
             //time.ShowUpDown = true;
 
             // when time change console log the time
+
         }
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TravellerTabs));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.travellerFlightsTab = new System.Windows.Forms.TabPage();
             this.gridflightsData = new System.Windows.Forms.DataGridView();
             this.time = new System.Windows.Forms.ComboBox();
@@ -259,6 +261,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdFlightNumTxt = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.payment = new System.Windows.Forms.TabPage();
+            this.ppTicketClassDrop = new System.Windows.Forms.ComboBox();
             this.paymentErrorLbl = new System.Windows.Forms.Label();
             this.ppTotaLbl = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
@@ -283,7 +286,6 @@ namespace HappyJourneyAirline.Tabs
             this.label42 = new System.Windows.Forms.Label();
             this.ppPasportNumTxt = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
-            this.ppNumofTicketsTxt = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.ppFlightNumTxt = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
@@ -337,10 +339,10 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.Controls.Add(this.label5);
             this.travellerFlightsTab.Controls.Add(this.label22);
             this.travellerFlightsTab.Controls.Add(this.label11);
-            this.travellerFlightsTab.Location = new System.Drawing.Point(31, 4);
+            this.travellerFlightsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerFlightsTab.Name = "travellerFlightsTab";
             this.travellerFlightsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.travellerFlightsTab.Size = new System.Drawing.Size(749, 720);
+            this.travellerFlightsTab.Size = new System.Drawing.Size(757, 720);
             this.travellerFlightsTab.TabIndex = 0;
             this.travellerFlightsTab.Text = "Flights";
             this.travellerFlightsTab.Paint += new System.Windows.Forms.PaintEventHandler(this.travellerFlightsTab_Paint);
@@ -353,14 +355,14 @@ namespace HappyJourneyAirline.Tabs
             this.gridflightsData.AllowUserToResizeRows = false;
             this.gridflightsData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gridflightsData.BackgroundColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridflightsData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridflightsData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gridflightsData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridflightsData.Location = new System.Drawing.Point(17, 337);
             this.gridflightsData.Name = "gridflightsData";
@@ -382,7 +384,7 @@ namespace HappyJourneyAirline.Tabs
             "Night"});
             this.time.Location = new System.Drawing.Point(373, 277);
             this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(287, 41);
+            this.time.Size = new System.Drawing.Size(287, 27);
             this.time.TabIndex = 62;
             // 
             // date
@@ -392,7 +394,7 @@ namespace HappyJourneyAirline.Tabs
             this.date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.date.Location = new System.Drawing.Point(49, 280);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(284, 37);
+            this.date.Size = new System.Drawing.Size(284, 25);
             this.date.TabIndex = 56;
             // 
             // arrivalDrop
@@ -401,7 +403,7 @@ namespace HappyJourneyAirline.Tabs
             this.arrivalDrop.FormattingEnabled = true;
             this.arrivalDrop.Location = new System.Drawing.Point(350, 188);
             this.arrivalDrop.Name = "arrivalDrop";
-            this.arrivalDrop.Size = new System.Drawing.Size(300, 41);
+            this.arrivalDrop.Size = new System.Drawing.Size(300, 27);
             this.arrivalDrop.TabIndex = 49;
             // 
             // depDrop
@@ -410,7 +412,7 @@ namespace HappyJourneyAirline.Tabs
             this.depDrop.FormattingEnabled = true;
             this.depDrop.Location = new System.Drawing.Point(23, 188);
             this.depDrop.Name = "depDrop";
-            this.depDrop.Size = new System.Drawing.Size(300, 41);
+            this.depDrop.Size = new System.Drawing.Size(300, 27);
             this.depDrop.TabIndex = 48;
             // 
             // dateCheck
@@ -418,7 +420,7 @@ namespace HappyJourneyAirline.Tabs
             this.dateCheck.AutoSize = true;
             this.dateCheck.Location = new System.Drawing.Point(25, 286);
             this.dateCheck.Name = "dateCheck";
-            this.dateCheck.Size = new System.Drawing.Size(22, 21);
+            this.dateCheck.Size = new System.Drawing.Size(15, 14);
             this.dateCheck.TabIndex = 46;
             this.dateCheck.UseVisualStyleBackColor = true;
             this.dateCheck.CheckedChanged += new System.EventHandler(this.dateCheck_CheckedChanged);
@@ -428,7 +430,7 @@ namespace HappyJourneyAirline.Tabs
             this.timeCheck.AutoSize = true;
             this.timeCheck.Location = new System.Drawing.Point(350, 286);
             this.timeCheck.Name = "timeCheck";
-            this.timeCheck.Size = new System.Drawing.Size(22, 21);
+            this.timeCheck.Size = new System.Drawing.Size(15, 14);
             this.timeCheck.TabIndex = 45;
             this.timeCheck.UseVisualStyleBackColor = true;
             this.timeCheck.CheckedChanged += new System.EventHandler(this.timeCheck_CheckedChanged);
@@ -450,7 +452,7 @@ namespace HappyJourneyAirline.Tabs
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(367, 246);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 40);
+            this.label3.Size = new System.Drawing.Size(59, 25);
             this.label3.TabIndex = 40;
             this.label3.Text = "Time";
             // 
@@ -460,7 +462,7 @@ namespace HappyJourneyAirline.Tabs
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(43, 246);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 40);
+            this.label4.Size = new System.Drawing.Size(57, 25);
             this.label4.TabIndex = 39;
             this.label4.Text = "Date";
             // 
@@ -481,7 +483,7 @@ namespace HappyJourneyAirline.Tabs
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(344, 154);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 40);
+            this.label2.Size = new System.Drawing.Size(142, 25);
             this.label2.TabIndex = 37;
             this.label2.Text = "Arrival Airport";
             // 
@@ -491,7 +493,7 @@ namespace HappyJourneyAirline.Tabs
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(17, 154);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(293, 40);
+            this.label5.Size = new System.Drawing.Size(176, 25);
             this.label5.TabIndex = 35;
             this.label5.Text = "Departure Airport";
             // 
@@ -502,7 +504,7 @@ namespace HappyJourneyAirline.Tabs
             this.label22.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label22.Location = new System.Drawing.Point(31, 84);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(541, 35);
+            this.label22.Size = new System.Drawing.Size(313, 19);
             this.label22.TabIndex = 3;
             this.label22.Text = "Book Your Next Flight Easily Through This Page";
             // 
@@ -512,7 +514,7 @@ namespace HappyJourneyAirline.Tabs
             this.label11.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(24, 25);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(263, 100);
+            this.label11.Size = new System.Drawing.Size(156, 59);
             this.label11.TabIndex = 1;
             this.label11.Text = "Flights";
             // 
@@ -539,10 +541,10 @@ namespace HappyJourneyAirline.Tabs
             this.travellerBookingsTab.Controls.Add(this.bookingTable);
             this.travellerBookingsTab.Controls.Add(this.label1);
             this.travellerBookingsTab.Controls.Add(this.label13);
-            this.travellerBookingsTab.Location = new System.Drawing.Point(31, 4);
+            this.travellerBookingsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerBookingsTab.Name = "travellerBookingsTab";
             this.travellerBookingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.travellerBookingsTab.Size = new System.Drawing.Size(749, 720);
+            this.travellerBookingsTab.Size = new System.Drawing.Size(757, 720);
             this.travellerBookingsTab.TabIndex = 1;
             this.travellerBookingsTab.Text = "Bookings";
             // 
@@ -572,7 +574,7 @@ namespace HappyJourneyAirline.Tabs
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 65;
+            this.ID.Width = 43;
             // 
             // from
             // 
@@ -613,7 +615,7 @@ namespace HappyJourneyAirline.Tabs
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label1.Location = new System.Drawing.Point(24, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(426, 35);
+            this.label1.Size = new System.Drawing.Size(244, 19);
             this.label1.TabIndex = 4;
             this.label1.Text = "You can here modify bookings easily";
             // 
@@ -623,7 +625,7 @@ namespace HappyJourneyAirline.Tabs
             this.label13.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(16, 21);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(351, 100);
+            this.label13.Size = new System.Drawing.Size(207, 59);
             this.label13.TabIndex = 2;
             this.label13.Text = "Bookings";
             // 
@@ -649,9 +651,9 @@ namespace HappyJourneyAirline.Tabs
             this.travellerSettingsTab.Controls.Add(this.setUsernameTxt);
             this.travellerSettingsTab.Controls.Add(this.label8);
             this.travellerSettingsTab.Controls.Add(this.label14);
-            this.travellerSettingsTab.Location = new System.Drawing.Point(31, 4);
+            this.travellerSettingsTab.Location = new System.Drawing.Point(23, 4);
             this.travellerSettingsTab.Name = "travellerSettingsTab";
-            this.travellerSettingsTab.Size = new System.Drawing.Size(749, 720);
+            this.travellerSettingsTab.Size = new System.Drawing.Size(757, 720);
             this.travellerSettingsTab.TabIndex = 2;
             this.travellerSettingsTab.Text = "Settings";
             // 
@@ -663,7 +665,7 @@ namespace HappyJourneyAirline.Tabs
             this.setErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
             this.setErrorLbl.Location = new System.Drawing.Point(17, 436);
             this.setErrorLbl.Name = "setErrorLbl";
-            this.setErrorLbl.Size = new System.Drawing.Size(274, 44);
+            this.setErrorLbl.Size = new System.Drawing.Size(160, 26);
             this.setErrorLbl.TabIndex = 22;
             this.setErrorLbl.Text = "Error: Please fix..";
             this.setErrorLbl.Visible = false;
@@ -691,7 +693,7 @@ namespace HappyJourneyAirline.Tabs
             this.label18.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label18.Location = new System.Drawing.Point(18, 574);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(1096, 35);
+            this.label18.Size = new System.Drawing.Size(652, 19);
             this.label18.TabIndex = 20;
             this.label18.Text = "Attention if you delete your account all your information will be deleted and can" +
     "t be restored";
@@ -735,7 +737,7 @@ namespace HappyJourneyAirline.Tabs
             this.label17.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(325, 272);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(253, 51);
+            this.label17.Size = new System.Drawing.Size(149, 32);
             this.label17.TabIndex = 17;
             this.label17.Text = "Phone Number:";
             this.label17.UseCompatibleTextRendering = true;
@@ -747,7 +749,7 @@ namespace HappyJourneyAirline.Tabs
             this.label16.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(22, 272);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 51);
+            this.label16.Size = new System.Drawing.Size(63, 32);
             this.label16.TabIndex = 16;
             this.label16.Text = "Email:";
             this.label16.UseCompatibleTextRendering = true;
@@ -759,7 +761,7 @@ namespace HappyJourneyAirline.Tabs
             this.label15.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(325, 201);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(183, 51);
+            this.label15.Size = new System.Drawing.Size(108, 32);
             this.label15.TabIndex = 15;
             this.label15.Text = "Last Name:";
             this.label15.UseCompatibleTextRendering = true;
@@ -771,7 +773,7 @@ namespace HappyJourneyAirline.Tabs
             this.label12.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(22, 201);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(188, 51);
+            this.label12.Size = new System.Drawing.Size(111, 32);
             this.label12.TabIndex = 14;
             this.label12.Text = "First Name:";
             this.label12.UseCompatibleTextRendering = true;
@@ -783,7 +785,7 @@ namespace HappyJourneyAirline.Tabs
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(325, 132);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(169, 51);
+            this.label10.Size = new System.Drawing.Size(100, 32);
             this.label10.TabIndex = 13;
             this.label10.Text = "Password:";
             this.label10.UseCompatibleTextRendering = true;
@@ -795,7 +797,7 @@ namespace HappyJourneyAirline.Tabs
             this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(22, 132);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(179, 51);
+            this.label9.Size = new System.Drawing.Size(106, 32);
             this.label9.TabIndex = 12;
             this.label9.Text = "Username:";
             this.label9.UseCompatibleTextRendering = true;
@@ -806,7 +808,7 @@ namespace HappyJourneyAirline.Tabs
             this.setPhoneTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setPhoneTxt.Location = new System.Drawing.Point(325, 305);
             this.setPhoneTxt.Name = "setPhoneTxt";
-            this.setPhoneTxt.Size = new System.Drawing.Size(246, 51);
+            this.setPhoneTxt.Size = new System.Drawing.Size(246, 33);
             this.setPhoneTxt.TabIndex = 11;
             // 
             // setEmailTxt
@@ -815,7 +817,7 @@ namespace HappyJourneyAirline.Tabs
             this.setEmailTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setEmailTxt.Location = new System.Drawing.Point(22, 305);
             this.setEmailTxt.Name = "setEmailTxt";
-            this.setEmailTxt.Size = new System.Drawing.Size(246, 51);
+            this.setEmailTxt.Size = new System.Drawing.Size(246, 33);
             this.setEmailTxt.TabIndex = 10;
             // 
             // setLastNameTxt
@@ -824,7 +826,7 @@ namespace HappyJourneyAirline.Tabs
             this.setLastNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setLastNameTxt.Location = new System.Drawing.Point(325, 236);
             this.setLastNameTxt.Name = "setLastNameTxt";
-            this.setLastNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.setLastNameTxt.Size = new System.Drawing.Size(246, 33);
             this.setLastNameTxt.TabIndex = 9;
             // 
             // setFirstNameTxt
@@ -833,7 +835,7 @@ namespace HappyJourneyAirline.Tabs
             this.setFirstNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setFirstNameTxt.Location = new System.Drawing.Point(22, 236);
             this.setFirstNameTxt.Name = "setFirstNameTxt";
-            this.setFirstNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.setFirstNameTxt.Size = new System.Drawing.Size(246, 33);
             this.setFirstNameTxt.TabIndex = 8;
             // 
             // setPasswordTxt
@@ -842,7 +844,7 @@ namespace HappyJourneyAirline.Tabs
             this.setPasswordTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setPasswordTxt.Location = new System.Drawing.Point(325, 167);
             this.setPasswordTxt.Name = "setPasswordTxt";
-            this.setPasswordTxt.Size = new System.Drawing.Size(246, 51);
+            this.setPasswordTxt.Size = new System.Drawing.Size(246, 33);
             this.setPasswordTxt.TabIndex = 7;
             // 
             // setUsernameTxt
@@ -851,7 +853,7 @@ namespace HappyJourneyAirline.Tabs
             this.setUsernameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setUsernameTxt.Location = new System.Drawing.Point(22, 167);
             this.setUsernameTxt.Name = "setUsernameTxt";
-            this.setUsernameTxt.Size = new System.Drawing.Size(246, 51);
+            this.setUsernameTxt.Size = new System.Drawing.Size(246, 33);
             this.setUsernameTxt.TabIndex = 6;
             // 
             // label8
@@ -861,7 +863,7 @@ namespace HappyJourneyAirline.Tabs
             this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label8.Location = new System.Drawing.Point(18, 77);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(441, 35);
+            this.label8.Size = new System.Drawing.Size(250, 19);
             this.label8.TabIndex = 5;
             this.label8.Text = "Here you can customize your account";
             // 
@@ -871,7 +873,7 @@ namespace HappyJourneyAirline.Tabs
             this.label14.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(12, 18);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(310, 100);
+            this.label14.Size = new System.Drawing.Size(183, 59);
             this.label14.TabIndex = 3;
             this.label14.Text = "Settings";
             // 
@@ -882,9 +884,9 @@ namespace HappyJourneyAirline.Tabs
             this.travellerNotificationTab.Controls.Add(this.dataGridViewNotification);
             this.travellerNotificationTab.Controls.Add(this.label6);
             this.travellerNotificationTab.Controls.Add(this.label7);
-            this.travellerNotificationTab.Location = new System.Drawing.Point(31, 4);
+            this.travellerNotificationTab.Location = new System.Drawing.Point(23, 4);
             this.travellerNotificationTab.Name = "travellerNotificationTab";
-            this.travellerNotificationTab.Size = new System.Drawing.Size(749, 720);
+            this.travellerNotificationTab.Size = new System.Drawing.Size(757, 720);
             this.travellerNotificationTab.TabIndex = 3;
             this.travellerNotificationTab.Text = "Notification";
             // 
@@ -907,21 +909,21 @@ namespace HappyJourneyAirline.Tabs
             // dataGridViewNotification
             // 
             this.dataGridViewNotification.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewNotification.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewNotification.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewNotification.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewNotification.Location = new System.Drawing.Point(25, 124);
             this.dataGridViewNotification.Name = "dataGridViewNotification";
             this.dataGridViewNotification.RowHeadersVisible = false;
             this.dataGridViewNotification.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewNotification.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewNotification.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewNotification.RowTemplate.Height = 28;
             this.dataGridViewNotification.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewNotification.Size = new System.Drawing.Size(706, 472);
@@ -934,7 +936,7 @@ namespace HappyJourneyAirline.Tabs
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label6.Location = new System.Drawing.Point(14, 92);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(453, 35);
+            this.label6.Size = new System.Drawing.Size(258, 19);
             this.label6.TabIndex = 5;
             this.label6.Text = "Here you will find all your notifications";
             // 
@@ -944,7 +946,7 @@ namespace HappyJourneyAirline.Tabs
             this.label7.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(7, 33);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(442, 100);
+            this.label7.Size = new System.Drawing.Size(262, 59);
             this.label7.TabIndex = 4;
             this.label7.Text = "Notification";
             // 
@@ -969,10 +971,10 @@ namespace HappyJourneyAirline.Tabs
             this.flightDetails.Controls.Add(this.fdFlightNumTxt);
             this.flightDetails.Controls.Add(this.label19);
             this.flightDetails.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.flightDetails.Location = new System.Drawing.Point(31, 4);
+            this.flightDetails.Location = new System.Drawing.Point(23, 4);
             this.flightDetails.Name = "flightDetails";
             this.flightDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.flightDetails.Size = new System.Drawing.Size(749, 720);
+            this.flightDetails.Size = new System.Drawing.Size(757, 720);
             this.flightDetails.TabIndex = 4;
             this.flightDetails.Text = "Flight Details";
             // 
@@ -1017,7 +1019,7 @@ namespace HappyJourneyAirline.Tabs
             this.fdArrTxt.Location = new System.Drawing.Point(378, 406);
             this.fdArrTxt.Name = "fdArrTxt";
             this.fdArrTxt.ReadOnly = true;
-            this.fdArrTxt.Size = new System.Drawing.Size(246, 44);
+            this.fdArrTxt.Size = new System.Drawing.Size(246, 26);
             this.fdArrTxt.TabIndex = 30;
             this.fdArrTxt.Text = "Bahrain International Airport";
             // 
@@ -1028,7 +1030,7 @@ namespace HappyJourneyAirline.Tabs
             this.label27.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(378, 369);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(326, 51);
+            this.label27.Size = new System.Drawing.Size(192, 32);
             this.label27.TabIndex = 29;
             this.label27.Text = "Arrival Airport Time:";
             this.label27.UseCompatibleTextRendering = true;
@@ -1040,7 +1042,7 @@ namespace HappyJourneyAirline.Tabs
             this.label28.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(17, 369);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(396, 51);
+            this.label28.Size = new System.Drawing.Size(233, 32);
             this.label28.TabIndex = 28;
             this.label28.Text = "Departure Airport Name:";
             this.label28.UseCompatibleTextRendering = true;
@@ -1054,7 +1056,7 @@ namespace HappyJourneyAirline.Tabs
             this.fdDepTxt.Location = new System.Drawing.Point(17, 406);
             this.fdDepTxt.Name = "fdDepTxt";
             this.fdDepTxt.ReadOnly = true;
-            this.fdDepTxt.Size = new System.Drawing.Size(246, 44);
+            this.fdDepTxt.Size = new System.Drawing.Size(246, 26);
             this.fdDepTxt.TabIndex = 27;
             this.fdDepTxt.Text = "Cairo International Airport";
             // 
@@ -1067,7 +1069,7 @@ namespace HappyJourneyAirline.Tabs
             this.fdToTxt.Location = new System.Drawing.Point(378, 326);
             this.fdToTxt.Name = "fdToTxt";
             this.fdToTxt.ReadOnly = true;
-            this.fdToTxt.Size = new System.Drawing.Size(246, 44);
+            this.fdToTxt.Size = new System.Drawing.Size(246, 26);
             this.fdToTxt.TabIndex = 26;
             this.fdToTxt.Text = "Muharraq (Bahrain)";
             // 
@@ -1078,7 +1080,7 @@ namespace HappyJourneyAirline.Tabs
             this.label25.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(378, 291);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(60, 51);
+            this.label25.Size = new System.Drawing.Size(36, 32);
             this.label25.TabIndex = 25;
             this.label25.Text = "To:";
             this.label25.UseCompatibleTextRendering = true;
@@ -1090,7 +1092,7 @@ namespace HappyJourneyAirline.Tabs
             this.label26.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(17, 289);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(102, 51);
+            this.label26.Size = new System.Drawing.Size(60, 32);
             this.label26.TabIndex = 24;
             this.label26.Text = "From:";
             this.label26.UseCompatibleTextRendering = true;
@@ -1104,7 +1106,7 @@ namespace HappyJourneyAirline.Tabs
             this.fdFromTxt.Location = new System.Drawing.Point(17, 326);
             this.fdFromTxt.Name = "fdFromTxt";
             this.fdFromTxt.ReadOnly = true;
-            this.fdFromTxt.Size = new System.Drawing.Size(246, 44);
+            this.fdFromTxt.Size = new System.Drawing.Size(246, 26);
             this.fdFromTxt.TabIndex = 23;
             this.fdFromTxt.Text = "Cairo (Egypt)";
             // 
@@ -1117,7 +1119,7 @@ namespace HappyJourneyAirline.Tabs
             this.fdArrTimeTxt.Location = new System.Drawing.Point(378, 238);
             this.fdArrTimeTxt.Name = "fdArrTimeTxt";
             this.fdArrTimeTxt.ReadOnly = true;
-            this.fdArrTimeTxt.Size = new System.Drawing.Size(246, 44);
+            this.fdArrTimeTxt.Size = new System.Drawing.Size(246, 26);
             this.fdArrTimeTxt.TabIndex = 22;
             this.fdArrTimeTxt.Text = "11:00 AM";
             // 
@@ -1128,7 +1130,7 @@ namespace HappyJourneyAirline.Tabs
             this.label23.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(378, 203);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(303, 51);
+            this.label23.Size = new System.Drawing.Size(179, 32);
             this.label23.TabIndex = 21;
             this.label23.Text = "Arrival Timestamp:";
             this.label23.UseCompatibleTextRendering = true;
@@ -1140,7 +1142,7 @@ namespace HappyJourneyAirline.Tabs
             this.label24.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(17, 203);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(358, 51);
+            this.label24.Size = new System.Drawing.Size(211, 32);
             this.label24.TabIndex = 20;
             this.label24.Text = "Departure Timestamp:";
             this.label24.UseCompatibleTextRendering = true;
@@ -1154,7 +1156,7 @@ namespace HappyJourneyAirline.Tabs
             this.fdDepTimeTxt.Location = new System.Drawing.Point(17, 238);
             this.fdDepTimeTxt.Name = "fdDepTimeTxt";
             this.fdDepTimeTxt.ReadOnly = true;
-            this.fdDepTimeTxt.Size = new System.Drawing.Size(246, 44);
+            this.fdDepTimeTxt.Size = new System.Drawing.Size(246, 26);
             this.fdDepTimeTxt.TabIndex = 19;
             this.fdDepTimeTxt.Text = "8:00 AM";
             // 
@@ -1165,7 +1167,7 @@ namespace HappyJourneyAirline.Tabs
             this.label21.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(17, 126);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(241, 51);
+            this.label21.Size = new System.Drawing.Size(142, 32);
             this.label21.TabIndex = 16;
             this.label21.Text = "Flight Number:";
             this.label21.UseCompatibleTextRendering = true;
@@ -1179,7 +1181,7 @@ namespace HappyJourneyAirline.Tabs
             this.fdFlightNumTxt.Location = new System.Drawing.Point(17, 163);
             this.fdFlightNumTxt.Name = "fdFlightNumTxt";
             this.fdFlightNumTxt.ReadOnly = true;
-            this.fdFlightNumTxt.Size = new System.Drawing.Size(246, 44);
+            this.fdFlightNumTxt.Size = new System.Drawing.Size(246, 26);
             this.fdFlightNumTxt.TabIndex = 14;
             this.fdFlightNumTxt.Text = "123";
             // 
@@ -1189,7 +1191,7 @@ namespace HappyJourneyAirline.Tabs
             this.label19.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(7, 23);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(481, 100);
+            this.label19.Size = new System.Drawing.Size(286, 59);
             this.label19.TabIndex = 5;
             this.label19.Text = "Flight Details";
             // 
@@ -1217,10 +1219,10 @@ namespace HappyJourneyAirline.Tabs
             this.bookingDetailsTab.Controls.Add(this.label36);
             this.bookingDetailsTab.Controls.Add(this.bdFlightNumTxt);
             this.bookingDetailsTab.Controls.Add(this.label37);
-            this.bookingDetailsTab.Location = new System.Drawing.Point(31, 4);
+            this.bookingDetailsTab.Location = new System.Drawing.Point(23, 4);
             this.bookingDetailsTab.Name = "bookingDetailsTab";
             this.bookingDetailsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.bookingDetailsTab.Size = new System.Drawing.Size(749, 720);
+            this.bookingDetailsTab.Size = new System.Drawing.Size(757, 720);
             this.bookingDetailsTab.TabIndex = 5;
             this.bookingDetailsTab.Text = "Booking Details";
             // 
@@ -1232,7 +1234,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdIDTxt.Location = new System.Drawing.Point(139, 106);
             this.bdIDTxt.Name = "bdIDTxt";
             this.bdIDTxt.ReadOnly = true;
-            this.bdIDTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdIDTxt.Size = new System.Drawing.Size(246, 26);
             this.bdIDTxt.TabIndex = 53;
             this.bdIDTxt.Text = "123";
             // 
@@ -1243,7 +1245,7 @@ namespace HappyJourneyAirline.Tabs
             this.label38.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.Location = new System.Drawing.Point(32, 106);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(183, 51);
+            this.label38.Size = new System.Drawing.Size(108, 32);
             this.label38.TabIndex = 52;
             this.label38.Text = "Booking ID:";
             this.label38.UseCompatibleTextRendering = true;
@@ -1288,7 +1290,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdArrTxt.Location = new System.Drawing.Point(393, 440);
             this.bdArrTxt.Name = "bdArrTxt";
             this.bdArrTxt.ReadOnly = true;
-            this.bdArrTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdArrTxt.Size = new System.Drawing.Size(246, 26);
             this.bdArrTxt.TabIndex = 49;
             this.bdArrTxt.Text = "Bahrain International Airport";
             // 
@@ -1299,7 +1301,7 @@ namespace HappyJourneyAirline.Tabs
             this.label29.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(393, 403);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(326, 51);
+            this.label29.Size = new System.Drawing.Size(192, 32);
             this.label29.TabIndex = 48;
             this.label29.Text = "Arrival Airport Time:";
             this.label29.UseCompatibleTextRendering = true;
@@ -1311,7 +1313,7 @@ namespace HappyJourneyAirline.Tabs
             this.label30.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.Location = new System.Drawing.Point(32, 403);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(396, 51);
+            this.label30.Size = new System.Drawing.Size(233, 32);
             this.label30.TabIndex = 47;
             this.label30.Text = "Departure Airport Name:";
             this.label30.UseCompatibleTextRendering = true;
@@ -1324,7 +1326,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdDepTxt.Location = new System.Drawing.Point(32, 440);
             this.bdDepTxt.Name = "bdDepTxt";
             this.bdDepTxt.ReadOnly = true;
-            this.bdDepTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdDepTxt.Size = new System.Drawing.Size(246, 26);
             this.bdDepTxt.TabIndex = 46;
             this.bdDepTxt.Text = "Cairo International Airport";
             // 
@@ -1336,7 +1338,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdToTxt.Location = new System.Drawing.Point(393, 360);
             this.bdToTxt.Name = "bdToTxt";
             this.bdToTxt.ReadOnly = true;
-            this.bdToTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdToTxt.Size = new System.Drawing.Size(246, 26);
             this.bdToTxt.TabIndex = 45;
             this.bdToTxt.Text = "Muharraq (Bahrain)";
             // 
@@ -1347,7 +1349,7 @@ namespace HappyJourneyAirline.Tabs
             this.label31.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.Location = new System.Drawing.Point(393, 325);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(60, 51);
+            this.label31.Size = new System.Drawing.Size(36, 32);
             this.label31.TabIndex = 44;
             this.label31.Text = "To:";
             this.label31.UseCompatibleTextRendering = true;
@@ -1359,7 +1361,7 @@ namespace HappyJourneyAirline.Tabs
             this.label32.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(32, 323);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(102, 51);
+            this.label32.Size = new System.Drawing.Size(60, 32);
             this.label32.TabIndex = 43;
             this.label32.Text = "From:";
             this.label32.UseCompatibleTextRendering = true;
@@ -1372,7 +1374,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdFromTxt.Location = new System.Drawing.Point(32, 360);
             this.bdFromTxt.Name = "bdFromTxt";
             this.bdFromTxt.ReadOnly = true;
-            this.bdFromTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdFromTxt.Size = new System.Drawing.Size(246, 26);
             this.bdFromTxt.TabIndex = 42;
             this.bdFromTxt.Text = "Cairo (Egypt)";
             // 
@@ -1384,7 +1386,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdArrTimeTxt.Location = new System.Drawing.Point(393, 272);
             this.bdArrTimeTxt.Name = "bdArrTimeTxt";
             this.bdArrTimeTxt.ReadOnly = true;
-            this.bdArrTimeTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdArrTimeTxt.Size = new System.Drawing.Size(246, 26);
             this.bdArrTimeTxt.TabIndex = 41;
             this.bdArrTimeTxt.Text = "11:00 AM";
             // 
@@ -1395,7 +1397,7 @@ namespace HappyJourneyAirline.Tabs
             this.label33.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(393, 237);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(208, 51);
+            this.label33.Size = new System.Drawing.Size(123, 32);
             this.label33.TabIndex = 40;
             this.label33.Text = "Arrival Time:";
             this.label33.UseCompatibleTextRendering = true;
@@ -1407,7 +1409,7 @@ namespace HappyJourneyAirline.Tabs
             this.label34.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(32, 237);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(263, 51);
+            this.label34.Size = new System.Drawing.Size(155, 32);
             this.label34.TabIndex = 39;
             this.label34.Text = "Departure Time:";
             this.label34.UseCompatibleTextRendering = true;
@@ -1420,7 +1422,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdDepTimeTxt.Location = new System.Drawing.Point(32, 272);
             this.bdDepTimeTxt.Name = "bdDepTimeTxt";
             this.bdDepTimeTxt.ReadOnly = true;
-            this.bdDepTimeTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdDepTimeTxt.Size = new System.Drawing.Size(246, 26);
             this.bdDepTimeTxt.TabIndex = 38;
             this.bdDepTimeTxt.Text = "8:00 AM";
             // 
@@ -1432,7 +1434,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdDateTxt.Location = new System.Drawing.Point(393, 197);
             this.bdDateTxt.Name = "bdDateTxt";
             this.bdDateTxt.ReadOnly = true;
-            this.bdDateTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdDateTxt.Size = new System.Drawing.Size(246, 26);
             this.bdDateTxt.TabIndex = 37;
             this.bdDateTxt.Text = "2024/12/30";
             // 
@@ -1443,7 +1445,7 @@ namespace HappyJourneyAirline.Tabs
             this.label35.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(393, 162);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(95, 51);
+            this.label35.Size = new System.Drawing.Size(56, 32);
             this.label35.TabIndex = 36;
             this.label35.Text = "Date:";
             this.label35.UseCompatibleTextRendering = true;
@@ -1455,7 +1457,7 @@ namespace HappyJourneyAirline.Tabs
             this.label36.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(32, 160);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(241, 51);
+            this.label36.Size = new System.Drawing.Size(142, 32);
             this.label36.TabIndex = 35;
             this.label36.Text = "Flight Number:";
             this.label36.UseCompatibleTextRendering = true;
@@ -1468,7 +1470,7 @@ namespace HappyJourneyAirline.Tabs
             this.bdFlightNumTxt.Location = new System.Drawing.Point(32, 197);
             this.bdFlightNumTxt.Name = "bdFlightNumTxt";
             this.bdFlightNumTxt.ReadOnly = true;
-            this.bdFlightNumTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdFlightNumTxt.Size = new System.Drawing.Size(246, 26);
             this.bdFlightNumTxt.TabIndex = 34;
             this.bdFlightNumTxt.Text = "123";
             // 
@@ -1478,13 +1480,14 @@ namespace HappyJourneyAirline.Tabs
             this.label37.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.Location = new System.Drawing.Point(16, 19);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(569, 100);
+            this.label37.Size = new System.Drawing.Size(337, 59);
             this.label37.TabIndex = 33;
             this.label37.Text = "Booking Details";
             // 
             // payment
             // 
             this.payment.BackColor = System.Drawing.Color.Gainsboro;
+            this.payment.Controls.Add(this.ppTicketClassDrop);
             this.payment.Controls.Add(this.paymentErrorLbl);
             this.payment.Controls.Add(this.ppTotaLbl);
             this.payment.Controls.Add(this.label49);
@@ -1509,16 +1512,25 @@ namespace HappyJourneyAirline.Tabs
             this.payment.Controls.Add(this.label42);
             this.payment.Controls.Add(this.ppPasportNumTxt);
             this.payment.Controls.Add(this.label41);
-            this.payment.Controls.Add(this.ppNumofTicketsTxt);
             this.payment.Controls.Add(this.label39);
             this.payment.Controls.Add(this.ppFlightNumTxt);
             this.payment.Controls.Add(this.label40);
-            this.payment.Location = new System.Drawing.Point(31, 4);
+            this.payment.Location = new System.Drawing.Point(23, 4);
             this.payment.Name = "payment";
             this.payment.Padding = new System.Windows.Forms.Padding(3);
-            this.payment.Size = new System.Drawing.Size(749, 720);
+            this.payment.Size = new System.Drawing.Size(757, 720);
             this.payment.TabIndex = 6;
             this.payment.Text = "Payment";
+            // 
+            // ppTicketClassDrop
+            // 
+            this.ppTicketClassDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.ppTicketClassDrop.FormattingEnabled = true;
+            this.ppTicketClassDrop.Location = new System.Drawing.Point(24, 236);
+            this.ppTicketClassDrop.Name = "ppTicketClassDrop";
+            this.ppTicketClassDrop.Size = new System.Drawing.Size(246, 34);
+            this.ppTicketClassDrop.TabIndex = 83;
+            this.ppTicketClassDrop.SelectedIndexChanged += new System.EventHandler(this.ppTicketClassDrop_SelectedIndexChanged);
             // 
             // paymentErrorLbl
             // 
@@ -1528,7 +1540,7 @@ namespace HappyJourneyAirline.Tabs
             this.paymentErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
             this.paymentErrorLbl.Location = new System.Drawing.Point(346, 662);
             this.paymentErrorLbl.Name = "paymentErrorLbl";
-            this.paymentErrorLbl.Size = new System.Drawing.Size(274, 44);
+            this.paymentErrorLbl.Size = new System.Drawing.Size(160, 26);
             this.paymentErrorLbl.TabIndex = 82;
             this.paymentErrorLbl.Text = "Error: Please fix..";
             this.paymentErrorLbl.Visible = false;
@@ -1541,7 +1553,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppTotaLbl.ForeColor = System.Drawing.SystemColors.Highlight;
             this.ppTotaLbl.Location = new System.Drawing.Point(142, 594);
             this.ppTotaLbl.Name = "ppTotaLbl";
-            this.ppTotaLbl.Size = new System.Drawing.Size(87, 51);
+            this.ppTotaLbl.Size = new System.Drawing.Size(51, 32);
             this.ppTotaLbl.TabIndex = 81;
             this.ppTotaLbl.Text = "1500";
             this.ppTotaLbl.UseCompatibleTextRendering = true;
@@ -1551,9 +1563,9 @@ namespace HappyJourneyAirline.Tabs
             this.label49.AutoSize = true;
             this.label49.BackColor = System.Drawing.Color.Transparent;
             this.label49.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(192, 594);
+            this.label49.Location = new System.Drawing.Point(222, 594);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(220, 51);
+            this.label49.Size = new System.Drawing.Size(130, 32);
             this.label49.TabIndex = 80;
             this.label49.Text = "BD (VAT inc.) ";
             this.label49.UseCompatibleTextRendering = true;
@@ -1565,7 +1577,7 @@ namespace HappyJourneyAirline.Tabs
             this.label48.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label48.Location = new System.Drawing.Point(24, 594);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(210, 51);
+            this.label48.Size = new System.Drawing.Size(124, 32);
             this.label48.TabIndex = 79;
             this.label48.Text = "Total will be:";
             this.label48.UseCompatibleTextRendering = true;
@@ -1575,7 +1587,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppDatePick.Font = new System.Drawing.Font("Calibri", 15.75F);
             this.ppDatePick.Location = new System.Drawing.Point(351, 448);
             this.ppDatePick.Name = "ppDatePick";
-            this.ppDatePick.Size = new System.Drawing.Size(246, 51);
+            this.ppDatePick.Size = new System.Drawing.Size(246, 33);
             this.ppDatePick.TabIndex = 78;
             // 
             // ppCancelBtn
@@ -1592,6 +1604,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppCancelBtn.Text = "Cancel";
             this.ppCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.ppCancelBtn.UseVisualStyleBackColor = false;
+            this.ppCancelBtn.Click += new System.EventHandler(this.ppCancelBtn_Click);
             // 
             // ppPayBtn
             // 
@@ -1607,6 +1620,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppPayBtn.Text = "Pay";
             this.ppPayBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.ppPayBtn.UseVisualStyleBackColor = false;
+            this.ppPayBtn.Click += new System.EventHandler(this.ppPayBtn_Click);
             // 
             // label46
             // 
@@ -1615,7 +1629,7 @@ namespace HappyJourneyAirline.Tabs
             this.label46.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label46.Location = new System.Drawing.Point(351, 497);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(75, 51);
+            this.label46.Size = new System.Drawing.Size(45, 32);
             this.label46.TabIndex = 75;
             this.label46.Text = "CVV";
             this.label46.UseCompatibleTextRendering = true;
@@ -1626,7 +1640,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppCvvTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ppCvvTxt.Location = new System.Drawing.Point(351, 532);
             this.ppCvvTxt.Name = "ppCvvTxt";
-            this.ppCvvTxt.Size = new System.Drawing.Size(246, 51);
+            this.ppCvvTxt.Size = new System.Drawing.Size(246, 33);
             this.ppCvvTxt.TabIndex = 74;
             // 
             // label47
@@ -1636,7 +1650,7 @@ namespace HappyJourneyAirline.Tabs
             this.label47.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.Location = new System.Drawing.Point(24, 497);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(229, 51);
+            this.label47.Size = new System.Drawing.Size(135, 32);
             this.label47.TabIndex = 73;
             this.label47.Text = "Name on Card";
             this.label47.UseCompatibleTextRendering = true;
@@ -1647,7 +1661,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppNameCardTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ppNameCardTxt.Location = new System.Drawing.Point(24, 532);
             this.ppNameCardTxt.Name = "ppNameCardTxt";
-            this.ppNameCardTxt.Size = new System.Drawing.Size(246, 51);
+            this.ppNameCardTxt.Size = new System.Drawing.Size(246, 33);
             this.ppNameCardTxt.TabIndex = 72;
             // 
             // label45
@@ -1657,7 +1671,7 @@ namespace HappyJourneyAirline.Tabs
             this.label45.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label45.Location = new System.Drawing.Point(351, 412);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(202, 51);
+            this.label45.Size = new System.Drawing.Size(119, 32);
             this.label45.TabIndex = 71;
             this.label45.Text = "Expiary date";
             this.label45.UseCompatibleTextRendering = true;
@@ -1669,7 +1683,7 @@ namespace HappyJourneyAirline.Tabs
             this.label44.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label44.Location = new System.Drawing.Point(24, 412);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(216, 51);
+            this.label44.Size = new System.Drawing.Size(127, 32);
             this.label44.TabIndex = 69;
             this.label44.Text = "Card Number";
             this.label44.UseCompatibleTextRendering = true;
@@ -1680,7 +1694,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppCardNumTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ppCardNumTxt.Location = new System.Drawing.Point(24, 447);
             this.ppCardNumTxt.Name = "ppCardNumTxt";
-            this.ppCardNumTxt.Size = new System.Drawing.Size(246, 51);
+            this.ppCardNumTxt.Size = new System.Drawing.Size(246, 33);
             this.ppCardNumTxt.TabIndex = 68;
             // 
             // pictureBox3
@@ -1718,7 +1732,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppAeRadio.AutoSize = true;
             this.ppAeRadio.Location = new System.Drawing.Point(256, 345);
             this.ppAeRadio.Name = "ppAeRadio";
-            this.ppAeRadio.Size = new System.Drawing.Size(21, 20);
+            this.ppAeRadio.Size = new System.Drawing.Size(14, 13);
             this.ppAeRadio.TabIndex = 64;
             this.ppAeRadio.TabStop = true;
             this.ppAeRadio.UseVisualStyleBackColor = true;
@@ -1728,7 +1742,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppVisaRadio.AutoSize = true;
             this.ppVisaRadio.Location = new System.Drawing.Point(137, 345);
             this.ppVisaRadio.Name = "ppVisaRadio";
-            this.ppVisaRadio.Size = new System.Drawing.Size(21, 20);
+            this.ppVisaRadio.Size = new System.Drawing.Size(14, 13);
             this.ppVisaRadio.TabIndex = 63;
             this.ppVisaRadio.TabStop = true;
             this.ppVisaRadio.UseVisualStyleBackColor = true;
@@ -1738,7 +1752,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppCcRadio.AutoSize = true;
             this.ppCcRadio.Location = new System.Drawing.Point(24, 345);
             this.ppCcRadio.Name = "ppCcRadio";
-            this.ppCcRadio.Size = new System.Drawing.Size(21, 20);
+            this.ppCcRadio.Size = new System.Drawing.Size(14, 13);
             this.ppCcRadio.TabIndex = 62;
             this.ppCcRadio.TabStop = true;
             this.ppCcRadio.UseVisualStyleBackColor = true;
@@ -1750,7 +1764,7 @@ namespace HappyJourneyAirline.Tabs
             this.label43.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.Location = new System.Drawing.Point(24, 294);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(289, 51);
+            this.label43.Size = new System.Drawing.Size(171, 32);
             this.label43.TabIndex = 61;
             this.label43.Text = "Credit card details";
             this.label43.UseCompatibleTextRendering = true;
@@ -1762,9 +1776,9 @@ namespace HappyJourneyAirline.Tabs
             this.label42.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.Location = new System.Drawing.Point(351, 200);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(284, 51);
+            this.label42.Size = new System.Drawing.Size(125, 32);
             this.label42.TabIndex = 60;
-            this.label42.Text = "Passport number:";
+            this.label42.Text = "CPR number:";
             this.label42.UseCompatibleTextRendering = true;
             // 
             // ppPasportNumTxt
@@ -1773,7 +1787,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppPasportNumTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ppPasportNumTxt.Location = new System.Drawing.Point(351, 235);
             this.ppPasportNumTxt.Name = "ppPasportNumTxt";
-            this.ppPasportNumTxt.Size = new System.Drawing.Size(246, 51);
+            this.ppPasportNumTxt.Size = new System.Drawing.Size(246, 33);
             this.ppPasportNumTxt.TabIndex = 59;
             // 
             // label41
@@ -1783,19 +1797,10 @@ namespace HappyJourneyAirline.Tabs
             this.label41.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.Location = new System.Drawing.Point(24, 200);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(296, 51);
+            this.label41.Size = new System.Drawing.Size(117, 32);
             this.label41.TabIndex = 58;
-            this.label41.Text = "Number of tickets:";
+            this.label41.Text = "Ticket Class:";
             this.label41.UseCompatibleTextRendering = true;
-            // 
-            // ppNumofTicketsTxt
-            // 
-            this.ppNumofTicketsTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ppNumofTicketsTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ppNumofTicketsTxt.Location = new System.Drawing.Point(24, 235);
-            this.ppNumofTicketsTxt.Name = "ppNumofTicketsTxt";
-            this.ppNumofTicketsTxt.Size = new System.Drawing.Size(246, 51);
-            this.ppNumofTicketsTxt.TabIndex = 57;
             // 
             // label39
             // 
@@ -1804,7 +1809,7 @@ namespace HappyJourneyAirline.Tabs
             this.label39.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.Location = new System.Drawing.Point(24, 115);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(241, 51);
+            this.label39.Size = new System.Drawing.Size(142, 32);
             this.label39.TabIndex = 56;
             this.label39.Text = "Flight Number:";
             this.label39.UseCompatibleTextRendering = true;
@@ -1817,7 +1822,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppFlightNumTxt.Location = new System.Drawing.Point(24, 152);
             this.ppFlightNumTxt.Name = "ppFlightNumTxt";
             this.ppFlightNumTxt.ReadOnly = true;
-            this.ppFlightNumTxt.Size = new System.Drawing.Size(246, 44);
+            this.ppFlightNumTxt.Size = new System.Drawing.Size(246, 26);
             this.ppFlightNumTxt.TabIndex = 55;
             this.ppFlightNumTxt.Text = "123";
             // 
@@ -1827,7 +1832,7 @@ namespace HappyJourneyAirline.Tabs
             this.label40.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.Location = new System.Drawing.Point(14, 23);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(521, 100);
+            this.label40.Size = new System.Drawing.Size(308, 59);
             this.label40.TabIndex = 54;
             this.label40.Text = "Payment Page";
             // 
@@ -2375,6 +2380,33 @@ namespace HappyJourneyAirline.Tabs
         private void fdBookBtn_Click(object sender, EventArgs e)
         {
             ppFlightNumTxt.Text = $"{selectedFlight.Id}";
+            ppTotaLbl.Text = $"{selectedFlight.BasePrice}";
+            try
+            {
+                ppTicketClassDrop.Items.Clear();
+
+                List<TicketClass> ticketClassList = new List<TicketClass>();
+
+                ticketClassList = TicketClass.GetAllTicketClasses();
+
+
+                if (ticketClassList == null || ticketClassList.Count == 0)
+                {
+                    Console.WriteLine("No Classes found.");
+                    return;
+                }
+                else
+                {
+                    ppTicketClassDrop.DataSource = ticketClassList;
+                    ppTicketClassDrop.DisplayMember = "Name";
+                }
+            }
+            catch
+            {
+
+            }
+
+
             tabController.SelectTab(6);
         }
 
@@ -2385,7 +2417,8 @@ namespace HappyJourneyAirline.Tabs
             bookingTable.Rows.Clear();
             // display Booking list
             List<Ticket> tickets = new List<Ticket>();
-            tickets = Ticket.GetTicketsByUserId((Int32)AuthService.GetCurrentUserId());
+
+            tickets = Ticket.GetTicketsByUserId((int)AuthService.GetCurrentUserId());
 
             foreach (Ticket ticket in tickets)
             {
@@ -2622,9 +2655,116 @@ namespace HappyJourneyAirline.Tabs
                 Console.WriteLine(er.ToString());
             }
         }
+
         #endregion Settings Tab
 
-    
+        private void ppPayBtn_Click(object sender, EventArgs e)
+        {
+            ppPasportNumTxt.Text = "";
+            ppCardNumTxt.Text = "";
+            ppNameCardTxt.Text = "";
+            ppCvvTxt.Text = "";
+
+            paymentErrorLbl.Visible = false;
+
+            // Validate input
+            if (ppPasportNumTxt.Text == "" || ppCardNumTxt.Text == "" || ppNameCardTxt.Text == "" || ppCvvTxt.Text == "")
+            {
+                MessageBox.Show("Please fill all the fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                paymentErrorLbl.Visible = true;
+                paymentErrorLbl.Text = "Please fill all the fields";
+                return;
+            }
+
+            int flightId = Convert.ToInt32(ppFlightNumTxt.Text);
+
+            int paymentMethod;
+
+            if (ppCcRadio.Checked)
+            {
+                paymentMethod = 1;
+            }
+            else if (ppVisaRadio.Checked)
+            {
+                paymentMethod = 2;
+            }
+            else if (ppAeRadio.Checked)
+            {
+                paymentMethod = 3;
+            }
+            else
+            {
+                MessageBox.Show("Please select a Payment Method.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                paymentErrorLbl.Visible = true;
+                paymentErrorLbl.Text = "Please select a Payment Method.";
+                return;
+            }
+
+            // Generate a completely random seat
+            string assignedSeat = GenerateRandomSeat();
+
+            Payment payment = new Payment
+            {
+                Id = 11,
+                Amount = Convert.ToDecimal(ppTotaLbl.Text),
+                Date = DateTime.Now,
+                PaymentStatusID = 1,
+                PaymentMethodID = paymentMethod
+            };
+
+            try
+            {
+                Ticket ticket = new Ticket
+                {
+                    FlightID = selectedFlight.Id,
+                    UserID = AuthService.GetCurrentUserId(),
+                    Seat = assignedSeat,
+                    TicketClassID = ppTicketClassDrop.SelectedIndex + 1,
+                    TicketStatusID = 1,
+                    PaymentID = Payment.AddPayment(payment),
+                    AgencyID = User.GetUserById(AuthService.GetCurrentUserId()).AgencyID
+                };
+
+                 //Insert the ticket into the database
+                Ticket.AddTicket(ticket);
+            }
+
+            catch
+            {
+                paymentErrorLbl.Visible = true;
+                MessageBox.Show("Error while creating the ticket.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                paymentErrorLbl.Text = "Error while creating the ticket";
+            }
+
+
+            // Display a success message
+            MessageBox.Show($"Ticket purchased successfully. Your seat: {assignedSeat}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Return to the booking tab
+            defultIcons();
+            bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
+            loadBookingTable();
+            tabController.SelectTab(1);
+        }
+
+        private string GenerateRandomSeat()
+        {
+            Random random = new Random();
+            int row = random.Next(1, 31); // Random row number (e.g., 1-30)
+            char column = (char)random.Next('A', 'F' + 1); // Random column letter (e.g., A-F)
+            return $"{row}{column}";
+        }
+
+
+        private void ppCancelBtn_Click(object sender, EventArgs e)
+        {
+            tabController.SelectTab(0);
+        }
+
+        private void ppTicketClassDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ppTotaLbl.Text = $"{selectedFlight.BasePrice+TicketClass.GetTicketClassById(ppTicketClassDrop.SelectedIndex+1).ExtraPrice}";
+        }
     }
 
 }
