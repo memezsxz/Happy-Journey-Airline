@@ -2381,6 +2381,13 @@ namespace HappyJourneyAirline.Tabs
         {
             ppFlightNumTxt.Text = $"{selectedFlight.Id}";
             ppTotaLbl.Text = $"{selectedFlight.BasePrice}";
+
+            ppPasportNumTxt.Text = "";
+            ppCardNumTxt.Text = "";
+            ppNameCardTxt.Text = "";
+            ppCvvTxt.Text = "";
+
+            paymentErrorLbl.Visible = false;
             try
             {
                 ppTicketClassDrop.Items.Clear();
@@ -2660,13 +2667,7 @@ namespace HappyJourneyAirline.Tabs
 
         private void ppPayBtn_Click(object sender, EventArgs e)
         {
-            ppPasportNumTxt.Text = "";
-            ppCardNumTxt.Text = "";
-            ppNameCardTxt.Text = "";
-            ppCvvTxt.Text = "";
-
             paymentErrorLbl.Visible = false;
-
             // Validate input
             if (ppPasportNumTxt.Text == "" || ppCardNumTxt.Text == "" || ppNameCardTxt.Text == "" || ppCvvTxt.Text == "")
             {
