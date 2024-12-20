@@ -37,18 +37,18 @@ namespace ProjectSample
         {
             InitializeComponent();
 
-            TravellerTabs travelTab = new TravellerTabs();
+            TravellerTabs travelTab = new TravellerTabs(appTabs);
             TabPage travelTabPage = new TabPage("Traveller Dashboard");
             travelTabPage.Controls.Add(travelTab);
             appTabs.TabPages.Add(travelTabPage);
 
-            AdminTabs adminTab = new AdminTabs();
+            AdminTabs adminTab = new AdminTabs(appTabs);
             TabPage adminTabPage = new TabPage("Admin Dashboard");
             adminTabPage.Controls.Add(adminTab);
             appTabs.TabPages.Add(adminTabPage);
 
 
-            EmployerTabs employerTab = new EmployerTabs();
+            EmployerTabs employerTab = new EmployerTabs(appTabs);
             TabPage employerTabPage = new TabPage("Employer Dashboad");
             employerTabPage.Controls.Add(employerTab);
             appTabs.TabPages.Add(employerTabPage);

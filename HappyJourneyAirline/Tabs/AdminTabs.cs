@@ -31,7 +31,7 @@ namespace HappyJourneyAirline.Tabs
 {
     public partial class AdminTabs : UserControl
     {
-
+        TabControl appTabs;
         #region attrebutes
         private TabPage veAirCouCity;
         private Button addAirCityCouBtn;
@@ -305,7 +305,7 @@ namespace HappyJourneyAirline.Tabs
         private Button btnBackup;
         private static readonly double rand = new Random().NextDouble();
         #endregion
-        public AdminTabs()
+        public AdminTabs(TabControl appTabs)
         {
             InitializeComponent();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
@@ -315,7 +315,7 @@ namespace HappyJourneyAirline.Tabs
             countriesDataGridView.Columns.Insert(0, AddEditColumn());
             citiesDataGridView.Columns.Insert(0, AddEditColumn());
             airportsDataGridView.Columns.Insert(0, AddEditColumn());
-
+            this.appTabs = appTabs;
         }
 
         /// <summary>
@@ -5822,18 +5822,21 @@ namespace HappyJourneyAirline.Tabs
 
             if (!string.IsNullOrEmpty(selectedPath))
             {
+                // the file formate 
+                string timestamp = DateTime.Now.ToString("ddMMyyyy_HHmmss");
+
+                // Construct the filename with the formatted date and time
+                string filename = $"HappyJourneyAirline_DB_Backup_{timestamp}.bak";
+
+
+                // Call the backup method with the generated filename
+                Database.BackupDatabase(filename, selectedPath);
+
                 MessageBox.Show($"Selected folder for the backup file: {selectedPath}", "Folder Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            
             }
 
-
-            //// the file formate 
-            //string timestamp = DateTime.Now.ToString("ddMMyyyy_HHmmss");
-
-            //// Construct the filename with the formatted date and time
-            //string filename = $"HappyJourneyAirline_DB_Backup_{timestamp}.bak";
-
-            //// Call the backup method with the generated filename
-            //Database.BackupDatabase(filename);
         }
     }
 }

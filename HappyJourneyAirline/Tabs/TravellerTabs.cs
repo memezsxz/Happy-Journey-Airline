@@ -14,6 +14,7 @@ namespace HappyJourneyAirline.Tabs
 {
     public partial class TravellerTabs : UserControl
     {
+        TabControl appTabs;
         #region fields
         private TabPage travellerFlightsTab;
         private Label label22;
@@ -148,10 +149,11 @@ namespace HappyJourneyAirline.Tabs
         #region Added Atrebutes
         private Flight selectedFlight = null;
         #endregion
-        public TravellerTabs()
+        public TravellerTabs(TabControl appTabs)
         {
             InitializeComponent();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
+            this.appTabs = appTabs;
             //gridflightsData.DataSource = Flight.GetAllFlights();
             //flightDataLoad();
             //gridflightsData.Columns.Insert(0, AddViewColumn());
@@ -2685,7 +2687,7 @@ namespace HappyJourneyAirline.Tabs
                     if (User.DeleteUser(currentUser.Id))
                     {
                         MessageBox.Show("User has been successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        appTabs.SelectTab(0);
                     }
                     else
                     {
@@ -2702,7 +2704,7 @@ namespace HappyJourneyAirline.Tabs
             catch (Exception er)
             {
                 Console.WriteLine(er.ToString());
-            }
+            //}
         }
 
         #endregion Settings Tab

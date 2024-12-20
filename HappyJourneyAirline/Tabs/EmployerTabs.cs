@@ -15,6 +15,7 @@ namespace HappyJourneyAirline.Tabs
 {
     public partial class EmployerTabs : UserControl
     {
+        TabControl appTabs;
         #region Fields
         private Panel panel1;
         private PictureBox logOutIcon;
@@ -115,7 +116,7 @@ namespace HappyJourneyAirline.Tabs
         private DataGridView fdTravellersDataGridView;
         private PictureBox bookingTab;
         #endregion
-        public EmployerTabs()
+        public EmployerTabs(TabControl appTabs)
         {
             InitializeComponent();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
@@ -123,7 +124,7 @@ namespace HappyJourneyAirline.Tabs
             fdTravellersDataGridView.DataSource = Flight.GetTravellersForFlightByAgencyID(0, 0);
             fdTravellersDataGridView.Columns.Insert(0, AddEditColumn());
 
-
+            this.appTabs = appTabs;
         }
 
         private void InitializeComponent()
