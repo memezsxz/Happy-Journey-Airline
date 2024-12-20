@@ -490,6 +490,7 @@ namespace HappyJourneyAirline.Tabs
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.travellerUsersTab = new System.Windows.Forms.TabPage();
+            this.addNotifications = new System.Windows.Forms.PictureBox();
             this.usersDataGridView = new System.Windows.Forms.DataGridView();
             this.userCreateUserBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -577,7 +578,6 @@ namespace HappyJourneyAirline.Tabs
             this.label76 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label74 = new System.Windows.Forms.Label();
-            this.addNotifications = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -606,6 +606,7 @@ namespace HappyJourneyAirline.Tabs
             this.createFlightTab.SuspendLayout();
             this.bookingDetailsTab.SuspendLayout();
             this.travellerUsersTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
             this.travellerSettingsTab.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
@@ -626,7 +627,6 @@ namespace HappyJourneyAirline.Tabs
             this.cityGroupBox.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             this.btntabCreatenotifications.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.addNotifications)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -2719,6 +2719,17 @@ namespace HappyJourneyAirline.Tabs
             this.travellerUsersTab.TabIndex = 3;
             this.travellerUsersTab.Text = "Users";
             // 
+            // addNotifications
+            // 
+            this.addNotifications.Image = global::HappyJourneyAirline.Properties.Resources.addNot;
+            this.addNotifications.Location = new System.Drawing.Point(613, 26);
+            this.addNotifications.Name = "addNotifications";
+            this.addNotifications.Size = new System.Drawing.Size(104, 80);
+            this.addNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.addNotifications.TabIndex = 40;
+            this.addNotifications.TabStop = false;
+            this.addNotifications.Click += new System.EventHandler(this.addNotifications_Click);
+            // 
             // usersDataGridView
             // 
             this.usersDataGridView.AllowUserToAddRows = false;
@@ -2799,6 +2810,7 @@ namespace HappyJourneyAirline.Tabs
             this.travellerSettingsTab.Size = new System.Drawing.Size(732, 720);
             this.travellerSettingsTab.TabIndex = 2;
             this.travellerSettingsTab.Text = "Settings";
+            this.travellerSettingsTab.Paint += new System.Windows.Forms.PaintEventHandler(this.travellerSettingsTab_Paint);
             // 
             // setErrorLbl
             // 
@@ -3821,17 +3833,6 @@ namespace HappyJourneyAirline.Tabs
             this.label74.TabIndex = 154;
             this.label74.Text = "Create Notifications";
             // 
-            // addNotifications
-            // 
-            this.addNotifications.Image = global::HappyJourneyAirline.Properties.Resources.addNot;
-            this.addNotifications.Location = new System.Drawing.Point(613, 26);
-            this.addNotifications.Name = "addNotifications";
-            this.addNotifications.Size = new System.Drawing.Size(104, 80);
-            this.addNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.addNotifications.TabIndex = 40;
-            this.addNotifications.TabStop = false;
-            this.addNotifications.Click += new System.EventHandler(this.addNotifications_Click);
-            // 
             // AdminTabs
             // 
             this.Controls.Add(this.tabControler);
@@ -3883,6 +3884,7 @@ namespace HappyJourneyAirline.Tabs
             this.bookingDetailsTab.PerformLayout();
             this.travellerUsersTab.ResumeLayout(false);
             this.travellerUsersTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addNotifications)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
             this.travellerSettingsTab.ResumeLayout(false);
             this.travellerSettingsTab.PerformLayout();
@@ -3912,7 +3914,6 @@ namespace HappyJourneyAirline.Tabs
             this.flowLayoutPanel6.ResumeLayout(false);
             this.btntabCreatenotifications.ResumeLayout(false);
             this.btntabCreatenotifications.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.addNotifications)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -5613,6 +5614,19 @@ namespace HappyJourneyAirline.Tabs
         private void addNotifications_Click(object sender, EventArgs e)
         {
             tabControler.SelectTab(12);
+        }
+
+        private void travellerSettingsTab_Paint(object sender, PaintEventArgs e)
+        {
+            long id = AuthService.GetCurrentUserId();
+            User currentUser = User.GetUserById(id);
+
+            setUsernameTxt.Text = currentUser.Username;
+            setFirstNameTxt.Text = currentUser.FirstName;
+            setLastNameTxt.Text = currentUser.LastName;
+            setEmailTxt.Text = currentUser.Email;
+            setPasswordTxt.Text = currentUser.Password;
+            setPhoneTxt.Text = currentUser.PhoneNumber;
         }
     }
 }
