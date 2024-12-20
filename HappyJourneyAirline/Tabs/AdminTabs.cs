@@ -14,6 +14,7 @@ using HappyJourneyAirline.Lib;
 using System.Data.SqlClient;
 using System.Data;
 using System.Data.Common;
+using System.Threading;
 
 
 //public enum FlightStatus
@@ -5795,14 +5796,44 @@ namespace HappyJourneyAirline.Tabs
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            // the file formate 
-            string timestamp = DateTime.Now.ToString("ddMMyyyy_HHmmss");
 
-            // Construct the filename with the formatted date and time
-            string filename = $"HappyJourneyAirline_DB_Backup_{timestamp}.bak";
+            string selectedPath = null;
 
-            // Call the backup method with the generated filename
-            Database.BackupDatabase(filename);
+            // Create an STA thread for the FolderBrowserDialog
+            Thread staThread = new Thread(() =>
+            {
+                using (FolderBrowserDialog folderDlg = new FolderBrowserDialog())
+                {
+                    folderDlg.Description = "Select a folder to save your backup";
+                    folderDlg.ShowNewFolderButton = true;
+                    folderDlg.RootFolder = Environment.SpecialFolder.MyComputer;
+
+                    if (folderDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        selectedPath = folderDlg.SelectedPath;
+                    }
+                }
+            });
+
+            // Set the thread to STA and start it
+            staThread.SetApartmentState(ApartmentState.STA);
+            staThread.Start();
+            staThread.Join(); // Wait for the thread to complete
+
+            if (!string.IsNullOrEmpty(selectedPath))
+            {
+                MessageBox.Show($"Selected folder for the backup file: {selectedPath}", "Folder Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+            //// the file formate 
+            //string timestamp = DateTime.Now.ToString("ddMMyyyy_HHmmss");
+
+            //// Construct the filename with the formatted date and time
+            //string filename = $"HappyJourneyAirline_DB_Backup_{timestamp}.bak";
+
+            //// Call the backup method with the generated filename
+            //Database.BackupDatabase(filename);
         }
     }
 }
