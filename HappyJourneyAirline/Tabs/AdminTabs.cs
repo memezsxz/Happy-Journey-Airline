@@ -323,6 +323,16 @@ namespace HappyJourneyAirline.Tabs
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminTabs));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.usersIcon = new System.Windows.Forms.PictureBox();
             this.logOutIcon = new System.Windows.Forms.PictureBox();
@@ -2735,13 +2745,33 @@ namespace HappyJourneyAirline.Tabs
             this.usersDataGridView.AllowUserToAddRows = false;
             this.usersDataGridView.AllowUserToOrderColumns = true;
             this.usersDataGridView.AllowUserToResizeRows = false;
-            this.usersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.usersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.usersDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.usersDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
             this.usersDataGridView.Location = new System.Drawing.Point(22, 212);
             this.usersDataGridView.MultiSelect = false;
             this.usersDataGridView.Name = "usersDataGridView";
             this.usersDataGridView.ReadOnly = true;
+            this.usersDataGridView.RowHeadersVisible = false;
             this.usersDataGridView.RowHeadersWidth = 70;
-            this.usersDataGridView.RowTemplate.Height = 30;
+            this.usersDataGridView.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.usersDataGridView.RowTemplate.Height = 50;
             this.usersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.usersDataGridView.Size = new System.Drawing.Size(695, 488);
             this.usersDataGridView.TabIndex = 39;
@@ -3058,11 +3088,31 @@ namespace HappyJourneyAirline.Tabs
             this.flightsDataGridView.AllowUserToDeleteRows = false;
             this.flightsDataGridView.AllowUserToOrderColumns = true;
             this.flightsDataGridView.AllowUserToResizeRows = false;
-            this.flightsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.flightsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flightsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.flightsDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flightsDataGridView.DefaultCellStyle = dataGridViewCellStyle14;
             this.flightsDataGridView.Location = new System.Drawing.Point(18, 231);
             this.flightsDataGridView.Name = "flightsDataGridView";
+            this.flightsDataGridView.RowHeadersVisible = false;
             this.flightsDataGridView.RowHeadersWidth = 70;
-            this.flightsDataGridView.RowTemplate.Height = 30;
+            this.flightsDataGridView.RowTemplate.Height = 50;
             this.flightsDataGridView.Size = new System.Drawing.Size(702, 455);
             this.flightsDataGridView.TabIndex = 38;
             this.flightsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.flightsDataGridView_CellClick);
@@ -3174,11 +3224,31 @@ namespace HappyJourneyAirline.Tabs
             this.countriesDataGridView.AllowUserToDeleteRows = false;
             this.countriesDataGridView.AllowUserToOrderColumns = true;
             this.countriesDataGridView.AllowUserToResizeRows = false;
-            this.countriesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.countriesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.countriesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.countriesDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.countriesDataGridView.DefaultCellStyle = dataGridViewCellStyle16;
             this.countriesDataGridView.Location = new System.Drawing.Point(7, 23);
             this.countriesDataGridView.Name = "countriesDataGridView";
+            this.countriesDataGridView.RowHeadersVisible = false;
             this.countriesDataGridView.RowHeadersWidth = 70;
-            this.countriesDataGridView.RowTemplate.Height = 30;
+            this.countriesDataGridView.RowTemplate.Height = 50;
             this.countriesDataGridView.Size = new System.Drawing.Size(694, 121);
             this.countriesDataGridView.TabIndex = 0;
             this.countriesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.countriesDataGridView_CellClick);
@@ -3200,11 +3270,31 @@ namespace HappyJourneyAirline.Tabs
             this.citiesDataGridView.AllowUserToDeleteRows = false;
             this.citiesDataGridView.AllowUserToOrderColumns = true;
             this.citiesDataGridView.AllowUserToResizeRows = false;
-            this.citiesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.citiesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.citiesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.citiesDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.citiesDataGridView.DefaultCellStyle = dataGridViewCellStyle18;
             this.citiesDataGridView.Location = new System.Drawing.Point(6, 23);
             this.citiesDataGridView.Name = "citiesDataGridView";
+            this.citiesDataGridView.RowHeadersVisible = false;
             this.citiesDataGridView.RowHeadersWidth = 70;
-            this.citiesDataGridView.RowTemplate.Height = 30;
+            this.citiesDataGridView.RowTemplate.Height = 50;
             this.citiesDataGridView.Size = new System.Drawing.Size(694, 126);
             this.citiesDataGridView.TabIndex = 1;
             this.citiesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.citiesDataGridView_CellClick);
@@ -3226,11 +3316,31 @@ namespace HappyJourneyAirline.Tabs
             this.airportsDataGridView.AllowUserToDeleteRows = false;
             this.airportsDataGridView.AllowUserToOrderColumns = true;
             this.airportsDataGridView.AllowUserToResizeRows = false;
-            this.airportsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.airportsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.airportsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.airportsDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.airportsDataGridView.DefaultCellStyle = dataGridViewCellStyle20;
             this.airportsDataGridView.Location = new System.Drawing.Point(7, 23);
             this.airportsDataGridView.Name = "airportsDataGridView";
+            this.airportsDataGridView.RowHeadersVisible = false;
             this.airportsDataGridView.RowHeadersWidth = 70;
-            this.airportsDataGridView.RowTemplate.Height = 30;
+            this.airportsDataGridView.RowTemplate.Height = 50;
             this.airportsDataGridView.Size = new System.Drawing.Size(694, 208);
             this.airportsDataGridView.TabIndex = 2;
             this.airportsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.airportsDataGridView_CellClick);
@@ -3381,9 +3491,9 @@ namespace HappyJourneyAirline.Tabs
             this.editAirportConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.editAirportConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
             this.editAirportConDrop.FormattingEnabled = true;
-            this.editAirportConDrop.Location = new System.Drawing.Point(293, 57);
+            this.editAirportConDrop.Location = new System.Drawing.Point(360, 57);
             this.editAirportConDrop.Name = "editAirportConDrop";
-            this.editAirportConDrop.Size = new System.Drawing.Size(246, 40);
+            this.editAirportConDrop.Size = new System.Drawing.Size(309, 40);
             this.editAirportConDrop.TabIndex = 141;
             this.editAirportConDrop.SelectedIndexChanged += new System.EventHandler(this.editAirportConDrop_SelectedIndexChanged);
             // 
@@ -3393,7 +3503,7 @@ namespace HappyJourneyAirline.Tabs
             this.editAirportNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editAirportNameTxt.Location = new System.Drawing.Point(20, 57);
             this.editAirportNameTxt.Name = "editAirportNameTxt";
-            this.editAirportNameTxt.Size = new System.Drawing.Size(246, 40);
+            this.editAirportNameTxt.Size = new System.Drawing.Size(320, 40);
             this.editAirportNameTxt.TabIndex = 121;
             this.editAirportNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
             // 
@@ -3402,7 +3512,7 @@ namespace HappyJourneyAirline.Tabs
             this.label80.AutoSize = true;
             this.label80.BackColor = System.Drawing.Color.Transparent;
             this.label80.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.Location = new System.Drawing.Point(293, 25);
+            this.label80.Location = new System.Drawing.Point(360, 25);
             this.label80.Name = "label80";
             this.label80.Size = new System.Drawing.Size(179, 39);
             this.label80.TabIndex = 140;
@@ -4083,6 +4193,26 @@ namespace HappyJourneyAirline.Tabs
             flightsDataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
 
 
+            if (flightsDataGridView.Columns[3] != null)
+            {
+                flightsDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            if (flightsDataGridView.Columns[4] != null)
+            {
+                flightsDataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            if (flightsDataGridView.Columns[5] != null)
+            {
+                flightsDataGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            if (flightsDataGridView.Columns["ArrivalTimestamp"] != null)
+            {
+                flightsDataGridView.Columns["ArrivalTimestamp"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
         }
 
         // should be in db
@@ -4273,6 +4403,7 @@ namespace HappyJourneyAirline.Tabs
         #region View [Airport, Country, City]
         private void setupViewAirCityCou()
         {
+
             countries = new BindingList<Country>(Country.GetAllCountries());
             countriesDataGridView.DataSource = countries;
 
@@ -4281,6 +4412,13 @@ namespace HappyJourneyAirline.Tabs
 
             airports = new BindingList<Airport>(Airport.GetAllAirports());
             airportsDataGridView.DataSource = airports;
+
+
+            if (airportsDataGridView.Columns["Name"] != null) // Replace "Name" with the actual column name for the airport name
+            {
+                var nameColumn = airportsDataGridView.Columns["Name"];
+                nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // Automatically adjust size to fit content
+            }
         }
         private void citiesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -5109,6 +5247,12 @@ namespace HappyJourneyAirline.Tabs
                 usersDataGridView.Columns[i].ReadOnly = true;
             }
             usersDataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
+
+
+            // Adjust the AutoSizeMode for specific columns to display full content
+            usersDataGridView.Columns["Username"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            usersDataGridView.Columns["Email"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            usersDataGridView.Columns["CompanyName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
         }
         private DataGridViewTextBoxColumn AddEditColumn()
