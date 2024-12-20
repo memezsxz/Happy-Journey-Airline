@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 
 namespace HappyJourneyAirline.Lib
 {
@@ -111,6 +112,37 @@ namespace HappyJourneyAirline.Lib
             return results;
         }
 
+
+
+        public static bool BackupDatabase(string backupFileName = "HappyJourneyAirline_DB_Backup.bak")
+        {
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string backupFilePath = Path.Combine(appDirectory, backupFileName);
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string backupCommand = $"BACKUP DATABASE [{connection.Database}] TO DISK = @BackupFilePath";
+
+                    using (SqlCommand command = new SqlCommand(backupCommand, connection))
+                    {
+                        command.Parameters.AddWithValue("@BackupFilePath", backupFilePath);
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("Database backed up successfully to: " + backupFilePath);
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred during the backup process: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+    
 
         // Generic method to execute non-query commands (INSERT, UPDATE, DELETE)
         public int ExecuteNonQuery(string query, Dictionary<string, object> parameters = null)
