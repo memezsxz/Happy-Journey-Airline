@@ -301,6 +301,7 @@ namespace HappyJourneyAirline.Tabs
         private Label lblErrorType;
         private Label label88;
         private PictureBox addNotifications;
+        private Button btnBackup;
         private static readonly double rand = new Random().NextDouble();
         #endregion
         public AdminTabs()
@@ -588,6 +589,7 @@ namespace HappyJourneyAirline.Tabs
             this.label76 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label74 = new System.Windows.Forms.Label();
+            this.btnBackup = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -2818,6 +2820,7 @@ namespace HappyJourneyAirline.Tabs
             // travellerSettingsTab
             // 
             this.travellerSettingsTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.travellerSettingsTab.Controls.Add(this.btnBackup);
             this.travellerSettingsTab.Controls.Add(this.setErrorLbl);
             this.travellerSettingsTab.Controls.Add(this.setCancelBtn);
             this.travellerSettingsTab.Controls.Add(this.setSaveChanesBtn);
@@ -3942,6 +3945,22 @@ namespace HappyJourneyAirline.Tabs
             this.label74.Size = new System.Drawing.Size(622, 73);
             this.label74.TabIndex = 154;
             this.label74.Text = "Create Notifications";
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnBackup.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.ForeColor = System.Drawing.Color.White;
+            this.btnBackup.Location = new System.Drawing.Point(22, 636);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(399, 57);
+            this.btnBackup.TabIndex = 40;
+            this.btnBackup.Text = "Database Backup";
+            this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnBackup.UseVisualStyleBackColor = false;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // AdminTabs
             // 
@@ -5760,6 +5779,7 @@ namespace HappyJourneyAirline.Tabs
             tabControler.SelectTab(12);
         }
 
+        //load the user information on the textfileds in event of clicking the settings tab
         private void travellerSettingsTab_Paint(object sender, PaintEventArgs e)
         {
             long id = AuthService.GetCurrentUserId();
@@ -5771,6 +5791,18 @@ namespace HappyJourneyAirline.Tabs
             setEmailTxt.Text = currentUser.Email;
             setPasswordTxt.Text = currentUser.Password;
             setPhoneTxt.Text = currentUser.PhoneNumber;
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            // the file formate 
+            string timestamp = DateTime.Now.ToString("ddMMyyyy_HHmmss");
+
+            // Construct the filename with the formatted date and time
+            string filename = $"HappyJourneyAirline_DB_Backup_{timestamp}.bak";
+
+            // Call the backup method with the generated filename
+            Database.BackupDatabase(filename);
         }
     }
 }
