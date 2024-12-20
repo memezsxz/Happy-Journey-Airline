@@ -114,10 +114,15 @@ namespace HappyJourneyAirline.Lib
 
 
 
-        public static bool BackupDatabase(string backupFileName = "HappyJourneyAirline_DB_Backup.bak")
+        public static bool BackupDatabase(string backupFileName = "HappyJourneyAirline_DB_Backup.bak", string backupPath = null)
         {
-            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string backupFilePath = Path.Combine(appDirectory, backupFileName);
+            if(backupPath == null)
+            {
+                backupPath = AppDomain.CurrentDomain.BaseDirectory;
+            }
+            
+
+            string backupFilePath = Path.Combine(backupPath, backupFileName);
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
