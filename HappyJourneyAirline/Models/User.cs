@@ -25,7 +25,7 @@ namespace HappyJourneyAirline.Models
             string query = "SELECT id, firstName, lastName, username, email, password, type, agencyID, companyName, phoneNumber, cpr FROM users";
             return Database.Instance.Query(query, reader => new User
             {
-                Id = reader.GetInt32(0),
+                Id = reader.GetInt64(0),
                 FirstName = !reader.IsDBNull(1) ? reader.GetString(1).Trim() : null,
                 LastName = !reader.IsDBNull(2) ? reader.GetString(2).Trim() : null,
                 Username = !reader.IsDBNull(3) ? reader.GetString(3) : null,

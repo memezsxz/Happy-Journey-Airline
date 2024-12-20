@@ -138,12 +138,12 @@ namespace HappyJourneyAirline.Models
             };
             return Database.Instance.Query(query, parameters, reader => new Notification
             {
-                Id = reader.GetInt32(0),
+                Id = reader.GetInt64(0),
                 Source = reader.GetString(1),
                 Type = reader.GetString(2),
                 Title = reader.GetString(3),
                 Description = reader.GetString(4),
-                UserId = reader.GetInt32(5)
+                UserId = reader.GetInt64(5)
             });
         }
     }

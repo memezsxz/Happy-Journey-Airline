@@ -122,7 +122,7 @@ namespace ProjectSample
 
             User userHandler = new User();
             User loggedInUser = userHandler.Login(username, password);
-
+            
             if (loggedInUser == null) {
                 Console.WriteLine("Incorrect Credintials");
                 return;
