@@ -1,4 +1,6 @@
-﻿using System;
+﻿// This class provide interface to interact with the stored payments in database.
+
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
@@ -7,6 +9,7 @@ namespace HappyJourneyAirline.Models
 {
     public class Payment
     {
+        // Payment Attributes
         public int Id { get; set; } // Primary Key
         public decimal Amount { get; set; } // NOT NULL
         public DateTime Date { get; set; } // NOT NULL

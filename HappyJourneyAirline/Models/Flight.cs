@@ -1,4 +1,6 @@
-﻿using System;
+﻿// This class provide interface to interact with the stored flights in database.
+
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
@@ -7,6 +9,7 @@ namespace HappyJourneyAirline.Models
 {
     public class Flight
     {
+        // Flight Attributes
         public int Id { get; set; } // Primary Key
         public int SourceAirportID { get; set; } // Foreign Key
         public int DestinationAirportID { get; set; } // Foreign Key

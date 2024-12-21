@@ -1,4 +1,6 @@
 ﻿
+// Ticket  Provide an interface to interact with stored tickets
+
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,6 +10,7 @@ namespace HappyJourneyAirline.Models
 {
     public class Ticket
     {
+        // Ticket Attributes
         public int Id { get; set; } // Primary Key
         public int FlightID { get; set; } // Foreign Key (Flight)
         public long UserID { get; set; } // Foreign Key (User)

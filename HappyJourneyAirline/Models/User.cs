@@ -1,4 +1,6 @@
-﻿using System;
+﻿// User Class, the purpose of it to interact with the user data in the database.
+
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
@@ -7,6 +9,7 @@ namespace HappyJourneyAirline.Models
 {
     public class User
     {
+        // User Attributes
         public long Id { get; set; }
         public string FirstName { get; set; } // Nullable
         public string LastName { get; set; } // Nullable

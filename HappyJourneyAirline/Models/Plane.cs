@@ -1,4 +1,5 @@
-﻿using System;
+﻿// This class provide interface to interact with the stored planes in database.
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
@@ -7,6 +8,7 @@ namespace HappyJourneyAirline.Models
 {
     public class Plane
     {
+        // Plane Attributes
         public int Id { get; set; }
         public string Model { get; set; } // NOT NULL
         public int Capacity { get; set; } // NOT NULL

@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Ticket Class Provider an interface to interact with stored ticket statuses in DB
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
@@ -7,6 +8,7 @@ namespace HappyJourneyAirline.Models
 {
     public class TicketStatus
     {
+        // Ticket Status Attributes
         public int Id { get; set; } // Primary Key
         public string Name { get; set; } // Nullable
         public string Description { get; set; } // Nullable

@@ -1,4 +1,6 @@
-﻿using System;
+﻿// This class provide interface to interact with the stored flight statuses in database.
+
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
@@ -7,6 +9,7 @@ namespace HappyJourneyAirline.Models
 {
     public class FlightStatus
     {
+        // Flight Status Attributes
         public int Id { get; set; } // Primary Key
         public string Name { get; set; } // NOT NULL
         public string Description { get; set; } // NOT NULL

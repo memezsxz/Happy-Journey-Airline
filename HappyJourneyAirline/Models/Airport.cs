@@ -1,4 +1,6 @@
-﻿using System;
+﻿// This class provide interface to interact with the stored airports in database.
+
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
@@ -7,6 +9,7 @@ namespace HappyJourneyAirline.Models
 {
     public class Airport
     {
+        // Airport Attributes
         public int Id { get; set; } // Primary Key
         public string Name { get; set; } // NOT NULL
         public long CityId { get; set; } // Foreign Key
