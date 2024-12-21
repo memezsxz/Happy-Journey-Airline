@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="BuilderPattern\INotificationBuilder.cs" />
+    <Compile Include="BuilderPattern\NotificationBuilder.cs" />
+    <Compile Include="BuilderPattern\NotificationDirector.cs" />
     <Compile Include="Lib\AuthService.cs" />
     <Compile Include="Lib\Database.cs" />
     <Compile Include="MainAppUI.cs">
