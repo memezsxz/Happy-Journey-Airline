@@ -15,6 +15,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Data.Common;
 using System.Threading;
+using System.IO;
 
 
 //public enum FlightStatus
@@ -303,6 +304,8 @@ namespace HappyJourneyAirline.Tabs
         private Label label88;
         private PictureBox addNotifications;
         private Button btnBackup;
+        private Button btnReportUsers;
+        private Button button2;
         private static readonly double rand = new Random().NextDouble();
         #endregion
         public AdminTabs(TabControl appTabs)
@@ -508,6 +511,7 @@ namespace HappyJourneyAirline.Tabs
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.travellerSettingsTab = new System.Windows.Forms.TabPage();
+            this.btnBackup = new System.Windows.Forms.Button();
             this.setErrorLbl = new System.Windows.Forms.Label();
             this.setCancelBtn = new System.Windows.Forms.Button();
             this.setSaveChanesBtn = new System.Windows.Forms.Button();
@@ -590,7 +594,8 @@ namespace HappyJourneyAirline.Tabs
             this.label76 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label74 = new System.Windows.Forms.Label();
-            this.btnBackup = new System.Windows.Forms.Button();
+            this.btnReportUsers = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -2721,6 +2726,7 @@ namespace HappyJourneyAirline.Tabs
             // travellerUsersTab
             // 
             this.travellerUsersTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.travellerUsersTab.Controls.Add(this.btnReportUsers);
             this.travellerUsersTab.Controls.Add(this.addNotifications);
             this.travellerUsersTab.Controls.Add(this.usersDataGridView);
             this.travellerUsersTab.Controls.Add(this.userCreateUserBtn);
@@ -2767,7 +2773,7 @@ namespace HappyJourneyAirline.Tabs
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.usersDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
-            this.usersDataGridView.Location = new System.Drawing.Point(22, 212);
+            this.usersDataGridView.Location = new System.Drawing.Point(22, 249);
             this.usersDataGridView.MultiSelect = false;
             this.usersDataGridView.Name = "usersDataGridView";
             this.usersDataGridView.ReadOnly = true;
@@ -2776,7 +2782,7 @@ namespace HappyJourneyAirline.Tabs
             this.usersDataGridView.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.usersDataGridView.RowTemplate.Height = 50;
             this.usersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.usersDataGridView.Size = new System.Drawing.Size(695, 488);
+            this.usersDataGridView.Size = new System.Drawing.Size(695, 451);
             this.usersDataGridView.TabIndex = 39;
             this.usersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersDataGridView_CellClick);
             this.usersDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
@@ -2788,7 +2794,7 @@ namespace HappyJourneyAirline.Tabs
             this.userCreateUserBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.userCreateUserBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userCreateUserBtn.ForeColor = System.Drawing.Color.White;
-            this.userCreateUserBtn.Location = new System.Drawing.Point(494, 137);
+            this.userCreateUserBtn.Location = new System.Drawing.Point(494, 188);
             this.userCreateUserBtn.Name = "userCreateUserBtn";
             this.userCreateUserBtn.Size = new System.Drawing.Size(223, 55);
             this.userCreateUserBtn.TabIndex = 38;
@@ -2845,6 +2851,22 @@ namespace HappyJourneyAirline.Tabs
             this.travellerSettingsTab.TabIndex = 2;
             this.travellerSettingsTab.Text = "Settings";
             this.travellerSettingsTab.Paint += new System.Windows.Forms.PaintEventHandler(this.travellerSettingsTab_Paint);
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnBackup.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.ForeColor = System.Drawing.Color.White;
+            this.btnBackup.Location = new System.Drawing.Point(22, 636);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(399, 57);
+            this.btnBackup.TabIndex = 40;
+            this.btnBackup.Text = "Database Backup";
+            this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnBackup.UseVisualStyleBackColor = false;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // setErrorLbl
             // 
@@ -3199,6 +3221,7 @@ namespace HappyJourneyAirline.Tabs
             // veAirCouCity
             // 
             this.veAirCouCity.BackColor = System.Drawing.Color.Gainsboro;
+            this.veAirCouCity.Controls.Add(this.button2);
             this.veAirCouCity.Controls.Add(this.groupBox4);
             this.veAirCouCity.Controls.Add(this.groupBox5);
             this.veAirCouCity.Controls.Add(this.groupBox6);
@@ -3947,21 +3970,37 @@ namespace HappyJourneyAirline.Tabs
             this.label74.TabIndex = 154;
             this.label74.Text = "Create Notifications";
             // 
-            // btnBackup
+            // btnReportUsers
             // 
-            this.btnBackup.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnBackup.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackup.ForeColor = System.Drawing.Color.White;
-            this.btnBackup.Location = new System.Drawing.Point(22, 636);
-            this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Size = new System.Drawing.Size(399, 57);
-            this.btnBackup.TabIndex = 40;
-            this.btnBackup.Text = "Database Backup";
-            this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnBackup.UseVisualStyleBackColor = false;
-            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            this.btnReportUsers.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnReportUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnReportUsers.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnReportUsers.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportUsers.ForeColor = System.Drawing.Color.White;
+            this.btnReportUsers.Location = new System.Drawing.Point(494, 127);
+            this.btnReportUsers.Name = "btnReportUsers";
+            this.btnReportUsers.Size = new System.Drawing.Size(223, 55);
+            this.btnReportUsers.TabIndex = 41;
+            this.btnReportUsers.Text = "Generate Users Report";
+            this.btnReportUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnReportUsers.UseVisualStyleBackColor = false;
+            this.btnReportUsers.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(480, 25);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(223, 55);
+            this.button2.TabIndex = 148;
+            this.button2.Text = "Generate Locations Report";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // AdminTabs
             // 
@@ -5836,6 +5875,152 @@ namespace HappyJourneyAirline.Tabs
             
             
             }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            Thread staThread = new Thread(() =>
+            {
+                using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
+                {
+                    saveFileDialog1.Filter = "Text File |*.txt";
+                    saveFileDialog1.Title = "Save User Report";
+                    saveFileDialog1.FileName = "UserReport.txt";
+
+                    // Show the dialog and process the save if a file name is provided
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
+                    {
+                        try
+                        {
+                            // Step 1: Retrieve the list of users
+                            List<User> userList = User.GetAllUsers();
+
+                            // Step 2: Create the content for the file
+                            StringBuilder userInfo = new StringBuilder();
+                            userInfo.AppendLine("User Report");
+                            userInfo.AppendLine("--------------------------");
+                            bool adminHeaderAdded = false;
+                            bool travellerHeaderAdded = false;
+                            bool agencyHeaderAdded = false;
+
+                            foreach (var user in userList)
+                            {
+                                if (user.Type == "admin" && !adminHeaderAdded)
+                                {
+                                    userInfo.AppendLine("");
+                                    userInfo.AppendLine("--------- Admin Users ---------");
+                                    adminHeaderAdded = true;
+                                }
+                                else if (user.Type == "agency" && !agencyHeaderAdded)
+                                {
+                                    userInfo.AppendLine("");
+                                    userInfo.AppendLine("--------- Employeer Users ---------");
+                                    agencyHeaderAdded = true;
+                                }
+                                else if (user.Type == "traveller" && !travellerHeaderAdded)
+                                {
+                                    userInfo.AppendLine("");
+                                    userInfo.AppendLine("--------- Traveller Users ---------");
+                                    travellerHeaderAdded = true;
+                                }
+
+                                userInfo.AppendLine($"ID: {user.Id}, Name: {user.Username}, Email: {user.Email}, Username: {user.Username}, Password: {user.Password}, CPR: {user.Cpr}");
+                            }
+
+
+                            userInfo.AppendLine("\n\nTotal Number of Users: "+userList.Count);
+                            // Step 3: Write the content to the selected file
+                            File.WriteAllText(saveFileDialog1.FileName, userInfo.ToString());
+
+                            // Step 4: Notify the user of success
+                            MessageBox.Show("Report saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle any errors during the save process
+                            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            });
+
+            staThread.SetApartmentState(ApartmentState.STA);
+            staThread.Start();
+            staThread.Join(); // Wait for the thread to complete
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Thread staThread = new Thread(() =>
+            {
+                using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
+                {
+                    saveFileDialog1.Filter = "Text File |*.txt";
+                    saveFileDialog1.Title = "Save User Report";
+                    saveFileDialog1.FileName = "LocationsReport.txt";
+
+                    // Show the dialog and process the save if a file name is provided
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
+                    {
+                        try
+                        {
+                            // Step 1: Retrieve the list of users
+                            List<City> cityList = City.GetAllCities();
+                            List<Country> countriesList = Country.GetAllCountries();
+                            List<Airport> airportList = Airport.GetAllAirports();
+
+                            // Step 2: Create the content for the file
+                            StringBuilder locationInfo = new StringBuilder();
+                            locationInfo.AppendLine("Locations Report");
+                            locationInfo.AppendLine("--------------------------------\n\n");
+
+
+
+                            locationInfo.AppendLine("--------- Country ---------");
+                            foreach (var country in countriesList)
+                            {
+                                locationInfo.AppendLine($"Country ID: {country.Id}, Country Name: {country.Name}");
+                            }
+
+
+                            locationInfo.AppendLine("--------- City ---------");
+                            foreach (var city in cityList)
+                            {
+                                locationInfo.AppendLine($"City ID: {city.Id}, City Name: {city.Name}, Country ID: {city.CountryId}");
+                            }
+
+                            locationInfo.AppendLine("--------- Airport ---------");
+                            foreach (var airport in airportList)
+                            {
+                                locationInfo.AppendLine($"Airport ID: {airport.Id}, Airport Name: {airport.Name}, City ID: {airport.CityId}");
+                            }
+
+
+                            locationInfo.AppendLine("\n\nTotal Number of Country: " + countriesList.Count);
+                            locationInfo.AppendLine("\n\nTotal Number of City: " + cityList.Count);
+                            locationInfo.AppendLine("\n\nTotal Number of Airport: " + airportList.Count);
+
+                            // Step 3: Write the content to the selected file
+                            File.WriteAllText(saveFileDialog1.FileName, locationInfo.ToString());
+
+                            // Step 4: Notify the user of success
+                            MessageBox.Show("Report saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle any errors during the save process
+                            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            });
+
+            staThread.SetApartmentState(ApartmentState.STA);
+            staThread.Start();
+            staThread.Join(); // Wait for the thread to complete
 
         }
     }
