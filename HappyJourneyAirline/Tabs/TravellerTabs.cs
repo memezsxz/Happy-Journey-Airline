@@ -2704,7 +2704,8 @@ namespace HappyJourneyAirline.Tabs
             catch (Exception er)
             {
                 Console.WriteLine(er.ToString());
-            //}
+                //}
+            }
         }
 
         #endregion Settings Tab
