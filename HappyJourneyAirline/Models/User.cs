@@ -258,38 +258,5 @@ namespace HappyJourneyAirline.Models
             });
             return result.Count > 0 ? result[0] : null;
         }
-
-        /// <summary>
-        /// Retrieves a list of users associated with a specific flight by flight ID.
-        /// </summary>
-        /// <param name="id">The ID of the flight.</param>
-        /// <returns>A list of users associated with the flight.</returns>
-        public static List<User> GetUsersByFlightId(int id)
-        {
-            string query = @"
-            SELECT u.id, u.firstName, u.lastName, u.phoneNumber, u.username, u.email, u.password, u.type, u.agencyID, u.companyName, u.cpr
-            FROM tickets t
-            INNER JOIN users u ON t.userID = u.id
-            WHERE t.flightID = @FlightId";
-            var parameters = new Dictionary<string, object>
-            {
-                { "@FlightId", id }
-            };
-
-            return Database.Instance.Query(query, parameters, reader => new User
-            {
-                Id = reader.GetInt32(0),
-                FirstName = reader.GetString(1).Trim(),
-                LastName = reader.GetString(2).Trim(),
-                PhoneNumber = reader.GetString(3).Trim(),
-                Username = reader.GetString(4).Trim(),
-                Email = reader.GetString(5).Trim(),
-                Password = reader.GetString(6).Trim(),
-                Type = reader.GetString(7).Trim(),
-                AgencyID = !reader.IsDBNull(8) ? (int?)reader.GetInt32(8) : null,
-                CompanyName = !reader.IsDBNull(9) ? reader.GetString(9).Trim() : null,
-                Cpr = reader.GetString(10).Trim()
-            });
-        }
     }
 }
