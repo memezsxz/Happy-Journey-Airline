@@ -1,19 +1,35 @@
-﻿// This class provide interface to interact with the stored planes in database.
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// The Plane class provides an interface to interact with the stored planes in the database.
+    /// It includes methods for retrieving, adding, updating, and deleting planes.
+    /// </summary>
     public class Plane
     {
-        // Plane Attributes
+        /// <summary>
+        /// Gets or sets the unique ID of the plane (Primary Key).
+        /// </summary>
         public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the model of the plane (Required).
+        /// </summary>
         public string Model { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the capacity of the plane (Required).
+        /// </summary>
         public int Capacity { get; set; } // NOT NULL
 
-        // Fetch all planes
+        /// <summary>
+        /// Retrieves all planes from the database.
+        /// </summary>
+        /// <returns>A list of all planes.</returns>
         public static List<Plane> GetAllPlanes()
         {
             string query = "SELECT Id, model, capacity FROM planes";
@@ -25,7 +41,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new plane
+        /// <summary>
+        /// Adds a new plane to the database.
+        /// </summary>
+        /// <param name="plane">The plane object containing plane details.</param>
+        /// <returns>The ID of the newly added plane, or -1 if the operation failed.</returns>
         public static long AddPlane(Plane plane)
         {
             string query = @"
@@ -67,7 +87,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing plane
+        /// <summary>
+        /// Updates an existing plane in the database.
+        /// </summary>
+        /// <param name="plane">The plane object containing updated plane details.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdatePlane(Plane plane)
         {
             string query = @"
@@ -84,7 +108,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a plane
+        /// <summary>
+        /// Deletes a plane from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the plane to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeletePlane(long id)
         {
             string query = "DELETE FROM planes WHERE Id = @Id";
@@ -95,7 +123,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a plane by ID
+        /// <summary>
+        /// Retrieves a plane from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the plane to retrieve.</param>
+        /// <returns>The plane object if found; otherwise, <c>null</c>.</returns>
         public static Plane GetPlaneById(long id)
         {
             string query = "SELECT Id, model, capacity FROM planes WHERE Id = @Id";

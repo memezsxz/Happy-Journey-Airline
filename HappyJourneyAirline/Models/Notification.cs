@@ -1,23 +1,50 @@
-﻿// This class provide interface to interact with the stored notifications in database.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// The Notification class provides an interface to interact with the stored notifications in the database.
+    /// It includes methods for retrieving, adding, updating, and deleting notifications, as well as filtering notifications by user.
+    /// </summary>
     public class Notification
     {
-        // Notifications Attribute
+        /// <summary>
+        /// Gets or sets the unique ID of the notification (Primary Key).
+        /// </summary>
         public long Id { get; set; } // Primary Key
+
+        /// <summary>
+        /// Gets or sets the source of the notification (Required).
+        /// </summary>
         public string Source { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the type of the notification (Required).
+        /// </summary>
         public string Type { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the title of the notification (Required).
+        /// </summary>
         public string Title { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the description of the notification (Required).
+        /// </summary>
         public string Description { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the user ID associated with the notification (Foreign Key, Required).
+        /// </summary>
         public long UserId { get; set; } // Foreign Key (NOT NULL)
 
-        // Fetch all notifications
+        /// <summary>
+        /// Retrieves all notifications from the database.
+        /// </summary>
+        /// <returns>A list of all notifications.</returns>
         public static List<Notification> GetAllNotifications()
         {
             string query = "SELECT Id, source, type, title, description, user_id FROM notifications";
@@ -32,7 +59,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new notification
+        /// <summary>
+        /// Adds a new notification to the database.
+        /// </summary>
+        /// <param name="notification">The notification object containing notification details.</param>
+        /// <returns>The ID of the newly added notification, or -1 if the operation failed.</returns>
         public static long AddNotification(Notification notification)
         {
             string query = @"
@@ -77,7 +108,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing notification
+        /// <summary>
+        /// Updates an existing notification in the database.
+        /// </summary>
+        /// <param name="notification">The notification object containing updated notification details.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdateNotification(Notification notification)
         {
             string query = @"
@@ -100,7 +135,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a notification
+        /// <summary>
+        /// Deletes a notification from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the notification to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeleteNotification(long id)
         {
             string query = "DELETE FROM notifications WHERE Id = @Id";
@@ -111,7 +150,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a notification by ID
+        /// <summary>
+        /// Retrieves a notification from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the notification to retrieve.</param>
+        /// <returns>The notification object if found; otherwise, <c>null</c>.</returns>
         public static Notification GetNotificationById(long id)
         {
             string query = "SELECT Id, source, type, title, description, user_id FROM notifications WHERE Id = @Id";
@@ -131,7 +174,11 @@ namespace HappyJourneyAirline.Models
             return result.Count > 0 ? result[0] : null;
         }
 
-        // Fetch all notifications for a specific user
+        /// <summary>
+        /// Retrieves all notifications for a specific user by their user ID.
+        /// </summary>
+        /// <param name="userId">The ID of the user.</param>
+        /// <returns>A list of notifications associated with the user.</returns>
         public static List<Notification> GetNotificationsByUserId(long userId)
         {
             string query = "SELECT Id, source, type, title, description, user_id FROM notifications WHERE user_id = @UserId";

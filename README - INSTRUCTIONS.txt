@@ -17,4 +17,18 @@ Course Cord & Tutor : Dr. Faustino Reyes
 2. Navigate to Lib/Database.cs and paste the copied path into the connectionString variable at the top of the file.
 3. That's it! Happy grading!
 
-If you need any help or find something confusing, don’t hesitate to contact any member of the group!
+[->] Credentials
+- Traveller:
+Username: hassan_traveller
+Password: 123456
+
+- Agency:
+Username: khalid_agency
+Password: 123456
+
+- Admin:
+Username: fatima_admin
+Password: 123456
+
+
+- If you need any help or find something confusing, don’t hesitate to contact any member of the group!

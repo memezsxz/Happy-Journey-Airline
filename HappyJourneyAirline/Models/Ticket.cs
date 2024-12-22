@@ -1,26 +1,60 @@
-﻿
-// Ticket  Provide an interface to interact with stored tickets
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// The Ticket class provides an interface to interact with the stored tickets in the database.
+    /// It includes methods for retrieving, adding, updating, deleting tickets, and fetching tickets by user or flight ID.
+    /// </summary>
     public class Ticket
     {
-        // Ticket Attributes
+        /// <summary>
+        /// Gets or sets the unique ID of the ticket (Primary Key).
+        /// </summary>
         public int Id { get; set; } // Primary Key
+
+        /// <summary>
+        /// Gets or sets the flight ID associated with the ticket (Foreign Key).
+        /// </summary>
         public int FlightID { get; set; } // Foreign Key (Flight)
+
+        /// <summary>
+        /// Gets or sets the user ID associated with the ticket (Foreign Key).
+        /// </summary>
         public long UserID { get; set; } // Foreign Key (User)
+
+        /// <summary>
+        /// Gets or sets the seat assigned to the ticket (Required).
+        /// </summary>
         public string Seat { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the ticket class ID (Foreign Key).
+        /// </summary>
         public int TicketClassID { get; set; } // Foreign Key (Ticket Class)
+
+        /// <summary>
+        /// Gets or sets the ticket status ID (Foreign Key).
+        /// </summary>
         public int TicketStatusID { get; set; } // Foreign Key (Ticket Status)
+
+        /// <summary>
+        /// Gets or sets the payment ID associated with the ticket (Foreign Key).
+        /// </summary>
         public int PaymentID { get; set; } // Foreign Key (Payment)
+
+        /// <summary>
+        /// Gets or sets the agency ID associated with the ticket (Nullable Foreign Key).
+        /// </summary>
         public long? AgencyID { get; set; } // Nullable Foreign Key (Agency)
 
-        // Fetch all tickets
+        /// <summary>
+        /// Retrieves all tickets from the database.
+        /// </summary>
+        /// <returns>A list of all tickets.</returns>
         public static List<Ticket> GetAllTickets()
         {
             string query = @"
@@ -39,7 +73,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new ticket
+        /// <summary>
+        /// Adds a new ticket to the database.
+        /// </summary>
+        /// <param name="ticket">The ticket object containing ticket details.</param>
+        /// <returns>The ID of the newly added ticket, or -1 if the operation failed.</returns>
         public static int AddTicket(Ticket ticket)
         {
             string query = @"
@@ -86,7 +124,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing ticket
+        /// <summary>
+        /// Updates an existing ticket in the database.
+        /// </summary>
+        /// <param name="ticket">The ticket object containing updated ticket details.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdateTicket(Ticket ticket)
         {
             string query = @"
@@ -113,7 +155,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a ticket
+        /// <summary>
+        /// Deletes a ticket from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the ticket to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeleteTicket(int id)
         {
             string query = "DELETE FROM tickets WHERE Id = @Id";
@@ -124,7 +170,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a ticket by ID
+        /// <summary>
+        /// Retrieves a ticket from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the ticket to retrieve.</param>
+        /// <returns>The ticket object if found; otherwise, <c>null</c>.</returns>
         public static Ticket GetTicketById(int id)
         {
             string query = @"
@@ -149,8 +199,11 @@ namespace HappyJourneyAirline.Models
             return result.Count > 0 ? result[0] : null;
         }
 
-
-        // Fetch all tickets by the user id 
+        /// <summary>
+        /// Retrieves all tickets associated with a specific user by their user ID.
+        /// </summary>
+        /// <param name="userId">The ID of the user.</param>
+        /// <returns>A list of tickets associated with the user.</returns>
         public static List<Ticket> GetTicketsByUserId(int userId)
         {
             string query = @"
@@ -173,7 +226,12 @@ namespace HappyJourneyAirline.Models
                 AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
             });
         }
-        // Fetch all tickets for a specific flight
+
+        /// <summary>
+        /// Retrieves all tickets associated with a specific flight by flight ID.
+        /// </summary>
+        /// <param name="flightId">The ID of the flight.</param>
+        /// <returns>A list of tickets associated with the flight.</returns>
         public static List<Ticket> GetTicketsByFlightId(int flightId)
         {
             string query = @"

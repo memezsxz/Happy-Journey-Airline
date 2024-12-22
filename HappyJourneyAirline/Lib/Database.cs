@@ -6,35 +6,41 @@ using System.IO;
 
 namespace HappyJourneyAirline.Lib
 {
+    /// <summary>
+    /// The Database class provides a singleton implementation for database operations.
+    /// It includes methods for executing queries, non-queries, and backing up the database.
+    /// </summary>
     public class Database
     {
-
-
-        // Singleton instance
+        /// <summary>
+        /// Singleton instance of the Database class.
+        /// </summary>
         private static Database _instance;
 
-
-        // Lock object for thread safety
+        /// <summary>
+        /// Lock object for thread-safe singleton initialization.
+        /// </summary>
         private static readonly object _lock = new object();
 
-        // Connection string
-        //public static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=|DataDirectory|\database.mdf;Integrated Security=True;Connect Timeout=30";
-        //public static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\202203193\Source\Repos\HappyJourneyAirline\HappyJourneyAirline\database.mdf;Integrated Security=True;";
-        //public static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\database.mdf;Integrated Security=True";
+        /// <summary>
+        /// Connection string for the database.
+        /// </summary>
+        public static readonly string connectionString =
+            "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\poly\\New folder\\HappyJourneyAirline\\database.mdf\";Integrated Security=True";
 
-        public static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\poly\\New folder\\HappyJourneyAirline\\database.mdf\";Integrated Security=True";
+        /// <summary>
+        /// Private constructor to prevent instantiation from outside the class.
+        /// </summary>
+        private Database() { }
 
-        // Private constructor to prevent instantiation from outside
-        private Database() {
-
-        }
-
-        // Public static method to get the singleton instance
+        /// <summary>
+        /// Provides the singleton instance of the Database class.
+        /// Ensures thread-safe initialization.
+        /// </summary>
         public static Database Instance
         {
             get
             {
-                // Ensure thread-safe initialization
                 if (_instance == null)
                 {
                     lock (_lock)
@@ -49,9 +55,13 @@ namespace HappyJourneyAirline.Lib
             }
         }
 
-  
-
-        // Generic method to execute a query and return a list of results
+        /// <summary>
+        /// Executes a query and maps the results to a list of objects.
+        /// </summary>
+        /// <typeparam name="T">The type of objects to return.</typeparam>
+        /// <param name="query">The SQL query string.</param>
+        /// <param name="map">A function to map each SqlDataReader row to an object.</param>
+        /// <returns>A list of mapped objects.</returns>
         public List<T> Query<T>(string query, Func<SqlDataReader, T> map)
         {
             var results = new List<T>();
@@ -68,7 +78,6 @@ namespace HappyJourneyAirline.Lib
                             results.Add(map(reader));
                         }
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -78,6 +87,14 @@ namespace HappyJourneyAirline.Lib
             return results;
         }
 
+        /// <summary>
+        /// Executes a query with parameters and maps the results to a list of objects.
+        /// </summary>
+        /// <typeparam name="T">The type of objects to return.</typeparam>
+        /// <param name="query">The SQL query string.</param>
+        /// <param name="parameters">A dictionary of query parameters.</param>
+        /// <param name="map">A function to map each SqlDataReader row to an object.</param>
+        /// <returns>A list of mapped objects.</returns>
         public List<T> Query<T>(string query, Dictionary<string, object> parameters, Func<SqlDataReader, T> map)
         {
             var results = new List<T>();
@@ -88,7 +105,6 @@ namespace HappyJourneyAirline.Lib
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Add parameters to the command
                         if (parameters != null)
                         {
                             foreach (var param in parameters)
@@ -112,15 +128,18 @@ namespace HappyJourneyAirline.Lib
             return results;
         }
 
-
-
+        /// <summary>
+        /// Backs up the database to a specified file path.
+        /// </summary>
+        /// <param name="backupFileName">The name of the backup file. Default is "HappyJourneyAirline_DB_Backup.bak".</param>
+        /// <param name="backupPath">The directory path where the backup file will be saved. Defaults to the current directory.</param>
+        /// <returns><c>true</c> if the backup was successful; otherwise, <c>false</c>.</returns>
         public static bool BackupDatabase(string backupFileName = "HappyJourneyAirline_DB_Backup.bak", string backupPath = null)
         {
-            if(backupPath == null)
+            if (backupPath == null)
             {
                 backupPath = AppDomain.CurrentDomain.BaseDirectory;
             }
-            
 
             string backupFilePath = Path.Combine(backupPath, backupFileName);
 
@@ -147,9 +166,13 @@ namespace HappyJourneyAirline.Lib
                 }
             }
         }
-    
 
-        // Generic method to execute non-query commands (INSERT, UPDATE, DELETE)
+        /// <summary>
+        /// Executes a non-query SQL command (INSERT, UPDATE, DELETE).
+        /// </summary>
+        /// <param name="query">The SQL query string.</param>
+        /// <param name="parameters">A dictionary of query parameters.</param>
+        /// <returns>The number of rows affected, or -1 if an error occurred.</returns>
         public int ExecuteNonQuery(string query, Dictionary<string, object> parameters = null)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

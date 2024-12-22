@@ -7,18 +7,33 @@ using HappyJourneyAirline.Models;
 
 namespace HappyJourneyAirline.BuilderPattern
 {
-    // Director class to manage the construction process
+    /// <summary>
+    /// Director class to manage the construction process of notifications.
+    /// </summary>
     public class NotificationDirector
     {
+        /// <summary>
+        /// The builder instance used to construct notifications.
+        /// </summary>
         private readonly INotificationBuilder builder;
 
-        // Constructor accepts a builder instance
+        /// <summary>
+        /// Initializes a new instance of the NotificationDirector class with the specified builder.
+        /// </summary>
+        /// <param name="builder">The builder instance used for constructing notifications.</param>
         public NotificationDirector(INotificationBuilder builder)
         {
             this.builder = builder;
         }
 
-        // Construct a alert notification with all fields
+        /// <summary>
+        /// Constructs an alert notification with the specified fields.
+        /// </summary>
+        /// <param name="source">The source of the notification.</param>
+        /// <param name="title">The title of the notification.</param>
+        /// <param name="description">The description of the notification.</param>
+        /// <param name="userId">The user ID associated with the notification.</param>
+        /// <returns>The constructed alert notification.</returns>
         public Notification ConstructAlertNotification(
             string source,
             string title,
@@ -34,7 +49,14 @@ namespace HappyJourneyAirline.BuilderPattern
                 .GetResult();
         }
 
-        // Construct a important notification with all fields
+        /// <summary>
+        /// Constructs an important notification with the specified fields.
+        /// </summary>
+        /// <param name="source">The source of the notification.</param>
+        /// <param name="title">The title of the notification.</param>
+        /// <param name="description">The description of the notification.</param>
+        /// <param name="userId">The user ID associated with the notification.</param>
+        /// <returns>The constructed important notification.</returns>
         public Notification ConstructImportantNotification(
             string source,
             string title,
@@ -50,7 +72,14 @@ namespace HappyJourneyAirline.BuilderPattern
                 .GetResult();
         }
 
-        // Construct a marketing notification with all fields
+        /// <summary>
+        /// Constructs a marketing notification with the specified fields.
+        /// </summary>
+        /// <param name="source">The source of the notification.</param>
+        /// <param name="title">The title of the notification.</param>
+        /// <param name="description">The description of the notification.</param>
+        /// <param name="userId">The user ID associated with the notification.</param>
+        /// <returns>The constructed marketing notification.</returns>
         public Notification ConstructMarketingNotification(
             string source,
             string title,

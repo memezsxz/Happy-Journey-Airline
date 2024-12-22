@@ -1,22 +1,45 @@
-﻿// This class provide interface to interact with the stored payments in database.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// The Payment class provides an interface to interact with the stored payments in the database.
+    /// It includes methods for retrieving, adding, updating, and deleting payments, as well as filtering payments by status.
+    /// </summary>
     public class Payment
     {
-        // Payment Attributes
+        /// <summary>
+        /// Gets or sets the unique ID of the payment (Primary Key).
+        /// </summary>
         public int Id { get; set; } // Primary Key
+
+        /// <summary>
+        /// Gets or sets the amount of the payment (Required).
+        /// </summary>
         public decimal Amount { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the date of the payment (Required).
+        /// </summary>
         public DateTime Date { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the payment status ID (Foreign Key).
+        /// </summary>
         public int PaymentStatusID { get; set; } // Foreign Key
+
+        /// <summary>
+        /// Gets or sets the payment method ID (Foreign Key).
+        /// </summary>
         public int PaymentMethodID { get; set; } // Foreign Key
 
-        // Fetch all payments
+        /// <summary>
+        /// Retrieves all payments from the database.
+        /// </summary>
+        /// <returns>A list of all payments.</returns>
         public static List<Payment> GetAllPayments()
         {
             string query = "SELECT Id, amount, date, paymentStatusID, paymentMethodID FROM payments";
@@ -30,7 +53,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new payment
+        /// <summary>
+        /// Adds a new payment to the database.
+        /// </summary>
+        /// <param name="payment">The payment object containing payment details.</param>
+        /// <returns>The ID of the newly added payment, or -1 if the operation failed.</returns>
         public static int AddPayment(Payment payment)
         {
             string query = @"
@@ -74,7 +101,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing payment
+        /// <summary>
+        /// Updates an existing payment in the database.
+        /// </summary>
+        /// <param name="payment">The payment object containing updated payment details.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdatePayment(Payment payment)
         {
             string query = @"
@@ -95,7 +126,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a payment
+        /// <summary>
+        /// Deletes a payment from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the payment to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeletePayment(int id)
         {
             string query = "DELETE FROM payments WHERE Id = @Id";
@@ -106,7 +141,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a payment by ID
+        /// <summary>
+        /// Retrieves a payment from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the payment to retrieve.</param>
+        /// <returns>The payment object if found; otherwise, <c>null</c>.</returns>
         public static Payment GetPaymentById(int id)
         {
             string query = "SELECT Id, amount, date, paymentStatusID, paymentMethodID FROM payments WHERE Id = @Id";
@@ -125,7 +164,11 @@ namespace HappyJourneyAirline.Models
             return result.Count > 0 ? result[0] : null;
         }
 
-        // Fetch all payments for a specific payment status
+        /// <summary>
+        /// Retrieves all payments with a specific payment status ID.
+        /// </summary>
+        /// <param name="paymentStatusId">The ID of the payment status.</param>
+        /// <returns>A list of payments with the specified payment status.</returns>
         public static List<Payment> GetPaymentsByStatusId(int paymentStatusId)
         {
             string query = "SELECT Id, amount, date, paymentStatusID, paymentMethodID FROM payments WHERE paymentStatusID = @PaymentStatusID";
