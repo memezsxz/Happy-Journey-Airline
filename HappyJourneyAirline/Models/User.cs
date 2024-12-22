@@ -157,7 +157,7 @@ namespace HappyJourneyAirline.Models
                 Email = reader.GetString(4),
                 Password = reader.GetString(5),
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
-                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt32(7) : null,
+                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                 PhoneNumber = reader.GetString(9),
                 Cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
@@ -183,7 +183,7 @@ namespace HappyJourneyAirline.Models
                 Email = reader.GetString(4),
                 Password = reader.GetString(5),
                 Type = !reader.IsDBNull(6) ? reader.GetString(6) : "traveller",
-                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt32(7) : null,
+                AgencyID = !reader.IsDBNull(7) ? (int?)reader.GetInt64(7) : null,
                 CompanyName = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                 PhoneNumber = reader.GetString(9),
                 Cpr = !reader.IsDBNull(10) ? reader.GetString(10) : null
