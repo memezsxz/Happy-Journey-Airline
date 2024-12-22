@@ -1,3 +1,6 @@
+[->] Happy Journey Airline
+- In this project we are changing the face of managing airline company. from boring process into a whole future-proof application. Happy Joruney Airline Can now easily manage the whole operation from one app to different type of users, admin, traveller, and agencies!
+
 [->] Students:
 - Hussain Sabba (202200408@student.polytechnic.bh)
 - Maryam Ali (202200403@student.polytechnic.bh)
