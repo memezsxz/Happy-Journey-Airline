@@ -356,6 +356,7 @@ namespace HappyJourneyAirline.Tabs
             countriesDataGridView.Columns.Insert(0, AddEditColumn());
             citiesDataGridView.Columns.Insert(0, AddEditColumn());
             airportsDataGridView.Columns.Insert(0, AddEditColumn());
+            planesDataGridView.Columns.Insert(0, AddDeleteColumn());
             this.appTabs = appTabs;
         }
 
@@ -365,24 +366,30 @@ namespace HappyJourneyAirline.Tabs
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminTabs));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.TabPage viewPlanes;
             System.Windows.Forms.Label label92;
             System.Windows.Forms.Label label93;
             System.Windows.Forms.Label label87;
             System.Windows.Forms.Label label89;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminTabs));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.cpCapacityErrorLbl = new System.Windows.Forms.Label();
+            this.cpModelErrorLbl = new System.Windows.Forms.Label();
+            this.cpCapacityTxt = new System.Windows.Forms.TextBox();
+            this.cpModelTxt = new System.Windows.Forms.TextBox();
+            this.planesDataGridView = new System.Windows.Forms.DataGridView();
+            this.createPlaneBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.usersIcon = new System.Windows.Forms.PictureBox();
             this.logOutIcon = new System.Windows.Forms.PictureBox();
@@ -391,276 +398,272 @@ namespace HappyJourneyAirline.Tabs
             this.logoIcon = new System.Windows.Forms.PictureBox();
             this.bookingTab = new System.Windows.Forms.PictureBox();
             this.btntabCreatenotifications = new System.Windows.Forms.TabPage();
-            this.label74 = new System.Windows.Forms.Label();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
+            this.lblErrorType = new System.Windows.Forms.Label();
+            this.label88 = new System.Windows.Forms.Label();
+            this.label86 = new System.Windows.Forms.Label();
+            this.lblErrorFlight = new System.Windows.Forms.Label();
+            this.comboBoxFlights = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblErrorDescription = new System.Windows.Forms.Label();
+            this.lblErrorTitle = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label76 = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.label84 = new System.Windows.Forms.Label();
-            this.lblErrorTitle = new System.Windows.Forms.Label();
-            this.lblErrorDescription = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBoxFlights = new System.Windows.Forms.ComboBox();
-            this.lblErrorFlight = new System.Windows.Forms.Label();
-            this.label86 = new System.Windows.Forms.Label();
-            this.label88 = new System.Windows.Forms.Label();
-            this.lblErrorType = new System.Windows.Forms.Label();
-            this.comboBoxType = new System.Windows.Forms.ComboBox();
+            this.label74 = new System.Windows.Forms.Label();
             this.viewLocation = new System.Windows.Forms.TabPage();
-            this.label83 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.editLocationBack = new System.Windows.Forms.Button();
-            this.editLocationSave = new System.Windows.Forms.Button();
-            this.editLocationDelete = new System.Windows.Forms.Button();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cityGroupBox = new System.Windows.Forms.GroupBox();
-            this.editConDrop = new System.Windows.Forms.ComboBox();
-            this.label77 = new System.Windows.Forms.Label();
-            this.editCityErrorLbl = new System.Windows.Forms.Label();
-            this.editCitytNameTxt = new System.Windows.Forms.TextBox();
-            this.label75 = new System.Windows.Forms.Label();
-            this.AirportGroupBox = new System.Windows.Forms.GroupBox();
-            this.label85 = new System.Windows.Forms.Label();
-            this.editAirportErrorLbl = new System.Windows.Forms.Label();
-            this.editAirportLatitudeTxt = new System.Windows.Forms.TextBox();
-            this.editAirportCityDrop = new System.Windows.Forms.ComboBox();
-            this.label82 = new System.Windows.Forms.Label();
-            this.label81 = new System.Windows.Forms.Label();
-            this.editAirportLongitudeTxt = new System.Windows.Forms.TextBox();
-            this.label80 = new System.Windows.Forms.Label();
-            this.editAirportNameTxt = new System.Windows.Forms.TextBox();
-            this.editAirportConDrop = new System.Windows.Forms.ComboBox();
-            this.label78 = new System.Windows.Forms.Label();
             this.countryGroupBox = new System.Windows.Forms.GroupBox();
-            this.editContNameTxt = new System.Windows.Forms.TextBox();
-            this.editContErrorLbl = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
+            this.editContErrorLbl = new System.Windows.Forms.Label();
+            this.editContNameTxt = new System.Windows.Forms.TextBox();
+            this.AirportGroupBox = new System.Windows.Forms.GroupBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.editAirportConDrop = new System.Windows.Forms.ComboBox();
+            this.editAirportNameTxt = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.editAirportLongitudeTxt = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.editAirportCityDrop = new System.Windows.Forms.ComboBox();
+            this.editAirportLatitudeTxt = new System.Windows.Forms.TextBox();
+            this.editAirportErrorLbl = new System.Windows.Forms.Label();
+            this.label85 = new System.Windows.Forms.Label();
+            this.cityGroupBox = new System.Windows.Forms.GroupBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.editCitytNameTxt = new System.Windows.Forms.TextBox();
+            this.editCityErrorLbl = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.editConDrop = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.editLocationDelete = new System.Windows.Forms.Button();
+            this.editLocationSave = new System.Windows.Forms.Button();
+            this.editLocationBack = new System.Windows.Forms.Button();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
             this.veAirCouCity = new System.Windows.Forms.TabPage();
-            this.Locations = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
-            this.addAirCityCouBtn = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.airportsDataGridView = new System.Windows.Forms.DataGridView();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.citiesDataGridView = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.countriesDataGridView = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.citiesDataGridView = new System.Windows.Forms.DataGridView();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.airportsDataGridView = new System.Windows.Forms.DataGridView();
+            this.addAirCityCouBtn = new System.Windows.Forms.Button();
+            this.label72 = new System.Windows.Forms.Label();
+            this.Locations = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.mtUserTypeTxt = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.mtCancelBtn = new System.Windows.Forms.Button();
-            this.mtDeleteBtn = new System.Windows.Forms.Button();
-            this.mtUserIDTxt = new System.Windows.Forms.TextBox();
-            this.mtEmailTxt = new System.Windows.Forms.TextBox();
-            this.mtPhoneTxt = new System.Windows.Forms.TextBox();
-            this.label69 = new System.Windows.Forms.Label();
-            this.mtUsernameTxt = new System.Windows.Forms.TextBox();
-            this.mtAgencyPanel = new System.Windows.Forms.Panel();
-            this.mtAgencyIdLbl = new System.Windows.Forms.Label();
-            this.mtAgencyIdTxt = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.mtCompanyNamePanel = new System.Windows.Forms.Panel();
-            this.mtCompanyNamelTxt = new System.Windows.Forms.TextBox();
-            this.mtCompanyNamelLbl = new System.Windows.Forms.Label();
-            this.mtLastNamePanel = new System.Windows.Forms.Panel();
-            this.mtLnameTxt = new System.Windows.Forms.TextBox();
-            this.label61 = new System.Windows.Forms.Label();
             this.mtFirstNamePanel = new System.Windows.Forms.Panel();
-            this.mtFnameTxt = new System.Windows.Forms.TextBox();
             this.label62 = new System.Windows.Forms.Label();
+            this.mtFnameTxt = new System.Windows.Forms.TextBox();
+            this.mtLastNamePanel = new System.Windows.Forms.Panel();
+            this.label61 = new System.Windows.Forms.Label();
+            this.mtLnameTxt = new System.Windows.Forms.TextBox();
+            this.mtCompanyNamePanel = new System.Windows.Forms.Panel();
+            this.mtCompanyNamelLbl = new System.Windows.Forms.Label();
+            this.mtCompanyNamelTxt = new System.Windows.Forms.TextBox();
+            this.mtAgencyPanel = new System.Windows.Forms.Panel();
+            this.mtAgencyIdTxt = new System.Windows.Forms.TextBox();
+            this.mtAgencyIdLbl = new System.Windows.Forms.Label();
+            this.mtUsernameTxt = new System.Windows.Forms.TextBox();
+            this.mtPhoneTxt = new System.Windows.Forms.TextBox();
+            this.mtEmailTxt = new System.Windows.Forms.TextBox();
+            this.mtUserIDTxt = new System.Windows.Forms.TextBox();
+            this.mtUserTypeTxt = new System.Windows.Forms.TextBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.mtDeleteBtn = new System.Windows.Forms.Button();
+            this.mtCancelBtn = new System.Windows.Forms.Button();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.AddAirCityConTab = new System.Windows.Forms.TabPage();
-            this.label52 = new System.Windows.Forms.Label();
-            this.addBackBtn = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label53 = new System.Windows.Forms.Label();
-            this.addAirportErrorLbl = new System.Windows.Forms.Label();
-            this.addAirportLatitudeTxt = new System.Windows.Forms.TextBox();
-            this.addAirportCityDrop = new System.Windows.Forms.ComboBox();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.addAirportLongitudeTxt = new System.Windows.Forms.TextBox();
-            this.addAddAirportBtn = new System.Windows.Forms.Button();
-            this.label68 = new System.Windows.Forms.Label();
-            this.addAirportNameTxt = new System.Windows.Forms.TextBox();
-            this.addAirportConDrop = new System.Windows.Forms.ComboBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.addConDrop = new System.Windows.Forms.ComboBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.addCityErrorLbl = new System.Windows.Forms.Label();
-            this.addCitytNameTxt = new System.Windows.Forms.TextBox();
-            this.addAddCityBtn = new System.Windows.Forms.Button();
-            this.label56 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.addContNameTxt = new System.Windows.Forms.TextBox();
-            this.addContErrorLbl = new System.Windows.Forms.Label();
-            this.addAddCountryBtn = new System.Windows.Forms.Button();
             this.label54 = new System.Windows.Forms.Label();
+            this.addAddCountryBtn = new System.Windows.Forms.Button();
+            this.addContErrorLbl = new System.Windows.Forms.Label();
+            this.addContNameTxt = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.addAddCityBtn = new System.Windows.Forms.Button();
+            this.addCitytNameTxt = new System.Windows.Forms.TextBox();
+            this.addCityErrorLbl = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.addConDrop = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.addAirportConDrop = new System.Windows.Forms.ComboBox();
+            this.addAirportNameTxt = new System.Windows.Forms.TextBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.addAddAirportBtn = new System.Windows.Forms.Button();
+            this.addAirportLongitudeTxt = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
+            this.addAirportCityDrop = new System.Windows.Forms.ComboBox();
+            this.addAirportLatitudeTxt = new System.Windows.Forms.TextBox();
+            this.addAirportErrorLbl = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.addBackBtn = new System.Windows.Forms.Button();
+            this.label52 = new System.Windows.Forms.Label();
             this.createUserTab = new System.Windows.Forms.TabPage();
-            this.cuUsernameTxt = new System.Windows.Forms.TextBox();
-            this.cuPasswordTxt = new System.Windows.Forms.TextBox();
-            this.cuEmailTxt = new System.Windows.Forms.TextBox();
-            this.cuPhoneTxt = new System.Windows.Forms.TextBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.cuCreateUserBtn = new System.Windows.Forms.Button();
-            this.cuCancelBtn = new System.Windows.Forms.Button();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.cuUserTypeDrop = new System.Windows.Forms.ComboBox();
-            this.cuUserNameErrorLbl = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cuCompanyNamePanel = new System.Windows.Forms.Panel();
-            this.label70 = new System.Windows.Forms.Label();
-            this.cuCoumpanyNameTxt = new System.Windows.Forms.TextBox();
-            this.cuLNamePanel = new System.Windows.Forms.Panel();
-            this.cuLNameErrorLbl = new System.Windows.Forms.Label();
-            this.cuLnameTxt = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.cuFNamePanel = new System.Windows.Forms.Panel();
-            this.cuFnameTxt = new System.Windows.Forms.TextBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.cuPasswordErrorLbl = new System.Windows.Forms.Label();
-            this.cuFCoumpanyNameErrorLbl = new System.Windows.Forms.Label();
-            this.cuEmailErrorLbl = new System.Windows.Forms.Label();
             this.cuPhoneNumberErrorLbl = new System.Windows.Forms.Label();
+            this.cuEmailErrorLbl = new System.Windows.Forms.Label();
+            this.cuFCoumpanyNameErrorLbl = new System.Windows.Forms.Label();
+            this.cuPasswordErrorLbl = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cuFNamePanel = new System.Windows.Forms.Panel();
+            this.label47 = new System.Windows.Forms.Label();
+            this.cuFnameTxt = new System.Windows.Forms.TextBox();
+            this.cuLNamePanel = new System.Windows.Forms.Panel();
+            this.label46 = new System.Windows.Forms.Label();
+            this.cuLnameTxt = new System.Windows.Forms.TextBox();
+            this.cuLNameErrorLbl = new System.Windows.Forms.Label();
+            this.cuCompanyNamePanel = new System.Windows.Forms.Panel();
+            this.cuCoumpanyNameTxt = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.cuUserNameErrorLbl = new System.Windows.Forms.Label();
+            this.cuUserTypeDrop = new System.Windows.Forms.ComboBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.cuCancelBtn = new System.Windows.Forms.Button();
+            this.cuCreateUserBtn = new System.Windows.Forms.Button();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.cuPhoneTxt = new System.Windows.Forms.TextBox();
+            this.cuEmailTxt = new System.Windows.Forms.TextBox();
+            this.cuPasswordTxt = new System.Windows.Forms.TextBox();
+            this.cuUsernameTxt = new System.Windows.Forms.TextBox();
             this.editFlightTab = new System.Windows.Forms.TabPage();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.efPlaneIdDrop = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.efDatePick = new System.Windows.Forms.DateTimePicker();
-            this.efFlightNumTxt = new System.Windows.Forms.TextBox();
-            this.efPriceTxt = new System.Windows.Forms.TextBox();
-            this.efDepTxt = new System.Windows.Forms.TextBox();
-            this.efArrTxt = new System.Windows.Forms.TextBox();
-            this.efDepTimePick = new System.Windows.Forms.DateTimePicker();
-            this.efArrTimePick = new System.Windows.Forms.DateTimePicker();
-            this.label71 = new System.Windows.Forms.Label();
-            this.efStatusDrop = new System.Windows.Forms.ComboBox();
-            this.efPriceErrorLbl = new System.Windows.Forms.Label();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.efCancelBtn = new System.Windows.Forms.Button();
-            this.efEditBtn = new System.Windows.Forms.Button();
             this.efDeleteBtn = new System.Windows.Forms.Button();
+            this.efEditBtn = new System.Windows.Forms.Button();
+            this.efCancelBtn = new System.Windows.Forms.Button();
+            this.efPriceErrorLbl = new System.Windows.Forms.Label();
+            this.efStatusDrop = new System.Windows.Forms.ComboBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.efArrTimePick = new System.Windows.Forms.DateTimePicker();
+            this.efDepTimePick = new System.Windows.Forms.DateTimePicker();
+            this.efArrTxt = new System.Windows.Forms.TextBox();
+            this.efDepTxt = new System.Windows.Forms.TextBox();
+            this.efPriceTxt = new System.Windows.Forms.TextBox();
+            this.efFlightNumTxt = new System.Windows.Forms.TextBox();
+            this.efDatePick = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.efPlaneIdDrop = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
             this.createFlightTab = new System.Windows.Forms.TabPage();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cfPlaneIdDrop = new System.Windows.Forms.ComboBox();
-            this.cfDepDrop = new System.Windows.Forms.ComboBox();
-            this.cfArrDrop = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cfFlightNumTxt = new System.Windows.Forms.TextBox();
-            this.cfPriceTxt = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cfDatePick = new System.Windows.Forms.DateTimePicker();
-            this.cfCreateBtn = new System.Windows.Forms.Button();
-            this.cfCancelBtn = new System.Windows.Forms.Button();
-            this.cfDepTimePick = new System.Windows.Forms.DateTimePicker();
-            this.cfArrTimePick = new System.Windows.Forms.DateTimePicker();
-            this.cfPriceErrorLbl = new System.Windows.Forms.Label();
-            this.cfAirportsErrorLbl = new System.Windows.Forms.Label();
-            this.cfTimeErrorLbl = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
             this.cfStatusDrop = new System.Windows.Forms.ComboBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.cfTimeErrorLbl = new System.Windows.Forms.Label();
+            this.cfAirportsErrorLbl = new System.Windows.Forms.Label();
+            this.cfPriceErrorLbl = new System.Windows.Forms.Label();
+            this.cfArrTimePick = new System.Windows.Forms.DateTimePicker();
+            this.cfDepTimePick = new System.Windows.Forms.DateTimePicker();
+            this.cfCancelBtn = new System.Windows.Forms.Button();
+            this.cfCreateBtn = new System.Windows.Forms.Button();
+            this.cfDatePick = new System.Windows.Forms.DateTimePicker();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cfPriceTxt = new System.Windows.Forms.TextBox();
+            this.cfFlightNumTxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cfArrDrop = new System.Windows.Forms.ComboBox();
+            this.cfDepDrop = new System.Windows.Forms.ComboBox();
+            this.cfPlaneIdDrop = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.bookingDetailsTab = new System.Windows.Forms.TabPage();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.bdCancelBtn = new System.Windows.Forms.Button();
-            this.bdBackBtn = new System.Windows.Forms.Button();
-            this.label38 = new System.Windows.Forms.Label();
-            this.bdFlightNumTxt = new System.Windows.Forms.TextBox();
-            this.bdDateTxt = new System.Windows.Forms.TextBox();
-            this.bdDepTimeTxt = new System.Windows.Forms.TextBox();
-            this.bdArrTimeTxt = new System.Windows.Forms.TextBox();
-            this.bdFromTxt = new System.Windows.Forms.TextBox();
-            this.bdToTxt = new System.Windows.Forms.TextBox();
-            this.bdDepTxt = new System.Windows.Forms.TextBox();
-            this.bdArrTxt = new System.Windows.Forms.TextBox();
-            this.bdIDTxt = new System.Windows.Forms.TextBox();
-            this.bdUsrTypeLbl = new System.Windows.Forms.Label();
             this.bdUsrIDLbl = new System.Windows.Forms.TextBox();
+            this.bdIDTxt = new System.Windows.Forms.TextBox();
+            this.bdArrTxt = new System.Windows.Forms.TextBox();
+            this.bdDepTxt = new System.Windows.Forms.TextBox();
+            this.bdToTxt = new System.Windows.Forms.TextBox();
+            this.bdFromTxt = new System.Windows.Forms.TextBox();
+            this.bdArrTimeTxt = new System.Windows.Forms.TextBox();
+            this.bdDepTimeTxt = new System.Windows.Forms.TextBox();
+            this.bdDateTxt = new System.Windows.Forms.TextBox();
+            this.bdFlightNumTxt = new System.Windows.Forms.TextBox();
+            this.bdUsrTypeLbl = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.bdBackBtn = new System.Windows.Forms.Button();
+            this.bdCancelBtn = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.travellerUsersTab = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.userCreateUserBtn = new System.Windows.Forms.Button();
-            this.usersDataGridView = new System.Windows.Forms.DataGridView();
-            this.addNotifications = new System.Windows.Forms.PictureBox();
             this.btnReportUsers = new System.Windows.Forms.Button();
+            this.addNotifications = new System.Windows.Forms.PictureBox();
+            this.usersDataGridView = new System.Windows.Forms.DataGridView();
+            this.userCreateUserBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.travellerSettingsTab = new System.Windows.Forms.TabPage();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.setUsernameTxt = new System.Windows.Forms.TextBox();
-            this.setPasswordTxt = new System.Windows.Forms.TextBox();
-            this.setFirstNameTxt = new System.Windows.Forms.TextBox();
-            this.setLastNameTxt = new System.Windows.Forms.TextBox();
-            this.setEmailTxt = new System.Windows.Forms.TextBox();
-            this.setPhoneTxt = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.setSaveChanesBtn = new System.Windows.Forms.Button();
-            this.setCancelBtn = new System.Windows.Forms.Button();
-            this.setErrorLbl = new System.Windows.Forms.Label();
             this.btnBackup = new System.Windows.Forms.Button();
+            this.setErrorLbl = new System.Windows.Forms.Label();
+            this.setCancelBtn = new System.Windows.Forms.Button();
+            this.setSaveChanesBtn = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.setPhoneTxt = new System.Windows.Forms.TextBox();
+            this.setEmailTxt = new System.Windows.Forms.TextBox();
+            this.setLastNameTxt = new System.Windows.Forms.TextBox();
+            this.setFirstNameTxt = new System.Windows.Forms.TextBox();
+            this.setPasswordTxt = new System.Windows.Forms.TextBox();
+            this.setUsernameTxt = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.travellerBookingsTab = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.bookingTable = new System.Windows.Forms.DataGridView();
-            this.bookDetails = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.to = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.from = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.from = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.to = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookDetails = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.travellerFlightsTab = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.creatFlightBtn = new System.Windows.Forms.Button();
-            this.viewAirCityCouBtn = new System.Windows.Forms.Button();
-            this.flightsDataGridView = new System.Windows.Forms.DataGridView();
             this.viewPlanesBtn = new System.Windows.Forms.Button();
+            this.flightsDataGridView = new System.Windows.Forms.DataGridView();
+            this.viewAirCityCouBtn = new System.Windows.Forms.Button();
+            this.creatFlightBtn = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabControler = new System.Windows.Forms.TabControl();
-            this.cpCapacityErrorLbl = new System.Windows.Forms.Label();
-            this.cpModelErrorLbl = new System.Windows.Forms.Label();
-            this.cpCapacityTxt = new System.Windows.Forms.TextBox();
-            this.cpModelTxt = new System.Windows.Forms.TextBox();
-            this.planesDataGridView = new System.Windows.Forms.DataGridView();
-            this.createPlaneBtn = new System.Windows.Forms.Button();
             viewPlanes = new System.Windows.Forms.TabPage();
             label92 = new System.Windows.Forms.Label();
             label93 = new System.Windows.Forms.Label();
             label87 = new System.Windows.Forms.Label();
             label89 = new System.Windows.Forms.Label();
+            viewPlanes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.planesDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -670,50 +673,196 @@ namespace HappyJourneyAirline.Tabs
             ((System.ComponentModel.ISupportInitialize)(this.bookingTab)).BeginInit();
             this.btntabCreatenotifications.SuspendLayout();
             this.viewLocation.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
-            this.cityGroupBox.SuspendLayout();
-            this.AirportGroupBox.SuspendLayout();
             this.countryGroupBox.SuspendLayout();
+            this.AirportGroupBox.SuspendLayout();
+            this.cityGroupBox.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
             this.veAirCouCity.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.airportsDataGridView)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.citiesDataGridView)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countriesDataGridView)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesDataGridView)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.airportsDataGridView)).BeginInit();
             this.tabPage1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.mtAgencyPanel.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.mtCompanyNamePanel.SuspendLayout();
-            this.mtLastNamePanel.SuspendLayout();
             this.mtFirstNamePanel.SuspendLayout();
+            this.mtLastNamePanel.SuspendLayout();
+            this.mtCompanyNamePanel.SuspendLayout();
+            this.mtAgencyPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.AddAirCityConTab.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.createUserTab.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            this.cuCompanyNamePanel.SuspendLayout();
-            this.cuLNamePanel.SuspendLayout();
             this.cuFNamePanel.SuspendLayout();
+            this.cuLNamePanel.SuspendLayout();
+            this.cuCompanyNamePanel.SuspendLayout();
             this.editFlightTab.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.createFlightTab.SuspendLayout();
             this.bookingDetailsTab.SuspendLayout();
             this.travellerUsersTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addNotifications)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
             this.travellerSettingsTab.SuspendLayout();
             this.travellerBookingsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookingTable)).BeginInit();
             this.travellerFlightsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flightsDataGridView)).BeginInit();
             this.tabControler.SuspendLayout();
-            viewPlanes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.planesDataGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // viewPlanes
+            // 
+            viewPlanes.BackColor = System.Drawing.Color.Gainsboro;
+            viewPlanes.Controls.Add(this.cpCapacityErrorLbl);
+            viewPlanes.Controls.Add(this.cpModelErrorLbl);
+            viewPlanes.Controls.Add(label92);
+            viewPlanes.Controls.Add(label93);
+            viewPlanes.Controls.Add(this.cpCapacityTxt);
+            viewPlanes.Controls.Add(this.cpModelTxt);
+            viewPlanes.Controls.Add(this.planesDataGridView);
+            viewPlanes.Controls.Add(this.createPlaneBtn);
+            viewPlanes.Controls.Add(label87);
+            viewPlanes.Controls.Add(label89);
+            viewPlanes.Location = new System.Drawing.Point(85, 4);
+            viewPlanes.Name = "viewPlanes";
+            viewPlanes.Padding = new System.Windows.Forms.Padding(3);
+            viewPlanes.Size = new System.Drawing.Size(693, 720);
+            viewPlanes.TabIndex = 14;
+            viewPlanes.Text = "View Planes";
+            // 
+            // cpCapacityErrorLbl
+            // 
+            this.cpCapacityErrorLbl.AutoSize = true;
+            this.cpCapacityErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cpCapacityErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpCapacityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cpCapacityErrorLbl.Location = new System.Drawing.Point(462, 344);
+            this.cpCapacityErrorLbl.Name = "cpCapacityErrorLbl";
+            this.cpCapacityErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cpCapacityErrorLbl.TabIndex = 119;
+            this.cpCapacityErrorLbl.Text = "Error: Please fix..";
+            this.cpCapacityErrorLbl.Visible = false;
+            // 
+            // cpModelErrorLbl
+            // 
+            this.cpModelErrorLbl.AutoSize = true;
+            this.cpModelErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cpModelErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpModelErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cpModelErrorLbl.Location = new System.Drawing.Point(458, 233);
+            this.cpModelErrorLbl.Name = "cpModelErrorLbl";
+            this.cpModelErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cpModelErrorLbl.TabIndex = 118;
+            this.cpModelErrorLbl.Text = "Error: Please fix..";
+            this.cpModelErrorLbl.Visible = false;
+            // 
+            // label92
+            // 
+            label92.AutoSize = true;
+            label92.BackColor = System.Drawing.Color.Transparent;
+            label92.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label92.Location = new System.Drawing.Point(463, 273);
+            label92.Name = "label92";
+            label92.Size = new System.Drawing.Size(152, 51);
+            label92.TabIndex = 117;
+            label92.Text = "Capacity:";
+            label92.UseCompatibleTextRendering = true;
+            // 
+            // label93
+            // 
+            label93.AutoSize = true;
+            label93.BackColor = System.Drawing.Color.Transparent;
+            label93.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label93.Location = new System.Drawing.Point(461, 162);
+            label93.Name = "label93";
+            label93.Size = new System.Drawing.Size(215, 51);
+            label93.TabIndex = 116;
+            label93.Text = "Plane Model:";
+            label93.UseCompatibleTextRendering = true;
+            // 
+            // cpCapacityTxt
+            // 
+            this.cpCapacityTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cpCapacityTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpCapacityTxt.Location = new System.Drawing.Point(463, 308);
+            this.cpCapacityTxt.Name = "cpCapacityTxt";
+            this.cpCapacityTxt.Size = new System.Drawing.Size(275, 51);
+            this.cpCapacityTxt.TabIndex = 115;
+            this.cpCapacityTxt.Text = "0";
+            this.cpCapacityTxt.TextChanged += new System.EventHandler(this.cpCapacityTxt_TextChanged);
+            this.cpCapacityTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyIntgers_KeyPress);
+            // 
+            // cpModelTxt
+            // 
+            this.cpModelTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cpModelTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpModelTxt.Location = new System.Drawing.Point(461, 197);
+            this.cpModelTxt.Name = "cpModelTxt";
+            this.cpModelTxt.Size = new System.Drawing.Size(275, 51);
+            this.cpModelTxt.TabIndex = 114;
+            this.cpModelTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
+            // 
+            // planesDataGridView
+            // 
+            this.planesDataGridView.AllowUserToAddRows = false;
+            this.planesDataGridView.AllowUserToDeleteRows = false;
+            this.planesDataGridView.AllowUserToOrderColumns = true;
+            this.planesDataGridView.AllowUserToResizeRows = false;
+            this.planesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.planesDataGridView.Location = new System.Drawing.Point(13, 152);
+            this.planesDataGridView.MultiSelect = false;
+            this.planesDataGridView.Name = "planesDataGridView";
+            this.planesDataGridView.ReadOnly = true;
+            this.planesDataGridView.RowHeadersWidth = 70;
+            this.planesDataGridView.RowTemplate.Height = 30;
+            this.planesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.planesDataGridView.Size = new System.Drawing.Size(430, 547);
+            this.planesDataGridView.TabIndex = 43;
+            this.planesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.planesDataGridView_CellClick);
+            this.planesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.planesDataGridView_DataBindingComplete);
+            // 
+            // createPlaneBtn
+            // 
+            this.createPlaneBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.createPlaneBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.createPlaneBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.createPlaneBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createPlaneBtn.ForeColor = System.Drawing.Color.White;
+            this.createPlaneBtn.Location = new System.Drawing.Point(490, 404);
+            this.createPlaneBtn.Name = "createPlaneBtn";
+            this.createPlaneBtn.Size = new System.Drawing.Size(223, 55);
+            this.createPlaneBtn.TabIndex = 42;
+            this.createPlaneBtn.Text = "Create Plane";
+            this.createPlaneBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.createPlaneBtn.UseVisualStyleBackColor = false;
+            this.createPlaneBtn.Click += new System.EventHandler(this.createPlaneBtn_Click);
+            // 
+            // label87
+            // 
+            label87.AutoSize = true;
+            label87.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label87.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            label87.Location = new System.Drawing.Point(17, 81);
+            label87.Name = "label87";
+            label87.Size = new System.Drawing.Size(320, 35);
+            label87.TabIndex = 41;
+            label87.Text = "Manage planes in this Page";
+            // 
+            // label89
+            // 
+            label89.AutoSize = true;
+            label89.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label89.Location = new System.Drawing.Point(10, 22);
+            label89.Name = "label89";
+            label89.Size = new System.Drawing.Size(264, 100);
+            label89.TabIndex = 40;
+            label89.Text = "Planes";
             // 
             // panel1
             // 
@@ -818,149 +967,6 @@ namespace HappyJourneyAirline.Tabs
             this.btntabCreatenotifications.Text = "Create Notifications";
             this.btntabCreatenotifications.Paint += new System.Windows.Forms.PaintEventHandler(this.btntabCreatenotifications_Paint);
             // 
-            // label74
-            // 
-            this.label74.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label74.Location = new System.Drawing.Point(18, 12);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(622, 73);
-            this.label74.TabIndex = 154;
-            this.label74.Text = "Create Notifications";
-            // 
-            // txtTitle
-            // 
-            this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTitle.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(31, 123);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(642, 51);
-            this.txtTitle.TabIndex = 155;
-            this.txtTitle.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.BackColor = System.Drawing.Color.Transparent;
-            this.label76.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label76.Location = new System.Drawing.Point(31, 91);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(80, 51);
-            this.label76.TabIndex = 156;
-            this.label76.Text = "Title";
-            this.label76.UseCompatibleTextRendering = true;
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescription.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(31, 240);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(642, 79);
-            this.txtDescription.TabIndex = 157;
-            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.BackColor = System.Drawing.Color.Transparent;
-            this.label84.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label84.Location = new System.Drawing.Point(32, 204);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(187, 51);
-            this.label84.TabIndex = 158;
-            this.label84.Text = "Description";
-            this.label84.UseCompatibleTextRendering = true;
-            // 
-            // lblErrorTitle
-            // 
-            this.lblErrorTitle.AutoSize = true;
-            this.lblErrorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorTitle.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorTitle.Location = new System.Drawing.Point(39, 163);
-            this.lblErrorTitle.Name = "lblErrorTitle";
-            this.lblErrorTitle.Size = new System.Drawing.Size(0, 29);
-            this.lblErrorTitle.TabIndex = 160;
-            // 
-            // lblErrorDescription
-            // 
-            this.lblErrorDescription.AutoSize = true;
-            this.lblErrorDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorDescription.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorDescription.Location = new System.Drawing.Point(38, 319);
-            this.lblErrorDescription.Name = "lblErrorDescription";
-            this.lblErrorDescription.Size = new System.Drawing.Size(0, 29);
-            this.lblErrorDescription.TabIndex = 161;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(243, 591);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(223, 55);
-            this.button1.TabIndex = 162;
-            this.button1.Text = "Create Notification";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // comboBoxFlights
-            // 
-            this.comboBoxFlights.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxFlights.FormattingEnabled = true;
-            this.comboBoxFlights.Location = new System.Drawing.Point(31, 509);
-            this.comboBoxFlights.Name = "comboBoxFlights";
-            this.comboBoxFlights.Size = new System.Drawing.Size(642, 39);
-            this.comboBoxFlights.TabIndex = 164;
-            // 
-            // lblErrorFlight
-            // 
-            this.lblErrorFlight.AutoSize = true;
-            this.lblErrorFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorFlight.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorFlight.Location = new System.Drawing.Point(39, 543);
-            this.lblErrorFlight.Name = "lblErrorFlight";
-            this.lblErrorFlight.Size = new System.Drawing.Size(0, 29);
-            this.lblErrorFlight.TabIndex = 165;
-            // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.BackColor = System.Drawing.Color.Transparent;
-            this.label86.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label86.Location = new System.Drawing.Point(31, 472);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(112, 51);
-            this.label86.TabIndex = 166;
-            this.label86.Text = "Flights";
-            this.label86.UseCompatibleTextRendering = true;
-            // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.BackColor = System.Drawing.Color.Transparent;
-            this.label88.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label88.Location = new System.Drawing.Point(30, 363);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(275, 51);
-            this.label88.TabIndex = 168;
-            this.label88.Text = "Notification Type";
-            this.label88.UseCompatibleTextRendering = true;
-            // 
-            // lblErrorType
-            // 
-            this.lblErrorType.AutoSize = true;
-            this.lblErrorType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorType.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorType.Location = new System.Drawing.Point(39, 430);
-            this.lblErrorType.Name = "lblErrorType";
-            this.lblErrorType.Size = new System.Drawing.Size(0, 29);
-            this.lblErrorType.TabIndex = 169;
-            // 
             // comboBoxType
             // 
             this.comboBoxType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -987,6 +993,149 @@ namespace HappyJourneyAirline.Tabs
             this.comboBoxType.TabIndex = 170;
             this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // lblErrorType
+            // 
+            this.lblErrorType.AutoSize = true;
+            this.lblErrorType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorType.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorType.Location = new System.Drawing.Point(39, 430);
+            this.lblErrorType.Name = "lblErrorType";
+            this.lblErrorType.Size = new System.Drawing.Size(0, 29);
+            this.lblErrorType.TabIndex = 169;
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.BackColor = System.Drawing.Color.Transparent;
+            this.label88.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label88.Location = new System.Drawing.Point(30, 363);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(275, 51);
+            this.label88.TabIndex = 168;
+            this.label88.Text = "Notification Type";
+            this.label88.UseCompatibleTextRendering = true;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.BackColor = System.Drawing.Color.Transparent;
+            this.label86.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label86.Location = new System.Drawing.Point(31, 472);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(112, 51);
+            this.label86.TabIndex = 166;
+            this.label86.Text = "Flights";
+            this.label86.UseCompatibleTextRendering = true;
+            // 
+            // lblErrorFlight
+            // 
+            this.lblErrorFlight.AutoSize = true;
+            this.lblErrorFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorFlight.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorFlight.Location = new System.Drawing.Point(39, 543);
+            this.lblErrorFlight.Name = "lblErrorFlight";
+            this.lblErrorFlight.Size = new System.Drawing.Size(0, 29);
+            this.lblErrorFlight.TabIndex = 165;
+            // 
+            // comboBoxFlights
+            // 
+            this.comboBoxFlights.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFlights.FormattingEnabled = true;
+            this.comboBoxFlights.Location = new System.Drawing.Point(31, 509);
+            this.comboBoxFlights.Name = "comboBoxFlights";
+            this.comboBoxFlights.Size = new System.Drawing.Size(642, 39);
+            this.comboBoxFlights.TabIndex = 164;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(243, 591);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(223, 55);
+            this.button1.TabIndex = 162;
+            this.button1.Text = "Create Notification";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblErrorDescription
+            // 
+            this.lblErrorDescription.AutoSize = true;
+            this.lblErrorDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorDescription.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorDescription.Location = new System.Drawing.Point(38, 319);
+            this.lblErrorDescription.Name = "lblErrorDescription";
+            this.lblErrorDescription.Size = new System.Drawing.Size(0, 29);
+            this.lblErrorDescription.TabIndex = 161;
+            // 
+            // lblErrorTitle
+            // 
+            this.lblErrorTitle.AutoSize = true;
+            this.lblErrorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorTitle.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorTitle.Location = new System.Drawing.Point(39, 163);
+            this.lblErrorTitle.Name = "lblErrorTitle";
+            this.lblErrorTitle.Size = new System.Drawing.Size(0, 29);
+            this.lblErrorTitle.TabIndex = 160;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.BackColor = System.Drawing.Color.Transparent;
+            this.label84.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label84.Location = new System.Drawing.Point(32, 204);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(187, 51);
+            this.label84.TabIndex = 158;
+            this.label84.Text = "Description";
+            this.label84.UseCompatibleTextRendering = true;
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescription.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Location = new System.Drawing.Point(31, 240);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(642, 79);
+            this.txtDescription.TabIndex = 157;
+            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTitle.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.Location = new System.Drawing.Point(31, 123);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(642, 51);
+            this.txtTitle.TabIndex = 155;
+            this.txtTitle.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.BackColor = System.Drawing.Color.Transparent;
+            this.label76.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(31, 91);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(80, 51);
+            this.label76.TabIndex = 156;
+            this.label76.Text = "Title";
+            this.label76.UseCompatibleTextRendering = true;
+            // 
+            // label74
+            // 
+            this.label74.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.Location = new System.Drawing.Point(18, 12);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(622, 73);
+            this.label74.TabIndex = 154;
+            this.label74.Text = "Create Notifications";
+            // 
             // viewLocation
             // 
             this.viewLocation.BackColor = System.Drawing.Color.Gainsboro;
@@ -1001,86 +1150,6 @@ namespace HappyJourneyAirline.Tabs
             this.viewLocation.TabIndex = 11;
             this.viewLocation.Text = "veLocation";
             // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label83.Location = new System.Drawing.Point(9, 30);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(624, 100);
-            this.label83.TabIndex = 153;
-            this.label83.Text = "Manage Location";
-            // 
-            // label79
-            // 
-            this.label79.AutoSize = true;
-            this.label79.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label79.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label79.Location = new System.Drawing.Point(17, 584);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(1444, 35);
-            this.label79.TabIndex = 157;
-            this.label79.Text = "Attention if you delete this location all its information and other locations rel" +
-    "ated to it will be deleted and can\'t be restored";
-            // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.Controls.Add(this.editLocationDelete);
-            this.flowLayoutPanel6.Controls.Add(this.editLocationSave);
-            this.flowLayoutPanel6.Controls.Add(this.editLocationBack);
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(23, 611);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(537, 57);
-            this.flowLayoutPanel6.TabIndex = 160;
-            // 
-            // editLocationBack
-            // 
-            this.editLocationBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
-            this.editLocationBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.editLocationBack.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.editLocationBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editLocationBack.ForeColor = System.Drawing.Color.White;
-            this.editLocationBack.Location = new System.Drawing.Point(293, 3);
-            this.editLocationBack.Name = "editLocationBack";
-            this.editLocationBack.Size = new System.Drawing.Size(139, 43);
-            this.editLocationBack.TabIndex = 129;
-            this.editLocationBack.Text = "Back";
-            this.editLocationBack.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.editLocationBack.UseVisualStyleBackColor = false;
-            this.editLocationBack.Click += new System.EventHandler(this.editLocationBack_Click);
-            // 
-            // editLocationSave
-            // 
-            this.editLocationSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.editLocationSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.editLocationSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.editLocationSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editLocationSave.ForeColor = System.Drawing.Color.White;
-            this.editLocationSave.Location = new System.Drawing.Point(148, 3);
-            this.editLocationSave.Name = "editLocationSave";
-            this.editLocationSave.Size = new System.Drawing.Size(139, 43);
-            this.editLocationSave.TabIndex = 119;
-            this.editLocationSave.Text = "Save Edits";
-            this.editLocationSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.editLocationSave.UseVisualStyleBackColor = false;
-            this.editLocationSave.Click += new System.EventHandler(this.editLocationSave_Click);
-            // 
-            // editLocationDelete
-            // 
-            this.editLocationDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.editLocationDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.editLocationDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.editLocationDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editLocationDelete.ForeColor = System.Drawing.Color.White;
-            this.editLocationDelete.Location = new System.Drawing.Point(3, 3);
-            this.editLocationDelete.Name = "editLocationDelete";
-            this.editLocationDelete.Size = new System.Drawing.Size(139, 43);
-            this.editLocationDelete.TabIndex = 128;
-            this.editLocationDelete.Text = "Delete Locatopn";
-            this.editLocationDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.editLocationDelete.UseVisualStyleBackColor = false;
-            this.editLocationDelete.Click += new System.EventHandler(this.editLocationDelete_Click);
-            // 
             // flowLayoutPanel5
             // 
             this.flowLayoutPanel5.Controls.Add(this.countryGroupBox);
@@ -1091,76 +1160,52 @@ namespace HappyJourneyAirline.Tabs
             this.flowLayoutPanel5.Size = new System.Drawing.Size(724, 458);
             this.flowLayoutPanel5.TabIndex = 161;
             // 
-            // cityGroupBox
+            // countryGroupBox
             // 
-            this.cityGroupBox.Controls.Add(this.label75);
-            this.cityGroupBox.Controls.Add(this.editCitytNameTxt);
-            this.cityGroupBox.Controls.Add(this.editCityErrorLbl);
-            this.cityGroupBox.Controls.Add(this.label77);
-            this.cityGroupBox.Controls.Add(this.editConDrop);
-            this.cityGroupBox.Location = new System.Drawing.Point(3, 402);
-            this.cityGroupBox.Name = "cityGroupBox";
-            this.cityGroupBox.Size = new System.Drawing.Size(707, 155);
-            this.cityGroupBox.TabIndex = 146;
-            this.cityGroupBox.TabStop = false;
-            this.cityGroupBox.Text = "City";
+            this.countryGroupBox.Controls.Add(this.label73);
+            this.countryGroupBox.Controls.Add(this.editContErrorLbl);
+            this.countryGroupBox.Controls.Add(this.editContNameTxt);
+            this.countryGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.countryGroupBox.Name = "countryGroupBox";
+            this.countryGroupBox.Size = new System.Drawing.Size(707, 150);
+            this.countryGroupBox.TabIndex = 147;
+            this.countryGroupBox.TabStop = false;
+            this.countryGroupBox.Text = "Country";
             // 
-            // editConDrop
+            // label73
             // 
-            this.editConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.editConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.editConDrop.FormattingEnabled = true;
-            this.editConDrop.Location = new System.Drawing.Point(293, 61);
-            this.editConDrop.Name = "editConDrop";
-            this.editConDrop.Size = new System.Drawing.Size(246, 52);
-            this.editConDrop.TabIndex = 130;
+            this.label73.AutoSize = true;
+            this.label73.BackColor = System.Drawing.Color.Transparent;
+            this.label73.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.Location = new System.Drawing.Point(20, 24);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(243, 51);
+            this.label73.TabIndex = 111;
+            this.label73.Text = "Country Name:";
+            this.label73.UseCompatibleTextRendering = true;
             // 
-            // label77
+            // editContErrorLbl
             // 
-            this.label77.AutoSize = true;
-            this.label77.BackColor = System.Drawing.Color.Transparent;
-            this.label77.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.Location = new System.Drawing.Point(293, 29);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(243, 51);
-            this.label77.TabIndex = 127;
-            this.label77.Text = "Country Name:";
-            this.label77.UseCompatibleTextRendering = true;
+            this.editContErrorLbl.AutoSize = true;
+            this.editContErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.editContErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editContErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editContErrorLbl.Location = new System.Drawing.Point(278, 64);
+            this.editContErrorLbl.Name = "editContErrorLbl";
+            this.editContErrorLbl.Size = new System.Drawing.Size(429, 44);
+            this.editContErrorLbl.TabIndex = 132;
+            this.editContErrorLbl.Text = "Error: Country already Exist";
+            this.editContErrorLbl.Visible = false;
             // 
-            // editCityErrorLbl
+            // editContNameTxt
             // 
-            this.editCityErrorLbl.AutoSize = true;
-            this.editCityErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.editCityErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editCityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.editCityErrorLbl.Location = new System.Drawing.Point(302, 114);
-            this.editCityErrorLbl.Name = "editCityErrorLbl";
-            this.editCityErrorLbl.Size = new System.Drawing.Size(368, 44);
-            this.editCityErrorLbl.TabIndex = 133;
-            this.editCityErrorLbl.Text = "Error: City already Exist";
-            this.editCityErrorLbl.Visible = false;
-            // 
-            // editCitytNameTxt
-            // 
-            this.editCitytNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editCitytNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editCitytNameTxt.Location = new System.Drawing.Point(20, 62);
-            this.editCitytNameTxt.Name = "editCitytNameTxt";
-            this.editCitytNameTxt.Size = new System.Drawing.Size(246, 51);
-            this.editCitytNameTxt.TabIndex = 115;
-            this.editCitytNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.BackColor = System.Drawing.Color.Transparent;
-            this.label75.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label75.Location = new System.Drawing.Point(20, 29);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(180, 51);
-            this.label75.TabIndex = 117;
-            this.label75.Text = "City Name:";
-            this.label75.UseCompatibleTextRendering = true;
+            this.editContNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editContNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editContNameTxt.Location = new System.Drawing.Point(20, 57);
+            this.editContNameTxt.Name = "editContNameTxt";
+            this.editContNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.editContNameTxt.TabIndex = 109;
+            this.editContNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
             // 
             // AirportGroupBox
             // 
@@ -1182,17 +1227,104 @@ namespace HappyJourneyAirline.Tabs
             this.AirportGroupBox.TabStop = false;
             this.AirportGroupBox.Text = "Airport";
             // 
-            // label85
+            // label78
             // 
-            this.label85.AutoSize = true;
-            this.label85.BackColor = System.Drawing.Color.Transparent;
-            this.label85.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label85.Location = new System.Drawing.Point(293, 113);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(149, 51);
-            this.label85.TabIndex = 137;
-            this.label85.Text = "Latitude:";
-            this.label85.UseCompatibleTextRendering = true;
+            this.label78.AutoSize = true;
+            this.label78.BackColor = System.Drawing.Color.Transparent;
+            this.label78.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(20, 24);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(231, 51);
+            this.label78.TabIndex = 123;
+            this.label78.Text = "Airport Name:";
+            this.label78.UseCompatibleTextRendering = true;
+            // 
+            // editAirportConDrop
+            // 
+            this.editAirportConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editAirportConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.editAirportConDrop.FormattingEnabled = true;
+            this.editAirportConDrop.Location = new System.Drawing.Point(360, 57);
+            this.editAirportConDrop.Name = "editAirportConDrop";
+            this.editAirportConDrop.Size = new System.Drawing.Size(309, 52);
+            this.editAirportConDrop.TabIndex = 141;
+            this.editAirportConDrop.SelectedIndexChanged += new System.EventHandler(this.editAirportConDrop_SelectedIndexChanged);
+            // 
+            // editAirportNameTxt
+            // 
+            this.editAirportNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editAirportNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportNameTxt.Location = new System.Drawing.Point(20, 57);
+            this.editAirportNameTxt.Name = "editAirportNameTxt";
+            this.editAirportNameTxt.Size = new System.Drawing.Size(320, 51);
+            this.editAirportNameTxt.TabIndex = 121;
+            this.editAirportNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.BackColor = System.Drawing.Color.Transparent;
+            this.label80.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.Location = new System.Drawing.Point(360, 25);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(243, 51);
+            this.label80.TabIndex = 140;
+            this.label80.Text = "Country Name:";
+            this.label80.UseCompatibleTextRendering = true;
+            // 
+            // editAirportLongitudeTxt
+            // 
+            this.editAirportLongitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editAirportLongitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportLongitudeTxt.Location = new System.Drawing.Point(494, 146);
+            this.editAirportLongitudeTxt.Name = "editAirportLongitudeTxt";
+            this.editAirportLongitudeTxt.Size = new System.Drawing.Size(175, 51);
+            this.editAirportLongitudeTxt.TabIndex = 138;
+            this.editAirportLongitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.BackColor = System.Drawing.Color.Transparent;
+            this.label81.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Location = new System.Drawing.Point(20, 113);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(180, 51);
+            this.label81.TabIndex = 129;
+            this.label81.Text = "City Name:";
+            this.label81.UseCompatibleTextRendering = true;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.BackColor = System.Drawing.Color.Transparent;
+            this.label82.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.Location = new System.Drawing.Point(494, 113);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(175, 51);
+            this.label82.TabIndex = 139;
+            this.label82.Text = "Longitude:";
+            this.label82.UseCompatibleTextRendering = true;
+            // 
+            // editAirportCityDrop
+            // 
+            this.editAirportCityDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editAirportCityDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.editAirportCityDrop.FormattingEnabled = true;
+            this.editAirportCityDrop.Location = new System.Drawing.Point(20, 145);
+            this.editAirportCityDrop.Name = "editAirportCityDrop";
+            this.editAirportCityDrop.Size = new System.Drawing.Size(246, 52);
+            this.editAirportCityDrop.TabIndex = 131;
+            // 
+            // editAirportLatitudeTxt
+            // 
+            this.editAirportLatitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editAirportLatitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportLatitudeTxt.Location = new System.Drawing.Point(293, 146);
+            this.editAirportLatitudeTxt.Name = "editAirportLatitudeTxt";
+            this.editAirportLatitudeTxt.Size = new System.Drawing.Size(175, 51);
+            this.editAirportLatitudeTxt.TabIndex = 136;
+            this.editAirportLatitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
             // 
             // editAirportErrorLbl
             // 
@@ -1207,151 +1339,168 @@ namespace HappyJourneyAirline.Tabs
             this.editAirportErrorLbl.Text = "Error: Airport already Exist";
             this.editAirportErrorLbl.Visible = false;
             // 
-            // editAirportLatitudeTxt
+            // label85
             // 
-            this.editAirportLatitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editAirportLatitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editAirportLatitudeTxt.Location = new System.Drawing.Point(293, 146);
-            this.editAirportLatitudeTxt.Name = "editAirportLatitudeTxt";
-            this.editAirportLatitudeTxt.Size = new System.Drawing.Size(175, 51);
-            this.editAirportLatitudeTxt.TabIndex = 136;
-            this.editAirportLatitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
+            this.label85.AutoSize = true;
+            this.label85.BackColor = System.Drawing.Color.Transparent;
+            this.label85.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label85.Location = new System.Drawing.Point(293, 113);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(149, 51);
+            this.label85.TabIndex = 137;
+            this.label85.Text = "Latitude:";
+            this.label85.UseCompatibleTextRendering = true;
             // 
-            // editAirportCityDrop
+            // cityGroupBox
             // 
-            this.editAirportCityDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.editAirportCityDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.editAirportCityDrop.FormattingEnabled = true;
-            this.editAirportCityDrop.Location = new System.Drawing.Point(20, 145);
-            this.editAirportCityDrop.Name = "editAirportCityDrop";
-            this.editAirportCityDrop.Size = new System.Drawing.Size(246, 52);
-            this.editAirportCityDrop.TabIndex = 131;
+            this.cityGroupBox.Controls.Add(this.label75);
+            this.cityGroupBox.Controls.Add(this.editCitytNameTxt);
+            this.cityGroupBox.Controls.Add(this.editCityErrorLbl);
+            this.cityGroupBox.Controls.Add(this.label77);
+            this.cityGroupBox.Controls.Add(this.editConDrop);
+            this.cityGroupBox.Location = new System.Drawing.Point(3, 402);
+            this.cityGroupBox.Name = "cityGroupBox";
+            this.cityGroupBox.Size = new System.Drawing.Size(707, 155);
+            this.cityGroupBox.TabIndex = 146;
+            this.cityGroupBox.TabStop = false;
+            this.cityGroupBox.Text = "City";
             // 
-            // label82
+            // label75
             // 
-            this.label82.AutoSize = true;
-            this.label82.BackColor = System.Drawing.Color.Transparent;
-            this.label82.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label82.Location = new System.Drawing.Point(494, 113);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(175, 51);
-            this.label82.TabIndex = 139;
-            this.label82.Text = "Longitude:";
-            this.label82.UseCompatibleTextRendering = true;
+            this.label75.AutoSize = true;
+            this.label75.BackColor = System.Drawing.Color.Transparent;
+            this.label75.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(20, 29);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(180, 51);
+            this.label75.TabIndex = 117;
+            this.label75.Text = "City Name:";
+            this.label75.UseCompatibleTextRendering = true;
             // 
-            // label81
+            // editCitytNameTxt
             // 
-            this.label81.AutoSize = true;
-            this.label81.BackColor = System.Drawing.Color.Transparent;
-            this.label81.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label81.Location = new System.Drawing.Point(20, 113);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(180, 51);
-            this.label81.TabIndex = 129;
-            this.label81.Text = "City Name:";
-            this.label81.UseCompatibleTextRendering = true;
+            this.editCitytNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editCitytNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCitytNameTxt.Location = new System.Drawing.Point(20, 62);
+            this.editCitytNameTxt.Name = "editCitytNameTxt";
+            this.editCitytNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.editCitytNameTxt.TabIndex = 115;
+            this.editCitytNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
             // 
-            // editAirportLongitudeTxt
+            // editCityErrorLbl
             // 
-            this.editAirportLongitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editAirportLongitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editAirportLongitudeTxt.Location = new System.Drawing.Point(494, 146);
-            this.editAirportLongitudeTxt.Name = "editAirportLongitudeTxt";
-            this.editAirportLongitudeTxt.Size = new System.Drawing.Size(175, 51);
-            this.editAirportLongitudeTxt.TabIndex = 138;
-            this.editAirportLongitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
+            this.editCityErrorLbl.AutoSize = true;
+            this.editCityErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.editCityErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editCityErrorLbl.Location = new System.Drawing.Point(302, 114);
+            this.editCityErrorLbl.Name = "editCityErrorLbl";
+            this.editCityErrorLbl.Size = new System.Drawing.Size(368, 44);
+            this.editCityErrorLbl.TabIndex = 133;
+            this.editCityErrorLbl.Text = "Error: City already Exist";
+            this.editCityErrorLbl.Visible = false;
             // 
-            // label80
+            // label77
             // 
-            this.label80.AutoSize = true;
-            this.label80.BackColor = System.Drawing.Color.Transparent;
-            this.label80.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.Location = new System.Drawing.Point(360, 25);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(243, 51);
-            this.label80.TabIndex = 140;
-            this.label80.Text = "Country Name:";
-            this.label80.UseCompatibleTextRendering = true;
+            this.label77.AutoSize = true;
+            this.label77.BackColor = System.Drawing.Color.Transparent;
+            this.label77.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(293, 29);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(243, 51);
+            this.label77.TabIndex = 127;
+            this.label77.Text = "Country Name:";
+            this.label77.UseCompatibleTextRendering = true;
             // 
-            // editAirportNameTxt
+            // editConDrop
             // 
-            this.editAirportNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editAirportNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editAirportNameTxt.Location = new System.Drawing.Point(20, 57);
-            this.editAirportNameTxt.Name = "editAirportNameTxt";
-            this.editAirportNameTxt.Size = new System.Drawing.Size(320, 51);
-            this.editAirportNameTxt.TabIndex = 121;
-            this.editAirportNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
+            this.editConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.editConDrop.FormattingEnabled = true;
+            this.editConDrop.Location = new System.Drawing.Point(293, 61);
+            this.editConDrop.Name = "editConDrop";
+            this.editConDrop.Size = new System.Drawing.Size(246, 52);
+            this.editConDrop.TabIndex = 130;
             // 
-            // editAirportConDrop
+            // flowLayoutPanel6
             // 
-            this.editAirportConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.editAirportConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.editAirportConDrop.FormattingEnabled = true;
-            this.editAirportConDrop.Location = new System.Drawing.Point(360, 57);
-            this.editAirportConDrop.Name = "editAirportConDrop";
-            this.editAirportConDrop.Size = new System.Drawing.Size(309, 52);
-            this.editAirportConDrop.TabIndex = 141;
-            this.editAirportConDrop.SelectedIndexChanged += new System.EventHandler(this.editAirportConDrop_SelectedIndexChanged);
+            this.flowLayoutPanel6.Controls.Add(this.editLocationDelete);
+            this.flowLayoutPanel6.Controls.Add(this.editLocationSave);
+            this.flowLayoutPanel6.Controls.Add(this.editLocationBack);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(23, 611);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(537, 57);
+            this.flowLayoutPanel6.TabIndex = 160;
             // 
-            // label78
+            // editLocationDelete
             // 
-            this.label78.AutoSize = true;
-            this.label78.BackColor = System.Drawing.Color.Transparent;
-            this.label78.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label78.Location = new System.Drawing.Point(20, 24);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(231, 51);
-            this.label78.TabIndex = 123;
-            this.label78.Text = "Airport Name:";
-            this.label78.UseCompatibleTextRendering = true;
+            this.editLocationDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editLocationDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.editLocationDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.editLocationDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editLocationDelete.ForeColor = System.Drawing.Color.White;
+            this.editLocationDelete.Location = new System.Drawing.Point(3, 3);
+            this.editLocationDelete.Name = "editLocationDelete";
+            this.editLocationDelete.Size = new System.Drawing.Size(139, 43);
+            this.editLocationDelete.TabIndex = 128;
+            this.editLocationDelete.Text = "Delete Locatopn";
+            this.editLocationDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.editLocationDelete.UseVisualStyleBackColor = false;
+            this.editLocationDelete.Click += new System.EventHandler(this.editLocationDelete_Click);
             // 
-            // countryGroupBox
+            // editLocationSave
             // 
-            this.countryGroupBox.Controls.Add(this.label73);
-            this.countryGroupBox.Controls.Add(this.editContErrorLbl);
-            this.countryGroupBox.Controls.Add(this.editContNameTxt);
-            this.countryGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.countryGroupBox.Name = "countryGroupBox";
-            this.countryGroupBox.Size = new System.Drawing.Size(707, 150);
-            this.countryGroupBox.TabIndex = 147;
-            this.countryGroupBox.TabStop = false;
-            this.countryGroupBox.Text = "Country";
+            this.editLocationSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.editLocationSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.editLocationSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.editLocationSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editLocationSave.ForeColor = System.Drawing.Color.White;
+            this.editLocationSave.Location = new System.Drawing.Point(148, 3);
+            this.editLocationSave.Name = "editLocationSave";
+            this.editLocationSave.Size = new System.Drawing.Size(139, 43);
+            this.editLocationSave.TabIndex = 119;
+            this.editLocationSave.Text = "Save Edits";
+            this.editLocationSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.editLocationSave.UseVisualStyleBackColor = false;
+            this.editLocationSave.Click += new System.EventHandler(this.editLocationSave_Click);
             // 
-            // editContNameTxt
+            // editLocationBack
             // 
-            this.editContNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editContNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editContNameTxt.Location = new System.Drawing.Point(20, 57);
-            this.editContNameTxt.Name = "editContNameTxt";
-            this.editContNameTxt.Size = new System.Drawing.Size(246, 51);
-            this.editContNameTxt.TabIndex = 109;
-            this.editContNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            this.editLocationBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
+            this.editLocationBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.editLocationBack.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.editLocationBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editLocationBack.ForeColor = System.Drawing.Color.White;
+            this.editLocationBack.Location = new System.Drawing.Point(293, 3);
+            this.editLocationBack.Name = "editLocationBack";
+            this.editLocationBack.Size = new System.Drawing.Size(139, 43);
+            this.editLocationBack.TabIndex = 129;
+            this.editLocationBack.Text = "Back";
+            this.editLocationBack.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.editLocationBack.UseVisualStyleBackColor = false;
+            this.editLocationBack.Click += new System.EventHandler(this.editLocationBack_Click);
             // 
-            // editContErrorLbl
+            // label79
             // 
-            this.editContErrorLbl.AutoSize = true;
-            this.editContErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.editContErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editContErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.editContErrorLbl.Location = new System.Drawing.Point(278, 64);
-            this.editContErrorLbl.Name = "editContErrorLbl";
-            this.editContErrorLbl.Size = new System.Drawing.Size(429, 44);
-            this.editContErrorLbl.TabIndex = 132;
-            this.editContErrorLbl.Text = "Error: Country already Exist";
-            this.editContErrorLbl.Visible = false;
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label79.Location = new System.Drawing.Point(17, 584);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(1444, 35);
+            this.label79.TabIndex = 157;
+            this.label79.Text = "Attention if you delete this location all its information and other locations rel" +
+    "ated to it will be deleted and can\'t be restored";
             // 
-            // label73
+            // label83
             // 
-            this.label73.AutoSize = true;
-            this.label73.BackColor = System.Drawing.Color.Transparent;
-            this.label73.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label73.Location = new System.Drawing.Point(20, 24);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(243, 51);
-            this.label73.TabIndex = 111;
-            this.label73.Text = "Country Name:";
-            this.label73.UseCompatibleTextRendering = true;
+            this.label83.AutoSize = true;
+            this.label83.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label83.Location = new System.Drawing.Point(9, 30);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(624, 100);
+            this.label83.TabIndex = 153;
+            this.label83.Text = "Manage Location";
             // 
             // veAirCouCity
             // 
@@ -1370,134 +1519,21 @@ namespace HappyJourneyAirline.Tabs
             this.veAirCouCity.TabIndex = 10;
             this.veAirCouCity.Text = "veAirCouCity";
             // 
-            // Locations
+            // button2
             // 
-            this.Locations.AutoSize = true;
-            this.Locations.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Locations.Location = new System.Drawing.Point(24, 25);
-            this.Locations.Name = "Locations";
-            this.Locations.Size = new System.Drawing.Size(363, 100);
-            this.Locations.TabIndex = 37;
-            this.Locations.Text = "Locations";
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label72.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label72.Location = new System.Drawing.Point(31, 84);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(369, 35);
-            this.label72.TabIndex = 38;
-            this.label72.Text = "View and edit all locations here";
-            // 
-            // addAirCityCouBtn
-            // 
-            this.addAirCityCouBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.addAirCityCouBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.addAirCityCouBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.addAirCityCouBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAirCityCouBtn.ForeColor = System.Drawing.Color.White;
-            this.addAirCityCouBtn.Location = new System.Drawing.Point(480, 97);
-            this.addAirCityCouBtn.Name = "addAirCityCouBtn";
-            this.addAirCityCouBtn.Size = new System.Drawing.Size(223, 55);
-            this.addAirCityCouBtn.TabIndex = 39;
-            this.addAirCityCouBtn.Text = "Add Location";
-            this.addAirCityCouBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.addAirCityCouBtn.UseVisualStyleBackColor = false;
-            this.addAirCityCouBtn.Click += new System.EventHandler(this.addAirCityCouBtn_Click_1);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.airportsDataGridView);
-            this.groupBox6.Location = new System.Drawing.Point(7, 462);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(707, 237);
-            this.groupBox6.TabIndex = 145;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Airport";
-            // 
-            // airportsDataGridView
-            // 
-            this.airportsDataGridView.AllowUserToAddRows = false;
-            this.airportsDataGridView.AllowUserToDeleteRows = false;
-            this.airportsDataGridView.AllowUserToOrderColumns = true;
-            this.airportsDataGridView.AllowUserToResizeRows = false;
-            this.airportsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle61.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle61.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle61.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle61.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle61.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.airportsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle61;
-            this.airportsDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle62.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle62.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle62.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle62.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle62.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle62.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle62.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.airportsDataGridView.DefaultCellStyle = dataGridViewCellStyle62;
-            this.airportsDataGridView.Location = new System.Drawing.Point(7, 23);
-            this.airportsDataGridView.Name = "airportsDataGridView";
-            this.airportsDataGridView.RowHeadersVisible = false;
-            this.airportsDataGridView.RowHeadersWidth = 70;
-            this.airportsDataGridView.RowTemplate.Height = 50;
-            this.airportsDataGridView.Size = new System.Drawing.Size(694, 208);
-            this.airportsDataGridView.TabIndex = 2;
-            this.airportsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.airportsDataGridView_CellClick);
-            this.airportsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.citiesDataGridView);
-            this.groupBox5.Location = new System.Drawing.Point(7, 304);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(707, 155);
-            this.groupBox5.TabIndex = 146;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "City";
-            // 
-            // citiesDataGridView
-            // 
-            this.citiesDataGridView.AllowUserToAddRows = false;
-            this.citiesDataGridView.AllowUserToDeleteRows = false;
-            this.citiesDataGridView.AllowUserToOrderColumns = true;
-            this.citiesDataGridView.AllowUserToResizeRows = false;
-            this.citiesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle63.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle63.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle63.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle63.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle63.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle63.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.citiesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle63;
-            this.citiesDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle64.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle64.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle64.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle64.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle64.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.citiesDataGridView.DefaultCellStyle = dataGridViewCellStyle64;
-            this.citiesDataGridView.Location = new System.Drawing.Point(6, 23);
-            this.citiesDataGridView.Name = "citiesDataGridView";
-            this.citiesDataGridView.RowHeadersVisible = false;
-            this.citiesDataGridView.RowHeadersWidth = 70;
-            this.citiesDataGridView.RowTemplate.Height = 50;
-            this.citiesDataGridView.Size = new System.Drawing.Size(694, 126);
-            this.citiesDataGridView.TabIndex = 1;
-            this.citiesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.citiesDataGridView_CellClick);
-            this.citiesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
+            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(480, 25);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(223, 55);
+            this.button2.TabIndex = 148;
+            this.button2.Text = "Generate Locations Report";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // groupBox4
             // 
@@ -1516,25 +1552,25 @@ namespace HappyJourneyAirline.Tabs
             this.countriesDataGridView.AllowUserToOrderColumns = true;
             this.countriesDataGridView.AllowUserToResizeRows = false;
             this.countriesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle65.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle65.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle65.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.countriesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.countriesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.countriesDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle66.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle66.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle66.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle66.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle66.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle66.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle66.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.countriesDataGridView.DefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.countriesDataGridView.DefaultCellStyle = dataGridViewCellStyle14;
             this.countriesDataGridView.Location = new System.Drawing.Point(7, 23);
             this.countriesDataGridView.Name = "countriesDataGridView";
             this.countriesDataGridView.RowHeadersVisible = false;
@@ -1545,21 +1581,134 @@ namespace HappyJourneyAirline.Tabs
             this.countriesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.countriesDataGridView_CellClick);
             this.countriesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
             // 
-            // button2
+            // groupBox5
             // 
-            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(480, 25);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(223, 55);
-            this.button2.TabIndex = 148;
-            this.button2.Text = "Generate Locations Report";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.groupBox5.Controls.Add(this.citiesDataGridView);
+            this.groupBox5.Location = new System.Drawing.Point(7, 304);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(707, 155);
+            this.groupBox5.TabIndex = 146;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "City";
+            // 
+            // citiesDataGridView
+            // 
+            this.citiesDataGridView.AllowUserToAddRows = false;
+            this.citiesDataGridView.AllowUserToDeleteRows = false;
+            this.citiesDataGridView.AllowUserToOrderColumns = true;
+            this.citiesDataGridView.AllowUserToResizeRows = false;
+            this.citiesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.citiesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.citiesDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.citiesDataGridView.DefaultCellStyle = dataGridViewCellStyle16;
+            this.citiesDataGridView.Location = new System.Drawing.Point(6, 23);
+            this.citiesDataGridView.Name = "citiesDataGridView";
+            this.citiesDataGridView.RowHeadersVisible = false;
+            this.citiesDataGridView.RowHeadersWidth = 70;
+            this.citiesDataGridView.RowTemplate.Height = 50;
+            this.citiesDataGridView.Size = new System.Drawing.Size(694, 126);
+            this.citiesDataGridView.TabIndex = 1;
+            this.citiesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.citiesDataGridView_CellClick);
+            this.citiesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.airportsDataGridView);
+            this.groupBox6.Location = new System.Drawing.Point(7, 462);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(707, 237);
+            this.groupBox6.TabIndex = 145;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Airport";
+            // 
+            // airportsDataGridView
+            // 
+            this.airportsDataGridView.AllowUserToAddRows = false;
+            this.airportsDataGridView.AllowUserToDeleteRows = false;
+            this.airportsDataGridView.AllowUserToOrderColumns = true;
+            this.airportsDataGridView.AllowUserToResizeRows = false;
+            this.airportsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.airportsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.airportsDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.airportsDataGridView.DefaultCellStyle = dataGridViewCellStyle18;
+            this.airportsDataGridView.Location = new System.Drawing.Point(7, 23);
+            this.airportsDataGridView.Name = "airportsDataGridView";
+            this.airportsDataGridView.RowHeadersVisible = false;
+            this.airportsDataGridView.RowHeadersWidth = 70;
+            this.airportsDataGridView.RowTemplate.Height = 50;
+            this.airportsDataGridView.Size = new System.Drawing.Size(694, 208);
+            this.airportsDataGridView.TabIndex = 2;
+            this.airportsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.airportsDataGridView_CellClick);
+            this.airportsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
+            // 
+            // addAirCityCouBtn
+            // 
+            this.addAirCityCouBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.addAirCityCouBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addAirCityCouBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.addAirCityCouBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAirCityCouBtn.ForeColor = System.Drawing.Color.White;
+            this.addAirCityCouBtn.Location = new System.Drawing.Point(480, 97);
+            this.addAirCityCouBtn.Name = "addAirCityCouBtn";
+            this.addAirCityCouBtn.Size = new System.Drawing.Size(223, 55);
+            this.addAirCityCouBtn.TabIndex = 39;
+            this.addAirCityCouBtn.Text = "Add Location";
+            this.addAirCityCouBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.addAirCityCouBtn.UseVisualStyleBackColor = false;
+            this.addAirCityCouBtn.Click += new System.EventHandler(this.addAirCityCouBtn_Click_1);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label72.Location = new System.Drawing.Point(31, 84);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(369, 35);
+            this.label72.TabIndex = 38;
+            this.label72.Text = "View and edit all locations here";
+            // 
+            // Locations
+            // 
+            this.Locations.AutoSize = true;
+            this.Locations.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Locations.Location = new System.Drawing.Point(24, 25);
+            this.Locations.Name = "Locations";
+            this.Locations.Size = new System.Drawing.Size(363, 100);
+            this.Locations.TabIndex = 37;
+            this.Locations.Text = "Locations";
             // 
             // tabPage1
             // 
@@ -1586,75 +1735,195 @@ namespace HappyJourneyAirline.Tabs
             this.tabPage1.TabIndex = 9;
             this.tabPage1.Text = "Manage User";
             // 
-            // label18
+            // flowLayoutPanel3
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(9, 30);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(493, 100);
-            this.label18.TabIndex = 115;
-            this.label18.Text = "Manage User";
+            this.flowLayoutPanel3.Controls.Add(this.mtFirstNamePanel);
+            this.flowLayoutPanel3.Controls.Add(this.mtLastNamePanel);
+            this.flowLayoutPanel3.Controls.Add(this.mtCompanyNamePanel);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(17, 170);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(710, 92);
+            this.flowLayoutPanel3.TabIndex = 152;
             // 
-            // label63
+            // mtFirstNamePanel
             // 
-            this.label63.AutoSize = true;
-            this.label63.BackColor = System.Drawing.Color.Transparent;
-            this.label63.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(23, 124);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(134, 51);
-            this.label63.TabIndex = 117;
-            this.label63.Text = "User ID:";
-            this.label63.UseCompatibleTextRendering = true;
+            this.mtFirstNamePanel.Controls.Add(this.label62);
+            this.mtFirstNamePanel.Controls.Add(this.mtFnameTxt);
+            this.mtFirstNamePanel.Location = new System.Drawing.Point(3, 3);
+            this.mtFirstNamePanel.Name = "mtFirstNamePanel";
+            this.mtFirstNamePanel.Size = new System.Drawing.Size(358, 82);
+            this.mtFirstNamePanel.TabIndex = 150;
             // 
-            // label60
+            // label62
             // 
-            this.label60.AutoSize = true;
-            this.label60.BackColor = System.Drawing.Color.Transparent;
-            this.label60.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(23, 343);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(106, 51);
-            this.label60.TabIndex = 124;
-            this.label60.Text = "Email:";
-            this.label60.UseCompatibleTextRendering = true;
+            this.label62.AutoSize = true;
+            this.label62.BackColor = System.Drawing.Color.Transparent;
+            this.label62.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.Location = new System.Drawing.Point(3, 0);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(188, 51);
+            this.label62.TabIndex = 120;
+            this.label62.Text = "First Name:";
+            this.label62.UseCompatibleTextRendering = true;
             // 
-            // label59
+            // mtFnameTxt
             // 
-            this.label59.AutoSize = true;
-            this.label59.BackColor = System.Drawing.Color.Transparent;
-            this.label59.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label59.Location = new System.Drawing.Point(384, 343);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(253, 51);
-            this.label59.TabIndex = 125;
-            this.label59.Text = "Phone Number:";
-            this.label59.UseCompatibleTextRendering = true;
+            this.mtFnameTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtFnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtFnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtFnameTxt.Location = new System.Drawing.Point(8, 38);
+            this.mtFnameTxt.Name = "mtFnameTxt";
+            this.mtFnameTxt.ReadOnly = true;
+            this.mtFnameTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtFnameTxt.TabIndex = 139;
+            this.mtFnameTxt.Text = "Employer/Traveler";
             // 
-            // label64
+            // mtLastNamePanel
             // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label64.Location = new System.Drawing.Point(17, 584);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(1096, 35);
-            this.label64.TabIndex = 127;
-            this.label64.Text = "Attention if you delete your account all your information will be deleted and can" +
-    "t be restored";
+            this.mtLastNamePanel.Controls.Add(this.label61);
+            this.mtLastNamePanel.Controls.Add(this.mtLnameTxt);
+            this.mtLastNamePanel.Location = new System.Drawing.Point(367, 3);
+            this.mtLastNamePanel.Name = "mtLastNamePanel";
+            this.mtLastNamePanel.Size = new System.Drawing.Size(301, 82);
+            this.mtLastNamePanel.TabIndex = 151;
             // 
-            // label65
+            // label61
             // 
-            this.label65.AutoSize = true;
-            this.label65.BackColor = System.Drawing.Color.Transparent;
-            this.label65.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label65.Location = new System.Drawing.Point(384, 256);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(175, 51);
-            this.label65.TabIndex = 130;
-            this.label65.Text = "User Type:";
-            this.label65.UseCompatibleTextRendering = true;
+            this.label61.AutoSize = true;
+            this.label61.BackColor = System.Drawing.Color.Transparent;
+            this.label61.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.Location = new System.Drawing.Point(0, 0);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(183, 51);
+            this.label61.TabIndex = 121;
+            this.label61.Text = "Last Name:";
+            this.label61.UseCompatibleTextRendering = true;
+            // 
+            // mtLnameTxt
+            // 
+            this.mtLnameTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtLnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtLnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtLnameTxt.Location = new System.Drawing.Point(7, 35);
+            this.mtLnameTxt.Name = "mtLnameTxt";
+            this.mtLnameTxt.ReadOnly = true;
+            this.mtLnameTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtLnameTxt.TabIndex = 141;
+            this.mtLnameTxt.Text = "Employer/Traveler";
+            // 
+            // mtCompanyNamePanel
+            // 
+            this.mtCompanyNamePanel.Controls.Add(this.mtCompanyNamelLbl);
+            this.mtCompanyNamePanel.Controls.Add(this.mtCompanyNamelTxt);
+            this.mtCompanyNamePanel.Location = new System.Drawing.Point(3, 91);
+            this.mtCompanyNamePanel.Name = "mtCompanyNamePanel";
+            this.mtCompanyNamePanel.Size = new System.Drawing.Size(336, 77);
+            this.mtCompanyNamePanel.TabIndex = 151;
+            // 
+            // mtCompanyNamelLbl
+            // 
+            this.mtCompanyNamelLbl.AutoSize = true;
+            this.mtCompanyNamelLbl.BackColor = System.Drawing.Color.Transparent;
+            this.mtCompanyNamelLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtCompanyNamelLbl.Location = new System.Drawing.Point(3, 0);
+            this.mtCompanyNamelLbl.Name = "mtCompanyNamelLbl";
+            this.mtCompanyNamelLbl.Size = new System.Drawing.Size(265, 51);
+            this.mtCompanyNamelLbl.TabIndex = 146;
+            this.mtCompanyNamelLbl.Text = "Company Name:";
+            this.mtCompanyNamelLbl.UseCompatibleTextRendering = true;
+            // 
+            // mtCompanyNamelTxt
+            // 
+            this.mtCompanyNamelTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtCompanyNamelTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtCompanyNamelTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtCompanyNamelTxt.Location = new System.Drawing.Point(10, 35);
+            this.mtCompanyNamelTxt.Name = "mtCompanyNamelTxt";
+            this.mtCompanyNamelTxt.ReadOnly = true;
+            this.mtCompanyNamelTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtCompanyNamelTxt.TabIndex = 148;
+            this.mtCompanyNamelTxt.Text = "Employer/Traveler";
+            // 
+            // mtAgencyPanel
+            // 
+            this.mtAgencyPanel.Controls.Add(this.mtAgencyIdTxt);
+            this.mtAgencyPanel.Controls.Add(this.mtAgencyIdLbl);
+            this.mtAgencyPanel.Location = new System.Drawing.Point(24, 426);
+            this.mtAgencyPanel.Name = "mtAgencyPanel";
+            this.mtAgencyPanel.Size = new System.Drawing.Size(301, 83);
+            this.mtAgencyPanel.TabIndex = 150;
+            // 
+            // mtAgencyIdTxt
+            // 
+            this.mtAgencyIdTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtAgencyIdTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtAgencyIdTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtAgencyIdTxt.Location = new System.Drawing.Point(11, 38);
+            this.mtAgencyIdTxt.Name = "mtAgencyIdTxt";
+            this.mtAgencyIdTxt.ReadOnly = true;
+            this.mtAgencyIdTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtAgencyIdTxt.TabIndex = 147;
+            this.mtAgencyIdTxt.Text = "Employer/Traveler";
+            // 
+            // mtAgencyIdLbl
+            // 
+            this.mtAgencyIdLbl.AutoSize = true;
+            this.mtAgencyIdLbl.BackColor = System.Drawing.Color.Transparent;
+            this.mtAgencyIdLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtAgencyIdLbl.Location = new System.Drawing.Point(4, 3);
+            this.mtAgencyIdLbl.Name = "mtAgencyIdLbl";
+            this.mtAgencyIdLbl.Size = new System.Drawing.Size(174, 51);
+            this.mtAgencyIdLbl.TabIndex = 145;
+            this.mtAgencyIdLbl.Text = "Agency ID:";
+            this.mtAgencyIdLbl.UseCompatibleTextRendering = true;
+            // 
+            // mtUsernameTxt
+            // 
+            this.mtUsernameTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtUsernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtUsernameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtUsernameTxt.Location = new System.Drawing.Point(30, 291);
+            this.mtUsernameTxt.Name = "mtUsernameTxt";
+            this.mtUsernameTxt.ReadOnly = true;
+            this.mtUsernameTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtUsernameTxt.TabIndex = 144;
+            this.mtUsernameTxt.Text = "Employer/Traveler";
+            // 
+            // mtPhoneTxt
+            // 
+            this.mtPhoneTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtPhoneTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtPhoneTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtPhoneTxt.Location = new System.Drawing.Point(391, 378);
+            this.mtPhoneTxt.Name = "mtPhoneTxt";
+            this.mtPhoneTxt.ReadOnly = true;
+            this.mtPhoneTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtPhoneTxt.TabIndex = 142;
+            this.mtPhoneTxt.Text = "Employer/Traveler";
+            // 
+            // mtEmailTxt
+            // 
+            this.mtEmailTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtEmailTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtEmailTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtEmailTxt.Location = new System.Drawing.Point(30, 378);
+            this.mtEmailTxt.Name = "mtEmailTxt";
+            this.mtEmailTxt.ReadOnly = true;
+            this.mtEmailTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtEmailTxt.TabIndex = 140;
+            this.mtEmailTxt.Text = "Employer/Traveler";
+            // 
+            // mtUserIDTxt
+            // 
+            this.mtUserIDTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtUserIDTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtUserIDTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtUserIDTxt.Location = new System.Drawing.Point(132, 124);
+            this.mtUserIDTxt.Name = "mtUserIDTxt";
+            this.mtUserIDTxt.ReadOnly = true;
+            this.mtUserIDTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtUserIDTxt.TabIndex = 138;
+            this.mtUserIDTxt.Text = "Employer/Traveler";
             // 
             // mtUserTypeTxt
             // 
@@ -1668,6 +1937,18 @@ namespace HappyJourneyAirline.Tabs
             this.mtUserTypeTxt.TabIndex = 131;
             this.mtUserTypeTxt.Text = "Employer/Traveler";
             // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.BackColor = System.Drawing.Color.Transparent;
+            this.label69.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.Location = new System.Drawing.Point(23, 256);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(179, 51);
+            this.label69.TabIndex = 143;
+            this.label69.Text = "Username:";
+            this.label69.UseCompatibleTextRendering = true;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.mtDeleteBtn);
@@ -1676,22 +1957,6 @@ namespace HappyJourneyAirline.Tabs
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(537, 57);
             this.flowLayoutPanel1.TabIndex = 137;
-            // 
-            // mtCancelBtn
-            // 
-            this.mtCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
-            this.mtCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.mtCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.mtCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtCancelBtn.ForeColor = System.Drawing.Color.White;
-            this.mtCancelBtn.Location = new System.Drawing.Point(148, 3);
-            this.mtCancelBtn.Name = "mtCancelBtn";
-            this.mtCancelBtn.Size = new System.Drawing.Size(139, 43);
-            this.mtCancelBtn.TabIndex = 129;
-            this.mtCancelBtn.Text = "Cancel";
-            this.mtCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.mtCancelBtn.UseVisualStyleBackColor = false;
-            this.mtCancelBtn.Click += new System.EventHandler(this.mtCancelBtn_Click);
             // 
             // mtDeleteBtn
             // 
@@ -1709,207 +1974,91 @@ namespace HappyJourneyAirline.Tabs
             this.mtDeleteBtn.UseVisualStyleBackColor = false;
             this.mtDeleteBtn.Click += new System.EventHandler(this.mtDeleteBtn_Click);
             // 
-            // mtUserIDTxt
+            // mtCancelBtn
             // 
-            this.mtUserIDTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtUserIDTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtUserIDTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtUserIDTxt.Location = new System.Drawing.Point(132, 124);
-            this.mtUserIDTxt.Name = "mtUserIDTxt";
-            this.mtUserIDTxt.ReadOnly = true;
-            this.mtUserIDTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtUserIDTxt.TabIndex = 138;
-            this.mtUserIDTxt.Text = "Employer/Traveler";
+            this.mtCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
+            this.mtCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.mtCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.mtCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtCancelBtn.ForeColor = System.Drawing.Color.White;
+            this.mtCancelBtn.Location = new System.Drawing.Point(148, 3);
+            this.mtCancelBtn.Name = "mtCancelBtn";
+            this.mtCancelBtn.Size = new System.Drawing.Size(139, 43);
+            this.mtCancelBtn.TabIndex = 129;
+            this.mtCancelBtn.Text = "Cancel";
+            this.mtCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.mtCancelBtn.UseVisualStyleBackColor = false;
+            this.mtCancelBtn.Click += new System.EventHandler(this.mtCancelBtn_Click);
             // 
-            // mtEmailTxt
+            // label65
             // 
-            this.mtEmailTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtEmailTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtEmailTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtEmailTxt.Location = new System.Drawing.Point(30, 378);
-            this.mtEmailTxt.Name = "mtEmailTxt";
-            this.mtEmailTxt.ReadOnly = true;
-            this.mtEmailTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtEmailTxt.TabIndex = 140;
-            this.mtEmailTxt.Text = "Employer/Traveler";
+            this.label65.AutoSize = true;
+            this.label65.BackColor = System.Drawing.Color.Transparent;
+            this.label65.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label65.Location = new System.Drawing.Point(384, 256);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(175, 51);
+            this.label65.TabIndex = 130;
+            this.label65.Text = "User Type:";
+            this.label65.UseCompatibleTextRendering = true;
             // 
-            // mtPhoneTxt
+            // label64
             // 
-            this.mtPhoneTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtPhoneTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtPhoneTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtPhoneTxt.Location = new System.Drawing.Point(391, 378);
-            this.mtPhoneTxt.Name = "mtPhoneTxt";
-            this.mtPhoneTxt.ReadOnly = true;
-            this.mtPhoneTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtPhoneTxt.TabIndex = 142;
-            this.mtPhoneTxt.Text = "Employer/Traveler";
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label64.Location = new System.Drawing.Point(17, 584);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(1096, 35);
+            this.label64.TabIndex = 127;
+            this.label64.Text = "Attention if you delete your account all your information will be deleted and can" +
+    "t be restored";
             // 
-            // label69
+            // label59
             // 
-            this.label69.AutoSize = true;
-            this.label69.BackColor = System.Drawing.Color.Transparent;
-            this.label69.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label69.Location = new System.Drawing.Point(23, 256);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(179, 51);
-            this.label69.TabIndex = 143;
-            this.label69.Text = "Username:";
-            this.label69.UseCompatibleTextRendering = true;
+            this.label59.AutoSize = true;
+            this.label59.BackColor = System.Drawing.Color.Transparent;
+            this.label59.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label59.Location = new System.Drawing.Point(384, 343);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(253, 51);
+            this.label59.TabIndex = 125;
+            this.label59.Text = "Phone Number:";
+            this.label59.UseCompatibleTextRendering = true;
             // 
-            // mtUsernameTxt
+            // label60
             // 
-            this.mtUsernameTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtUsernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtUsernameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtUsernameTxt.Location = new System.Drawing.Point(30, 291);
-            this.mtUsernameTxt.Name = "mtUsernameTxt";
-            this.mtUsernameTxt.ReadOnly = true;
-            this.mtUsernameTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtUsernameTxt.TabIndex = 144;
-            this.mtUsernameTxt.Text = "Employer/Traveler";
+            this.label60.AutoSize = true;
+            this.label60.BackColor = System.Drawing.Color.Transparent;
+            this.label60.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(23, 343);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(106, 51);
+            this.label60.TabIndex = 124;
+            this.label60.Text = "Email:";
+            this.label60.UseCompatibleTextRendering = true;
             // 
-            // mtAgencyPanel
+            // label63
             // 
-            this.mtAgencyPanel.Controls.Add(this.mtAgencyIdTxt);
-            this.mtAgencyPanel.Controls.Add(this.mtAgencyIdLbl);
-            this.mtAgencyPanel.Location = new System.Drawing.Point(24, 426);
-            this.mtAgencyPanel.Name = "mtAgencyPanel";
-            this.mtAgencyPanel.Size = new System.Drawing.Size(301, 83);
-            this.mtAgencyPanel.TabIndex = 150;
+            this.label63.AutoSize = true;
+            this.label63.BackColor = System.Drawing.Color.Transparent;
+            this.label63.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Location = new System.Drawing.Point(23, 124);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(134, 51);
+            this.label63.TabIndex = 117;
+            this.label63.Text = "User ID:";
+            this.label63.UseCompatibleTextRendering = true;
             // 
-            // mtAgencyIdLbl
+            // label18
             // 
-            this.mtAgencyIdLbl.AutoSize = true;
-            this.mtAgencyIdLbl.BackColor = System.Drawing.Color.Transparent;
-            this.mtAgencyIdLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtAgencyIdLbl.Location = new System.Drawing.Point(4, 3);
-            this.mtAgencyIdLbl.Name = "mtAgencyIdLbl";
-            this.mtAgencyIdLbl.Size = new System.Drawing.Size(174, 51);
-            this.mtAgencyIdLbl.TabIndex = 145;
-            this.mtAgencyIdLbl.Text = "Agency ID:";
-            this.mtAgencyIdLbl.UseCompatibleTextRendering = true;
-            // 
-            // mtAgencyIdTxt
-            // 
-            this.mtAgencyIdTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtAgencyIdTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtAgencyIdTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtAgencyIdTxt.Location = new System.Drawing.Point(11, 38);
-            this.mtAgencyIdTxt.Name = "mtAgencyIdTxt";
-            this.mtAgencyIdTxt.ReadOnly = true;
-            this.mtAgencyIdTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtAgencyIdTxt.TabIndex = 147;
-            this.mtAgencyIdTxt.Text = "Employer/Traveler";
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.mtFirstNamePanel);
-            this.flowLayoutPanel3.Controls.Add(this.mtLastNamePanel);
-            this.flowLayoutPanel3.Controls.Add(this.mtCompanyNamePanel);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(17, 170);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(710, 92);
-            this.flowLayoutPanel3.TabIndex = 152;
-            // 
-            // mtCompanyNamePanel
-            // 
-            this.mtCompanyNamePanel.Controls.Add(this.mtCompanyNamelLbl);
-            this.mtCompanyNamePanel.Controls.Add(this.mtCompanyNamelTxt);
-            this.mtCompanyNamePanel.Location = new System.Drawing.Point(3, 91);
-            this.mtCompanyNamePanel.Name = "mtCompanyNamePanel";
-            this.mtCompanyNamePanel.Size = new System.Drawing.Size(336, 77);
-            this.mtCompanyNamePanel.TabIndex = 151;
-            // 
-            // mtCompanyNamelTxt
-            // 
-            this.mtCompanyNamelTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtCompanyNamelTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtCompanyNamelTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtCompanyNamelTxt.Location = new System.Drawing.Point(10, 35);
-            this.mtCompanyNamelTxt.Name = "mtCompanyNamelTxt";
-            this.mtCompanyNamelTxt.ReadOnly = true;
-            this.mtCompanyNamelTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtCompanyNamelTxt.TabIndex = 148;
-            this.mtCompanyNamelTxt.Text = "Employer/Traveler";
-            // 
-            // mtCompanyNamelLbl
-            // 
-            this.mtCompanyNamelLbl.AutoSize = true;
-            this.mtCompanyNamelLbl.BackColor = System.Drawing.Color.Transparent;
-            this.mtCompanyNamelLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtCompanyNamelLbl.Location = new System.Drawing.Point(3, 0);
-            this.mtCompanyNamelLbl.Name = "mtCompanyNamelLbl";
-            this.mtCompanyNamelLbl.Size = new System.Drawing.Size(265, 51);
-            this.mtCompanyNamelLbl.TabIndex = 146;
-            this.mtCompanyNamelLbl.Text = "Company Name:";
-            this.mtCompanyNamelLbl.UseCompatibleTextRendering = true;
-            // 
-            // mtLastNamePanel
-            // 
-            this.mtLastNamePanel.Controls.Add(this.label61);
-            this.mtLastNamePanel.Controls.Add(this.mtLnameTxt);
-            this.mtLastNamePanel.Location = new System.Drawing.Point(367, 3);
-            this.mtLastNamePanel.Name = "mtLastNamePanel";
-            this.mtLastNamePanel.Size = new System.Drawing.Size(301, 82);
-            this.mtLastNamePanel.TabIndex = 151;
-            // 
-            // mtLnameTxt
-            // 
-            this.mtLnameTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtLnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtLnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtLnameTxt.Location = new System.Drawing.Point(7, 35);
-            this.mtLnameTxt.Name = "mtLnameTxt";
-            this.mtLnameTxt.ReadOnly = true;
-            this.mtLnameTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtLnameTxt.TabIndex = 141;
-            this.mtLnameTxt.Text = "Employer/Traveler";
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.BackColor = System.Drawing.Color.Transparent;
-            this.label61.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label61.Location = new System.Drawing.Point(0, 0);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(183, 51);
-            this.label61.TabIndex = 121;
-            this.label61.Text = "Last Name:";
-            this.label61.UseCompatibleTextRendering = true;
-            // 
-            // mtFirstNamePanel
-            // 
-            this.mtFirstNamePanel.Controls.Add(this.label62);
-            this.mtFirstNamePanel.Controls.Add(this.mtFnameTxt);
-            this.mtFirstNamePanel.Location = new System.Drawing.Point(3, 3);
-            this.mtFirstNamePanel.Name = "mtFirstNamePanel";
-            this.mtFirstNamePanel.Size = new System.Drawing.Size(358, 82);
-            this.mtFirstNamePanel.TabIndex = 150;
-            // 
-            // mtFnameTxt
-            // 
-            this.mtFnameTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtFnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtFnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtFnameTxt.Location = new System.Drawing.Point(8, 38);
-            this.mtFnameTxt.Name = "mtFnameTxt";
-            this.mtFnameTxt.ReadOnly = true;
-            this.mtFnameTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtFnameTxt.TabIndex = 139;
-            this.mtFnameTxt.Text = "Employer/Traveler";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.BackColor = System.Drawing.Color.Transparent;
-            this.label62.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label62.Location = new System.Drawing.Point(3, 0);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(188, 51);
-            this.label62.TabIndex = 120;
-            this.label62.Text = "First Name:";
-            this.label62.UseCompatibleTextRendering = true;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(9, 30);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(493, 100);
+            this.label18.TabIndex = 115;
+            this.label18.Text = "Manage User";
             // 
             // AddAirCityConTab
             // 
@@ -1926,31 +2075,157 @@ namespace HappyJourneyAirline.Tabs
             this.AddAirCityConTab.TabIndex = 8;
             this.AddAirCityConTab.Text = "Add ar/city/cont";
             // 
-            // label52
+            // groupBox3
             // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.Location = new System.Drawing.Point(19, 25);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(946, 100);
-            this.label52.TabIndex = 108;
-            this.label52.Text = "Add(Airport/City/Country)";
+            this.groupBox3.Controls.Add(this.label54);
+            this.groupBox3.Controls.Add(this.addAddCountryBtn);
+            this.groupBox3.Controls.Add(this.addContErrorLbl);
+            this.groupBox3.Controls.Add(this.addContNameTxt);
+            this.groupBox3.Location = new System.Drawing.Point(20, 113);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(707, 150);
+            this.groupBox3.TabIndex = 144;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Add Country";
             // 
-            // addBackBtn
+            // label54
             // 
-            this.addBackBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
-            this.addBackBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.addBackBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.addBackBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBackBtn.ForeColor = System.Drawing.Color.White;
-            this.addBackBtn.Location = new System.Drawing.Point(29, 665);
-            this.addBackBtn.Name = "addBackBtn";
-            this.addBackBtn.Size = new System.Drawing.Size(139, 43);
-            this.addBackBtn.TabIndex = 135;
-            this.addBackBtn.Text = "Back To Locations";
-            this.addBackBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.addBackBtn.UseVisualStyleBackColor = false;
-            this.addBackBtn.Click += new System.EventHandler(this.addBackBtn_Click);
+            this.label54.AutoSize = true;
+            this.label54.BackColor = System.Drawing.Color.Transparent;
+            this.label54.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(20, 24);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(243, 51);
+            this.label54.TabIndex = 111;
+            this.label54.Text = "Country Name:";
+            this.label54.UseCompatibleTextRendering = true;
+            // 
+            // addAddCountryBtn
+            // 
+            this.addAddCountryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.addAddCountryBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addAddCountryBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.addAddCountryBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAddCountryBtn.ForeColor = System.Drawing.Color.White;
+            this.addAddCountryBtn.Location = new System.Drawing.Point(20, 96);
+            this.addAddCountryBtn.Name = "addAddCountryBtn";
+            this.addAddCountryBtn.Size = new System.Drawing.Size(139, 43);
+            this.addAddCountryBtn.TabIndex = 113;
+            this.addAddCountryBtn.Text = "Add Country";
+            this.addAddCountryBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.addAddCountryBtn.UseVisualStyleBackColor = false;
+            this.addAddCountryBtn.Click += new System.EventHandler(this.addAddCountryBtn_Click);
+            // 
+            // addContErrorLbl
+            // 
+            this.addContErrorLbl.AutoSize = true;
+            this.addContErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.addContErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addContErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.addContErrorLbl.Location = new System.Drawing.Point(278, 64);
+            this.addContErrorLbl.Name = "addContErrorLbl";
+            this.addContErrorLbl.Size = new System.Drawing.Size(429, 44);
+            this.addContErrorLbl.TabIndex = 132;
+            this.addContErrorLbl.Text = "Error: Country already Exist";
+            this.addContErrorLbl.Visible = false;
+            // 
+            // addContNameTxt
+            // 
+            this.addContNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.addContNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addContNameTxt.Location = new System.Drawing.Point(20, 57);
+            this.addContNameTxt.Name = "addContNameTxt";
+            this.addContNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.addContNameTxt.TabIndex = 109;
+            this.addContNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label56);
+            this.groupBox2.Controls.Add(this.addAddCityBtn);
+            this.groupBox2.Controls.Add(this.addCitytNameTxt);
+            this.groupBox2.Controls.Add(this.addCityErrorLbl);
+            this.groupBox2.Controls.Add(this.label55);
+            this.groupBox2.Controls.Add(this.addConDrop);
+            this.groupBox2.Location = new System.Drawing.Point(20, 264);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(707, 155);
+            this.groupBox2.TabIndex = 143;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Add City";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.BackColor = System.Drawing.Color.Transparent;
+            this.label56.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(20, 29);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(180, 51);
+            this.label56.TabIndex = 117;
+            this.label56.Text = "City Name:";
+            this.label56.UseCompatibleTextRendering = true;
+            // 
+            // addAddCityBtn
+            // 
+            this.addAddCityBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.addAddCityBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addAddCityBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.addAddCityBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAddCityBtn.ForeColor = System.Drawing.Color.White;
+            this.addAddCityBtn.Location = new System.Drawing.Point(20, 101);
+            this.addAddCityBtn.Name = "addAddCityBtn";
+            this.addAddCityBtn.Size = new System.Drawing.Size(139, 43);
+            this.addAddCityBtn.TabIndex = 119;
+            this.addAddCityBtn.Text = "Add City";
+            this.addAddCityBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.addAddCityBtn.UseVisualStyleBackColor = false;
+            this.addAddCityBtn.Click += new System.EventHandler(this.addAddCityBtn_Click);
+            // 
+            // addCitytNameTxt
+            // 
+            this.addCitytNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.addCitytNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCitytNameTxt.Location = new System.Drawing.Point(20, 62);
+            this.addCitytNameTxt.Name = "addCitytNameTxt";
+            this.addCitytNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.addCitytNameTxt.TabIndex = 115;
+            this.addCitytNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            // 
+            // addCityErrorLbl
+            // 
+            this.addCityErrorLbl.AutoSize = true;
+            this.addCityErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.addCityErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.addCityErrorLbl.Location = new System.Drawing.Point(302, 114);
+            this.addCityErrorLbl.Name = "addCityErrorLbl";
+            this.addCityErrorLbl.Size = new System.Drawing.Size(368, 44);
+            this.addCityErrorLbl.TabIndex = 133;
+            this.addCityErrorLbl.Text = "Error: City already Exist";
+            this.addCityErrorLbl.Visible = false;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.BackColor = System.Drawing.Color.Transparent;
+            this.label55.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(293, 29);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(243, 51);
+            this.label55.TabIndex = 127;
+            this.label55.Text = "Country Name:";
+            this.label55.UseCompatibleTextRendering = true;
+            // 
+            // addConDrop
+            // 
+            this.addConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.addConDrop.FormattingEnabled = true;
+            this.addConDrop.Location = new System.Drawing.Point(293, 61);
+            this.addConDrop.Name = "addConDrop";
+            this.addConDrop.Size = new System.Drawing.Size(246, 52);
+            this.addConDrop.TabIndex = 130;
             // 
             // groupBox1
             // 
@@ -1973,84 +2248,50 @@ namespace HappyJourneyAirline.Tabs
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Airport";
             // 
-            // label53
+            // label58
             // 
-            this.label53.AutoSize = true;
-            this.label53.BackColor = System.Drawing.Color.Transparent;
-            this.label53.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.Location = new System.Drawing.Point(293, 113);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(149, 51);
-            this.label53.TabIndex = 137;
-            this.label53.Text = "Latitude:";
-            this.label53.UseCompatibleTextRendering = true;
+            this.label58.AutoSize = true;
+            this.label58.BackColor = System.Drawing.Color.Transparent;
+            this.label58.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(20, 24);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(231, 51);
+            this.label58.TabIndex = 123;
+            this.label58.Text = "Airport Name:";
+            this.label58.UseCompatibleTextRendering = true;
             // 
-            // addAirportErrorLbl
+            // addAirportConDrop
             // 
-            this.addAirportErrorLbl.AutoSize = true;
-            this.addAirportErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.addAirportErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAirportErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.addAirportErrorLbl.Location = new System.Drawing.Point(178, 196);
-            this.addAirportErrorLbl.Name = "addAirportErrorLbl";
-            this.addAirportErrorLbl.Size = new System.Drawing.Size(418, 44);
-            this.addAirportErrorLbl.TabIndex = 134;
-            this.addAirportErrorLbl.Text = "Error: Airport already Exist";
-            this.addAirportErrorLbl.Visible = false;
+            this.addAirportConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addAirportConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.addAirportConDrop.FormattingEnabled = true;
+            this.addAirportConDrop.Location = new System.Drawing.Point(293, 57);
+            this.addAirportConDrop.Name = "addAirportConDrop";
+            this.addAirportConDrop.Size = new System.Drawing.Size(246, 52);
+            this.addAirportConDrop.TabIndex = 141;
+            this.addAirportConDrop.SelectedIndexChanged += new System.EventHandler(this.addAirportConDrop_SelectedIndexChanged);
             // 
-            // addAirportLatitudeTxt
+            // addAirportNameTxt
             // 
-            this.addAirportLatitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.addAirportLatitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAirportLatitudeTxt.Location = new System.Drawing.Point(293, 146);
-            this.addAirportLatitudeTxt.Name = "addAirportLatitudeTxt";
-            this.addAirportLatitudeTxt.Size = new System.Drawing.Size(175, 51);
-            this.addAirportLatitudeTxt.TabIndex = 136;
-            this.addAirportLatitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
+            this.addAirportNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.addAirportNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAirportNameTxt.Location = new System.Drawing.Point(20, 57);
+            this.addAirportNameTxt.Name = "addAirportNameTxt";
+            this.addAirportNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.addAirportNameTxt.TabIndex = 121;
+            this.addAirportNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
             // 
-            // addAirportCityDrop
+            // label68
             // 
-            this.addAirportCityDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.addAirportCityDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.addAirportCityDrop.FormattingEnabled = true;
-            this.addAirportCityDrop.Location = new System.Drawing.Point(20, 145);
-            this.addAirportCityDrop.Name = "addAirportCityDrop";
-            this.addAirportCityDrop.Size = new System.Drawing.Size(246, 52);
-            this.addAirportCityDrop.TabIndex = 131;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.BackColor = System.Drawing.Color.Transparent;
-            this.label67.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label67.Location = new System.Drawing.Point(494, 113);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(175, 51);
-            this.label67.TabIndex = 139;
-            this.label67.Text = "Longitude:";
-            this.label67.UseCompatibleTextRendering = true;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.BackColor = System.Drawing.Color.Transparent;
-            this.label57.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label57.Location = new System.Drawing.Point(20, 113);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(180, 51);
-            this.label57.TabIndex = 129;
-            this.label57.Text = "City Name:";
-            this.label57.UseCompatibleTextRendering = true;
-            // 
-            // addAirportLongitudeTxt
-            // 
-            this.addAirportLongitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.addAirportLongitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAirportLongitudeTxt.Location = new System.Drawing.Point(494, 146);
-            this.addAirportLongitudeTxt.Name = "addAirportLongitudeTxt";
-            this.addAirportLongitudeTxt.Size = new System.Drawing.Size(175, 51);
-            this.addAirportLongitudeTxt.TabIndex = 138;
-            this.addAirportLongitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
+            this.label68.AutoSize = true;
+            this.label68.BackColor = System.Drawing.Color.Transparent;
+            this.label68.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label68.Location = new System.Drawing.Point(293, 25);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(243, 51);
+            this.label68.TabIndex = 140;
+            this.label68.Text = "Country Name:";
+            this.label68.UseCompatibleTextRendering = true;
             // 
             // addAddAirportBtn
             // 
@@ -2068,202 +2309,110 @@ namespace HappyJourneyAirline.Tabs
             this.addAddAirportBtn.UseVisualStyleBackColor = false;
             this.addAddAirportBtn.Click += new System.EventHandler(this.addAddAirportBtn_Click);
             // 
-            // label68
+            // addAirportLongitudeTxt
             // 
-            this.label68.AutoSize = true;
-            this.label68.BackColor = System.Drawing.Color.Transparent;
-            this.label68.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label68.Location = new System.Drawing.Point(293, 25);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(243, 51);
-            this.label68.TabIndex = 140;
-            this.label68.Text = "Country Name:";
-            this.label68.UseCompatibleTextRendering = true;
+            this.addAirportLongitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.addAirportLongitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAirportLongitudeTxt.Location = new System.Drawing.Point(494, 146);
+            this.addAirportLongitudeTxt.Name = "addAirportLongitudeTxt";
+            this.addAirportLongitudeTxt.Size = new System.Drawing.Size(175, 51);
+            this.addAirportLongitudeTxt.TabIndex = 138;
+            this.addAirportLongitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
             // 
-            // addAirportNameTxt
+            // label57
             // 
-            this.addAirportNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.addAirportNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAirportNameTxt.Location = new System.Drawing.Point(20, 57);
-            this.addAirportNameTxt.Name = "addAirportNameTxt";
-            this.addAirportNameTxt.Size = new System.Drawing.Size(246, 51);
-            this.addAirportNameTxt.TabIndex = 121;
-            this.addAirportNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
+            this.label57.AutoSize = true;
+            this.label57.BackColor = System.Drawing.Color.Transparent;
+            this.label57.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(20, 113);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(180, 51);
+            this.label57.TabIndex = 129;
+            this.label57.Text = "City Name:";
+            this.label57.UseCompatibleTextRendering = true;
             // 
-            // addAirportConDrop
+            // label67
             // 
-            this.addAirportConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.addAirportConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.addAirportConDrop.FormattingEnabled = true;
-            this.addAirportConDrop.Location = new System.Drawing.Point(293, 57);
-            this.addAirportConDrop.Name = "addAirportConDrop";
-            this.addAirportConDrop.Size = new System.Drawing.Size(246, 52);
-            this.addAirportConDrop.TabIndex = 141;
-            this.addAirportConDrop.SelectedIndexChanged += new System.EventHandler(this.addAirportConDrop_SelectedIndexChanged);
+            this.label67.AutoSize = true;
+            this.label67.BackColor = System.Drawing.Color.Transparent;
+            this.label67.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label67.Location = new System.Drawing.Point(494, 113);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(175, 51);
+            this.label67.TabIndex = 139;
+            this.label67.Text = "Longitude:";
+            this.label67.UseCompatibleTextRendering = true;
             // 
-            // label58
+            // addAirportCityDrop
             // 
-            this.label58.AutoSize = true;
-            this.label58.BackColor = System.Drawing.Color.Transparent;
-            this.label58.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(20, 24);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(231, 51);
-            this.label58.TabIndex = 123;
-            this.label58.Text = "Airport Name:";
-            this.label58.UseCompatibleTextRendering = true;
+            this.addAirportCityDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addAirportCityDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.addAirportCityDrop.FormattingEnabled = true;
+            this.addAirportCityDrop.Location = new System.Drawing.Point(20, 145);
+            this.addAirportCityDrop.Name = "addAirportCityDrop";
+            this.addAirportCityDrop.Size = new System.Drawing.Size(246, 52);
+            this.addAirportCityDrop.TabIndex = 131;
             // 
-            // groupBox2
+            // addAirportLatitudeTxt
             // 
-            this.groupBox2.Controls.Add(this.label56);
-            this.groupBox2.Controls.Add(this.addAddCityBtn);
-            this.groupBox2.Controls.Add(this.addCitytNameTxt);
-            this.groupBox2.Controls.Add(this.addCityErrorLbl);
-            this.groupBox2.Controls.Add(this.label55);
-            this.groupBox2.Controls.Add(this.addConDrop);
-            this.groupBox2.Location = new System.Drawing.Point(20, 264);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(707, 155);
-            this.groupBox2.TabIndex = 143;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Add City";
+            this.addAirportLatitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.addAirportLatitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAirportLatitudeTxt.Location = new System.Drawing.Point(293, 146);
+            this.addAirportLatitudeTxt.Name = "addAirportLatitudeTxt";
+            this.addAirportLatitudeTxt.Size = new System.Drawing.Size(175, 51);
+            this.addAirportLatitudeTxt.TabIndex = 136;
+            this.addAirportLatitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
             // 
-            // addConDrop
+            // addAirportErrorLbl
             // 
-            this.addConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.addConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.addConDrop.FormattingEnabled = true;
-            this.addConDrop.Location = new System.Drawing.Point(293, 61);
-            this.addConDrop.Name = "addConDrop";
-            this.addConDrop.Size = new System.Drawing.Size(246, 52);
-            this.addConDrop.TabIndex = 130;
+            this.addAirportErrorLbl.AutoSize = true;
+            this.addAirportErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.addAirportErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAirportErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.addAirportErrorLbl.Location = new System.Drawing.Point(178, 196);
+            this.addAirportErrorLbl.Name = "addAirportErrorLbl";
+            this.addAirportErrorLbl.Size = new System.Drawing.Size(418, 44);
+            this.addAirportErrorLbl.TabIndex = 134;
+            this.addAirportErrorLbl.Text = "Error: Airport already Exist";
+            this.addAirportErrorLbl.Visible = false;
             // 
-            // label55
+            // label53
             // 
-            this.label55.AutoSize = true;
-            this.label55.BackColor = System.Drawing.Color.Transparent;
-            this.label55.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label55.Location = new System.Drawing.Point(293, 29);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(243, 51);
-            this.label55.TabIndex = 127;
-            this.label55.Text = "Country Name:";
-            this.label55.UseCompatibleTextRendering = true;
+            this.label53.AutoSize = true;
+            this.label53.BackColor = System.Drawing.Color.Transparent;
+            this.label53.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.Location = new System.Drawing.Point(293, 113);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(149, 51);
+            this.label53.TabIndex = 137;
+            this.label53.Text = "Latitude:";
+            this.label53.UseCompatibleTextRendering = true;
             // 
-            // addCityErrorLbl
+            // addBackBtn
             // 
-            this.addCityErrorLbl.AutoSize = true;
-            this.addCityErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.addCityErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.addCityErrorLbl.Location = new System.Drawing.Point(302, 114);
-            this.addCityErrorLbl.Name = "addCityErrorLbl";
-            this.addCityErrorLbl.Size = new System.Drawing.Size(368, 44);
-            this.addCityErrorLbl.TabIndex = 133;
-            this.addCityErrorLbl.Text = "Error: City already Exist";
-            this.addCityErrorLbl.Visible = false;
+            this.addBackBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
+            this.addBackBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addBackBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.addBackBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addBackBtn.ForeColor = System.Drawing.Color.White;
+            this.addBackBtn.Location = new System.Drawing.Point(29, 665);
+            this.addBackBtn.Name = "addBackBtn";
+            this.addBackBtn.Size = new System.Drawing.Size(139, 43);
+            this.addBackBtn.TabIndex = 135;
+            this.addBackBtn.Text = "Back To Locations";
+            this.addBackBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.addBackBtn.UseVisualStyleBackColor = false;
+            this.addBackBtn.Click += new System.EventHandler(this.addBackBtn_Click);
             // 
-            // addCitytNameTxt
+            // label52
             // 
-            this.addCitytNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.addCitytNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCitytNameTxt.Location = new System.Drawing.Point(20, 62);
-            this.addCitytNameTxt.Name = "addCitytNameTxt";
-            this.addCitytNameTxt.Size = new System.Drawing.Size(246, 51);
-            this.addCitytNameTxt.TabIndex = 115;
-            this.addCitytNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
-            // 
-            // addAddCityBtn
-            // 
-            this.addAddCityBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.addAddCityBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.addAddCityBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.addAddCityBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAddCityBtn.ForeColor = System.Drawing.Color.White;
-            this.addAddCityBtn.Location = new System.Drawing.Point(20, 101);
-            this.addAddCityBtn.Name = "addAddCityBtn";
-            this.addAddCityBtn.Size = new System.Drawing.Size(139, 43);
-            this.addAddCityBtn.TabIndex = 119;
-            this.addAddCityBtn.Text = "Add City";
-            this.addAddCityBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.addAddCityBtn.UseVisualStyleBackColor = false;
-            this.addAddCityBtn.Click += new System.EventHandler(this.addAddCityBtn_Click);
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.BackColor = System.Drawing.Color.Transparent;
-            this.label56.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label56.Location = new System.Drawing.Point(20, 29);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(180, 51);
-            this.label56.TabIndex = 117;
-            this.label56.Text = "City Name:";
-            this.label56.UseCompatibleTextRendering = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label54);
-            this.groupBox3.Controls.Add(this.addAddCountryBtn);
-            this.groupBox3.Controls.Add(this.addContErrorLbl);
-            this.groupBox3.Controls.Add(this.addContNameTxt);
-            this.groupBox3.Location = new System.Drawing.Point(20, 113);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(707, 150);
-            this.groupBox3.TabIndex = 144;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Add Country";
-            // 
-            // addContNameTxt
-            // 
-            this.addContNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.addContNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addContNameTxt.Location = new System.Drawing.Point(20, 57);
-            this.addContNameTxt.Name = "addContNameTxt";
-            this.addContNameTxt.Size = new System.Drawing.Size(246, 51);
-            this.addContNameTxt.TabIndex = 109;
-            this.addContNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
-            // 
-            // addContErrorLbl
-            // 
-            this.addContErrorLbl.AutoSize = true;
-            this.addContErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.addContErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addContErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.addContErrorLbl.Location = new System.Drawing.Point(278, 64);
-            this.addContErrorLbl.Name = "addContErrorLbl";
-            this.addContErrorLbl.Size = new System.Drawing.Size(429, 44);
-            this.addContErrorLbl.TabIndex = 132;
-            this.addContErrorLbl.Text = "Error: Country already Exist";
-            this.addContErrorLbl.Visible = false;
-            // 
-            // addAddCountryBtn
-            // 
-            this.addAddCountryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.addAddCountryBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.addAddCountryBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.addAddCountryBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAddCountryBtn.ForeColor = System.Drawing.Color.White;
-            this.addAddCountryBtn.Location = new System.Drawing.Point(20, 96);
-            this.addAddCountryBtn.Name = "addAddCountryBtn";
-            this.addAddCountryBtn.Size = new System.Drawing.Size(139, 43);
-            this.addAddCountryBtn.TabIndex = 113;
-            this.addAddCountryBtn.Text = "Add Country";
-            this.addAddCountryBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.addAddCountryBtn.UseVisualStyleBackColor = false;
-            this.addAddCountryBtn.Click += new System.EventHandler(this.addAddCountryBtn_Click);
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.BackColor = System.Drawing.Color.Transparent;
-            this.label54.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label54.Location = new System.Drawing.Point(20, 24);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(243, 51);
-            this.label54.TabIndex = 111;
-            this.label54.Text = "Country Name:";
-            this.label54.UseCompatibleTextRendering = true;
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.Location = new System.Drawing.Point(19, 25);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(946, 100);
+            this.label52.TabIndex = 108;
+            this.label52.Text = "Add(Airport/City/Country)";
             // 
             // createUserTab
             // 
@@ -2294,108 +2443,218 @@ namespace HappyJourneyAirline.Tabs
             this.createUserTab.TabIndex = 7;
             this.createUserTab.Text = "Create User";
             // 
-            // cuUsernameTxt
+            // cuPhoneNumberErrorLbl
             // 
-            this.cuUsernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuUsernameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuUsernameTxt.Location = new System.Drawing.Point(27, 263);
-            this.cuUsernameTxt.Name = "cuUsernameTxt";
-            this.cuUsernameTxt.Size = new System.Drawing.Size(283, 51);
-            this.cuUsernameTxt.TabIndex = 37;
+            this.cuPhoneNumberErrorLbl.AutoSize = true;
+            this.cuPhoneNumberErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuPhoneNumberErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuPhoneNumberErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuPhoneNumberErrorLbl.Location = new System.Drawing.Point(327, 519);
+            this.cuPhoneNumberErrorLbl.Name = "cuPhoneNumberErrorLbl";
+            this.cuPhoneNumberErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuPhoneNumberErrorLbl.TabIndex = 117;
+            this.cuPhoneNumberErrorLbl.Text = "Error: Please fix..";
+            this.cuPhoneNumberErrorLbl.Visible = false;
             // 
-            // cuPasswordTxt
+            // cuEmailErrorLbl
             // 
-            this.cuPasswordTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuPasswordTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuPasswordTxt.Location = new System.Drawing.Point(328, 263);
-            this.cuPasswordTxt.Name = "cuPasswordTxt";
-            this.cuPasswordTxt.PasswordChar = '*';
-            this.cuPasswordTxt.Size = new System.Drawing.Size(275, 51);
-            this.cuPasswordTxt.TabIndex = 38;
+            this.cuEmailErrorLbl.AutoSize = true;
+            this.cuEmailErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuEmailErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuEmailErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuEmailErrorLbl.Location = new System.Drawing.Point(24, 517);
+            this.cuEmailErrorLbl.Name = "cuEmailErrorLbl";
+            this.cuEmailErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuEmailErrorLbl.TabIndex = 116;
+            this.cuEmailErrorLbl.Text = "Error: Please fix..";
+            this.cuEmailErrorLbl.Visible = false;
             // 
-            // cuEmailTxt
+            // cuFCoumpanyNameErrorLbl
             // 
-            this.cuEmailTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuEmailTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuEmailTxt.Location = new System.Drawing.Point(27, 483);
-            this.cuEmailTxt.Name = "cuEmailTxt";
-            this.cuEmailTxt.Size = new System.Drawing.Size(283, 51);
-            this.cuEmailTxt.TabIndex = 41;
-            this.cuEmailTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmailTextBox_KeyPress);
+            this.cuFCoumpanyNameErrorLbl.AutoSize = true;
+            this.cuFCoumpanyNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuFCoumpanyNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuFCoumpanyNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuFCoumpanyNameErrorLbl.Location = new System.Drawing.Point(25, 409);
+            this.cuFCoumpanyNameErrorLbl.Name = "cuFCoumpanyNameErrorLbl";
+            this.cuFCoumpanyNameErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuFCoumpanyNameErrorLbl.TabIndex = 114;
+            this.cuFCoumpanyNameErrorLbl.Text = "Error: Please fix..";
+            this.cuFCoumpanyNameErrorLbl.Visible = false;
             // 
-            // cuPhoneTxt
+            // cuPasswordErrorLbl
             // 
-            this.cuPhoneTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuPhoneTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuPhoneTxt.Location = new System.Drawing.Point(332, 482);
-            this.cuPhoneTxt.Name = "cuPhoneTxt";
-            this.cuPhoneTxt.Size = new System.Drawing.Size(300, 51);
-            this.cuPhoneTxt.TabIndex = 42;
-            this.cuPhoneTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneTextBox_KeyPress);
+            this.cuPasswordErrorLbl.AutoSize = true;
+            this.cuPasswordErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuPasswordErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuPasswordErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuPasswordErrorLbl.Location = new System.Drawing.Point(327, 299);
+            this.cuPasswordErrorLbl.Name = "cuPasswordErrorLbl";
+            this.cuPasswordErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuPasswordErrorLbl.TabIndex = 113;
+            this.cuPasswordErrorLbl.Text = "Error: Please fix..";
+            this.cuPasswordErrorLbl.Visible = false;
             // 
-            // label49
+            // flowLayoutPanel2
             // 
-            this.label49.AutoSize = true;
-            this.label49.BackColor = System.Drawing.Color.Transparent;
-            this.label49.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(27, 228);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(179, 51);
-            this.label49.TabIndex = 43;
-            this.label49.Text = "Username:";
-            this.label49.UseCompatibleTextRendering = true;
+            this.flowLayoutPanel2.Controls.Add(this.cuFNamePanel);
+            this.flowLayoutPanel2.Controls.Add(this.cuLNamePanel);
+            this.flowLayoutPanel2.Controls.Add(this.cuCompanyNamePanel);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(22, 337);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(701, 110);
+            this.flowLayoutPanel2.TabIndex = 112;
             // 
-            // label48
+            // cuFNamePanel
             // 
-            this.label48.AutoSize = true;
-            this.label48.BackColor = System.Drawing.Color.Transparent;
-            this.label48.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(328, 228);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(169, 51);
-            this.label48.TabIndex = 44;
-            this.label48.Text = "Password:";
-            this.label48.UseCompatibleTextRendering = true;
+            this.cuFNamePanel.Controls.Add(this.label47);
+            this.cuFNamePanel.Controls.Add(this.cuFnameTxt);
+            this.cuFNamePanel.Location = new System.Drawing.Point(3, 3);
+            this.cuFNamePanel.Name = "cuFNamePanel";
+            this.cuFNamePanel.Size = new System.Drawing.Size(290, 100);
+            this.cuFNamePanel.TabIndex = 113;
             // 
-            // label45
+            // label47
             // 
-            this.label45.AutoSize = true;
-            this.label45.BackColor = System.Drawing.Color.Transparent;
-            this.label45.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(27, 450);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(106, 51);
-            this.label45.TabIndex = 47;
-            this.label45.Text = "Email:";
-            this.label45.UseCompatibleTextRendering = true;
+            this.label47.AutoSize = true;
+            this.label47.BackColor = System.Drawing.Color.Transparent;
+            this.label47.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(0, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(188, 51);
+            this.label47.TabIndex = 45;
+            this.label47.Text = "First Name:";
+            this.label47.UseCompatibleTextRendering = true;
             // 
-            // label44
+            // cuFnameTxt
             // 
-            this.label44.AutoSize = true;
-            this.label44.BackColor = System.Drawing.Color.Transparent;
-            this.label44.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(332, 450);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(253, 51);
-            this.label44.TabIndex = 48;
-            this.label44.Text = "Phone Number:";
-            this.label44.UseCompatibleTextRendering = true;
+            this.cuFnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuFnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuFnameTxt.Location = new System.Drawing.Point(0, 35);
+            this.cuFnameTxt.Name = "cuFnameTxt";
+            this.cuFnameTxt.Size = new System.Drawing.Size(281, 51);
+            this.cuFnameTxt.TabIndex = 39;
+            this.cuFnameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
             // 
-            // cuCreateUserBtn
+            // cuLNamePanel
             // 
-            this.cuCreateUserBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.cuCreateUserBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.cuCreateUserBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.cuCreateUserBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuCreateUserBtn.ForeColor = System.Drawing.Color.White;
-            this.cuCreateUserBtn.Location = new System.Drawing.Point(26, 574);
-            this.cuCreateUserBtn.Name = "cuCreateUserBtn";
-            this.cuCreateUserBtn.Size = new System.Drawing.Size(139, 43);
-            this.cuCreateUserBtn.TabIndex = 49;
-            this.cuCreateUserBtn.Text = "Create User";
-            this.cuCreateUserBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.cuCreateUserBtn.UseVisualStyleBackColor = false;
-            this.cuCreateUserBtn.Click += new System.EventHandler(this.cuCreateUserBtn_Click);
+            this.cuLNamePanel.Controls.Add(this.label46);
+            this.cuLNamePanel.Controls.Add(this.cuLnameTxt);
+            this.cuLNamePanel.Controls.Add(this.cuLNameErrorLbl);
+            this.cuLNamePanel.Location = new System.Drawing.Point(299, 3);
+            this.cuLNamePanel.Name = "cuLNamePanel";
+            this.cuLNamePanel.Size = new System.Drawing.Size(297, 96);
+            this.cuLNamePanel.TabIndex = 114;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.BackColor = System.Drawing.Color.Transparent;
+            this.label46.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(3, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(183, 51);
+            this.label46.TabIndex = 46;
+            this.label46.Text = "Last Name:";
+            this.label46.UseCompatibleTextRendering = true;
+            // 
+            // cuLnameTxt
+            // 
+            this.cuLnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuLnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuLnameTxt.Location = new System.Drawing.Point(7, 35);
+            this.cuLnameTxt.Name = "cuLnameTxt";
+            this.cuLnameTxt.Size = new System.Drawing.Size(271, 51);
+            this.cuLnameTxt.TabIndex = 40;
+            this.cuLnameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            // 
+            // cuLNameErrorLbl
+            // 
+            this.cuLNameErrorLbl.AutoSize = true;
+            this.cuLNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuLNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuLNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuLNameErrorLbl.Location = new System.Drawing.Point(9, 68);
+            this.cuLNameErrorLbl.Name = "cuLNameErrorLbl";
+            this.cuLNameErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuLNameErrorLbl.TabIndex = 115;
+            this.cuLNameErrorLbl.Text = "Error: Please fix..";
+            this.cuLNameErrorLbl.Visible = false;
+            // 
+            // cuCompanyNamePanel
+            // 
+            this.cuCompanyNamePanel.Controls.Add(this.cuCoumpanyNameTxt);
+            this.cuCompanyNamePanel.Controls.Add(this.label70);
+            this.cuCompanyNamePanel.Location = new System.Drawing.Point(3, 109);
+            this.cuCompanyNamePanel.Name = "cuCompanyNamePanel";
+            this.cuCompanyNamePanel.Size = new System.Drawing.Size(336, 100);
+            this.cuCompanyNamePanel.TabIndex = 152;
+            // 
+            // cuCoumpanyNameTxt
+            // 
+            this.cuCoumpanyNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuCoumpanyNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuCoumpanyNameTxt.Location = new System.Drawing.Point(3, 36);
+            this.cuCoumpanyNameTxt.Name = "cuCoumpanyNameTxt";
+            this.cuCoumpanyNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.cuCoumpanyNameTxt.TabIndex = 153;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.BackColor = System.Drawing.Color.Transparent;
+            this.label70.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(3, -1);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(265, 51);
+            this.label70.TabIndex = 146;
+            this.label70.Text = "Company Name:";
+            this.label70.UseCompatibleTextRendering = true;
+            // 
+            // cuUserNameErrorLbl
+            // 
+            this.cuUserNameErrorLbl.AutoSize = true;
+            this.cuUserNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cuUserNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuUserNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cuUserNameErrorLbl.Location = new System.Drawing.Point(24, 299);
+            this.cuUserNameErrorLbl.Name = "cuUserNameErrorLbl";
+            this.cuUserNameErrorLbl.Size = new System.Drawing.Size(173, 28);
+            this.cuUserNameErrorLbl.TabIndex = 111;
+            this.cuUserNameErrorLbl.Text = "Error: Please fix..";
+            this.cuUserNameErrorLbl.Visible = false;
+            // 
+            // cuUserTypeDrop
+            // 
+            this.cuUserTypeDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.cuUserTypeDrop.FormattingEnabled = true;
+            this.cuUserTypeDrop.Location = new System.Drawing.Point(26, 166);
+            this.cuUserTypeDrop.Name = "cuUserTypeDrop";
+            this.cuUserTypeDrop.Size = new System.Drawing.Size(246, 52);
+            this.cuUserTypeDrop.TabIndex = 110;
+            this.cuUserTypeDrop.SelectedIndexChanged += new System.EventHandler(this.cuUserTypeDrop_SelectedIndexChanged);
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.BackColor = System.Drawing.Color.Transparent;
+            this.label51.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.Location = new System.Drawing.Point(26, 130);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(175, 51);
+            this.label51.TabIndex = 109;
+            this.label51.Text = "User Type:";
+            this.label51.UseCompatibleTextRendering = true;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(12, 25);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(437, 100);
+            this.label50.TabIndex = 107;
+            this.label50.Text = "Create User";
             // 
             // cuCancelBtn
             // 
@@ -2413,218 +2672,108 @@ namespace HappyJourneyAirline.Tabs
             this.cuCancelBtn.UseVisualStyleBackColor = false;
             this.cuCancelBtn.Click += new System.EventHandler(this.cuCancelBtn_Click);
             // 
-            // label50
+            // cuCreateUserBtn
             // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(12, 25);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(437, 100);
-            this.label50.TabIndex = 107;
-            this.label50.Text = "Create User";
+            this.cuCreateUserBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.cuCreateUserBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cuCreateUserBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.cuCreateUserBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuCreateUserBtn.ForeColor = System.Drawing.Color.White;
+            this.cuCreateUserBtn.Location = new System.Drawing.Point(26, 574);
+            this.cuCreateUserBtn.Name = "cuCreateUserBtn";
+            this.cuCreateUserBtn.Size = new System.Drawing.Size(139, 43);
+            this.cuCreateUserBtn.TabIndex = 49;
+            this.cuCreateUserBtn.Text = "Create User";
+            this.cuCreateUserBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.cuCreateUserBtn.UseVisualStyleBackColor = false;
+            this.cuCreateUserBtn.Click += new System.EventHandler(this.cuCreateUserBtn_Click);
             // 
-            // label51
+            // label44
             // 
-            this.label51.AutoSize = true;
-            this.label51.BackColor = System.Drawing.Color.Transparent;
-            this.label51.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.Location = new System.Drawing.Point(26, 130);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(175, 51);
-            this.label51.TabIndex = 109;
-            this.label51.Text = "User Type:";
-            this.label51.UseCompatibleTextRendering = true;
+            this.label44.AutoSize = true;
+            this.label44.BackColor = System.Drawing.Color.Transparent;
+            this.label44.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(332, 450);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(253, 51);
+            this.label44.TabIndex = 48;
+            this.label44.Text = "Phone Number:";
+            this.label44.UseCompatibleTextRendering = true;
             // 
-            // cuUserTypeDrop
+            // label45
             // 
-            this.cuUserTypeDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.cuUserTypeDrop.FormattingEnabled = true;
-            this.cuUserTypeDrop.Location = new System.Drawing.Point(26, 166);
-            this.cuUserTypeDrop.Name = "cuUserTypeDrop";
-            this.cuUserTypeDrop.Size = new System.Drawing.Size(246, 52);
-            this.cuUserTypeDrop.TabIndex = 110;
-            this.cuUserTypeDrop.SelectedIndexChanged += new System.EventHandler(this.cuUserTypeDrop_SelectedIndexChanged);
+            this.label45.AutoSize = true;
+            this.label45.BackColor = System.Drawing.Color.Transparent;
+            this.label45.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(27, 450);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(106, 51);
+            this.label45.TabIndex = 47;
+            this.label45.Text = "Email:";
+            this.label45.UseCompatibleTextRendering = true;
             // 
-            // cuUserNameErrorLbl
+            // label48
             // 
-            this.cuUserNameErrorLbl.AutoSize = true;
-            this.cuUserNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuUserNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuUserNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuUserNameErrorLbl.Location = new System.Drawing.Point(24, 299);
-            this.cuUserNameErrorLbl.Name = "cuUserNameErrorLbl";
-            this.cuUserNameErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuUserNameErrorLbl.TabIndex = 111;
-            this.cuUserNameErrorLbl.Text = "Error: Please fix..";
-            this.cuUserNameErrorLbl.Visible = false;
+            this.label48.AutoSize = true;
+            this.label48.BackColor = System.Drawing.Color.Transparent;
+            this.label48.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(328, 228);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(169, 51);
+            this.label48.TabIndex = 44;
+            this.label48.Text = "Password:";
+            this.label48.UseCompatibleTextRendering = true;
             // 
-            // flowLayoutPanel2
+            // label49
             // 
-            this.flowLayoutPanel2.Controls.Add(this.cuFNamePanel);
-            this.flowLayoutPanel2.Controls.Add(this.cuLNamePanel);
-            this.flowLayoutPanel2.Controls.Add(this.cuCompanyNamePanel);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(22, 337);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(701, 110);
-            this.flowLayoutPanel2.TabIndex = 112;
+            this.label49.AutoSize = true;
+            this.label49.BackColor = System.Drawing.Color.Transparent;
+            this.label49.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(27, 228);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(179, 51);
+            this.label49.TabIndex = 43;
+            this.label49.Text = "Username:";
+            this.label49.UseCompatibleTextRendering = true;
             // 
-            // cuCompanyNamePanel
+            // cuPhoneTxt
             // 
-            this.cuCompanyNamePanel.Controls.Add(this.cuCoumpanyNameTxt);
-            this.cuCompanyNamePanel.Controls.Add(this.label70);
-            this.cuCompanyNamePanel.Location = new System.Drawing.Point(3, 109);
-            this.cuCompanyNamePanel.Name = "cuCompanyNamePanel";
-            this.cuCompanyNamePanel.Size = new System.Drawing.Size(336, 100);
-            this.cuCompanyNamePanel.TabIndex = 152;
+            this.cuPhoneTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuPhoneTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuPhoneTxt.Location = new System.Drawing.Point(332, 482);
+            this.cuPhoneTxt.Name = "cuPhoneTxt";
+            this.cuPhoneTxt.Size = new System.Drawing.Size(300, 51);
+            this.cuPhoneTxt.TabIndex = 42;
+            this.cuPhoneTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneTextBox_KeyPress);
             // 
-            // label70
+            // cuEmailTxt
             // 
-            this.label70.AutoSize = true;
-            this.label70.BackColor = System.Drawing.Color.Transparent;
-            this.label70.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.Location = new System.Drawing.Point(3, -1);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(265, 51);
-            this.label70.TabIndex = 146;
-            this.label70.Text = "Company Name:";
-            this.label70.UseCompatibleTextRendering = true;
+            this.cuEmailTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuEmailTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuEmailTxt.Location = new System.Drawing.Point(27, 483);
+            this.cuEmailTxt.Name = "cuEmailTxt";
+            this.cuEmailTxt.Size = new System.Drawing.Size(283, 51);
+            this.cuEmailTxt.TabIndex = 41;
+            this.cuEmailTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmailTextBox_KeyPress);
             // 
-            // cuCoumpanyNameTxt
+            // cuPasswordTxt
             // 
-            this.cuCoumpanyNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuCoumpanyNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuCoumpanyNameTxt.Location = new System.Drawing.Point(3, 36);
-            this.cuCoumpanyNameTxt.Name = "cuCoumpanyNameTxt";
-            this.cuCoumpanyNameTxt.Size = new System.Drawing.Size(246, 51);
-            this.cuCoumpanyNameTxt.TabIndex = 153;
+            this.cuPasswordTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuPasswordTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuPasswordTxt.Location = new System.Drawing.Point(328, 263);
+            this.cuPasswordTxt.Name = "cuPasswordTxt";
+            this.cuPasswordTxt.PasswordChar = '*';
+            this.cuPasswordTxt.Size = new System.Drawing.Size(275, 51);
+            this.cuPasswordTxt.TabIndex = 38;
             // 
-            // cuLNamePanel
+            // cuUsernameTxt
             // 
-            this.cuLNamePanel.Controls.Add(this.label46);
-            this.cuLNamePanel.Controls.Add(this.cuLnameTxt);
-            this.cuLNamePanel.Controls.Add(this.cuLNameErrorLbl);
-            this.cuLNamePanel.Location = new System.Drawing.Point(299, 3);
-            this.cuLNamePanel.Name = "cuLNamePanel";
-            this.cuLNamePanel.Size = new System.Drawing.Size(297, 96);
-            this.cuLNamePanel.TabIndex = 114;
-            // 
-            // cuLNameErrorLbl
-            // 
-            this.cuLNameErrorLbl.AutoSize = true;
-            this.cuLNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuLNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuLNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuLNameErrorLbl.Location = new System.Drawing.Point(9, 68);
-            this.cuLNameErrorLbl.Name = "cuLNameErrorLbl";
-            this.cuLNameErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuLNameErrorLbl.TabIndex = 115;
-            this.cuLNameErrorLbl.Text = "Error: Please fix..";
-            this.cuLNameErrorLbl.Visible = false;
-            // 
-            // cuLnameTxt
-            // 
-            this.cuLnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuLnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuLnameTxt.Location = new System.Drawing.Point(7, 35);
-            this.cuLnameTxt.Name = "cuLnameTxt";
-            this.cuLnameTxt.Size = new System.Drawing.Size(271, 51);
-            this.cuLnameTxt.TabIndex = 40;
-            this.cuLnameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.BackColor = System.Drawing.Color.Transparent;
-            this.label46.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(3, 0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(183, 51);
-            this.label46.TabIndex = 46;
-            this.label46.Text = "Last Name:";
-            this.label46.UseCompatibleTextRendering = true;
-            // 
-            // cuFNamePanel
-            // 
-            this.cuFNamePanel.Controls.Add(this.label47);
-            this.cuFNamePanel.Controls.Add(this.cuFnameTxt);
-            this.cuFNamePanel.Location = new System.Drawing.Point(3, 3);
-            this.cuFNamePanel.Name = "cuFNamePanel";
-            this.cuFNamePanel.Size = new System.Drawing.Size(290, 100);
-            this.cuFNamePanel.TabIndex = 113;
-            // 
-            // cuFnameTxt
-            // 
-            this.cuFnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cuFnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuFnameTxt.Location = new System.Drawing.Point(0, 35);
-            this.cuFnameTxt.Name = "cuFnameTxt";
-            this.cuFnameTxt.Size = new System.Drawing.Size(281, 51);
-            this.cuFnameTxt.TabIndex = 39;
-            this.cuFnameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.BackColor = System.Drawing.Color.Transparent;
-            this.label47.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(0, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(188, 51);
-            this.label47.TabIndex = 45;
-            this.label47.Text = "First Name:";
-            this.label47.UseCompatibleTextRendering = true;
-            // 
-            // cuPasswordErrorLbl
-            // 
-            this.cuPasswordErrorLbl.AutoSize = true;
-            this.cuPasswordErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuPasswordErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuPasswordErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuPasswordErrorLbl.Location = new System.Drawing.Point(327, 299);
-            this.cuPasswordErrorLbl.Name = "cuPasswordErrorLbl";
-            this.cuPasswordErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuPasswordErrorLbl.TabIndex = 113;
-            this.cuPasswordErrorLbl.Text = "Error: Please fix..";
-            this.cuPasswordErrorLbl.Visible = false;
-            // 
-            // cuFCoumpanyNameErrorLbl
-            // 
-            this.cuFCoumpanyNameErrorLbl.AutoSize = true;
-            this.cuFCoumpanyNameErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuFCoumpanyNameErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuFCoumpanyNameErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuFCoumpanyNameErrorLbl.Location = new System.Drawing.Point(25, 409);
-            this.cuFCoumpanyNameErrorLbl.Name = "cuFCoumpanyNameErrorLbl";
-            this.cuFCoumpanyNameErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuFCoumpanyNameErrorLbl.TabIndex = 114;
-            this.cuFCoumpanyNameErrorLbl.Text = "Error: Please fix..";
-            this.cuFCoumpanyNameErrorLbl.Visible = false;
-            // 
-            // cuEmailErrorLbl
-            // 
-            this.cuEmailErrorLbl.AutoSize = true;
-            this.cuEmailErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuEmailErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuEmailErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuEmailErrorLbl.Location = new System.Drawing.Point(24, 517);
-            this.cuEmailErrorLbl.Name = "cuEmailErrorLbl";
-            this.cuEmailErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuEmailErrorLbl.TabIndex = 116;
-            this.cuEmailErrorLbl.Text = "Error: Please fix..";
-            this.cuEmailErrorLbl.Visible = false;
-            // 
-            // cuPhoneNumberErrorLbl
-            // 
-            this.cuPhoneNumberErrorLbl.AutoSize = true;
-            this.cuPhoneNumberErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cuPhoneNumberErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuPhoneNumberErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cuPhoneNumberErrorLbl.Location = new System.Drawing.Point(327, 519);
-            this.cuPhoneNumberErrorLbl.Name = "cuPhoneNumberErrorLbl";
-            this.cuPhoneNumberErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cuPhoneNumberErrorLbl.TabIndex = 117;
-            this.cuPhoneNumberErrorLbl.Text = "Error: Please fix..";
-            this.cuPhoneNumberErrorLbl.Visible = false;
+            this.cuUsernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuUsernameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuUsernameTxt.Location = new System.Drawing.Point(27, 263);
+            this.cuUsernameTxt.Name = "cuUsernameTxt";
+            this.cuUsernameTxt.Size = new System.Drawing.Size(283, 51);
+            this.cuUsernameTxt.TabIndex = 37;
             // 
             // editFlightTab
             // 
@@ -2657,235 +2806,6 @@ namespace HappyJourneyAirline.Tabs
             this.editFlightTab.TabIndex = 6;
             this.editFlightTab.Text = "Edit Flight";
             // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(9, 26);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(380, 100);
-            this.label43.TabIndex = 106;
-            this.label43.Text = "Edit Flight";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.BackColor = System.Drawing.Color.Transparent;
-            this.label42.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(23, 127);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(241, 51);
-            this.label42.TabIndex = 108;
-            this.label42.Text = "Flight Number:";
-            this.label42.UseCompatibleTextRendering = true;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.BackColor = System.Drawing.Color.Transparent;
-            this.label41.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(384, 129);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(149, 51);
-            this.label41.TabIndex = 109;
-            this.label41.Text = "Plane ID:";
-            this.label41.UseCompatibleTextRendering = true;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.BackColor = System.Drawing.Color.Transparent;
-            this.label40.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(23, 226);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(263, 51);
-            this.label40.TabIndex = 111;
-            this.label40.Text = "Departure Time:";
-            this.label40.UseCompatibleTextRendering = true;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.BackColor = System.Drawing.Color.Transparent;
-            this.label39.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(384, 226);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(208, 51);
-            this.label39.TabIndex = 112;
-            this.label39.Text = "Arrival Time:";
-            this.label39.UseCompatibleTextRendering = true;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(23, 338);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(396, 51);
-            this.label28.TabIndex = 114;
-            this.label28.Text = "Departure Airport Name:";
-            this.label28.UseCompatibleTextRendering = true;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(384, 338);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(326, 51);
-            this.label27.TabIndex = 115;
-            this.label27.Text = "Arrival Airport Time:";
-            this.label27.UseCompatibleTextRendering = true;
-            // 
-            // efPlaneIdDrop
-            // 
-            this.efPlaneIdDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.efPlaneIdDrop.FormattingEnabled = true;
-            this.efPlaneIdDrop.Location = new System.Drawing.Point(384, 164);
-            this.efPlaneIdDrop.Name = "efPlaneIdDrop";
-            this.efPlaneIdDrop.Size = new System.Drawing.Size(246, 52);
-            this.efPlaneIdDrop.TabIndex = 116;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(23, 431);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(95, 51);
-            this.label26.TabIndex = 119;
-            this.label26.Text = "Date:";
-            this.label26.UseCompatibleTextRendering = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(384, 431);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(177, 51);
-            this.label4.TabIndex = 121;
-            this.label4.Text = "Price in BD";
-            this.label4.UseCompatibleTextRendering = true;
-            // 
-            // efDatePick
-            // 
-            this.efDatePick.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.efDatePick.Location = new System.Drawing.Point(23, 466);
-            this.efDatePick.MinDate = new System.DateTime(2024, 12, 16, 0, 0, 0, 0);
-            this.efDatePick.Name = "efDatePick";
-            this.efDatePick.Size = new System.Drawing.Size(338, 51);
-            this.efDatePick.TabIndex = 122;
-            this.efDatePick.Value = new System.DateTime(2024, 12, 16, 0, 0, 0, 0);
-            // 
-            // efFlightNumTxt
-            // 
-            this.efFlightNumTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.efFlightNumTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.efFlightNumTxt.Enabled = false;
-            this.efFlightNumTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efFlightNumTxt.Location = new System.Drawing.Point(23, 164);
-            this.efFlightNumTxt.Name = "efFlightNumTxt";
-            this.efFlightNumTxt.ReadOnly = true;
-            this.efFlightNumTxt.Size = new System.Drawing.Size(246, 44);
-            this.efFlightNumTxt.TabIndex = 107;
-            this.efFlightNumTxt.Text = "123";
-            // 
-            // efPriceTxt
-            // 
-            this.efPriceTxt.BackColor = System.Drawing.Color.White;
-            this.efPriceTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.efPriceTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efPriceTxt.Location = new System.Drawing.Point(384, 466);
-            this.efPriceTxt.Name = "efPriceTxt";
-            this.efPriceTxt.Size = new System.Drawing.Size(338, 51);
-            this.efPriceTxt.TabIndex = 120;
-            this.efPriceTxt.Text = "300";
-            this.efPriceTxt.TextChanged += new System.EventHandler(this.efPriceTxt_TextChanged);
-            this.efPriceTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyNumbers_KeyPress);
-            // 
-            // efDepTxt
-            // 
-            this.efDepTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.efDepTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.efDepTxt.Enabled = false;
-            this.efDepTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efDepTxt.Location = new System.Drawing.Point(23, 373);
-            this.efDepTxt.Name = "efDepTxt";
-            this.efDepTxt.ReadOnly = true;
-            this.efDepTxt.Size = new System.Drawing.Size(246, 44);
-            this.efDepTxt.TabIndex = 125;
-            this.efDepTxt.Text = "Cairo International Airport";
-            // 
-            // efArrTxt
-            // 
-            this.efArrTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.efArrTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.efArrTxt.Enabled = false;
-            this.efArrTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efArrTxt.Location = new System.Drawing.Point(384, 373);
-            this.efArrTxt.Name = "efArrTxt";
-            this.efArrTxt.ReadOnly = true;
-            this.efArrTxt.Size = new System.Drawing.Size(246, 44);
-            this.efArrTxt.TabIndex = 126;
-            this.efArrTxt.Text = "Bahrain International Airport";
-            // 
-            // efDepTimePick
-            // 
-            this.efDepTimePick.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.efDepTimePick.Location = new System.Drawing.Point(23, 261);
-            this.efDepTimePick.Name = "efDepTimePick";
-            this.efDepTimePick.Size = new System.Drawing.Size(338, 51);
-            this.efDepTimePick.TabIndex = 127;
-            this.efDepTimePick.ValueChanged += new System.EventHandler(this.efDepTimePick_ValueChanged);
-            // 
-            // efArrTimePick
-            // 
-            this.efArrTimePick.Enabled = false;
-            this.efArrTimePick.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.efArrTimePick.Location = new System.Drawing.Point(384, 261);
-            this.efArrTimePick.Name = "efArrTimePick";
-            this.efArrTimePick.Size = new System.Drawing.Size(338, 51);
-            this.efArrTimePick.TabIndex = 128;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.BackColor = System.Drawing.Color.Transparent;
-            this.label71.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label71.Location = new System.Drawing.Point(384, 537);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(118, 51);
-            this.label71.TabIndex = 131;
-            this.label71.Text = "Status:";
-            this.label71.UseCompatibleTextRendering = true;
-            // 
-            // efStatusDrop
-            // 
-            this.efStatusDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.efStatusDrop.FormattingEnabled = true;
-            this.efStatusDrop.Location = new System.Drawing.Point(387, 572);
-            this.efStatusDrop.Name = "efStatusDrop";
-            this.efStatusDrop.Size = new System.Drawing.Size(338, 52);
-            this.efStatusDrop.TabIndex = 132;
-            // 
-            // efPriceErrorLbl
-            // 
-            this.efPriceErrorLbl.AutoSize = true;
-            this.efPriceErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.efPriceErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efPriceErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.efPriceErrorLbl.Location = new System.Drawing.Point(379, 505);
-            this.efPriceErrorLbl.Name = "efPriceErrorLbl";
-            this.efPriceErrorLbl.Size = new System.Drawing.Size(446, 44);
-            this.efPriceErrorLbl.TabIndex = 133;
-            this.efPriceErrorLbl.Text = "Error: Input Must be number";
-            this.efPriceErrorLbl.Visible = false;
-            // 
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Controls.Add(this.efDeleteBtn);
@@ -2896,21 +2816,21 @@ namespace HappyJourneyAirline.Tabs
             this.flowLayoutPanel4.Size = new System.Drawing.Size(494, 56);
             this.flowLayoutPanel4.TabIndex = 134;
             // 
-            // efCancelBtn
+            // efDeleteBtn
             // 
-            this.efCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
-            this.efCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.efCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.efCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efCancelBtn.ForeColor = System.Drawing.Color.White;
-            this.efCancelBtn.Location = new System.Drawing.Point(293, 3);
-            this.efCancelBtn.Name = "efCancelBtn";
-            this.efCancelBtn.Size = new System.Drawing.Size(139, 43);
-            this.efCancelBtn.TabIndex = 124;
-            this.efCancelBtn.Text = "Cancel";
-            this.efCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.efCancelBtn.UseVisualStyleBackColor = false;
-            this.efCancelBtn.Click += new System.EventHandler(this.efCancelBtn_Click);
+            this.efDeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.efDeleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.efDeleteBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.efDeleteBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efDeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.efDeleteBtn.Location = new System.Drawing.Point(3, 3);
+            this.efDeleteBtn.Name = "efDeleteBtn";
+            this.efDeleteBtn.Size = new System.Drawing.Size(139, 43);
+            this.efDeleteBtn.TabIndex = 129;
+            this.efDeleteBtn.Text = "Delete Flight";
+            this.efDeleteBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.efDeleteBtn.UseVisualStyleBackColor = false;
+            this.efDeleteBtn.Click += new System.EventHandler(this.efDeleteBtn_Click);
             // 
             // efEditBtn
             // 
@@ -2928,21 +2848,250 @@ namespace HappyJourneyAirline.Tabs
             this.efEditBtn.UseVisualStyleBackColor = false;
             this.efEditBtn.Click += new System.EventHandler(this.efEditBtn_Click);
             // 
-            // efDeleteBtn
+            // efCancelBtn
             // 
-            this.efDeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.efDeleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.efDeleteBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.efDeleteBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efDeleteBtn.ForeColor = System.Drawing.Color.White;
-            this.efDeleteBtn.Location = new System.Drawing.Point(3, 3);
-            this.efDeleteBtn.Name = "efDeleteBtn";
-            this.efDeleteBtn.Size = new System.Drawing.Size(139, 43);
-            this.efDeleteBtn.TabIndex = 129;
-            this.efDeleteBtn.Text = "Delete Flight";
-            this.efDeleteBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.efDeleteBtn.UseVisualStyleBackColor = false;
-            this.efDeleteBtn.Click += new System.EventHandler(this.efDeleteBtn_Click);
+            this.efCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
+            this.efCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.efCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.efCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efCancelBtn.ForeColor = System.Drawing.Color.White;
+            this.efCancelBtn.Location = new System.Drawing.Point(293, 3);
+            this.efCancelBtn.Name = "efCancelBtn";
+            this.efCancelBtn.Size = new System.Drawing.Size(139, 43);
+            this.efCancelBtn.TabIndex = 124;
+            this.efCancelBtn.Text = "Cancel";
+            this.efCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.efCancelBtn.UseVisualStyleBackColor = false;
+            this.efCancelBtn.Click += new System.EventHandler(this.efCancelBtn_Click);
+            // 
+            // efPriceErrorLbl
+            // 
+            this.efPriceErrorLbl.AutoSize = true;
+            this.efPriceErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.efPriceErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efPriceErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.efPriceErrorLbl.Location = new System.Drawing.Point(379, 505);
+            this.efPriceErrorLbl.Name = "efPriceErrorLbl";
+            this.efPriceErrorLbl.Size = new System.Drawing.Size(446, 44);
+            this.efPriceErrorLbl.TabIndex = 133;
+            this.efPriceErrorLbl.Text = "Error: Input Must be number";
+            this.efPriceErrorLbl.Visible = false;
+            // 
+            // efStatusDrop
+            // 
+            this.efStatusDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.efStatusDrop.FormattingEnabled = true;
+            this.efStatusDrop.Location = new System.Drawing.Point(387, 572);
+            this.efStatusDrop.Name = "efStatusDrop";
+            this.efStatusDrop.Size = new System.Drawing.Size(338, 52);
+            this.efStatusDrop.TabIndex = 132;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.BackColor = System.Drawing.Color.Transparent;
+            this.label71.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Location = new System.Drawing.Point(384, 537);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(118, 51);
+            this.label71.TabIndex = 131;
+            this.label71.Text = "Status:";
+            this.label71.UseCompatibleTextRendering = true;
+            // 
+            // efArrTimePick
+            // 
+            this.efArrTimePick.Enabled = false;
+            this.efArrTimePick.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.efArrTimePick.Location = new System.Drawing.Point(384, 261);
+            this.efArrTimePick.Name = "efArrTimePick";
+            this.efArrTimePick.Size = new System.Drawing.Size(338, 51);
+            this.efArrTimePick.TabIndex = 128;
+            // 
+            // efDepTimePick
+            // 
+            this.efDepTimePick.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.efDepTimePick.Location = new System.Drawing.Point(23, 261);
+            this.efDepTimePick.Name = "efDepTimePick";
+            this.efDepTimePick.Size = new System.Drawing.Size(338, 51);
+            this.efDepTimePick.TabIndex = 127;
+            this.efDepTimePick.ValueChanged += new System.EventHandler(this.efDepTimePick_ValueChanged);
+            // 
+            // efArrTxt
+            // 
+            this.efArrTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.efArrTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.efArrTxt.Enabled = false;
+            this.efArrTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efArrTxt.Location = new System.Drawing.Point(384, 373);
+            this.efArrTxt.Name = "efArrTxt";
+            this.efArrTxt.ReadOnly = true;
+            this.efArrTxt.Size = new System.Drawing.Size(246, 44);
+            this.efArrTxt.TabIndex = 126;
+            this.efArrTxt.Text = "Bahrain International Airport";
+            // 
+            // efDepTxt
+            // 
+            this.efDepTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.efDepTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.efDepTxt.Enabled = false;
+            this.efDepTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efDepTxt.Location = new System.Drawing.Point(23, 373);
+            this.efDepTxt.Name = "efDepTxt";
+            this.efDepTxt.ReadOnly = true;
+            this.efDepTxt.Size = new System.Drawing.Size(246, 44);
+            this.efDepTxt.TabIndex = 125;
+            this.efDepTxt.Text = "Cairo International Airport";
+            // 
+            // efPriceTxt
+            // 
+            this.efPriceTxt.BackColor = System.Drawing.Color.White;
+            this.efPriceTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.efPriceTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efPriceTxt.Location = new System.Drawing.Point(384, 466);
+            this.efPriceTxt.Name = "efPriceTxt";
+            this.efPriceTxt.Size = new System.Drawing.Size(338, 51);
+            this.efPriceTxt.TabIndex = 120;
+            this.efPriceTxt.Text = "300";
+            this.efPriceTxt.TextChanged += new System.EventHandler(this.efPriceTxt_TextChanged);
+            this.efPriceTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyNumbers_KeyPress);
+            // 
+            // efFlightNumTxt
+            // 
+            this.efFlightNumTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.efFlightNumTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.efFlightNumTxt.Enabled = false;
+            this.efFlightNumTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efFlightNumTxt.Location = new System.Drawing.Point(23, 164);
+            this.efFlightNumTxt.Name = "efFlightNumTxt";
+            this.efFlightNumTxt.ReadOnly = true;
+            this.efFlightNumTxt.Size = new System.Drawing.Size(246, 44);
+            this.efFlightNumTxt.TabIndex = 107;
+            this.efFlightNumTxt.Text = "123";
+            // 
+            // efDatePick
+            // 
+            this.efDatePick.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.efDatePick.Location = new System.Drawing.Point(23, 466);
+            this.efDatePick.MinDate = new System.DateTime(2024, 12, 16, 0, 0, 0, 0);
+            this.efDatePick.Name = "efDatePick";
+            this.efDatePick.Size = new System.Drawing.Size(338, 51);
+            this.efDatePick.TabIndex = 122;
+            this.efDatePick.Value = new System.DateTime(2024, 12, 16, 0, 0, 0, 0);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(384, 431);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(177, 51);
+            this.label4.TabIndex = 121;
+            this.label4.Text = "Price in BD";
+            this.label4.UseCompatibleTextRendering = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(23, 431);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(95, 51);
+            this.label26.TabIndex = 119;
+            this.label26.Text = "Date:";
+            this.label26.UseCompatibleTextRendering = true;
+            // 
+            // efPlaneIdDrop
+            // 
+            this.efPlaneIdDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.efPlaneIdDrop.FormattingEnabled = true;
+            this.efPlaneIdDrop.Location = new System.Drawing.Point(384, 164);
+            this.efPlaneIdDrop.Name = "efPlaneIdDrop";
+            this.efPlaneIdDrop.Size = new System.Drawing.Size(246, 52);
+            this.efPlaneIdDrop.TabIndex = 116;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(384, 338);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(326, 51);
+            this.label27.TabIndex = 115;
+            this.label27.Text = "Arrival Airport Time:";
+            this.label27.UseCompatibleTextRendering = true;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(23, 338);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(396, 51);
+            this.label28.TabIndex = 114;
+            this.label28.Text = "Departure Airport Name:";
+            this.label28.UseCompatibleTextRendering = true;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.BackColor = System.Drawing.Color.Transparent;
+            this.label39.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(384, 226);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(208, 51);
+            this.label39.TabIndex = 112;
+            this.label39.Text = "Arrival Time:";
+            this.label39.UseCompatibleTextRendering = true;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.Transparent;
+            this.label40.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(23, 226);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(263, 51);
+            this.label40.TabIndex = 111;
+            this.label40.Text = "Departure Time:";
+            this.label40.UseCompatibleTextRendering = true;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.BackColor = System.Drawing.Color.Transparent;
+            this.label41.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(384, 129);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(149, 51);
+            this.label41.TabIndex = 109;
+            this.label41.Text = "Plane ID:";
+            this.label41.UseCompatibleTextRendering = true;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.BackColor = System.Drawing.Color.Transparent;
+            this.label42.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(23, 127);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(241, 51);
+            this.label42.TabIndex = 108;
+            this.label42.Text = "Flight Number:";
+            this.label42.UseCompatibleTextRendering = true;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(9, 26);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(380, 100);
+            this.label43.TabIndex = 106;
+            this.label43.Text = "Edit Flight";
             // 
             // createFlightTab
             // 
@@ -2978,193 +3127,85 @@ namespace HappyJourneyAirline.Tabs
             this.createFlightTab.TabIndex = 5;
             this.createFlightTab.Text = "Create Flight";
             // 
-            // label25
+            // cfStatusDrop
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(8, 21);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(468, 100);
-            this.label25.TabIndex = 75;
-            this.label25.Text = "Create Flight";
+            this.cfStatusDrop.Enabled = false;
+            this.cfStatusDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.cfStatusDrop.FormattingEnabled = true;
+            this.cfStatusDrop.Location = new System.Drawing.Point(382, 574);
+            this.cfStatusDrop.Name = "cfStatusDrop";
+            this.cfStatusDrop.Size = new System.Drawing.Size(338, 52);
+            this.cfStatusDrop.TabIndex = 112;
             // 
-            // label24
+            // label66
             // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(22, 122);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(241, 51);
-            this.label24.TabIndex = 77;
-            this.label24.Text = "Flight Number:";
-            this.label24.UseCompatibleTextRendering = true;
+            this.label66.AutoSize = true;
+            this.label66.BackColor = System.Drawing.Color.Transparent;
+            this.label66.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label66.Location = new System.Drawing.Point(379, 539);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(118, 51);
+            this.label66.TabIndex = 111;
+            this.label66.Text = "Status:";
+            this.label66.UseCompatibleTextRendering = true;
             // 
-            // label23
+            // cfTimeErrorLbl
             // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(383, 124);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(149, 51);
-            this.label23.TabIndex = 78;
-            this.label23.Text = "Plane ID:";
-            this.label23.UseCompatibleTextRendering = true;
+            this.cfTimeErrorLbl.AutoSize = true;
+            this.cfTimeErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cfTimeErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cfTimeErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cfTimeErrorLbl.Location = new System.Drawing.Point(22, 304);
+            this.cfTimeErrorLbl.Name = "cfTimeErrorLbl";
+            this.cfTimeErrorLbl.Size = new System.Drawing.Size(833, 44);
+            this.cfTimeErrorLbl.TabIndex = 110;
+            this.cfTimeErrorLbl.Text = "Error: Departure and Arrival Times cannot be the same";
+            this.cfTimeErrorLbl.Visible = false;
             // 
-            // label21
+            // cfAirportsErrorLbl
             // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(18, 223);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(263, 51);
-            this.label21.TabIndex = 81;
-            this.label21.Text = "Departure Time:";
-            this.label21.UseCompatibleTextRendering = true;
+            this.cfAirportsErrorLbl.AutoSize = true;
+            this.cfAirportsErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cfAirportsErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cfAirportsErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cfAirportsErrorLbl.Location = new System.Drawing.Point(22, 418);
+            this.cfAirportsErrorLbl.Name = "cfAirportsErrorLbl";
+            this.cfAirportsErrorLbl.Size = new System.Drawing.Size(866, 44);
+            this.cfAirportsErrorLbl.TabIndex = 109;
+            this.cfAirportsErrorLbl.Text = "Error: Departure and Arrival Airports cannot be the same";
+            this.cfAirportsErrorLbl.Visible = false;
             // 
-            // label20
+            // cfPriceErrorLbl
             // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(379, 223);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(208, 51);
-            this.label20.TabIndex = 82;
-            this.label20.Text = "Arrival Time:";
-            this.label20.UseCompatibleTextRendering = true;
+            this.cfPriceErrorLbl.AutoSize = true;
+            this.cfPriceErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.cfPriceErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cfPriceErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.cfPriceErrorLbl.Location = new System.Drawing.Point(378, 504);
+            this.cfPriceErrorLbl.Name = "cfPriceErrorLbl";
+            this.cfPriceErrorLbl.Size = new System.Drawing.Size(446, 44);
+            this.cfPriceErrorLbl.TabIndex = 108;
+            this.cfPriceErrorLbl.Text = "Error: Input Must be number";
+            this.cfPriceErrorLbl.Visible = false;
             // 
-            // label6
+            // cfArrTimePick
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(18, 329);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(396, 51);
-            this.label6.TabIndex = 89;
-            this.label6.Text = "Departure Airport Name:";
-            this.label6.UseCompatibleTextRendering = true;
+            this.cfArrTimePick.Enabled = false;
+            this.cfArrTimePick.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.cfArrTimePick.Location = new System.Drawing.Point(379, 258);
+            this.cfArrTimePick.Name = "cfArrTimePick";
+            this.cfArrTimePick.Size = new System.Drawing.Size(337, 51);
+            this.cfArrTimePick.TabIndex = 107;
             // 
-            // label5
+            // cfDepTimePick
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(379, 329);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(341, 51);
-            this.label5.TabIndex = 90;
-            this.label5.Text = "Arrival Airport Name:";
-            this.label5.UseCompatibleTextRendering = true;
-            // 
-            // cfPlaneIdDrop
-            // 
-            this.cfPlaneIdDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cfPlaneIdDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.cfPlaneIdDrop.FormattingEnabled = true;
-            this.cfPlaneIdDrop.Location = new System.Drawing.Point(383, 159);
-            this.cfPlaneIdDrop.Name = "cfPlaneIdDrop";
-            this.cfPlaneIdDrop.Size = new System.Drawing.Size(246, 52);
-            this.cfPlaneIdDrop.TabIndex = 96;
-            // 
-            // cfDepDrop
-            // 
-            this.cfDepDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cfDepDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.cfDepDrop.FormattingEnabled = true;
-            this.cfDepDrop.Location = new System.Drawing.Point(18, 364);
-            this.cfDepDrop.Name = "cfDepDrop";
-            this.cfDepDrop.Size = new System.Drawing.Size(338, 52);
-            this.cfDepDrop.TabIndex = 97;
-            this.cfDepDrop.SelectedIndexChanged += new System.EventHandler(this.cfDepDrop_SelectedIndexChanged);
-            // 
-            // cfArrDrop
-            // 
-            this.cfArrDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cfArrDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.cfArrDrop.FormattingEnabled = true;
-            this.cfArrDrop.Location = new System.Drawing.Point(379, 364);
-            this.cfArrDrop.Name = "cfArrDrop";
-            this.cfArrDrop.Size = new System.Drawing.Size(337, 52);
-            this.cfArrDrop.TabIndex = 98;
-            this.cfArrDrop.SelectedIndexChanged += new System.EventHandler(this.cfArrDrop_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 430);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 51);
-            this.label7.TabIndex = 99;
-            this.label7.Text = "Date:";
-            this.label7.UseCompatibleTextRendering = true;
-            // 
-            // cfFlightNumTxt
-            // 
-            this.cfFlightNumTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.cfFlightNumTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.cfFlightNumTxt.Enabled = false;
-            this.cfFlightNumTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cfFlightNumTxt.Location = new System.Drawing.Point(22, 159);
-            this.cfFlightNumTxt.Name = "cfFlightNumTxt";
-            this.cfFlightNumTxt.ReadOnly = true;
-            this.cfFlightNumTxt.Size = new System.Drawing.Size(246, 44);
-            this.cfFlightNumTxt.TabIndex = 76;
-            this.cfFlightNumTxt.Text = "123";
-            // 
-            // cfPriceTxt
-            // 
-            this.cfPriceTxt.BackColor = System.Drawing.Color.White;
-            this.cfPriceTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cfPriceTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cfPriceTxt.Location = new System.Drawing.Point(379, 465);
-            this.cfPriceTxt.Name = "cfPriceTxt";
-            this.cfPriceTxt.Size = new System.Drawing.Size(337, 51);
-            this.cfPriceTxt.TabIndex = 101;
-            this.cfPriceTxt.Text = "300";
-            this.cfPriceTxt.TextChanged += new System.EventHandler(this.cfPriceTxt_TextChanged);
-            this.cfPriceTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyNumbers_KeyPress);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(379, 430);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(177, 51);
-            this.label19.TabIndex = 102;
-            this.label19.Text = "Price in BD";
-            this.label19.UseCompatibleTextRendering = true;
-            // 
-            // cfDatePick
-            // 
-            this.cfDatePick.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.cfDatePick.Location = new System.Drawing.Point(18, 465);
-            this.cfDatePick.Name = "cfDatePick";
-            this.cfDatePick.Size = new System.Drawing.Size(338, 51);
-            this.cfDatePick.TabIndex = 103;
-            // 
-            // cfCreateBtn
-            // 
-            this.cfCreateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.cfCreateBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.cfCreateBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.cfCreateBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cfCreateBtn.ForeColor = System.Drawing.Color.White;
-            this.cfCreateBtn.Location = new System.Drawing.Point(22, 643);
-            this.cfCreateBtn.Name = "cfCreateBtn";
-            this.cfCreateBtn.Size = new System.Drawing.Size(139, 43);
-            this.cfCreateBtn.TabIndex = 104;
-            this.cfCreateBtn.Text = "Create Flight";
-            this.cfCreateBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.cfCreateBtn.UseVisualStyleBackColor = false;
-            this.cfCreateBtn.Click += new System.EventHandler(this.cfCreateBtn_Click);
+            this.cfDepTimePick.CustomFormat = "Time";
+            this.cfDepTimePick.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.cfDepTimePick.Location = new System.Drawing.Point(19, 258);
+            this.cfDepTimePick.Name = "cfDepTimePick";
+            this.cfDepTimePick.Size = new System.Drawing.Size(337, 51);
+            this.cfDepTimePick.TabIndex = 106;
+            this.cfDepTimePick.ValueChanged += new System.EventHandler(this.cfDepTimePick_ValueChanged);
             // 
             // cfCancelBtn
             // 
@@ -3182,85 +3223,193 @@ namespace HappyJourneyAirline.Tabs
             this.cfCancelBtn.UseVisualStyleBackColor = false;
             this.cfCancelBtn.Click += new System.EventHandler(this.cfCancelBtn_Click);
             // 
-            // cfDepTimePick
+            // cfCreateBtn
             // 
-            this.cfDepTimePick.CustomFormat = "Time";
-            this.cfDepTimePick.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.cfDepTimePick.Location = new System.Drawing.Point(19, 258);
-            this.cfDepTimePick.Name = "cfDepTimePick";
-            this.cfDepTimePick.Size = new System.Drawing.Size(337, 51);
-            this.cfDepTimePick.TabIndex = 106;
-            this.cfDepTimePick.ValueChanged += new System.EventHandler(this.cfDepTimePick_ValueChanged);
+            this.cfCreateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.cfCreateBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cfCreateBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.cfCreateBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cfCreateBtn.ForeColor = System.Drawing.Color.White;
+            this.cfCreateBtn.Location = new System.Drawing.Point(22, 643);
+            this.cfCreateBtn.Name = "cfCreateBtn";
+            this.cfCreateBtn.Size = new System.Drawing.Size(139, 43);
+            this.cfCreateBtn.TabIndex = 104;
+            this.cfCreateBtn.Text = "Create Flight";
+            this.cfCreateBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.cfCreateBtn.UseVisualStyleBackColor = false;
+            this.cfCreateBtn.Click += new System.EventHandler(this.cfCreateBtn_Click);
             // 
-            // cfArrTimePick
+            // cfDatePick
             // 
-            this.cfArrTimePick.Enabled = false;
-            this.cfArrTimePick.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.cfArrTimePick.Location = new System.Drawing.Point(379, 258);
-            this.cfArrTimePick.Name = "cfArrTimePick";
-            this.cfArrTimePick.Size = new System.Drawing.Size(337, 51);
-            this.cfArrTimePick.TabIndex = 107;
+            this.cfDatePick.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.cfDatePick.Location = new System.Drawing.Point(18, 465);
+            this.cfDatePick.Name = "cfDatePick";
+            this.cfDatePick.Size = new System.Drawing.Size(338, 51);
+            this.cfDatePick.TabIndex = 103;
             // 
-            // cfPriceErrorLbl
+            // label19
             // 
-            this.cfPriceErrorLbl.AutoSize = true;
-            this.cfPriceErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cfPriceErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cfPriceErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cfPriceErrorLbl.Location = new System.Drawing.Point(378, 504);
-            this.cfPriceErrorLbl.Name = "cfPriceErrorLbl";
-            this.cfPriceErrorLbl.Size = new System.Drawing.Size(446, 44);
-            this.cfPriceErrorLbl.TabIndex = 108;
-            this.cfPriceErrorLbl.Text = "Error: Input Must be number";
-            this.cfPriceErrorLbl.Visible = false;
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(379, 430);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(177, 51);
+            this.label19.TabIndex = 102;
+            this.label19.Text = "Price in BD";
+            this.label19.UseCompatibleTextRendering = true;
             // 
-            // cfAirportsErrorLbl
+            // cfPriceTxt
             // 
-            this.cfAirportsErrorLbl.AutoSize = true;
-            this.cfAirportsErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cfAirportsErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cfAirportsErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cfAirportsErrorLbl.Location = new System.Drawing.Point(22, 418);
-            this.cfAirportsErrorLbl.Name = "cfAirportsErrorLbl";
-            this.cfAirportsErrorLbl.Size = new System.Drawing.Size(866, 44);
-            this.cfAirportsErrorLbl.TabIndex = 109;
-            this.cfAirportsErrorLbl.Text = "Error: Departure and Arrival Airports cannot be the same";
-            this.cfAirportsErrorLbl.Visible = false;
+            this.cfPriceTxt.BackColor = System.Drawing.Color.White;
+            this.cfPriceTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cfPriceTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cfPriceTxt.Location = new System.Drawing.Point(379, 465);
+            this.cfPriceTxt.Name = "cfPriceTxt";
+            this.cfPriceTxt.Size = new System.Drawing.Size(337, 51);
+            this.cfPriceTxt.TabIndex = 101;
+            this.cfPriceTxt.Text = "300";
+            this.cfPriceTxt.TextChanged += new System.EventHandler(this.cfPriceTxt_TextChanged);
+            this.cfPriceTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyNumbers_KeyPress);
             // 
-            // cfTimeErrorLbl
+            // cfFlightNumTxt
             // 
-            this.cfTimeErrorLbl.AutoSize = true;
-            this.cfTimeErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cfTimeErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cfTimeErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cfTimeErrorLbl.Location = new System.Drawing.Point(22, 304);
-            this.cfTimeErrorLbl.Name = "cfTimeErrorLbl";
-            this.cfTimeErrorLbl.Size = new System.Drawing.Size(833, 44);
-            this.cfTimeErrorLbl.TabIndex = 110;
-            this.cfTimeErrorLbl.Text = "Error: Departure and Arrival Times cannot be the same";
-            this.cfTimeErrorLbl.Visible = false;
+            this.cfFlightNumTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.cfFlightNumTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cfFlightNumTxt.Enabled = false;
+            this.cfFlightNumTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cfFlightNumTxt.Location = new System.Drawing.Point(22, 159);
+            this.cfFlightNumTxt.Name = "cfFlightNumTxt";
+            this.cfFlightNumTxt.ReadOnly = true;
+            this.cfFlightNumTxt.Size = new System.Drawing.Size(246, 44);
+            this.cfFlightNumTxt.TabIndex = 76;
+            this.cfFlightNumTxt.Text = "123";
             // 
-            // label66
+            // label7
             // 
-            this.label66.AutoSize = true;
-            this.label66.BackColor = System.Drawing.Color.Transparent;
-            this.label66.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.Location = new System.Drawing.Point(379, 539);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(118, 51);
-            this.label66.TabIndex = 111;
-            this.label66.Text = "Status:";
-            this.label66.UseCompatibleTextRendering = true;
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(18, 430);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(95, 51);
+            this.label7.TabIndex = 99;
+            this.label7.Text = "Date:";
+            this.label7.UseCompatibleTextRendering = true;
             // 
-            // cfStatusDrop
+            // cfArrDrop
             // 
-            this.cfStatusDrop.Enabled = false;
-            this.cfStatusDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.cfStatusDrop.FormattingEnabled = true;
-            this.cfStatusDrop.Location = new System.Drawing.Point(382, 574);
-            this.cfStatusDrop.Name = "cfStatusDrop";
-            this.cfStatusDrop.Size = new System.Drawing.Size(338, 52);
-            this.cfStatusDrop.TabIndex = 112;
+            this.cfArrDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cfArrDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.cfArrDrop.FormattingEnabled = true;
+            this.cfArrDrop.Location = new System.Drawing.Point(379, 364);
+            this.cfArrDrop.Name = "cfArrDrop";
+            this.cfArrDrop.Size = new System.Drawing.Size(337, 52);
+            this.cfArrDrop.TabIndex = 98;
+            this.cfArrDrop.SelectedIndexChanged += new System.EventHandler(this.cfArrDrop_SelectedIndexChanged);
+            // 
+            // cfDepDrop
+            // 
+            this.cfDepDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cfDepDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.cfDepDrop.FormattingEnabled = true;
+            this.cfDepDrop.Location = new System.Drawing.Point(18, 364);
+            this.cfDepDrop.Name = "cfDepDrop";
+            this.cfDepDrop.Size = new System.Drawing.Size(338, 52);
+            this.cfDepDrop.TabIndex = 97;
+            this.cfDepDrop.SelectedIndexChanged += new System.EventHandler(this.cfDepDrop_SelectedIndexChanged);
+            // 
+            // cfPlaneIdDrop
+            // 
+            this.cfPlaneIdDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cfPlaneIdDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.cfPlaneIdDrop.FormattingEnabled = true;
+            this.cfPlaneIdDrop.Location = new System.Drawing.Point(383, 159);
+            this.cfPlaneIdDrop.Name = "cfPlaneIdDrop";
+            this.cfPlaneIdDrop.Size = new System.Drawing.Size(246, 52);
+            this.cfPlaneIdDrop.TabIndex = 96;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(379, 329);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(341, 51);
+            this.label5.TabIndex = 90;
+            this.label5.Text = "Arrival Airport Name:";
+            this.label5.UseCompatibleTextRendering = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(18, 329);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(396, 51);
+            this.label6.TabIndex = 89;
+            this.label6.Text = "Departure Airport Name:";
+            this.label6.UseCompatibleTextRendering = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(379, 223);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(208, 51);
+            this.label20.TabIndex = 82;
+            this.label20.Text = "Arrival Time:";
+            this.label20.UseCompatibleTextRendering = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(18, 223);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(263, 51);
+            this.label21.TabIndex = 81;
+            this.label21.Text = "Departure Time:";
+            this.label21.UseCompatibleTextRendering = true;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(383, 124);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(149, 51);
+            this.label23.TabIndex = 78;
+            this.label23.Text = "Plane ID:";
+            this.label23.UseCompatibleTextRendering = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(22, 122);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(241, 51);
+            this.label24.TabIndex = 77;
+            this.label24.Text = "Flight Number:";
+            this.label24.UseCompatibleTextRendering = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(8, 21);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(468, 100);
+            this.label25.TabIndex = 75;
+            this.label25.Text = "Create Flight";
             // 
             // bookingDetailsTab
             // 
@@ -3295,127 +3444,157 @@ namespace HappyJourneyAirline.Tabs
             this.bookingDetailsTab.TabIndex = 4;
             this.bookingDetailsTab.Text = "Booking Details";
             // 
-            // label37
+            // bdUsrIDLbl
             // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(14, 18);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(569, 100);
-            this.label37.TabIndex = 54;
-            this.label37.Text = "Booking Details";
+            this.bdUsrIDLbl.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdUsrIDLbl.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdUsrIDLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdUsrIDLbl.Location = new System.Drawing.Point(496, 99);
+            this.bdUsrIDLbl.Name = "bdUsrIDLbl";
+            this.bdUsrIDLbl.ReadOnly = true;
+            this.bdUsrIDLbl.Size = new System.Drawing.Size(122, 44);
+            this.bdUsrIDLbl.TabIndex = 76;
+            this.bdUsrIDLbl.Text = "123";
             // 
-            // label36
+            // bdIDTxt
             // 
-            this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.Transparent;
-            this.label36.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(30, 159);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(241, 51);
-            this.label36.TabIndex = 56;
-            this.label36.Text = "Flight Number:";
-            this.label36.UseCompatibleTextRendering = true;
+            this.bdIDTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdIDTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdIDTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdIDTxt.Location = new System.Drawing.Point(137, 105);
+            this.bdIDTxt.Name = "bdIDTxt";
+            this.bdIDTxt.ReadOnly = true;
+            this.bdIDTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdIDTxt.TabIndex = 74;
+            this.bdIDTxt.Text = "123";
             // 
-            // label35
+            // bdArrTxt
             // 
-            this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.Transparent;
-            this.label35.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(391, 161);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(95, 51);
-            this.label35.TabIndex = 57;
-            this.label35.Text = "Date:";
-            this.label35.UseCompatibleTextRendering = true;
+            this.bdArrTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdArrTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdArrTxt.Enabled = false;
+            this.bdArrTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdArrTxt.Location = new System.Drawing.Point(391, 439);
+            this.bdArrTxt.Name = "bdArrTxt";
+            this.bdArrTxt.ReadOnly = true;
+            this.bdArrTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdArrTxt.TabIndex = 70;
+            this.bdArrTxt.Text = "Bahrain International Airport";
             // 
-            // label34
+            // bdDepTxt
             // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.Transparent;
-            this.label34.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(30, 236);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(263, 51);
-            this.label34.TabIndex = 60;
-            this.label34.Text = "Departure Time:";
-            this.label34.UseCompatibleTextRendering = true;
+            this.bdDepTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdDepTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdDepTxt.Enabled = false;
+            this.bdDepTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdDepTxt.Location = new System.Drawing.Point(30, 439);
+            this.bdDepTxt.Name = "bdDepTxt";
+            this.bdDepTxt.ReadOnly = true;
+            this.bdDepTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdDepTxt.TabIndex = 67;
+            this.bdDepTxt.Text = "Cairo International Airport";
             // 
-            // label33
+            // bdToTxt
             // 
-            this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(391, 236);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(208, 51);
-            this.label33.TabIndex = 61;
-            this.label33.Text = "Arrival Time:";
-            this.label33.UseCompatibleTextRendering = true;
+            this.bdToTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdToTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdToTxt.Enabled = false;
+            this.bdToTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdToTxt.Location = new System.Drawing.Point(391, 359);
+            this.bdToTxt.Name = "bdToTxt";
+            this.bdToTxt.ReadOnly = true;
+            this.bdToTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdToTxt.TabIndex = 66;
+            this.bdToTxt.Text = "Muharraq (Bahrain)";
             // 
-            // label32
+            // bdFromTxt
             // 
-            this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.Transparent;
-            this.label32.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(30, 322);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(102, 51);
-            this.label32.TabIndex = 64;
-            this.label32.Text = "From:";
-            this.label32.UseCompatibleTextRendering = true;
+            this.bdFromTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdFromTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdFromTxt.Enabled = false;
+            this.bdFromTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdFromTxt.Location = new System.Drawing.Point(30, 359);
+            this.bdFromTxt.Name = "bdFromTxt";
+            this.bdFromTxt.ReadOnly = true;
+            this.bdFromTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdFromTxt.TabIndex = 63;
+            this.bdFromTxt.Text = "Cairo (Egypt)";
             // 
-            // label31
+            // bdArrTimeTxt
             // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(391, 324);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(60, 51);
-            this.label31.TabIndex = 65;
-            this.label31.Text = "To:";
-            this.label31.UseCompatibleTextRendering = true;
+            this.bdArrTimeTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdArrTimeTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdArrTimeTxt.Enabled = false;
+            this.bdArrTimeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdArrTimeTxt.Location = new System.Drawing.Point(391, 271);
+            this.bdArrTimeTxt.Name = "bdArrTimeTxt";
+            this.bdArrTimeTxt.ReadOnly = true;
+            this.bdArrTimeTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdArrTimeTxt.TabIndex = 62;
+            this.bdArrTimeTxt.Text = "11:00 AM";
             // 
-            // label30
+            // bdDepTimeTxt
             // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(30, 402);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(396, 51);
-            this.label30.TabIndex = 68;
-            this.label30.Text = "Departure Airport Name:";
-            this.label30.UseCompatibleTextRendering = true;
+            this.bdDepTimeTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdDepTimeTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdDepTimeTxt.Enabled = false;
+            this.bdDepTimeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdDepTimeTxt.Location = new System.Drawing.Point(30, 271);
+            this.bdDepTimeTxt.Name = "bdDepTimeTxt";
+            this.bdDepTimeTxt.ReadOnly = true;
+            this.bdDepTimeTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdDepTimeTxt.TabIndex = 59;
+            this.bdDepTimeTxt.Text = "8:00 AM";
             // 
-            // label29
+            // bdDateTxt
             // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(391, 402);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(326, 51);
-            this.label29.TabIndex = 69;
-            this.label29.Text = "Arrival Airport Time:";
-            this.label29.UseCompatibleTextRendering = true;
+            this.bdDateTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdDateTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdDateTxt.Enabled = false;
+            this.bdDateTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdDateTxt.Location = new System.Drawing.Point(391, 196);
+            this.bdDateTxt.Name = "bdDateTxt";
+            this.bdDateTxt.ReadOnly = true;
+            this.bdDateTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdDateTxt.TabIndex = 58;
+            this.bdDateTxt.Text = "2024/12/30";
             // 
-            // bdCancelBtn
+            // bdFlightNumTxt
             // 
-            this.bdCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.bdCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bdCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.bdCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdCancelBtn.ForeColor = System.Drawing.Color.White;
-            this.bdCancelBtn.Location = new System.Drawing.Point(30, 528);
-            this.bdCancelBtn.Name = "bdCancelBtn";
-            this.bdCancelBtn.Size = new System.Drawing.Size(175, 43);
-            this.bdCancelBtn.TabIndex = 71;
-            this.bdCancelBtn.Text = "Cancel the booking";
-            this.bdCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.bdCancelBtn.UseVisualStyleBackColor = false;
-            this.bdCancelBtn.Click += new System.EventHandler(this.bdCancelBtn_Click);
+            this.bdFlightNumTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.bdFlightNumTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bdFlightNumTxt.Enabled = false;
+            this.bdFlightNumTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdFlightNumTxt.Location = new System.Drawing.Point(30, 196);
+            this.bdFlightNumTxt.Name = "bdFlightNumTxt";
+            this.bdFlightNumTxt.ReadOnly = true;
+            this.bdFlightNumTxt.Size = new System.Drawing.Size(246, 44);
+            this.bdFlightNumTxt.TabIndex = 55;
+            this.bdFlightNumTxt.Text = "123";
+            // 
+            // bdUsrTypeLbl
+            // 
+            this.bdUsrTypeLbl.AutoSize = true;
+            this.bdUsrTypeLbl.BackColor = System.Drawing.Color.Transparent;
+            this.bdUsrTypeLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdUsrTypeLbl.Location = new System.Drawing.Point(389, 99);
+            this.bdUsrTypeLbl.Name = "bdUsrTypeLbl";
+            this.bdUsrTypeLbl.Size = new System.Drawing.Size(183, 51);
+            this.bdUsrTypeLbl.TabIndex = 75;
+            this.bdUsrTypeLbl.Text = "Booking ID:";
+            this.bdUsrTypeLbl.UseCompatibleTextRendering = true;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
+            this.label38.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(30, 105);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(183, 51);
+            this.label38.TabIndex = 73;
+            this.label38.Text = "Booking ID:";
+            this.label38.UseCompatibleTextRendering = true;
             // 
             // bdBackBtn
             // 
@@ -3433,157 +3612,127 @@ namespace HappyJourneyAirline.Tabs
             this.bdBackBtn.UseVisualStyleBackColor = false;
             this.bdBackBtn.Click += new System.EventHandler(this.bdBackBtn_Click);
             // 
-            // label38
+            // bdCancelBtn
             // 
-            this.label38.AutoSize = true;
-            this.label38.BackColor = System.Drawing.Color.Transparent;
-            this.label38.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(30, 105);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(183, 51);
-            this.label38.TabIndex = 73;
-            this.label38.Text = "Booking ID:";
-            this.label38.UseCompatibleTextRendering = true;
+            this.bdCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.bdCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bdCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.bdCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bdCancelBtn.ForeColor = System.Drawing.Color.White;
+            this.bdCancelBtn.Location = new System.Drawing.Point(30, 528);
+            this.bdCancelBtn.Name = "bdCancelBtn";
+            this.bdCancelBtn.Size = new System.Drawing.Size(175, 43);
+            this.bdCancelBtn.TabIndex = 71;
+            this.bdCancelBtn.Text = "Cancel the booking";
+            this.bdCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.bdCancelBtn.UseVisualStyleBackColor = false;
+            this.bdCancelBtn.Click += new System.EventHandler(this.bdCancelBtn_Click);
             // 
-            // bdFlightNumTxt
+            // label29
             // 
-            this.bdFlightNumTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdFlightNumTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdFlightNumTxt.Enabled = false;
-            this.bdFlightNumTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdFlightNumTxt.Location = new System.Drawing.Point(30, 196);
-            this.bdFlightNumTxt.Name = "bdFlightNumTxt";
-            this.bdFlightNumTxt.ReadOnly = true;
-            this.bdFlightNumTxt.Size = new System.Drawing.Size(246, 44);
-            this.bdFlightNumTxt.TabIndex = 55;
-            this.bdFlightNumTxt.Text = "123";
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(391, 402);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(326, 51);
+            this.label29.TabIndex = 69;
+            this.label29.Text = "Arrival Airport Time:";
+            this.label29.UseCompatibleTextRendering = true;
             // 
-            // bdDateTxt
+            // label30
             // 
-            this.bdDateTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdDateTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdDateTxt.Enabled = false;
-            this.bdDateTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdDateTxt.Location = new System.Drawing.Point(391, 196);
-            this.bdDateTxt.Name = "bdDateTxt";
-            this.bdDateTxt.ReadOnly = true;
-            this.bdDateTxt.Size = new System.Drawing.Size(246, 44);
-            this.bdDateTxt.TabIndex = 58;
-            this.bdDateTxt.Text = "2024/12/30";
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(30, 402);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(396, 51);
+            this.label30.TabIndex = 68;
+            this.label30.Text = "Departure Airport Name:";
+            this.label30.UseCompatibleTextRendering = true;
             // 
-            // bdDepTimeTxt
+            // label31
             // 
-            this.bdDepTimeTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdDepTimeTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdDepTimeTxt.Enabled = false;
-            this.bdDepTimeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdDepTimeTxt.Location = new System.Drawing.Point(30, 271);
-            this.bdDepTimeTxt.Name = "bdDepTimeTxt";
-            this.bdDepTimeTxt.ReadOnly = true;
-            this.bdDepTimeTxt.Size = new System.Drawing.Size(246, 44);
-            this.bdDepTimeTxt.TabIndex = 59;
-            this.bdDepTimeTxt.Text = "8:00 AM";
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(391, 324);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(60, 51);
+            this.label31.TabIndex = 65;
+            this.label31.Text = "To:";
+            this.label31.UseCompatibleTextRendering = true;
             // 
-            // bdArrTimeTxt
+            // label32
             // 
-            this.bdArrTimeTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdArrTimeTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdArrTimeTxt.Enabled = false;
-            this.bdArrTimeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdArrTimeTxt.Location = new System.Drawing.Point(391, 271);
-            this.bdArrTimeTxt.Name = "bdArrTimeTxt";
-            this.bdArrTimeTxt.ReadOnly = true;
-            this.bdArrTimeTxt.Size = new System.Drawing.Size(246, 44);
-            this.bdArrTimeTxt.TabIndex = 62;
-            this.bdArrTimeTxt.Text = "11:00 AM";
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(30, 322);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(102, 51);
+            this.label32.TabIndex = 64;
+            this.label32.Text = "From:";
+            this.label32.UseCompatibleTextRendering = true;
             // 
-            // bdFromTxt
+            // label33
             // 
-            this.bdFromTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdFromTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdFromTxt.Enabled = false;
-            this.bdFromTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdFromTxt.Location = new System.Drawing.Point(30, 359);
-            this.bdFromTxt.Name = "bdFromTxt";
-            this.bdFromTxt.ReadOnly = true;
-            this.bdFromTxt.Size = new System.Drawing.Size(246, 44);
-            this.bdFromTxt.TabIndex = 63;
-            this.bdFromTxt.Text = "Cairo (Egypt)";
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(391, 236);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(208, 51);
+            this.label33.TabIndex = 61;
+            this.label33.Text = "Arrival Time:";
+            this.label33.UseCompatibleTextRendering = true;
             // 
-            // bdToTxt
+            // label34
             // 
-            this.bdToTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdToTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdToTxt.Enabled = false;
-            this.bdToTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdToTxt.Location = new System.Drawing.Point(391, 359);
-            this.bdToTxt.Name = "bdToTxt";
-            this.bdToTxt.ReadOnly = true;
-            this.bdToTxt.Size = new System.Drawing.Size(246, 44);
-            this.bdToTxt.TabIndex = 66;
-            this.bdToTxt.Text = "Muharraq (Bahrain)";
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Transparent;
+            this.label34.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(30, 236);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(263, 51);
+            this.label34.TabIndex = 60;
+            this.label34.Text = "Departure Time:";
+            this.label34.UseCompatibleTextRendering = true;
             // 
-            // bdDepTxt
+            // label35
             // 
-            this.bdDepTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdDepTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdDepTxt.Enabled = false;
-            this.bdDepTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdDepTxt.Location = new System.Drawing.Point(30, 439);
-            this.bdDepTxt.Name = "bdDepTxt";
-            this.bdDepTxt.ReadOnly = true;
-            this.bdDepTxt.Size = new System.Drawing.Size(246, 44);
-            this.bdDepTxt.TabIndex = 67;
-            this.bdDepTxt.Text = "Cairo International Airport";
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(391, 161);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(95, 51);
+            this.label35.TabIndex = 57;
+            this.label35.Text = "Date:";
+            this.label35.UseCompatibleTextRendering = true;
             // 
-            // bdArrTxt
+            // label36
             // 
-            this.bdArrTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdArrTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdArrTxt.Enabled = false;
-            this.bdArrTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdArrTxt.Location = new System.Drawing.Point(391, 439);
-            this.bdArrTxt.Name = "bdArrTxt";
-            this.bdArrTxt.ReadOnly = true;
-            this.bdArrTxt.Size = new System.Drawing.Size(246, 44);
-            this.bdArrTxt.TabIndex = 70;
-            this.bdArrTxt.Text = "Bahrain International Airport";
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(30, 159);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(241, 51);
+            this.label36.TabIndex = 56;
+            this.label36.Text = "Flight Number:";
+            this.label36.UseCompatibleTextRendering = true;
             // 
-            // bdIDTxt
+            // label37
             // 
-            this.bdIDTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdIDTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdIDTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdIDTxt.Location = new System.Drawing.Point(137, 105);
-            this.bdIDTxt.Name = "bdIDTxt";
-            this.bdIDTxt.ReadOnly = true;
-            this.bdIDTxt.Size = new System.Drawing.Size(246, 44);
-            this.bdIDTxt.TabIndex = 74;
-            this.bdIDTxt.Text = "123";
-            // 
-            // bdUsrTypeLbl
-            // 
-            this.bdUsrTypeLbl.AutoSize = true;
-            this.bdUsrTypeLbl.BackColor = System.Drawing.Color.Transparent;
-            this.bdUsrTypeLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdUsrTypeLbl.Location = new System.Drawing.Point(389, 99);
-            this.bdUsrTypeLbl.Name = "bdUsrTypeLbl";
-            this.bdUsrTypeLbl.Size = new System.Drawing.Size(183, 51);
-            this.bdUsrTypeLbl.TabIndex = 75;
-            this.bdUsrTypeLbl.Text = "Booking ID:";
-            this.bdUsrTypeLbl.UseCompatibleTextRendering = true;
-            // 
-            // bdUsrIDLbl
-            // 
-            this.bdUsrIDLbl.BackColor = System.Drawing.Color.Gainsboro;
-            this.bdUsrIDLbl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bdUsrIDLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bdUsrIDLbl.Location = new System.Drawing.Point(496, 99);
-            this.bdUsrIDLbl.Name = "bdUsrIDLbl";
-            this.bdUsrIDLbl.ReadOnly = true;
-            this.bdUsrIDLbl.Size = new System.Drawing.Size(122, 44);
-            this.bdUsrIDLbl.TabIndex = 76;
-            this.bdUsrIDLbl.Text = "123";
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(14, 18);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(569, 100);
+            this.label37.TabIndex = 54;
+            this.label37.Text = "Booking Details";
             // 
             // travellerUsersTab
             // 
@@ -3600,26 +3749,70 @@ namespace HappyJourneyAirline.Tabs
             this.travellerUsersTab.TabIndex = 3;
             this.travellerUsersTab.Text = "Users";
             // 
-            // label3
+            // btnReportUsers
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(231, 100);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Users";
+            this.btnReportUsers.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnReportUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnReportUsers.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnReportUsers.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportUsers.ForeColor = System.Drawing.Color.White;
+            this.btnReportUsers.Location = new System.Drawing.Point(494, 127);
+            this.btnReportUsers.Name = "btnReportUsers";
+            this.btnReportUsers.Size = new System.Drawing.Size(223, 55);
+            this.btnReportUsers.TabIndex = 41;
+            this.btnReportUsers.Text = "Generate Users Report";
+            this.btnReportUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnReportUsers.UseVisualStyleBackColor = false;
+            this.btnReportUsers.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label2
+            // addNotifications
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(26, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(307, 35);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Manage users in this Page";
+            this.addNotifications.Image = global::HappyJourneyAirline.Properties.Resources.addNot;
+            this.addNotifications.Location = new System.Drawing.Point(613, 26);
+            this.addNotifications.Name = "addNotifications";
+            this.addNotifications.Size = new System.Drawing.Size(104, 80);
+            this.addNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.addNotifications.TabIndex = 40;
+            this.addNotifications.TabStop = false;
+            this.addNotifications.Click += new System.EventHandler(this.addNotifications_Click);
+            // 
+            // usersDataGridView
+            // 
+            this.usersDataGridView.AllowUserToAddRows = false;
+            this.usersDataGridView.AllowUserToOrderColumns = true;
+            this.usersDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.usersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.usersDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.usersDataGridView.DefaultCellStyle = dataGridViewCellStyle20;
+            this.usersDataGridView.Location = new System.Drawing.Point(22, 249);
+            this.usersDataGridView.MultiSelect = false;
+            this.usersDataGridView.Name = "usersDataGridView";
+            this.usersDataGridView.ReadOnly = true;
+            this.usersDataGridView.RowHeadersVisible = false;
+            this.usersDataGridView.RowHeadersWidth = 70;
+            this.usersDataGridView.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.usersDataGridView.RowTemplate.Height = 50;
+            this.usersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.usersDataGridView.Size = new System.Drawing.Size(695, 451);
+            this.usersDataGridView.TabIndex = 39;
+            this.usersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersDataGridView_CellClick);
+            this.usersDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
             // 
             // userCreateUserBtn
             // 
@@ -3637,70 +3830,26 @@ namespace HappyJourneyAirline.Tabs
             this.userCreateUserBtn.UseVisualStyleBackColor = false;
             this.userCreateUserBtn.Click += new System.EventHandler(this.userCreateUserBtn_Click);
             // 
-            // usersDataGridView
+            // label2
             // 
-            this.usersDataGridView.AllowUserToAddRows = false;
-            this.usersDataGridView.AllowUserToOrderColumns = true;
-            this.usersDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle67.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle67.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle67.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle67.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle67.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle67.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle67.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.usersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle67;
-            this.usersDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle68.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle68.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle68.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle68.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle68.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle68.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle68.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.usersDataGridView.DefaultCellStyle = dataGridViewCellStyle68;
-            this.usersDataGridView.Location = new System.Drawing.Point(22, 249);
-            this.usersDataGridView.MultiSelect = false;
-            this.usersDataGridView.Name = "usersDataGridView";
-            this.usersDataGridView.ReadOnly = true;
-            this.usersDataGridView.RowHeadersVisible = false;
-            this.usersDataGridView.RowHeadersWidth = 70;
-            this.usersDataGridView.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.usersDataGridView.RowTemplate.Height = 50;
-            this.usersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.usersDataGridView.Size = new System.Drawing.Size(695, 451);
-            this.usersDataGridView.TabIndex = 39;
-            this.usersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersDataGridView_CellClick);
-            this.usersDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(26, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(307, 35);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Manage users in this Page";
             // 
-            // addNotifications
+            // label3
             // 
-            this.addNotifications.Image = global::HappyJourneyAirline.Properties.Resources.addNot;
-            this.addNotifications.Location = new System.Drawing.Point(613, 26);
-            this.addNotifications.Name = "addNotifications";
-            this.addNotifications.Size = new System.Drawing.Size(104, 80);
-            this.addNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.addNotifications.TabIndex = 40;
-            this.addNotifications.TabStop = false;
-            this.addNotifications.Click += new System.EventHandler(this.addNotifications_Click);
-            // 
-            // btnReportUsers
-            // 
-            this.btnReportUsers.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnReportUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnReportUsers.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnReportUsers.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportUsers.ForeColor = System.Drawing.Color.White;
-            this.btnReportUsers.Location = new System.Drawing.Point(494, 127);
-            this.btnReportUsers.Name = "btnReportUsers";
-            this.btnReportUsers.Size = new System.Drawing.Size(223, 55);
-            this.btnReportUsers.TabIndex = 41;
-            this.btnReportUsers.Text = "Generate Users Report";
-            this.btnReportUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnReportUsers.UseVisualStyleBackColor = false;
-            this.btnReportUsers.Click += new System.EventHandler(this.button2_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(19, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(231, 100);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Users";
             // 
             // travellerSettingsTab
             // 
@@ -3730,168 +3879,34 @@ namespace HappyJourneyAirline.Tabs
             this.travellerSettingsTab.Text = "Settings";
             this.travellerSettingsTab.Paint += new System.Windows.Forms.PaintEventHandler(this.travellerSettingsTab_Paint);
             // 
-            // label14
+            // btnBackup
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(12, 18);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(310, 100);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Settings";
+            this.btnBackup.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnBackup.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.ForeColor = System.Drawing.Color.White;
+            this.btnBackup.Location = new System.Drawing.Point(22, 636);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(399, 57);
+            this.btnBackup.TabIndex = 40;
+            this.btnBackup.Text = "Database Backup";
+            this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnBackup.UseVisualStyleBackColor = false;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
-            // label8
+            // setErrorLbl
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label8.Location = new System.Drawing.Point(18, 87);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(441, 35);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "Here you can customize your account";
-            // 
-            // setUsernameTxt
-            // 
-            this.setUsernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.setUsernameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setUsernameTxt.Location = new System.Drawing.Point(23, 152);
-            this.setUsernameTxt.Name = "setUsernameTxt";
-            this.setUsernameTxt.Size = new System.Drawing.Size(321, 51);
-            this.setUsernameTxt.TabIndex = 23;
-            // 
-            // setPasswordTxt
-            // 
-            this.setPasswordTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.setPasswordTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setPasswordTxt.Location = new System.Drawing.Point(380, 152);
-            this.setPasswordTxt.Name = "setPasswordTxt";
-            this.setPasswordTxt.Size = new System.Drawing.Size(333, 51);
-            this.setPasswordTxt.TabIndex = 24;
-            // 
-            // setFirstNameTxt
-            // 
-            this.setFirstNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.setFirstNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setFirstNameTxt.Location = new System.Drawing.Point(23, 221);
-            this.setFirstNameTxt.Name = "setFirstNameTxt";
-            this.setFirstNameTxt.Size = new System.Drawing.Size(321, 51);
-            this.setFirstNameTxt.TabIndex = 25;
-            // 
-            // setLastNameTxt
-            // 
-            this.setLastNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.setLastNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setLastNameTxt.Location = new System.Drawing.Point(380, 221);
-            this.setLastNameTxt.Name = "setLastNameTxt";
-            this.setLastNameTxt.Size = new System.Drawing.Size(333, 51);
-            this.setLastNameTxt.TabIndex = 26;
-            // 
-            // setEmailTxt
-            // 
-            this.setEmailTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.setEmailTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setEmailTxt.Location = new System.Drawing.Point(23, 290);
-            this.setEmailTxt.Name = "setEmailTxt";
-            this.setEmailTxt.Size = new System.Drawing.Size(321, 51);
-            this.setEmailTxt.TabIndex = 27;
-            // 
-            // setPhoneTxt
-            // 
-            this.setPhoneTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.setPhoneTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setPhoneTxt.Location = new System.Drawing.Point(380, 290);
-            this.setPhoneTxt.Name = "setPhoneTxt";
-            this.setPhoneTxt.Size = new System.Drawing.Size(333, 51);
-            this.setPhoneTxt.TabIndex = 28;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(23, 117);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(179, 51);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Username:";
-            this.label9.UseCompatibleTextRendering = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(380, 117);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(169, 51);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "Password:";
-            this.label10.UseCompatibleTextRendering = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(23, 186);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(188, 51);
-            this.label12.TabIndex = 31;
-            this.label12.Text = "First Name:";
-            this.label12.UseCompatibleTextRendering = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(380, 186);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(183, 51);
-            this.label15.TabIndex = 32;
-            this.label15.Text = "Last Name:";
-            this.label15.UseCompatibleTextRendering = true;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(23, 257);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 51);
-            this.label16.TabIndex = 33;
-            this.label16.Text = "Email:";
-            this.label16.UseCompatibleTextRendering = true;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(380, 257);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(253, 51);
-            this.label17.TabIndex = 34;
-            this.label17.Text = "Phone Number:";
-            this.label17.UseCompatibleTextRendering = true;
-            // 
-            // setSaveChanesBtn
-            // 
-            this.setSaveChanesBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.setSaveChanesBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.setSaveChanesBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.setSaveChanesBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setSaveChanesBtn.ForeColor = System.Drawing.Color.White;
-            this.setSaveChanesBtn.Location = new System.Drawing.Point(25, 374);
-            this.setSaveChanesBtn.Name = "setSaveChanesBtn";
-            this.setSaveChanesBtn.Size = new System.Drawing.Size(187, 57);
-            this.setSaveChanesBtn.TabIndex = 35;
-            this.setSaveChanesBtn.Text = "Save Changes";
-            this.setSaveChanesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.setSaveChanesBtn.UseVisualStyleBackColor = false;
-            this.setSaveChanesBtn.Click += new System.EventHandler(this.setSaveChanesBtn_Click);
+            this.setErrorLbl.AutoSize = true;
+            this.setErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.setErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.setErrorLbl.Location = new System.Drawing.Point(34, 466);
+            this.setErrorLbl.Name = "setErrorLbl";
+            this.setErrorLbl.Size = new System.Drawing.Size(274, 44);
+            this.setErrorLbl.TabIndex = 39;
+            this.setErrorLbl.Text = "Error: Please fix..";
+            this.setErrorLbl.Visible = false;
             // 
             // setCancelBtn
             // 
@@ -3909,34 +3924,168 @@ namespace HappyJourneyAirline.Tabs
             this.setCancelBtn.UseVisualStyleBackColor = false;
             this.setCancelBtn.Click += new System.EventHandler(this.setCancelBtn_Click);
             // 
-            // setErrorLbl
+            // setSaveChanesBtn
             // 
-            this.setErrorLbl.AutoSize = true;
-            this.setErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.setErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.setErrorLbl.Location = new System.Drawing.Point(34, 466);
-            this.setErrorLbl.Name = "setErrorLbl";
-            this.setErrorLbl.Size = new System.Drawing.Size(274, 44);
-            this.setErrorLbl.TabIndex = 39;
-            this.setErrorLbl.Text = "Error: Please fix..";
-            this.setErrorLbl.Visible = false;
+            this.setSaveChanesBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.setSaveChanesBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.setSaveChanesBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.setSaveChanesBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setSaveChanesBtn.ForeColor = System.Drawing.Color.White;
+            this.setSaveChanesBtn.Location = new System.Drawing.Point(25, 374);
+            this.setSaveChanesBtn.Name = "setSaveChanesBtn";
+            this.setSaveChanesBtn.Size = new System.Drawing.Size(187, 57);
+            this.setSaveChanesBtn.TabIndex = 35;
+            this.setSaveChanesBtn.Text = "Save Changes";
+            this.setSaveChanesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.setSaveChanesBtn.UseVisualStyleBackColor = false;
+            this.setSaveChanesBtn.Click += new System.EventHandler(this.setSaveChanesBtn_Click);
             // 
-            // btnBackup
+            // label17
             // 
-            this.btnBackup.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnBackup.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackup.ForeColor = System.Drawing.Color.White;
-            this.btnBackup.Location = new System.Drawing.Point(22, 636);
-            this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Size = new System.Drawing.Size(399, 57);
-            this.btnBackup.TabIndex = 40;
-            this.btnBackup.Text = "Database Backup";
-            this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnBackup.UseVisualStyleBackColor = false;
-            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(380, 257);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(253, 51);
+            this.label17.TabIndex = 34;
+            this.label17.Text = "Phone Number:";
+            this.label17.UseCompatibleTextRendering = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(23, 257);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(106, 51);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "Email:";
+            this.label16.UseCompatibleTextRendering = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(380, 186);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(183, 51);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "Last Name:";
+            this.label15.UseCompatibleTextRendering = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(23, 186);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(188, 51);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "First Name:";
+            this.label12.UseCompatibleTextRendering = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(380, 117);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(169, 51);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Password:";
+            this.label10.UseCompatibleTextRendering = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(23, 117);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(179, 51);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Username:";
+            this.label9.UseCompatibleTextRendering = true;
+            // 
+            // setPhoneTxt
+            // 
+            this.setPhoneTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.setPhoneTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setPhoneTxt.Location = new System.Drawing.Point(380, 290);
+            this.setPhoneTxt.Name = "setPhoneTxt";
+            this.setPhoneTxt.Size = new System.Drawing.Size(333, 51);
+            this.setPhoneTxt.TabIndex = 28;
+            // 
+            // setEmailTxt
+            // 
+            this.setEmailTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.setEmailTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setEmailTxt.Location = new System.Drawing.Point(23, 290);
+            this.setEmailTxt.Name = "setEmailTxt";
+            this.setEmailTxt.Size = new System.Drawing.Size(321, 51);
+            this.setEmailTxt.TabIndex = 27;
+            // 
+            // setLastNameTxt
+            // 
+            this.setLastNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.setLastNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setLastNameTxt.Location = new System.Drawing.Point(380, 221);
+            this.setLastNameTxt.Name = "setLastNameTxt";
+            this.setLastNameTxt.Size = new System.Drawing.Size(333, 51);
+            this.setLastNameTxt.TabIndex = 26;
+            // 
+            // setFirstNameTxt
+            // 
+            this.setFirstNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.setFirstNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setFirstNameTxt.Location = new System.Drawing.Point(23, 221);
+            this.setFirstNameTxt.Name = "setFirstNameTxt";
+            this.setFirstNameTxt.Size = new System.Drawing.Size(321, 51);
+            this.setFirstNameTxt.TabIndex = 25;
+            // 
+            // setPasswordTxt
+            // 
+            this.setPasswordTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.setPasswordTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setPasswordTxt.Location = new System.Drawing.Point(380, 152);
+            this.setPasswordTxt.Name = "setPasswordTxt";
+            this.setPasswordTxt.Size = new System.Drawing.Size(333, 51);
+            this.setPasswordTxt.TabIndex = 24;
+            // 
+            // setUsernameTxt
+            // 
+            this.setUsernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.setUsernameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setUsernameTxt.Location = new System.Drawing.Point(23, 152);
+            this.setUsernameTxt.Name = "setUsernameTxt";
+            this.setUsernameTxt.Size = new System.Drawing.Size(321, 51);
+            this.setUsernameTxt.TabIndex = 23;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label8.Location = new System.Drawing.Point(18, 87);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(441, 35);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Here you can customize your account";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(12, 18);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(310, 100);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Settings";
             // 
             // travellerBookingsTab
             // 
@@ -3951,15 +4100,85 @@ namespace HappyJourneyAirline.Tabs
             this.travellerBookingsTab.TabIndex = 1;
             this.travellerBookingsTab.Text = "Bookings";
             // 
-            // label13
+            // bookingTable
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(16, 21);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(351, 100);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Bookings";
+            this.bookingTable.AllowUserToAddRows = false;
+            this.bookingTable.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bookingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.bookingTable.ColumnHeadersHeight = 40;
+            this.bookingTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.from,
+            this.to,
+            this.dateTime,
+            this.bookDetails});
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bookingTable.DefaultCellStyle = dataGridViewCellStyle22;
+            this.bookingTable.Location = new System.Drawing.Point(28, 147);
+            this.bookingTable.Name = "bookingTable";
+            this.bookingTable.ReadOnly = true;
+            this.bookingTable.RowHeadersVisible = false;
+            this.bookingTable.RowHeadersWidth = 51;
+            this.bookingTable.RowTemplate.Height = 50;
+            this.bookingTable.Size = new System.Drawing.Size(686, 519);
+            this.bookingTable.TabIndex = 6;
+            this.bookingTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bookingTable_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 76;
+            // 
+            // from
+            // 
+            this.from.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.from.HeaderText = "From";
+            this.from.MinimumWidth = 6;
+            this.from.Name = "from";
+            this.from.ReadOnly = true;
+            // 
+            // to
+            // 
+            this.to.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.to.HeaderText = "To";
+            this.to.MinimumWidth = 6;
+            this.to.Name = "to";
+            this.to.ReadOnly = true;
+            // 
+            // dateTime
+            // 
+            this.dateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateTime.HeaderText = "Date and Time";
+            this.dateTime.MinimumWidth = 6;
+            this.dateTime.Name = "dateTime";
+            this.dateTime.ReadOnly = true;
+            // 
+            // bookDetails
+            // 
+            this.bookDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.bookDetails.HeaderText = "Booking Details";
+            this.bookDetails.MinimumWidth = 6;
+            this.bookDetails.Name = "bookDetails";
+            this.bookDetails.ReadOnly = true;
             // 
             // label1
             // 
@@ -3972,85 +4191,15 @@ namespace HappyJourneyAirline.Tabs
             this.label1.TabIndex = 4;
             this.label1.Text = "You can here modify bookings easily";
             // 
-            // bookingTable
+            // label13
             // 
-            this.bookingTable.AllowUserToAddRows = false;
-            this.bookingTable.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle69.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle69.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle69.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle69.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle69.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle69.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle69.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bookingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle69;
-            this.bookingTable.ColumnHeadersHeight = 40;
-            this.bookingTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.from,
-            this.to,
-            this.dateTime,
-            this.bookDetails});
-            dataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle70.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle70.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle70.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle70.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle70.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle70.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle70.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bookingTable.DefaultCellStyle = dataGridViewCellStyle70;
-            this.bookingTable.Location = new System.Drawing.Point(28, 147);
-            this.bookingTable.Name = "bookingTable";
-            this.bookingTable.ReadOnly = true;
-            this.bookingTable.RowHeadersVisible = false;
-            this.bookingTable.RowHeadersWidth = 51;
-            this.bookingTable.RowTemplate.Height = 50;
-            this.bookingTable.Size = new System.Drawing.Size(686, 519);
-            this.bookingTable.TabIndex = 6;
-            this.bookingTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bookingTable_CellContentClick);
-            // 
-            // bookDetails
-            // 
-            this.bookDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.bookDetails.HeaderText = "Booking Details";
-            this.bookDetails.MinimumWidth = 6;
-            this.bookDetails.Name = "bookDetails";
-            this.bookDetails.ReadOnly = true;
-            // 
-            // dateTime
-            // 
-            this.dateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateTime.HeaderText = "Date and Time";
-            this.dateTime.MinimumWidth = 6;
-            this.dateTime.Name = "dateTime";
-            this.dateTime.ReadOnly = true;
-            // 
-            // to
-            // 
-            this.to.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.to.HeaderText = "To";
-            this.to.MinimumWidth = 6;
-            this.to.Name = "to";
-            this.to.ReadOnly = true;
-            // 
-            // from
-            // 
-            this.from.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.from.HeaderText = "From";
-            this.from.MinimumWidth = 6;
-            this.from.Name = "from";
-            this.from.ReadOnly = true;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 76;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(16, 21);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(351, 100);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Bookings";
             // 
             // travellerFlightsTab
             // 
@@ -4068,41 +4217,56 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.TabIndex = 0;
             this.travellerFlightsTab.Text = "Flights";
             // 
-            // label11
+            // viewPlanesBtn
             // 
-            this.label11.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(24, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(263, 100);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Flights";
+            this.viewPlanesBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.viewPlanesBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.viewPlanesBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.viewPlanesBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewPlanesBtn.ForeColor = System.Drawing.Color.White;
+            this.viewPlanesBtn.Location = new System.Drawing.Point(497, 36);
+            this.viewPlanesBtn.Name = "viewPlanesBtn";
+            this.viewPlanesBtn.Size = new System.Drawing.Size(223, 55);
+            this.viewPlanesBtn.TabIndex = 40;
+            this.viewPlanesBtn.Text = "View Planes";
+            this.viewPlanesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.viewPlanesBtn.UseVisualStyleBackColor = false;
+            this.viewPlanesBtn.Click += new System.EventHandler(this.viewPlanesBtn_Click);
             // 
-            // label22
+            // flightsDataGridView
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label22.Location = new System.Drawing.Point(33, 101);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(330, 35);
-            this.label22.TabIndex = 3;
-            this.label22.Text = "Add and modify flights here";
-            // 
-            // creatFlightBtn
-            // 
-            this.creatFlightBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.creatFlightBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.creatFlightBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.creatFlightBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.creatFlightBtn.ForeColor = System.Drawing.Color.White;
-            this.creatFlightBtn.Location = new System.Drawing.Point(497, 158);
-            this.creatFlightBtn.Name = "creatFlightBtn";
-            this.creatFlightBtn.Size = new System.Drawing.Size(223, 55);
-            this.creatFlightBtn.TabIndex = 36;
-            this.creatFlightBtn.Text = "Create Flight";
-            this.creatFlightBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.creatFlightBtn.UseVisualStyleBackColor = false;
-            this.creatFlightBtn.Click += new System.EventHandler(this.creatFlightBtn_Click);
+            this.flightsDataGridView.AllowUserToAddRows = false;
+            this.flightsDataGridView.AllowUserToDeleteRows = false;
+            this.flightsDataGridView.AllowUserToOrderColumns = true;
+            this.flightsDataGridView.AllowUserToResizeRows = false;
+            this.flightsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flightsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            this.flightsDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle24.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flightsDataGridView.DefaultCellStyle = dataGridViewCellStyle24;
+            this.flightsDataGridView.Location = new System.Drawing.Point(18, 231);
+            this.flightsDataGridView.Name = "flightsDataGridView";
+            this.flightsDataGridView.RowHeadersVisible = false;
+            this.flightsDataGridView.RowHeadersWidth = 70;
+            this.flightsDataGridView.RowTemplate.Height = 50;
+            this.flightsDataGridView.Size = new System.Drawing.Size(702, 455);
+            this.flightsDataGridView.TabIndex = 38;
+            this.flightsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.flightsDataGridView_CellClick);
             // 
             // viewAirCityCouBtn
             // 
@@ -4120,56 +4284,41 @@ namespace HappyJourneyAirline.Tabs
             this.viewAirCityCouBtn.UseVisualStyleBackColor = false;
             this.viewAirCityCouBtn.Click += new System.EventHandler(this.addAirCityCouBtn_Click);
             // 
-            // flightsDataGridView
+            // creatFlightBtn
             // 
-            this.flightsDataGridView.AllowUserToAddRows = false;
-            this.flightsDataGridView.AllowUserToDeleteRows = false;
-            this.flightsDataGridView.AllowUserToOrderColumns = true;
-            this.flightsDataGridView.AllowUserToResizeRows = false;
-            this.flightsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle71.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle71.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle71.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle71.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle71.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle71.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle71.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.flightsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle71;
-            this.flightsDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle72.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle72.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle72.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle72.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle72.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle72.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle72.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle72.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.flightsDataGridView.DefaultCellStyle = dataGridViewCellStyle72;
-            this.flightsDataGridView.Location = new System.Drawing.Point(18, 231);
-            this.flightsDataGridView.Name = "flightsDataGridView";
-            this.flightsDataGridView.RowHeadersVisible = false;
-            this.flightsDataGridView.RowHeadersWidth = 70;
-            this.flightsDataGridView.RowTemplate.Height = 50;
-            this.flightsDataGridView.Size = new System.Drawing.Size(702, 455);
-            this.flightsDataGridView.TabIndex = 38;
-            this.flightsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.flightsDataGridView_CellClick);
+            this.creatFlightBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.creatFlightBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.creatFlightBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.creatFlightBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creatFlightBtn.ForeColor = System.Drawing.Color.White;
+            this.creatFlightBtn.Location = new System.Drawing.Point(497, 158);
+            this.creatFlightBtn.Name = "creatFlightBtn";
+            this.creatFlightBtn.Size = new System.Drawing.Size(223, 55);
+            this.creatFlightBtn.TabIndex = 36;
+            this.creatFlightBtn.Text = "Create Flight";
+            this.creatFlightBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.creatFlightBtn.UseVisualStyleBackColor = false;
+            this.creatFlightBtn.Click += new System.EventHandler(this.creatFlightBtn_Click);
             // 
-            // viewPlanesBtn
+            // label22
             // 
-            this.viewPlanesBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.viewPlanesBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.viewPlanesBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.viewPlanesBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewPlanesBtn.ForeColor = System.Drawing.Color.White;
-            this.viewPlanesBtn.Location = new System.Drawing.Point(497, 36);
-            this.viewPlanesBtn.Name = "viewPlanesBtn";
-            this.viewPlanesBtn.Size = new System.Drawing.Size(223, 55);
-            this.viewPlanesBtn.TabIndex = 40;
-            this.viewPlanesBtn.Text = "View Planes";
-            this.viewPlanesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.viewPlanesBtn.UseVisualStyleBackColor = false;
-            this.viewPlanesBtn.Click += new System.EventHandler(this.viewPlanesBtn_Click);
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label22.Location = new System.Drawing.Point(33, 101);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(330, 35);
+            this.label22.TabIndex = 3;
+            this.label22.Text = "Add and modify flights here";
+            // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(24, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(263, 100);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Flights";
             // 
             // tabControler
             // 
@@ -4195,159 +4344,15 @@ namespace HappyJourneyAirline.Tabs
             this.tabControler.Size = new System.Drawing.Size(782, 728);
             this.tabControler.TabIndex = 1;
             // 
-            // viewPlanes
-            // 
-            viewPlanes.BackColor = System.Drawing.Color.Gainsboro;
-            viewPlanes.Controls.Add(this.cpCapacityErrorLbl);
-            viewPlanes.Controls.Add(this.cpModelErrorLbl);
-            viewPlanes.Controls.Add(label92);
-            viewPlanes.Controls.Add(label93);
-            viewPlanes.Controls.Add(this.cpCapacityTxt);
-            viewPlanes.Controls.Add(this.cpModelTxt);
-            viewPlanes.Controls.Add(this.planesDataGridView);
-            viewPlanes.Controls.Add(this.createPlaneBtn);
-            viewPlanes.Controls.Add(label87);
-            viewPlanes.Controls.Add(label89);
-            viewPlanes.Location = new System.Drawing.Point(85, 4);
-            viewPlanes.Name = "viewPlanes";
-            viewPlanes.Padding = new System.Windows.Forms.Padding(3);
-            viewPlanes.Size = new System.Drawing.Size(693, 720);
-            viewPlanes.TabIndex = 14;
-            viewPlanes.Text = "View Planes";
-            // 
-            // cpCapacityErrorLbl
-            // 
-            this.cpCapacityErrorLbl.AutoSize = true;
-            this.cpCapacityErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cpCapacityErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpCapacityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cpCapacityErrorLbl.Location = new System.Drawing.Point(449, 344);
-            this.cpCapacityErrorLbl.Name = "cpCapacityErrorLbl";
-            this.cpCapacityErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cpCapacityErrorLbl.TabIndex = 119;
-            this.cpCapacityErrorLbl.Text = "Error: Please fix..";
-            this.cpCapacityErrorLbl.Visible = false;
-            // 
-            // cpModelErrorLbl
-            // 
-            this.cpModelErrorLbl.AutoSize = true;
-            this.cpModelErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.cpModelErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpModelErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cpModelErrorLbl.Location = new System.Drawing.Point(445, 233);
-            this.cpModelErrorLbl.Name = "cpModelErrorLbl";
-            this.cpModelErrorLbl.Size = new System.Drawing.Size(173, 28);
-            this.cpModelErrorLbl.TabIndex = 118;
-            this.cpModelErrorLbl.Text = "Error: Please fix..";
-            this.cpModelErrorLbl.Visible = false;
-            // 
-            // label92
-            // 
-            label92.AutoSize = true;
-            label92.BackColor = System.Drawing.Color.Transparent;
-            label92.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label92.Location = new System.Drawing.Point(450, 273);
-            label92.Name = "label92";
-            label92.Size = new System.Drawing.Size(152, 51);
-            label92.TabIndex = 117;
-            label92.Text = "Capacity:";
-            label92.UseCompatibleTextRendering = true;
-            // 
-            // label93
-            // 
-            label93.AutoSize = true;
-            label93.BackColor = System.Drawing.Color.Transparent;
-            label93.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label93.Location = new System.Drawing.Point(448, 162);
-            label93.Name = "label93";
-            label93.Size = new System.Drawing.Size(215, 51);
-            label93.TabIndex = 116;
-            label93.Text = "Plane Model:";
-            label93.UseCompatibleTextRendering = true;
-            // 
-            // cpCapacityTxt
-            // 
-            this.cpCapacityTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cpCapacityTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpCapacityTxt.Location = new System.Drawing.Point(450, 308);
-            this.cpCapacityTxt.Name = "cpCapacityTxt";
-            this.cpCapacityTxt.Size = new System.Drawing.Size(275, 51);
-            this.cpCapacityTxt.TabIndex = 115;
-            this.cpCapacityTxt.Text = "0";
-            this.cpCapacityTxt.TextChanged += new System.EventHandler(this.cpCapacityTxt_TextChanged);
-            this.cpCapacityTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyIntgers_KeyPress);
-            // 
-            // cpModelTxt
-            // 
-            this.cpModelTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cpModelTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpModelTxt.Location = new System.Drawing.Point(448, 197);
-            this.cpModelTxt.Name = "cpModelTxt";
-            this.cpModelTxt.Size = new System.Drawing.Size(275, 51);
-            this.cpModelTxt.TabIndex = 114;
-            this.cpModelTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
-            // 
-            // planesDataGridView
-            // 
-            this.planesDataGridView.AllowUserToAddRows = false;
-            this.planesDataGridView.AllowUserToDeleteRows = false;
-            this.planesDataGridView.AllowUserToOrderColumns = true;
-            this.planesDataGridView.AllowUserToResizeRows = false;
-            this.planesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.planesDataGridView.Location = new System.Drawing.Point(0, 152);
-            this.planesDataGridView.MultiSelect = false;
-            this.planesDataGridView.Name = "planesDataGridView";
-            this.planesDataGridView.ReadOnly = true;
-            this.planesDataGridView.RowHeadersWidth = 70;
-            this.planesDataGridView.RowTemplate.Height = 30;
-            this.planesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.planesDataGridView.Size = new System.Drawing.Size(430, 547);
-            this.planesDataGridView.TabIndex = 43;
-            this.planesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.planesDataGridView_CellClick);
-            // 
-            // createPlaneBtn
-            // 
-            this.createPlaneBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.createPlaneBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.createPlaneBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.createPlaneBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createPlaneBtn.ForeColor = System.Drawing.Color.White;
-            this.createPlaneBtn.Location = new System.Drawing.Point(477, 404);
-            this.createPlaneBtn.Name = "createPlaneBtn";
-            this.createPlaneBtn.Size = new System.Drawing.Size(223, 55);
-            this.createPlaneBtn.TabIndex = 42;
-            this.createPlaneBtn.Text = "Create Plane";
-            this.createPlaneBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.createPlaneBtn.UseVisualStyleBackColor = false;
-            this.createPlaneBtn.Click += new System.EventHandler(this.createPlaneBtn_Click);
-            // 
-            // label87
-            // 
-            label87.AutoSize = true;
-            label87.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label87.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            label87.Location = new System.Drawing.Point(4, 81);
-            label87.Name = "label87";
-            label87.Size = new System.Drawing.Size(320, 35);
-            label87.TabIndex = 41;
-            label87.Text = "Manage planes in this Page";
-            // 
-            // label89
-            // 
-            label89.AutoSize = true;
-            label89.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label89.Location = new System.Drawing.Point(-3, 22);
-            label89.Name = "label89";
-            label89.Size = new System.Drawing.Size(264, 100);
-            label89.TabIndex = 40;
-            label89.Text = "Planes";
-            // 
             // AdminTabs
             // 
             this.Controls.Add(this.tabControler);
             this.Controls.Add(this.panel1);
             this.Name = "AdminTabs";
             this.Size = new System.Drawing.Size(921, 728);
+            viewPlanes.ResumeLayout(false);
+            viewPlanes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.planesDataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.usersIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).EndInit();
@@ -4359,51 +4364,51 @@ namespace HappyJourneyAirline.Tabs
             this.btntabCreatenotifications.PerformLayout();
             this.viewLocation.ResumeLayout(false);
             this.viewLocation.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
             this.flowLayoutPanel5.ResumeLayout(false);
-            this.cityGroupBox.ResumeLayout(false);
-            this.cityGroupBox.PerformLayout();
-            this.AirportGroupBox.ResumeLayout(false);
-            this.AirportGroupBox.PerformLayout();
             this.countryGroupBox.ResumeLayout(false);
             this.countryGroupBox.PerformLayout();
+            this.AirportGroupBox.ResumeLayout(false);
+            this.AirportGroupBox.PerformLayout();
+            this.cityGroupBox.ResumeLayout(false);
+            this.cityGroupBox.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
             this.veAirCouCity.ResumeLayout(false);
             this.veAirCouCity.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.airportsDataGridView)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.citiesDataGridView)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.countriesDataGridView)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.citiesDataGridView)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.airportsDataGridView)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.mtAgencyPanel.ResumeLayout(false);
-            this.mtAgencyPanel.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
-            this.mtCompanyNamePanel.ResumeLayout(false);
-            this.mtCompanyNamePanel.PerformLayout();
-            this.mtLastNamePanel.ResumeLayout(false);
-            this.mtLastNamePanel.PerformLayout();
             this.mtFirstNamePanel.ResumeLayout(false);
             this.mtFirstNamePanel.PerformLayout();
+            this.mtLastNamePanel.ResumeLayout(false);
+            this.mtLastNamePanel.PerformLayout();
+            this.mtCompanyNamePanel.ResumeLayout(false);
+            this.mtCompanyNamePanel.PerformLayout();
+            this.mtAgencyPanel.ResumeLayout(false);
+            this.mtAgencyPanel.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.AddAirCityConTab.ResumeLayout(false);
             this.AddAirCityConTab.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.createUserTab.ResumeLayout(false);
             this.createUserTab.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
-            this.cuCompanyNamePanel.ResumeLayout(false);
-            this.cuCompanyNamePanel.PerformLayout();
-            this.cuLNamePanel.ResumeLayout(false);
-            this.cuLNamePanel.PerformLayout();
             this.cuFNamePanel.ResumeLayout(false);
             this.cuFNamePanel.PerformLayout();
+            this.cuLNamePanel.ResumeLayout(false);
+            this.cuLNamePanel.PerformLayout();
+            this.cuCompanyNamePanel.ResumeLayout(false);
+            this.cuCompanyNamePanel.PerformLayout();
             this.editFlightTab.ResumeLayout(false);
             this.editFlightTab.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
@@ -4413,8 +4418,8 @@ namespace HappyJourneyAirline.Tabs
             this.bookingDetailsTab.PerformLayout();
             this.travellerUsersTab.ResumeLayout(false);
             this.travellerUsersTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addNotifications)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
             this.travellerSettingsTab.ResumeLayout(false);
             this.travellerSettingsTab.PerformLayout();
             this.travellerBookingsTab.ResumeLayout(false);
@@ -4424,9 +4429,6 @@ namespace HappyJourneyAirline.Tabs
             this.travellerFlightsTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flightsDataGridView)).EndInit();
             this.tabControler.ResumeLayout(false);
-            viewPlanes.ResumeLayout(false);
-            viewPlanes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.planesDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4647,9 +4649,7 @@ namespace HappyJourneyAirline.Tabs
         {
             flights = new BindingList<Flight>(Flight.GetAllFlights());
 
-            string connection = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\database.mdf;Integrated Security=True";
-
-            SqlConnection sqlConnection = new SqlConnection(connection);
+            SqlConnection sqlConnection = new SqlConnection(Database.connectionString);
             sqlConnection.Open();
             SqlCommand command = sqlConnection.CreateCommand();
             command.CommandText = $"SELECT " +
@@ -4804,7 +4804,7 @@ namespace HappyJourneyAirline.Tabs
 
             if (efPlaneIdDrop.Enabled)
             {
-                selectedFlight.Id = efPlaneIdDrop.SelectedIndex;
+                selectedFlight.PlaneID = (efPlaneIdDrop.SelectedItem as Plane).Id;
                 selectedFlight.DepartureTimestamp = efDatePick.Value.Date + efDepTimePick.Value.TimeOfDay;
                 selectedFlight.ArrivalTimestamp = efArrTimePick.Value;
                 selectedFlight.BasePrice = decimal.Parse(efPriceTxt.Text);
@@ -5018,8 +5018,8 @@ namespace HappyJourneyAirline.Tabs
             else
             {
                 cities = new BindingList<City>(City.GetAllCities());
-                addAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
-                addAirportCityDrop.DisplayMember = "Name";
+                editAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
+                editAirportCityDrop.DisplayMember = "Name";
             }
 
         }
@@ -5850,9 +5850,9 @@ namespace HappyJourneyAirline.Tabs
             bool isValidData = true;  // Start assuming the data is valid
 
             // Username validation
-            if (cuUsernameTxt.Text.Trim().Length < 6)
+            if (cuUsernameTxt.Text.Trim().Length < 3)
             {
-                ShowError(cuUserNameErrorLbl, "Error: Username must contain at least 6 characters");
+                ShowError(cuUserNameErrorLbl, "Error: Username must contain at least 3 characters");
                 isValidData = false;  // Mark as invalid if this check fails
             }
             else
@@ -6521,11 +6521,32 @@ namespace HappyJourneyAirline.Tabs
         }
         private void planesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == 0)
+            {
+                selectedPlane = planesDataGridView.Rows[e.RowIndex].DataBoundItem as Plane;
+                DialogResult result = MessageBox.Show($"Are you sure you want to delete plane {selectedPlane.Id}, deleting it will result in all related information being deleted too.", "Are you sure?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.OK)
+                {
+                    if (Plane.DeletePlane(selectedPlane.Id))
+                    {
+                        planes = new BindingList<Plane>(Plane.GetAllPlanes());
+                        planesDataGridView.DataSource = planes;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
 
         }
-
         private void planesDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            foreach (DataGridViewRow row in (sender as DataGridView).Rows)
+            {
+                row.Cells[0].Value = "Delete";
+            }
 
         }
 
