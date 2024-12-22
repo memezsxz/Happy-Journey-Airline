@@ -3,52 +3,65 @@ using System.IO;
 
 namespace HappyJourneyAirline.Lib
 {
+    /// <summary>
+    /// The AuthService class provides methods for managing user authentication and session handling.
+    /// It uses a text file to store the current session's user ID.
+    /// </summary>
     internal class AuthService
     {
-        // Store the UserId in a text file
+        /// <summary>
+        /// Stores the user ID in a session file to manage the current session.
+        /// </summary>
+        /// <param name="userId">The user ID to store in the session.</param>
         public static void StoreUserId(long userId)
         {
-            string filePath = "session.txt"; // file that contains the current session
-            File.WriteAllText(filePath, userId.ToString());  // Store the user ID in a text file
+            string filePath = "session.txt"; // File that contains the current session
+            File.WriteAllText(filePath, userId.ToString());  // Store the user ID in the file
         }
 
-        // Check if the user is logged in by verifying if the user ID exists and is greater than 0
+        /// <summary>
+        /// Checks if a user is currently logged in by verifying the session file.
+        /// </summary>
+        /// <returns><c>true</c> if a valid user ID exists in the session file; otherwise, <c>false</c>.</returns>
         public static bool IsUserLoggedIn()
         {
-            string filePath = "session.txt"; // file that contain current session
-            if (File.Exists(filePath)) // check if the session file exist
+            string filePath = "session.txt"; // File containing the current session
+            if (File.Exists(filePath)) // Check if the session file exists
             {
-                string storedUserId = File.ReadAllText(filePath); // read the session file content
-                return int.TryParse(storedUserId, out int userId) && userId > 0; // if there is a valid session return true
+                string storedUserId = File.ReadAllText(filePath); // Read the session file content
+                return int.TryParse(storedUserId, out int userId) && userId > 0; // Return true if a valid session exists
             }
-            return false;  // User is not logged in if no file exists or user ID is invalid
+            return false;  // User is not logged in if no file exists or the user ID is invalid
         }
 
-        // Get the current logged-in user's ID
+        /// <summary>
+        /// Retrieves the user ID of the currently logged-in user from the session file.
+        /// </summary>
+        /// <returns>The user ID if a user is logged in; otherwise, -1.</returns>
         public static long GetCurrentUserId()
         {
-            string filePath = "session.txt"; // session file name
+            string filePath = "session.txt"; // Session file name
             if (File.Exists(filePath))
             {
-                string storedUserId = File.ReadAllText(filePath); // read sesssion file
-                if (long.TryParse(storedUserId, out long userId) && userId > 0) // check if there is correct logged in user
+                string storedUserId = File.ReadAllText(filePath); // Read the session file
+                if (long.TryParse(storedUserId, out long userId) && userId > 0) // Verify the user ID is valid
                 {
                     return userId;  // Return the current logged-in user ID
                 }
             }
-            return -1;  // Return -1 if there is no logged-in user
+            return -1;  // Return -1 if no user is logged in
         }
 
-        // Remove the current logged-in user by deleting the user ID file
+        /// <summary>
+        /// Logs out the current user by deleting the session file.
+        /// </summary>
         public static void LogoutCurrentUser()
         {
-            string filePath = "session.txt"; // the name of the session file
-            if (File.Exists(filePath)) // check if the session file exists
+            string filePath = "session.txt"; // Name of the session file
+            if (File.Exists(filePath)) // Check if the session file exists
             {
-                File.Delete(filePath);  // Remove the user ID file to log out the user
+                File.Delete(filePath);  // Delete the file to log out the user
             }
         }
-
-
     }
 }

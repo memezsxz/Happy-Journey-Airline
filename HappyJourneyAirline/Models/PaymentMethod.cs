@@ -1,20 +1,35 @@
-﻿// This class provide interface to interact with the stored payment methods in database.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// This class provides an interface to interact with the stored payment methods in the database.
+    /// It includes methods for retrieving, adding, updating, and deleting payment methods.
+    /// </summary>
     public class PaymentMethod
     {
-        // Payment Method Attributes
+        /// <summary>
+        /// Gets or sets the primary key of the payment method.
+        /// </summary>
         public long Id { get; set; } // Primary Key
+
+        /// <summary>
+        /// Gets or sets the name of the payment method. This is nullable.
+        /// </summary>
         public string Name { get; set; } // Nullable
+
+        /// <summary>
+        /// Gets or sets the details of the payment method. This is nullable.
+        /// </summary>
         public string Details { get; set; } // Nullable
 
-        // Fetch all payment methods
+        /// <summary>
+        /// Retrieves all payment methods from the database.
+        /// </summary>
+        /// <returns>A list of <see cref="PaymentMethod"/> objects.</returns>
         public static List<PaymentMethod> GetAllPaymentMethods()
         {
             string query = "SELECT Id, name, details FROM payment_methods";
@@ -26,7 +41,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new payment method
+        /// <summary>
+        /// Adds a new payment method to the database.
+        /// </summary>
+        /// <param name="paymentMethod">The <see cref="PaymentMethod"/> object to add.</param>
+        /// <returns>The ID of the newly added payment method, or -1 if the operation failed.</returns>
         public static long AddPaymentMethod(PaymentMethod paymentMethod)
         {
             string query = @"
@@ -68,7 +87,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing payment method
+        /// <summary>
+        /// Updates an existing payment method in the database.
+        /// </summary>
+        /// <param name="paymentMethod">The <see cref="PaymentMethod"/> object to update.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdatePaymentMethod(PaymentMethod paymentMethod)
         {
             string query = @"
@@ -85,7 +108,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a payment method
+        /// <summary>
+        /// Deletes a payment method from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the payment method to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeletePaymentMethod(long id)
         {
             string query = "DELETE FROM payment_methods WHERE Id = @Id";
@@ -96,7 +123,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a payment method by ID
+        /// <summary>
+        /// Retrieves a payment method from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the payment method to retrieve.</param>
+        /// <returns>A <see cref="PaymentMethod"/> object if found; otherwise, <c>null</c>.</returns>
         public static PaymentMethod GetPaymentMethodById(long id)
         {
             string query = "SELECT Id, name, details FROM payment_methods WHERE Id = @Id";

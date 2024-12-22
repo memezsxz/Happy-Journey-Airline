@@ -1,19 +1,35 @@
-﻿// This class provide interface to interact with the payment statuses in database.
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// The PaymentStatus class provides an interface to interact with the stored payment statuses in the database.
+    /// It includes methods for retrieving, adding, updating, and deleting payment statuses.
+    /// </summary>
     public class PaymentStatus
     {
-        // Payment Statuses Attributes
+        /// <summary>
+        /// Gets or sets the unique ID of the payment status (Primary Key).
+        /// </summary>
         public int Id { get; set; } // Primary Key
+
+        /// <summary>
+        /// Gets or sets the name of the payment status (Nullable).
+        /// </summary>
         public string Name { get; set; } // Nullable
+
+        /// <summary>
+        /// Gets or sets the description of the payment status (Nullable).
+        /// </summary>
         public string Description { get; set; } // Nullable
 
-        // Fetch all payment statuses
+        /// <summary>
+        /// Retrieves all payment statuses from the database.
+        /// </summary>
+        /// <returns>A list of all payment statuses.</returns>
         public static List<PaymentStatus> GetAllPaymentStatuses()
         {
             string query = "SELECT Id, name, description FROM payment_statuses";
@@ -25,7 +41,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new payment status
+        /// <summary>
+        /// Adds a new payment status to the database.
+        /// </summary>
+        /// <param name="paymentStatus">The payment status object containing status details.</param>
+        /// <returns>The ID of the newly added payment status, or -1 if the operation failed.</returns>
         public static int AddPaymentStatus(PaymentStatus paymentStatus)
         {
             string query = @"
@@ -67,7 +87,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing payment status
+        /// <summary>
+        /// Updates an existing payment status in the database.
+        /// </summary>
+        /// <param name="paymentStatus">The payment status object containing updated status details.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdatePaymentStatus(PaymentStatus paymentStatus)
         {
             string query = @"
@@ -84,7 +108,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a payment status
+        /// <summary>
+        /// Deletes a payment status from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the payment status to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeletePaymentStatus(int id)
         {
             string query = "DELETE FROM payment_statuses WHERE Id = @Id";
@@ -95,7 +123,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a payment status by ID
+        /// <summary>
+        /// Retrieves a payment status from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the payment status to retrieve.</param>
+        /// <returns>The payment status object if found; otherwise, <c>null</c>.</returns>
         public static PaymentStatus GetPaymentStatusById(int id)
         {
             string query = "SELECT Id, name, description FROM payment_statuses WHERE Id = @Id";
