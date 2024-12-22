@@ -12,6 +12,12 @@ using System.Drawing;
 using System.Net;
 namespace HappyJourneyAirline.Tabs
 {
+
+    /// <summary>
+    /// This class include all the Trveller controls and methods. Meaning Everything related to the Traveller side will be in this class
+    /// </summary>
+    /// 
+
     public partial class TravellerTabs : UserControl
     {
         TabControl appTabs;
@@ -148,7 +154,7 @@ namespace HappyJourneyAirline.Tabs
 
         #region Added Atrebutes
         private Flight selectedFlight = null;
-        #endregion
+
         public TravellerTabs(TabControl appTabs)
         {
             InitializeComponent();
@@ -164,6 +170,7 @@ namespace HappyJourneyAirline.Tabs
             // when time change console log the time
 
         }
+        #endregion
 
         private void InitializeComponent()
         {
@@ -2001,23 +2008,38 @@ namespace HappyJourneyAirline.Tabs
         }
 
         #region Sidebar Navigation
+
+        /// <summary>
+        /// This method will be trigger in case of clickig on the flight icon (flight tab) in the traveller side.
+        /// Als, it will chnage the scrren to the flight section 
+        /// </summary>
+        /// <param name="sender"> the sender object (flight icon)</param>
+        /// <param name="e">evnt object (click)</param>
         private void flightsTab_Click(object sender, EventArgs e)
         {
+            //chnage the tab to the flight tab
             tabController.SelectTab(0);
             defultIcons();
+            //change the icon image to look like it is selected 
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
 
+
+            //call the flightDataLoad method to load the current flights into the gridview 
             flightDataLoad();
+
             try
             {
+                //clear both comboBox that shows the available airports names 
                 depDrop.Items.Clear();
                 arrivalDrop.Items.Clear();
 
-                List<Airport> airportList = new List<Airport>();
 
+                List<Airport> airportList = new List<Airport>();
+                
+                //get all the airpots records from the database and save itinto list variable 
                 airportList = Airport.GetAllAirports();
 
-
+                // check if the list not empty, meaning if there is airports records in the database 
                 if (airportList == null || airportList.Count == 0)
                 {
                     Console.WriteLine("No airports found.");
@@ -2025,6 +2047,7 @@ namespace HappyJourneyAirline.Tabs
                 }
                 else
                 {
+                    //set both comboboxes with the airports names 
                     depDrop.DataSource = airportList;
                     depDrop.DisplayMember = "Name";
 
@@ -2040,24 +2063,41 @@ namespace HappyJourneyAirline.Tabs
 
         }
 
+        /// <summary>
+        /// This method will trigger in case of clicking on the booking tab leading to show the booking tab page
+        /// </summary>
+        /// <param name="sender"> the button </param>
+        /// <param name="e"> Clicking action </param>
         private void bookingTab_Click(object sender, EventArgs e)
         {
+            //chnage to th booking tab 
             tabController.SelectTab(1);
             defultIcons();
             bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
 
+            //load the booking data from the database and place them into the gridview using the loadBookingTable method
             loadBookingTable();
 
         }
 
+
+        /// <summary>
+        /// This method will trigger in case of clicking on the setting tab leading to show the setting tab page
+        /// </summary>
+        /// <param name="sender"> the button </param>
+        /// <param name="e"> Clicking action </param>
         private void settingTab_Click(object sender, EventArgs e)
         {
+            //chnage to the setting tab 
             tabController.SelectTab(2);
             defultIcons();
             settingTab.Image = global::HappyJourneyAirline.Properties.Resources.Settings_Active;
 
+            //get the loged in user and save it in a variable called currentUser.
+            //GetUserById is static method in User model, GetCurrentUserId is method in the AuthService that return the current loged in user 
             User currentUser = User.GetUserById(AuthService.GetCurrentUserId());
 
+            //set the text field in the ui with current user information 
             setUsernameTxt.Text = currentUser.Username;
             setFirstNameTxt.Text = currentUser.FirstName;
             setEmailTxt.Text = currentUser.Email;
@@ -2067,14 +2107,24 @@ namespace HappyJourneyAirline.Tabs
 
         }
 
+
+        /// <summary>
+        /// This method will trigger in case of notification on the setting tab leading to show the notification tab page
+        /// </summary>
+        /// <param name="sender"> the button </param>
+        /// <param name="e"> Clicking action </param>
         private void notificationTab_Click(object sender, EventArgs e)
         {
+
+            //chnage the to the notification page 
             tabController.SelectTab(3);
             defultIcons();
             notificationTab.Image = global::HappyJourneyAirline.Properties.Resources.Notification_Active;
 
+            //get all the notification that is related to the current loged in user and save the result into a list 
             List<Notification> list = Notification.GetNotificationsByUserId(AuthService.GetCurrentUserId());
 
+            //set the dat list in the gridview 
             dataGridViewNotification.DataSource = list;
 
 
@@ -2104,6 +2154,10 @@ namespace HappyJourneyAirline.Tabs
             dataGridViewNotification.DataSource = list;
         }
 
+        /// <summary>
+        /// this method was used by all the tabs clicking actions methods that is provided for the traveller.
+        /// This method will reset the other tabs by seting the tab image to the defualt image 
+        /// </summary>
         private void defultIcons() { 
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights;
             bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings;
@@ -2114,6 +2168,14 @@ namespace HappyJourneyAirline.Tabs
         #endregion Sidebar Navigation
 
         #region Flights Tab
+        
+
+        /// <summary>
+        /// This method will be trigger in case of clicking on the blue button (search button) leading to show a diffrent result depanding on 
+        /// the user specifications 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void searchIcon_Click(object sender, EventArgs e)
         {
             // Get selected dropdown values 
@@ -2222,15 +2284,21 @@ namespace HappyJourneyAirline.Tabs
             }
         }
 
+        /// <summary>
+        /// This method will load all the flight records from the database.
+        /// This methhod used to refresh the flights records in the gridview 
+        /// </summary>
         private void flightDataLoad()
         {
 
             try
             {
 
+                //having two lists have the smae information which t is the all airports records 
                 List<Airport> airportList = new List<Airport>();
 
                 airportList = Airport.GetAllAirports();
+
                 List<Airport> airportList2 = Airport.GetAllAirports();
 
                 if (airportList == null || airportList.Count == 0)
@@ -2240,16 +2308,18 @@ namespace HappyJourneyAirline.Tabs
                 }
                 else
                 {
+                    
                     Airport allOption = new Airport
                     {
                         Id = 0,
                         Name = "All"
                     };
 
-
+                    //make the first choise in the list All 
                     airportList.Insert(0, allOption);
                     airportList2.Insert(0, allOption);
 
+                    //set the list to the coboBox 
                     depDrop.DataSource = null;
                     depDrop.DataSource = airportList;
                     depDrop.DisplayMember = "Name";
@@ -2261,9 +2331,11 @@ namespace HappyJourneyAirline.Tabs
 
 
 
-
+                //create sql connection
                 SqlConnection conn = new SqlConnection(Database.connectionString);
                 SqlCommand cmd = conn.CreateCommand();
+                
+                //a query to retravel all Scheduled and Delayed the flights from the database 
                 cmd.CommandText = $"SELECT " +
                     $"'View' as 'View', " +
                     $"f.Id AS 'Flight ID', " +
@@ -2279,10 +2351,13 @@ namespace HappyJourneyAirline.Tabs
                     $"LEFT JOIN airports sa ON f.sourceAirportID = sa.Id " +
                     $"LEFT JOIN airports da ON f.destinationAirportID = da.Id " +
                     $"WHERE fs.name IN ('Scheduled', 'Delayed')";
+
+                //create adapter to connect the command result with datatable 
                 SqlDataAdapter ad = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 ad.Fill(dt);
 
+                //set the data in the gridview 
                 gridflightsData.DataSource = dt;
 
                 DataGridViewColumn viewColumn = gridflightsData.Columns[0];
@@ -2295,9 +2370,15 @@ namespace HappyJourneyAirline.Tabs
 
             }
         }
-
+        /// <summary>
+        /// This method will be trigger in case of clicking on the cancel button.
+        /// It will load all the flights and show them for the user, at the same time will remove any filtring on the flighhts 
+        /// </summary>
+        /// <param name="sender"> cancel button</param>
+        /// <param name="e"> Clicking Action </param>
         private void cancelIcon_Click(object sender, EventArgs e)
         {
+            //reset the filtring and fileds 
             dateCheck.CheckState = CheckState.Unchecked;
             timeCheck.CheckState = CheckState.Unchecked;
             arrivalDrop.SelectedIndex = 0;
@@ -2305,18 +2386,30 @@ namespace HappyJourneyAirline.Tabs
 
             depDrop.SelectedIndex = 0;
             arrivalDrop.SelectedIndex = 0;
+
+            //load the flights data 
             flightDataLoad();
             return;
         }
 
+
+
+        /// <summary>
+        /// This method handles the action when button2 is clicked.
+        /// It retrieves the selected notification from the DataGridView and displays its details in a message box.
+        /// </summary>
+        /// <param name="sender">The button2 control</param>
+        /// <param name="e">The click event associated with button2</param>
         private void button2_Click(object sender, EventArgs e)
         {
             try
             {
+                // Retrieve the selected notification
                 var selectedObject = dataGridViewNotification.SelectedCells[0].OwningRow.DataBoundItem as Notification;
 
                 if (selectedObject != null)
                 {
+                    // Show the notification details in a message box
                     MessageBox.Show(selectedObject.Description, selectedObject.Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -2324,20 +2417,28 @@ namespace HappyJourneyAirline.Tabs
             catch { }
         }
 
+        /// <summary>
+        /// This method handles the action when button1 is clicked.
+        /// It retrieves the selected flight from the grid, updates the UI, and switches to the booking tab.
+        /// </summary>
+        /// <param name="sender">The button1 control</param>
+        /// <param name="e">The click event associated with button1</param>
         private void button1_Click(object sender, EventArgs e)
         {
+            // Get the selected flight ID from the DataGridView
             int selectedId = Convert.ToInt32(gridflightsData.SelectedCells[0].OwningRow.Cells[0].Value);
             tabController.SelectTab(1);
             defultIcons();
             bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
 
-
+            // Retrieve the selected flight details and update the label
             selectedFlight = Flight.GetFlightById(selectedId);
             label40.Text = "Selected flight id is " + selectedFlight.Id;// test
         }
 
         private void travellerFlightsTab_Paint(object sender, PaintEventArgs e)
         {
+            //load the flights reords 
             flightDataLoad();
         }
 
@@ -2351,17 +2452,19 @@ namespace HappyJourneyAirline.Tabs
 
         private void gridflightsData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
-            {
-                selectedFlight = Flight.GetFlightById((int)(gridflightsData.Rows[e.RowIndex].Cells[1].Value));
-                sutupFlightDetails();
-                tabController.SelectTab(4);
-            }
+
         }
 
+
+        /// <summary>
+        /// This method is triggered when the "dateCheck" checkbox's state changes.
+        /// It enables or disables the "date" control based on whether the checkbox is checked.
+        /// </summary>
+        /// <param name="sender">The dateCheck checkbox control</param>
+        /// <param name="e">The event triggered when the checkbox's state changes</param>
         private void dateCheck_CheckedChanged(object sender, EventArgs e)
         {
-            //date.Enabled = dateCheck.Checked;
+            // Enable or disable the date control based on the checkbox's state
             if (dateCheck.Checked)
             {
                 date.Enabled = true;
@@ -2372,6 +2475,12 @@ namespace HappyJourneyAirline.Tabs
             }
         }
 
+        /// <summary>
+        /// This method is triggered when the "timeCheck" checkbox's state changes.
+        /// It enables or disables the "time" control and updates its text when enabled.
+        /// </summary>
+        /// <param name="sender">The timeCheck checkbox control</param>
+        /// <param name="e">The event triggered when the checkbox's state changes</param>
         private void timeCheck_CheckedChanged(object sender, EventArgs e)
         {
             //time.Enabled = timeCheck.Checked;
@@ -2389,57 +2498,87 @@ namespace HappyJourneyAirline.Tabs
         #endregion Flights Tab
 
         #region Flight Details Tab
+
+        /// <summary>
+        /// This method sets up the flight details in the user interface based on the selected flight.
+        /// It retrieves and displays information about the flight number, departure/arrival airports,
+        /// departure/arrival cities, countries, and timestamps.
+        /// </summary>
         private void sutupFlightDetails()
         {
+            // Display the selected flight's ID in the flight number text box
             fdFlightNumTxt.Text = $"{selectedFlight.Id}";
 
+            // Retrieve departure and destination airport details
             Airport depAirport = Airport.GetAirportById(selectedFlight.SourceAirportID);
             Airport destAirport = Airport.GetAirportById(selectedFlight.DestinationAirportID);
 
+            // Retrieve departure and destination city details
             City depCity = City.GetCityById(depAirport.CityId);
             City destCity = City.GetCityById(destAirport.CityId);
 
+            // Retrieve departure and destination country details
             Country depCountry = Country.GetCountryById(depCity.CountryId);
             Country destCountry = Country.GetCountryById(destCity.CountryId);
 
+            // Set the text fields for departure and arrival airports
             fdArrTxt.Text = destAirport.Name;
             fdDepTxt.Text = depAirport.Name;
 
+            // Set the text fields for departure and destination locations (City and Country)
             fdFromTxt.Text = $"{depCity.Name} ({depCountry.Name})";
             fdToTxt.Text = $"{destCity.Name} ({destCountry.Name})";
 
+            // Set the text fields for departure and arrival times
             fdArrTimeTxt.Text = $"{selectedFlight.ArrivalTimestamp}";
             fdDepTimeTxt.Text = $"{selectedFlight.DepartureTimestamp}";
 
 
         }
 
+
+        /// <summary>
+        /// This method is triggered when the cancel button is clicked in the flight details view.
+        /// It resets the selected flight and navigates back to the main tab.
+        /// </summary>
+        /// <param name="sender">The cancel button control</param>
+        /// <param name="e">The click event associated with the cancel button</param>
         private void fdCancelBtn_Click(object sender, EventArgs e)
         {
-            selectedFlight = null; 
+            // Reset the selected flight
+            selectedFlight = null;
 
+            // Navigate back to the main tab
             tabController.SelectTab(0);
         }
 
+
+        /// <summary>
+        /// This method is triggered when the book button is clicked in the flight details view.
+        /// It initializes the booking form with the selected flight details and switches to the payment tab.
+        /// </summary>
+        /// <param name="sender">The book button control</param>
+        /// <param name="e">The click event associated with the book button</param>
         private void fdBookBtn_Click(object sender, EventArgs e)
         {
+            // Populate the booking form with the selected flight's details
             ppFlightNumTxt.Text = $"{selectedFlight.Id}";
             ppTotaLbl.Text = $"{selectedFlight.BasePrice}";
 
+            // Clear the payment input fields
             ppPasportNumTxt.Text = "";
             ppCardNumTxt.Text = "";
             ppNameCardTxt.Text = "";
             ppCvvTxt.Text = "";
 
+            // Hide any payment error messages
             paymentErrorLbl.Visible = false;
+
             try
             {
+                // Clear and populate the ticket class dropdown
                 ppTicketClassDrop.Items.Clear();
-
-                List<TicketClass> ticketClassList = new List<TicketClass>();
-
-                ticketClassList = TicketClass.GetAllTicketClasses();
-
+                List<TicketClass> ticketClassList = TicketClass.GetAllTicketClasses();
 
                 if (ticketClassList == null || ticketClassList.Count == 0)
                 {
@@ -2454,57 +2593,80 @@ namespace HappyJourneyAirline.Tabs
             }
             catch
             {
-
+                // Handle exceptions silently (consider logging the exception for debugging)
             }
 
-
+            // Navigate to the payment tab
             tabController.SelectTab(6);
         }
 
         #endregion Flight Details Tab
 
         #region Booking Screen
-        private void loadBookingTable() {
-            bookingTable.Rows.Clear();
-            // display Booking list
-            List<Ticket> tickets = new List<Ticket>();
 
-            tickets = Ticket.GetTicketsByUserId((int)AuthService.GetCurrentUserId());
+
+        /// <summary>
+        /// Loads the user's booking data into the booking table.
+        /// It retrieves tickets associated with the currently logged-in user,
+        /// and for each ticket, retrieves flight details and populates the table rows.
+        /// </summary>
+        private void loadBookingTable() {
+            // Clear existing rows in the booking table
+            bookingTable.Rows.Clear();
+
+            // Retrieve the tickets for the current user
+            List<Ticket> tickets = Ticket.GetTicketsByUserId((int)AuthService.GetCurrentUserId());
 
             foreach (Ticket ticket in tickets)
             {
-                //Console.WriteLine("-, "+ticket.Id);
+                // Retrieve flight and airport details for the ticket
                 Flight flight = Flight.GetFlightById(ticket.FlightID);
-                //Console.WriteLine("--, " + flight.SourceAirportID);
                 Airport source = Airport.GetAirportById(flight.SourceAirportID);
                 Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
+
+                // Add a row to the booking table with ticket and flight details
                 bookingTable.Rows.Add(ticket.Id, source.Name, destination.Name, flight.DepartureTimestamp, "View Details");
             }
         }
 
+
+        /// <summary>
+        /// Handles the event when a cell is clicked in the booking table.
+        /// If the clicked cell is a button, it retrieves the ticket and flight details
+        /// for the selected row, displays the information in the flight details section, 
+        /// and navigates to the flight details tab.
+        /// </summary>
+        /// <param name="sender">The booking table control</param>
+        /// <param name="e">The cell click event associated with the booking table</param>
         private void bookingTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
+
+            // Check if the clicked cell is a button and the row index is valid
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                //TODO - Button Clicked - Execute Code Here
+                // Retrieve the ticket ID from the selected row
                 int Ticketid = Convert.ToInt32(bookingTable.Rows[e.RowIndex].Cells[0].Value);
 
+                // Retrieve ticket and flight details
                 Ticket ticket = Ticket.GetTicketById(Ticketid);
                 Flight flight = Flight.GetFlightById(ticket.FlightID);
 
+                // Extract departure and arrival timestamps
                 string dep = flight.DepartureTimestamp.ToString();
                 string arr = flight.ArrivalTimestamp.ToString();
 
+                // Retrieve source and destination airport details
                 Airport source = Airport.GetAirportById(flight.SourceAirportID);
                 Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
 
+                // Retrieve source and destination city and country details
                 City sourceCity = City.GetCityById(source.CityId);
                 City destinationCity = City.GetCityById(destination.CityId);
                 Country sourceCountry = Country.GetCountryById(sourceCity.CountryId);
                 Country destinationCountry = Country.GetCountryById(destinationCity.CountryId);
 
+                // Populate the flight details UI with the retrieved data
                 bdIDTxt.Text = ticket.Id.ToString();
                 bdFlightNumTxt.Text = ticket.FlightID.ToString();
                 bdDateTxt.Text = dep.Split(' ')[0];
@@ -2521,12 +2683,26 @@ namespace HappyJourneyAirline.Tabs
         #endregion Booking Screen
 
         #region Booking Details
+
+        /// <summary>
+        /// Handles the event when the Back button in the Booking Details tab is clicked.
+        /// Navigates back to the Booking List tab and reloads the booking table data.
+        /// </summary>
+        /// <param name="sender">The Back button control</param>
+        /// <param name="e">The event data associated with the button click</param>
         private void bdBackBtn_Click(object sender, EventArgs e)
         {
             tabController.SelectTab(1);
             loadBookingTable();
         }
 
+
+        /// <summary>
+        /// Handles the event when the Cancel button in the Booking Details tab is clicked.
+        /// Validates the input, confirms the action with the user, and deletes the ticket if confirmed.
+        /// </summary>
+        /// <param name="sender">The Cancel button control</param>
+        /// <param name="e">The event data associated with the button click</param>
         private void bdCancelBtn_Click(object sender, EventArgs e)
         {
             // Validate input and parse Ticket ID
@@ -2575,14 +2751,23 @@ namespace HappyJourneyAirline.Tabs
         #endregion Booking Details
 
         #region Settings Tab
+
+        /// <summary>
+        /// Handles the event triggered by clicking the Cancel button in the Settings tab.
+        /// Navigates back to the main Flights tab, resets the tab controller, and populates the user's information in the settings fields.
+        /// </summary>
+        /// <param name="sender">The Cancel button control</param>
+        /// <param name="e">The event data associated with the button click</param>
         private void setCancelBtn_Click(object sender, EventArgs e)
         {
             tabController.SelectTab(0);
             defultIcons();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
 
+            //get the curren user 
             User currentUser = User.GetUserById(AuthService.GetCurrentUserId());
 
+            //set the text fields with current user information 
             setUsernameTxt.Text = currentUser.Username;
             setFirstNameTxt.Text = currentUser.FirstName;
             setEmailTxt.Text = currentUser.Email;
@@ -2591,125 +2776,156 @@ namespace HappyJourneyAirline.Tabs
             setPhoneTxt.Text = currentUser.PhoneNumber;
         }
 
+
+
+        /// <summary>
+        /// Handles the Save Changes button click event in the Settings tab.
+        /// Validates user input for required fields and updates the user's information in the database.
+        /// Displays appropriate error or success messages based on the result of the operation.
+        /// </summary>
+        /// <param name="sender">The Save Changes button control</param>
+        /// <param name="e">The event data associated with the button click</param>
         private void setSaveChanesBtn_Click(object sender, EventArgs e)
         {
-
+            // Retrieve the current user from the database using their ID
             User currentUser = User.GetUserById(AuthService.GetCurrentUserId());
 
+            // Initialize a list to collect names of fields that are empty
             List<string> list = new List<string>();
-            Boolean valid = true;
+            bool valid = true;
 
-            if (setUsernameTxt.Text == "")
+            // Validate each field and add the field name to the list if empty
+            if (string.IsNullOrEmpty(setUsernameTxt.Text))
             {
-                list.Add("username");
+                list.Add("Username");
                 valid = false;
             }
 
-            if (setFirstNameTxt.Text == "")
+            if (string.IsNullOrEmpty(setFirstNameTxt.Text))
             {
                 list.Add("First Name");
                 valid = false;
             }
 
-            if (setLastNameTxt.Text == "")
+            if (string.IsNullOrEmpty(setLastNameTxt.Text))
             {
                 list.Add("Last Name");
                 valid = false;
             }
 
-            if (setPasswordTxt.Text == "")
+            if (string.IsNullOrEmpty(setPasswordTxt.Text))
             {
                 list.Add("Password");
                 valid = false;
             }
 
-            if (setEmailTxt.Text == "")
+            if (string.IsNullOrEmpty(setEmailTxt.Text))
             {
                 list.Add("Email");
                 valid = false;
             }
 
-            if (setPhoneTxt.Text == "")
+            if (string.IsNullOrEmpty(setPhoneTxt.Text))
             {
                 list.Add("Phone Number");
                 valid = false;
             }
 
-            if (valid == false)
+            // If validation fails, show an error message
+            if (!valid)
             {
-
+                // Create an error message from the list of empty fields
                 string message = list[0];
-
-                for (int i = 1; i < list.Count(); i++)
+                for (int i = 1; i < list.Count; i++)
                 {
-                    message += " ," + list[i].ToString();
+                    message += ", " + list[i];
                 }
 
+                // Display the error message in a label and a message box
                 setErrorLbl.Visible = true;
-                setErrorLbl.Text = "Error: Please fill the follwing fileds: " + message;
+                setErrorLbl.Text = "Error: Please fill the following fields: " + message;
 
-                MessageBox.Show("Error", "All fileds are required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("Error", "All fields are required", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-
-
+                // Update the user's information with the new values from the input fields
                 currentUser.PhoneNumber = setPhoneTxt.Text;
                 currentUser.Username = setUsernameTxt.Text;
                 currentUser.Email = setEmailTxt.Text;
                 currentUser.Password = setPasswordTxt.Text;
                 currentUser.FirstName = setFirstNameTxt.Text;
                 currentUser.LastName = setLastNameTxt.Text;
+
+                // Save the updated user information to the database
                 User.UpdateUser(currentUser);
 
-                MessageBox.Show("User Info Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Show a success message
+                MessageBox.Show("User Info Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
+
+        /// <summary>
+        /// Handles the Delete User button click event in the Settings tab.
+        /// Prompts the user for confirmation and deletes the current user's account if confirmed.
+        /// Displays appropriate success or error messages based on the operation result.
+        /// </summary>
+        /// <param name="sender">The Delete button control</param>
+        /// <param name="e">The event data associated with the button click</param>
         private void setDeleteBtn_Click(object sender, EventArgs e)
         {
             try
             {
+                // Get the current user's ID and retrieve their information
                 long id = AuthService.GetCurrentUserId();
                 User currentUser = User.GetUserById(id);
 
-
+                // Display a confirmation dialog to the user
                 DialogResult result = MessageBox.Show(
-            "Warning! Are you sure you want to delete this user? This action cannot be undone.",
-            "Delete Confirmation",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Warning);
+                    "Warning! Are you sure you want to delete this user? This action cannot be undone.",
+                    "Delete Confirmation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
-
+                    // Attempt to delete the user
                     if (User.DeleteUser(currentUser.Id))
                     {
+                        // Success: Notify the user and return to the home tab
                         MessageBox.Show("User has been successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         appTabs.SelectTab(0);
                     }
                     else
                     {
+                        // Failure: Display an error message
                         MessageBox.Show("An error occurred while deleting the user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                     }
-
                 }
                 else
                 {
+                    // Operation canceled by the user
                     MessageBox.Show("Delete operation canceled.", "Cancellation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception er)
             {
+                // Log any unexpected exceptions
                 Console.WriteLine(er.ToString());
-                //}
             }
         }
 
         #endregion Settings Tab
 
+
+        /// <summary>
+        /// Handles the Pay button click event in the Payment tab.
+        /// Validates user inputs, processes the payment, generates a ticket, and assigns a random seat.
+        /// Displays success or error messages based on the result of the operation.
+        /// </summary>
+        /// <param name="sender">The Pay button control</param>
+        /// <param name="e">The event data associated with the button click</param>
         private void ppPayBtn_Click(object sender, EventArgs e)
         {
             paymentErrorLbl.Visible = false;
@@ -2722,21 +2938,24 @@ namespace HappyJourneyAirline.Tabs
                 return;
             }
 
+            // Parse flight ID
             int flightId = Convert.ToInt32(ppFlightNumTxt.Text);
 
+
+            // Determine selected payment method
             int paymentMethod;
 
             if (ppCcRadio.Checked)
             {
-                paymentMethod = 1;
+                paymentMethod = 1; // MasterCard
             }
             else if (ppVisaRadio.Checked)
             {
-                paymentMethod = 2;
+                paymentMethod = 2; // Visa
             }
             else if (ppAeRadio.Checked)
             {
-                paymentMethod = 3;
+                paymentMethod = 3; // American Express
             }
             else
             {
@@ -2746,46 +2965,46 @@ namespace HappyJourneyAirline.Tabs
                 return;
             }
 
-            // Generate a completely random seat
+            // Generate a random seat assignment
             string assignedSeat = GenerateRandomSeat();
 
+            // Create a new Payment object
             Payment payment = new Payment
             {
-                Id = 11,
+                Id = 11, // Assuming this is the next available ID
                 Amount = Convert.ToDecimal(ppTotaLbl.Text),
                 Date = DateTime.Now,
-                PaymentStatusID = 1,
+                PaymentStatusID = 1, // Paid
                 PaymentMethodID = paymentMethod
             };
 
             try
             {
+                // Create a new Ticket object
                 Ticket ticket = new Ticket
                 {
                     FlightID = selectedFlight.Id,
                     UserID = AuthService.GetCurrentUserId(),
                     Seat = assignedSeat,
                     TicketClassID = ppTicketClassDrop.SelectedIndex + 1,
-                    TicketStatusID = 1,
-                    PaymentID = Payment.AddPayment(payment),
+                    TicketStatusID = 1, // Confirmed
+                    PaymentID = Payment.AddPayment(payment), // Add payment and get its ID
                     AgencyID = User.GetUserById(AuthService.GetCurrentUserId()).AgencyID
                 };
 
-                 //Insert the ticket into the database
+                // Insert the ticket into the database
                 Ticket.AddTicket(ticket);
             }
-
-
-
             catch
             {
+                // Handle ticket creation errors
                 paymentErrorLbl.Visible = true;
                 MessageBox.Show("Error while creating the ticket.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 paymentErrorLbl.Text = "Error while creating the ticket";
+                return;
             }
 
-
-            // Display a success message
+            // Display success message to the user
             MessageBox.Show($"Ticket purchased successfully. Your seat: {assignedSeat}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Return to the booking tab
@@ -2795,22 +3014,41 @@ namespace HappyJourneyAirline.Tabs
             tabController.SelectTab(1);
         }
 
+
+        /// <summary>
+        /// Generates a random seat assignment consisting of a row number and a column letter.
+        /// Row numbers range from 1 to 30, and column letters range from A to F.
+        /// </summary>
+        /// <returns>A string representing the randomly generated seat (e.g., "12B").</returns>
         private string GenerateRandomSeat()
         {
             Random random = new Random();
-            int row = random.Next(1, 31); // Random row number (e.g., 1-30)
-            char column = (char)random.Next('A', 'F' + 1); // Random column letter (e.g., A-F)
+            int row = random.Next(1, 31); // Random row number (1-30)
+            char column = (char)random.Next('A', 'F' + 1); // Random column letter (A-F)
             return $"{row}{column}";
         }
 
-
+        /// <summary>
+        /// Handles the Cancel button click event in the Payment tab.
+        /// Navigates the user back to the main Flights tab without saving any changes.
+        /// </summary>
+        /// <param name="sender">The Cancel button control</param>
+        /// <param name="e">The event data associated with the button click</param>
         private void ppCancelBtn_Click(object sender, EventArgs e)
         {
-            tabController.SelectTab(0);
+            tabController.SelectTab(0); // return to the flight tab 
         }
 
+
+        /// <summary>
+        /// Handles the Ticket Class dropdown selection change event.
+        /// Updates the total price label to reflect the selected ticket class's additional price.
+        /// </summary>
+        /// <param name="sender">The Ticket Class dropdown control</param>
+        /// <param name="e">The event data associated with the selection change</param>
         private void ppTicketClassDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Retrieve the selected ticket class and update the total price label
             ppTotaLbl.Text = $"{selectedFlight.BasePrice+TicketClass.GetTicketClassById(ppTicketClassDrop.SelectedIndex+1).ExtraPrice}";
         }
     }
