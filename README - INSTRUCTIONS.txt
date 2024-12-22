@@ -1,3 +1,7 @@
+IT7006 – Object Oriented Design Project 
+
+Course Cord & Tutor : Dr. Faustino Reyes
+
 [->] Happy Journey Airline
 - In this project we are changing the face of managing airline company. from boring process into a whole future-proof application. Happy Joruney Airline Can now easily manage the whole operation from one app to different type of users, admin, traveller, and agencies!
 
