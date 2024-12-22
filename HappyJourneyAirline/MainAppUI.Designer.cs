@@ -361,6 +361,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(226, 40);
             this.textBox2.TabIndex = 5;
+            this.textBox2.UseSystemPasswordChar = true;
             // 
             // textBox1
             // 
@@ -514,6 +515,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 740);
             this.Controls.Add(this.appTabs);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainAppUI";
