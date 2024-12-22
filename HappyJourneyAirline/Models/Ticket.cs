@@ -174,7 +174,7 @@ namespace HappyJourneyAirline.Models
             });
         }
         // Fetch all tickets for a specific flight
-        public static List<Ticket> GetTicketsByFlightId(int flightId)
+        public static List<Ticket> GetTicketsByFlightId(long flightId)
         {
             string query = @"
                 SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 

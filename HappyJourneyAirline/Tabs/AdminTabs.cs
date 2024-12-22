@@ -16,6 +16,7 @@ using System.Data;
 using System.Data.Common;
 using System.Threading;
 using System.IO;
+using HappyJourneyAirline.BuilderPattern;
 
 
 //public enum FlightStatus
@@ -62,24 +63,6 @@ namespace HappyJourneyAirline.Tabs
         private PictureBox settingTab;
         private PictureBox logOutIcon;
         private PictureBox usersIcon;
-        #endregion attrebutes
-
-        #region AddedAtributes
-        private BindingList<Plane> planes = new BindingList<Plane>();
-        private BindingList<Airport> airports = new BindingList<Airport>();
-        private BindingList<City> cities = new BindingList<City>();
-        private BindingList<FlightStatus> flightsStatuses = new BindingList<FlightStatus>();
-        private BindingList<Country> countries = new BindingList<Country>();
-        private BindingList<User> users = new BindingList<User>();
-        private BindingList<Flight> flights = new BindingList<Flight>();
-        private User selectedUser = null;
-        private Flight selectedFlight = null;
-        private City selectedCity = null;
-        private Country selectedCountry = null;
-        private Airport selectedAirport = null;
-        private Plane selectedPlane = null;
-        private TabPage btntabCreatenotifications;
-        private ComboBox comboBoxType;
         private Label lblErrorType;
         private Label lblErrorFlight;
         private ComboBox comboBoxFlights;
@@ -261,6 +244,25 @@ namespace HappyJourneyAirline.Tabs
         private DataGridView planesDataGridView;
         private Button createPlaneBtn;
         private Label bdUsrTypeLbl;
+        private TabPage btntabCreatenotifications;
+        private ComboBox comboBoxType;
+        #endregion attrebutes
+
+        #region AddedAtributes
+        private BindingList<Plane> planes = new BindingList<Plane>();
+        private BindingList<Airport> airports = new BindingList<Airport>();
+        private BindingList<City> cities = new BindingList<City>();
+        private BindingList<FlightStatus> flightsStatuses = new BindingList<FlightStatus>();
+        private BindingList<Country> countries = new BindingList<Country>();
+        private BindingList<User> users = new BindingList<User>();
+        private BindingList<Flight> flights = new BindingList<Flight>();
+        private User selectedUser = null;
+        private Flight selectedFlight = null;
+        private City selectedCity = null;
+        private Country selectedCountry = null;
+        private Airport selectedAirport = null;
+        private Plane selectedPlane = null;
+        private BindingList<long> notificationFlights = new BindingList<long>();
         private static readonly double rand = new Random().NextDouble();
         #endregion
         public AdminTabs(TabControl appTabs)
@@ -6105,14 +6107,18 @@ namespace HappyJourneyAirline.Tabs
 
             comboBoxFlights.Items.Clear();
             comboBoxFlights.Items.Add(" ");
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
+
                 string id = dt.Rows[i]["id"].ToString();                // Flight ID
                 string sourceAirport = dt.Rows[i]["name"].ToString();  // Source airport name
                 string destinationAirport = dt.Rows[i]["name"].ToString(); // Destination airport name
 
                 // Add a readable format to the comboBox
                 comboBoxFlights.Items.Add($"ID: {id}   {sourceAirport} --> {destinationAirport}");
+
+                notificationFlights.Add(long.Parse(id));
             }
 
 
@@ -6169,48 +6175,20 @@ namespace HappyJourneyAirline.Tabs
             if (valid)
             {
 
-                List<string> userList = new List<string>();
+                List<Ticket> ticketsList = Ticket.GetTicketsByFlightId(notificationFlights[comboBoxFlights.SelectedIndex]);
 
-                SqlConnection con = new SqlConnection(Database.connectionString);
-                con.Open();
-                SqlCommand com = con.CreateCommand();
+                foreach (Ticket t in ticketsList) {
+                    Notification notification =
+                        new NotificationBuilder()
+                        .SetTitle(txtTitle.Text.Trim())
+                        .SetDescription(txtDescription.Text.Trim())
+                        .SetSource("Admin")
+                        .SetType(comboBoxType.SelectedItem.ToString())
+                        .SetUserId(t.UserID)
+                        .GetResult();
 
-                com.CommandText = "SELECT DISTINCT userID \r\nFROM tickets \r\nWHERE flightID = 5;";
-                SqlDataReader reader = com.ExecuteReader();
-
-                List<int> userIds = new List<int>();
-
-                while (reader.Read())
-                {
-
-                    userIds.Add(Convert.ToInt32(reader.GetInt64(0)));
-
+                    Notification.AddNotification(notification);
                 }
-                reader.Close();
-
-                for (int i = 0; i < userIds.Count; i++)
-                {
-
-                    Notification n = new Notification();
-                    n.Title = txtTitle.Text;
-                    n.Description = txtDescription.Text;
-                    n.Source = "Admin";
-                    n.Type = comboBoxType.SelectedItem.ToString();
-                    n.UserId = userIds[i];
-
-                    SqlCommand insetCom = con.CreateCommand();
-
-                    insetCom.CommandText = "insert into notifications(source,type,title,description,user_id) values (@source , @type, @title, @desc, @id);";
-                    insetCom.Parameters.AddWithValue("@source", n.Source);
-                    insetCom.Parameters.AddWithValue("@type", n.Type);
-                    insetCom.Parameters.AddWithValue("@title", n.Title);
-                    insetCom.Parameters.AddWithValue("@desc", n.Description);
-                    insetCom.Parameters.AddWithValue("@id", n.UserId);
-
-                    insetCom.ExecuteNonQuery();
-                }
-
-                con.Close();
 
                 MessageBox.Show("All the notifications sends to the users sucssfuly", "Notification sends", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
