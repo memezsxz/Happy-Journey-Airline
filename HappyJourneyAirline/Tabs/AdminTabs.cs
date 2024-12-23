@@ -6716,7 +6716,7 @@ namespace HappyJourneyAirline.Tabs
             {
                 // Retrieve tickets associated with the selected flight
                 long selectedFlightId = notificationFlights[comboBoxFlights.SelectedIndex - 1];
-                List<Ticket> ticketsList = Ticket.GetTicketsByFlightId(selectedFlightId);
+                List<Ticket> ticketsList = Ticket.GetTicketsByFlightId(Convert.ToInt32(selectedFlightId));
 
                 // Create and send notifications for each ticket
                 foreach (Ticket t in ticketsList)
