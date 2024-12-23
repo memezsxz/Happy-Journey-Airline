@@ -38,6 +38,9 @@ namespace ProjectSample
         {
             InitializeComponent();
 
+            //ShowError(signupErrorTxt, "");
+            //ShowError(loginErrorTxt, "");
+
             TravellerTabs travelTab = new TravellerTabs(appTabs);
             TabPage travelTabPage = new TabPage("Traveller Dashboard");
             travelTabPage.Controls.Add(travelTab);
@@ -57,6 +60,9 @@ namespace ProjectSample
 
         private void Login_Load(object sender, EventArgs e)
         {
+            //ShowError(loginErrorTxt, "");
+            //ShowError(signupErrorTxt, "");
+
             if (AuthService.IsUserLoggedIn())
             {
                 User currentLoggedInUser = User.GetUserById(AuthService.GetCurrentUserId());
@@ -91,20 +97,21 @@ namespace ProjectSample
         private void button1_Click(object sender, EventArgs e)
         {
 
-            ShowError(loginErrorTxt, string.Empty);
+            ShowError(loginValidationMessage, string.Empty);
             String username = textBox1.Text;
             String password = textBox2.Text;
 
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                ShowError(loginErrorTxt, "Username is required.");
+                
+                ShowError(loginValidationMessage, "Username is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                ShowError(loginErrorTxt, "Password is required.");
+                ShowError(loginValidationMessage, "Password is required.");
                 return;
             }
 
@@ -112,13 +119,15 @@ namespace ProjectSample
             User loggedInUser = userHandler.Login(username, password);
             
             if (loggedInUser == null) {
-                ShowError(loginErrorTxt, "Invalid login credentials.");
+               ShowError(loginValidationMessage, "Invalid login credentials.");
                 return;
             }
 
             AuthService.StoreUserId(loggedInUser.Id);
             //Console.WriteLine("Logged in user: " + loggedInUser.Email);
 
+            textBox1.Text = "";
+            textBox2.Text = "";
             if (loggedInUser.Type == "traveller")
             {
                 appTabs.SelectTab(3);
@@ -160,6 +169,7 @@ namespace ProjectSample
 
         private void button2_Click(object sender, EventArgs e)
         {
+            ShowError(registerValidationMessage, "");
             String username = registerUsernameInput.Text;
             String password = passwordRegisterInput.Text;
             String firstName = firstNameRegisterInput.Text;
@@ -169,40 +179,42 @@ namespace ProjectSample
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                MessageBox.Show("Username is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(registerValidationMessage, "Username is required.");
+                Console.WriteLine("sdd");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Password is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(registerValidationMessage, "Password is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(firstName))
             {
-                MessageBox.Show("First name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(registerValidationMessage, "First name is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(lastName))
             {
-                MessageBox.Show("Last name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(registerValidationMessage, "Last name is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(phoneNumber) || !Regex.IsMatch(phoneNumber, @"^\d{8}$"))
             {
-                MessageBox.Show("A valid 8-digit phone number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(registerValidationMessage, "A valid 8-digit phone number is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
-                MessageBox.Show("A valid email address is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(registerValidationMessage, "A valid email address is required.");
                 return;
             }
 
+            ShowError(registerValidationMessage, "");
 
             User newUser = new User
             {
@@ -220,22 +232,17 @@ namespace ProjectSample
 
             if (newUserId > 0)
             {
-                Console.WriteLine($"User created successfully! User ID: {newUserId}");
+                //Console.WriteLine($"User created successfully! User ID: {newUserId}");
                 AuthService.StoreUserId(newUserId);
 
                 appTabs.SelectTab(getAppRoute(APP_ROUTES.TRAVELLER_DASHBOARD_ROUTE));
             }
             else
             {
-                Console.WriteLine("Failed to create user.");
+                MessageBox.Show("Failed to create user, please contact support", "Failure");
             }
 
             
-        }
-
-        private void emailRegisterInput_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void ShowError(Label label, string message)

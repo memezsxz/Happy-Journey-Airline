@@ -37,6 +37,16 @@ namespace HappyJourneyAirline.Models
         public decimal ExtraPrice { get; set; } // Default to 0.00
 
         /// <summary>
+        /// Returns a string representation of the TicketClass object.
+        /// </summary>
+        /// <returns>A string containing ticket class details.</returns>
+        public override string ToString()
+        {
+            return $"TicketClass [Id={Id}, Name={Name}, Description={Description}, Services={Services}, ExtraPrice={ExtraPrice}]";
+        }
+
+
+        /// <summary>
         /// Retrieves all ticket classes from the database.
         /// </summary>
         /// <returns>A list of all ticket classes.</returns>

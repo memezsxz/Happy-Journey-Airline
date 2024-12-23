@@ -37,6 +37,16 @@ namespace HappyJourneyAirline.Models
         public decimal Longitude { get; set; } // NOT NULL
 
         /// <summary>
+        /// Returns a string representation of the Airport object.
+        /// </summary>
+        /// <returns>A string containing airport details.</returns>
+        public override string ToString()
+        {
+            return $"Airport [Id={Id}, Name={Name}, CityId={CityId}, Latitude={Latitude}, Longitude={Longitude}]";
+        }
+
+
+        /// <summary>
         /// Retrieves all airports from the database.
         /// </summary>
         /// <returns>A list of <see cref="Airport"/> objects.</returns>

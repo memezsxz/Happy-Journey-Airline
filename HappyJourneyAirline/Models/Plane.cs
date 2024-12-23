@@ -27,6 +27,15 @@ namespace HappyJourneyAirline.Models
         public int Capacity { get; set; } // NOT NULL
 
         /// <summary>
+        /// Returns a string representation of the Plane object.
+        /// </summary>
+        /// <returns>A string containing plane details.</returns>
+        public override string ToString()
+        {
+            return $"Plane [Id={Id}, Model={Model}, Capacity={Capacity}]";
+        }
+
+        /// <summary>
         /// Retrieves all planes from the database.
         /// </summary>
         /// <returns>A list of all planes.</returns>

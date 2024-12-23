@@ -27,6 +27,15 @@ namespace HappyJourneyAirline.Models
         public string Details { get; set; } // Nullable
 
         /// <summary>
+        /// Returns a string representation of the PaymentMethod object.
+        /// </summary>
+        /// <returns>A string containing payment method details.</returns>
+        public override string ToString()
+        {
+            return $"PaymentMethod [Id={Id}, Name={Name}, Details={Details}]";
+        }
+
+        /// <summary>
         /// Retrieves all payment methods from the database.
         /// </summary>
         /// <returns>A list of <see cref="PaymentMethod"/> objects.</returns>

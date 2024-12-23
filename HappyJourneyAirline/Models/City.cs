@@ -27,6 +27,15 @@ namespace HappyJourneyAirline.Models
         public long CountryId { get; set; } // Foreign Key
 
         /// <summary>
+        /// Returns a string representation of the City object.
+        /// </summary>
+        /// <returns>A string containing city details.</returns>
+        public override string ToString()
+        {
+            return $"City [Id={Id}, Name={Name}, CountryId={CountryId}]";
+        }
+
+        /// <summary>
         /// Retrieves all cities from the database.
         /// </summary>
         /// <returns>A list of <see cref="City"/> objects.</returns>
