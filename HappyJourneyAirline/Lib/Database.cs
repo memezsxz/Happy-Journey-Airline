@@ -25,8 +25,14 @@ namespace HappyJourneyAirline.Lib
         /// <summary>
         /// Connection string for the database.
         /// </summary>
-        public static readonly string connectionString =
-            "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\poly\\New folder\\HappyJourneyAirline\\database.mdf\";Integrated Security=True";
+        // DR. FAUSTINO
+        // UNCOMMENT THIS STRING AND PLACE THE PATH ON IT THEN SAVE AND YOU ARE READY TO GO | Be careful to the escaping quotes
+        //public static readonly string connectionString =
+        //    "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\poly\\New folder\\HappyJourneyAirline\\database.mdf\";Integrated Security=True";
+
+
+
+        public static readonly string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=|DataDirectory|\database.mdf;Integrated Security=True;Connect Timeout=30";
 
         /// <summary>
         /// Private constructor to prevent instantiation from outside the class.
