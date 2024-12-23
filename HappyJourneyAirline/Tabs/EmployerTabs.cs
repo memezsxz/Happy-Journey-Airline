@@ -116,14 +116,15 @@ namespace HappyJourneyAirline.Tabs
         private TextBox ppFlightNumTxt;
         private TextBox ppNewTravellersNumTxt;
         private Label paymentErrorLbl;
+        private TextBox cuCPRTxt;
         private PictureBox bookingTab;
         #endregion
         public EmployerTabs(TabControl appTabs)
         {
             InitializeComponent();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
-
-            fdTravellersDataGridView.DataSource = new BindingList<User>( Flight.GetTravellersForFlightByAgencyID(0, 0));
+            allUsers = new BindingList<User>(Flight.GetTravellersForFlightByAgencyID(0, 0));
+            fdTravellersDataGridView.DataSource = allUsers;
             fdTravellersDataGridView.Columns.Insert(0, AddEditColumn());
 
             this.appTabs = appTabs;
@@ -132,8 +133,8 @@ namespace HappyJourneyAirline.Tabs
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployerTabs));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label27;
             System.Windows.Forms.Label label28;
             System.Windows.Forms.Label label25;
@@ -151,9 +152,9 @@ namespace HappyJourneyAirline.Tabs
             System.Windows.Forms.Label label35;
             System.Windows.Forms.Label label36;
             System.Windows.Forms.Label label37;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label18;
@@ -165,13 +166,13 @@ namespace HappyJourneyAirline.Tabs
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label8;
             System.Windows.Forms.Label label14;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label13;
             System.Windows.Forms.TabPage travellerFlightsTab;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label6;
@@ -194,6 +195,7 @@ namespace HappyJourneyAirline.Tabs
             System.Windows.Forms.Label label53;
             System.Windows.Forms.Label label54;
             System.Windows.Forms.Label label51;
+            System.Windows.Forms.Label label52;
             this.panel1 = new System.Windows.Forms.Panel();
             this.notificationTab = new System.Windows.Forms.PictureBox();
             this.logOutIcon = new System.Windows.Forms.PictureBox();
@@ -284,6 +286,7 @@ namespace HappyJourneyAirline.Tabs
             this.ppFlightNumTxt = new System.Windows.Forms.TextBox();
             this.ppNewTravellersNumTxt = new System.Windows.Forms.TextBox();
             this.paymentErrorLbl = new System.Windows.Forms.Label();
+            this.cuCPRTxt = new System.Windows.Forms.TextBox();
             label27 = new System.Windows.Forms.Label();
             label28 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
@@ -337,6 +340,7 @@ namespace HappyJourneyAirline.Tabs
             label53 = new System.Windows.Forms.Label();
             label54 = new System.Windows.Forms.Label();
             label51 = new System.Windows.Forms.Label();
+            label52 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.notificationTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -479,25 +483,25 @@ namespace HappyJourneyAirline.Tabs
             this.fdTravellersDataGridView.AllowUserToOrderColumns = true;
             this.fdTravellersDataGridView.AllowUserToResizeRows = false;
             this.fdTravellersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.fdTravellersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.fdTravellersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.fdTravellersDataGridView.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.fdTravellersDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.fdTravellersDataGridView.DefaultCellStyle = dataGridViewCellStyle20;
             this.fdTravellersDataGridView.Location = new System.Drawing.Point(17, 462);
             this.fdTravellersDataGridView.MultiSelect = false;
             this.fdTravellersDataGridView.Name = "fdTravellersDataGridView";
@@ -1080,31 +1084,31 @@ namespace HappyJourneyAirline.Tabs
             // dataGridViewNotification
             // 
             this.dataGridViewNotification.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewNotification.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewNotification.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewNotification.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewNotification.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewNotification.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewNotification.Location = new System.Drawing.Point(20, 121);
             this.dataGridViewNotification.Name = "dataGridViewNotification";
             this.dataGridViewNotification.RowHeadersVisible = false;
             this.dataGridViewNotification.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewNotification.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewNotification.RowsDefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewNotification.RowTemplate.Height = 50;
             this.dataGridViewNotification.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewNotification.Size = new System.Drawing.Size(706, 472);
@@ -1394,15 +1398,15 @@ namespace HappyJourneyAirline.Tabs
             // 
             this.bookingTable.AllowUserToAddRows = false;
             this.bookingTable.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bookingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bookingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.bookingTable.ColumnHeadersHeight = 40;
             this.bookingTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -1410,15 +1414,15 @@ namespace HappyJourneyAirline.Tabs
             this.to,
             this.dateTime,
             this.bookDetails});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bookingTable.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle25.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bookingTable.DefaultCellStyle = dataGridViewCellStyle25;
             this.bookingTable.Location = new System.Drawing.Point(28, 152);
             this.bookingTable.Name = "bookingTable";
             this.bookingTable.ReadOnly = true;
@@ -1538,27 +1542,27 @@ namespace HappyJourneyAirline.Tabs
             this.gridflightsData.AllowUserToResizeRows = false;
             this.gridflightsData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gridflightsData.BackgroundColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridflightsData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridflightsData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.gridflightsData.ColumnHeadersHeight = 40;
             this.gridflightsData.Location = new System.Drawing.Point(16, 317);
             this.gridflightsData.Name = "gridflightsData";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridflightsData.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridflightsData.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.gridflightsData.RowHeadersVisible = false;
             this.gridflightsData.RowHeadersWidth = 50;
             this.gridflightsData.RowTemplate.Height = 50;
@@ -1595,7 +1599,6 @@ namespace HappyJourneyAirline.Tabs
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(284, 37);
             this.date.TabIndex = 55;
-            this.date.ValueChanged += new System.EventHandler(this.date_ValueChanged);
             // 
             // cancelIcon
             // 
@@ -1719,6 +1722,8 @@ namespace HappyJourneyAirline.Tabs
             // addTraveler
             // 
             this.addTraveler.BackColor = System.Drawing.Color.Gainsboro;
+            this.addTraveler.Controls.Add(label52);
+            this.addTraveler.Controls.Add(this.cuCPRTxt);
             this.addTraveler.Controls.Add(label20);
             this.addTraveler.Controls.Add(this.cuTickitClassDrop);
             this.addTraveler.Controls.Add(this.atErrorLbl);
@@ -2234,6 +2239,27 @@ namespace HappyJourneyAirline.Tabs
             this.paymentErrorLbl.Text = "Error: Please fix..";
             this.paymentErrorLbl.Visible = false;
             // 
+            // label52
+            // 
+            label52.AutoSize = true;
+            label52.BackColor = System.Drawing.Color.Transparent;
+            label52.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label52.Location = new System.Drawing.Point(25, 345);
+            label52.Name = "label52";
+            label52.Size = new System.Drawing.Size(82, 51);
+            label52.TabIndex = 127;
+            label52.Text = "CPR:";
+            label52.UseCompatibleTextRendering = true;
+            // 
+            // cuCPRTxt
+            // 
+            this.cuCPRTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cuCPRTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuCPRTxt.Location = new System.Drawing.Point(25, 378);
+            this.cuCPRTxt.Name = "cuCPRTxt";
+            this.cuCPRTxt.Size = new System.Drawing.Size(283, 51);
+            this.cuCPRTxt.TabIndex = 126;
+            // 
             // EmployerTabs
             // 
             this.Controls.Add(this.tabController);
@@ -2736,11 +2762,6 @@ namespace HappyJourneyAirline.Tabs
 
         }
 
-        private void date_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void timeCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (timeCheck.Checked)
@@ -2765,7 +2786,10 @@ namespace HappyJourneyAirline.Tabs
                 tabController.SelectTab(5);
             }
         }
+        #endregion Flights
 
+
+        #region Flight Details
         private void sutupFlightDetails()
         {
             fdFlightNumTxt.Text = $"{selectedFlight.Id}";
@@ -2788,23 +2812,33 @@ namespace HappyJourneyAirline.Tabs
             fdArrTimeTxt.Text = $"{selectedFlight.ArrivalTimestamp}";
             fdDepTimeTxt.Text = $"{selectedFlight.DepartureTimestamp}";
 
-            long id = AuthService.GetCurrentUserId();
-            fdTravellersDataGridView.DataSource = new BindingList<User>( Flight.GetTravellersForFlightByAgencyID(id, selectedFlight.Id));
+            //long id = AuthService.GetCurrentUserId();
+            //fdTravellersDataGridView.DataSource = new BindingList<User>(Flight.GetTravellersForFlightByAgencyID(id, selectedFlight.Id));
 
-            fdTravellersDataGridView.Columns["Id"].HeaderText = "Traveller ID";
-            fdTravellersDataGridView.Columns["FirstName"].HeaderText = "First Name";
-            fdTravellersDataGridView.Columns["LastName"].HeaderText = "Last Name";
-            fdTravellersDataGridView.Columns["PhoneNumber"].HeaderText = "Phone Number";
-            fdTravellersDataGridView.Columns["Cpr"].HeaderText = "CPR";
+            //fdTravellersDataGridView.Columns["Id"].HeaderText = "Traveller ID";
+            //fdTravellersDataGridView.Columns["FirstName"].HeaderText = "First Name";
+            //fdTravellersDataGridView.Columns["LastName"].HeaderText = "Last Name";
+            //fdTravellersDataGridView.Columns["PhoneNumber"].HeaderText = "Phone Number";
+            //fdTravellersDataGridView.Columns["Cpr"].HeaderText = "CPR";
 
 
-            fdTravellersDataGridView.Columns["Username"].Visible = false;
-            fdTravellersDataGridView.Columns["Password"].Visible = false;
-            fdTravellersDataGridView.Columns["Type"].Visible = false;
-            fdTravellersDataGridView.Columns["AgencyID"].Visible = false;
-            fdTravellersDataGridView.Columns["CompanyName"].Visible = false;
+            //fdTravellersDataGridView.Columns["Username"].Visible = false;
+            //fdTravellersDataGridView.Columns["Password"].Visible = false;
+            //fdTravellersDataGridView.Columns["Type"].Visible = false;
+            //fdTravellersDataGridView.Columns["AgencyID"].Visible = false;
+            //fdTravellersDataGridView.Columns["CompanyName"].Visible = false;
         }
+        private void fdTravellersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                if (!string.IsNullOrEmpty(fdTravellersDataGridView.SelectedCells[0].Value as string))
+                {
+                    // TODO: Go to traveller ticket details
+                }
 
+            }
+        }
         private void fdTravellersDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             int i = 0;
@@ -2823,7 +2857,7 @@ namespace HappyJourneyAirline.Tabs
 
         }
 
-        #endregion Flights
+        #endregion Flight details
 
         #region Notification 
         private void travellerNotificationTab_Paint(object sender, PaintEventArgs e)
@@ -2884,6 +2918,7 @@ namespace HappyJourneyAirline.Tabs
             cuLnameTxt.Text = "";
             cuEmailTxt.Text = "";
             cuPhoneTxt.Text = "";
+            cuCPRTxt.Text = "";
             cuTickitClassDrop.DataSource = TicketClass.GetAllTicketClasses();
             cuTickitClassDrop.DisplayMember = "Name";
             sutupFlightDetails();
@@ -2919,7 +2954,7 @@ namespace HappyJourneyAirline.Tabs
             {
                 user.LastName = cuLnameTxt.Text.Trim();
             }
-
+            
             // email validation
             string txt = cuEmailTxt.Text.Trim().ToLower();
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
@@ -2935,6 +2970,7 @@ namespace HappyJourneyAirline.Tabs
                 user.Email = txt;
             }
 
+
             // phone Number validation
             string pattern = @"^\+?(\d{1,4})?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}$";
             Regex regex = new Regex(pattern);
@@ -2948,6 +2984,18 @@ namespace HappyJourneyAirline.Tabs
             else
             {
                 user.PhoneNumber = cuPhoneTxt.Text.Trim();
+            }
+
+            // cpr Number validation
+            if (!regex.IsMatch(cuCPRTxt.Text.Trim()))
+            {
+                atErrorLbl.Text = "Error: Invalid CPR number";
+                atErrorLbl.Visible = true;
+                return;
+            }
+            else
+            {
+                user.Cpr = cuCPRTxt.Text.Trim();
             }
 
             user.AgencyID = AuthService.GetCurrentUserId();
@@ -2980,9 +3028,6 @@ namespace HappyJourneyAirline.Tabs
             }
             fdTravellersDataGridView.DataSource = allUsers;
 
-            if (allUsers.Count > 0)
-            {
-
                 fdTravellersDataGridView.DataSource = allUsers;
 
                 
@@ -3000,8 +3045,6 @@ namespace HappyJourneyAirline.Tabs
             fdTravellersDataGridView.Columns["AgencyID"].Visible = false;
             fdTravellersDataGridView.Columns["CompanyName"].Visible = false;
 
-
-            }
         }
         private void cuCancelBtn_Click(object sender, EventArgs e)
         {
@@ -3133,9 +3176,13 @@ namespace HappyJourneyAirline.Tabs
             return editColumn;
         }
 
+
+
+
+        #region Payment
         private void fdPayAllBtn_Click(object sender, EventArgs e)
         {
-            if (tempUsers.Count == 0 )
+            if (tempUsers.Count == 0)
             {
                 MessageBox.Show("All registered travellers are paid for already", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -3145,7 +3192,7 @@ namespace HappyJourneyAirline.Tabs
             ppFlightNumTxt.Text = $"{selectedFlight.Id}";
             ppNewTravellersNumTxt.Text = $"{tempUsers.Count}";
 
-            decimal totalPrice = 0 ;
+            decimal totalPrice = 0;
             foreach (TicketClass tc in tempUsersTicketClass)
             {
                 totalPrice += selectedFlight.BasePrice + tc.ExtraPrice;
@@ -3164,23 +3211,6 @@ namespace HappyJourneyAirline.Tabs
             // Navigate to the payment tab
             tabController.SelectTab(7);
         }
-
-        private void fdTravellersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0) {
-                if (!string.IsNullOrEmpty(fdTravellersDataGridView.SelectedCells[0].Value as string))
-                {
-                    // TODO: Go to traveller ticket details
-                }
-
-            }
-        }
-
-
-        //////////////////////////////////////////////////////////////////////////
-        ///
-
-
 
         /// <summary>
         /// Handles the Pay button click event in the Payment tab.
@@ -3285,7 +3315,7 @@ namespace HappyJourneyAirline.Tabs
             loadBookingTable();
             tempUsers.Clear();
             cuLoadTravleres();
-            tabController.SelectTab(4);
+            tabController.SelectTab(5);
         }
 
 
@@ -3311,9 +3341,9 @@ namespace HappyJourneyAirline.Tabs
         private void ppCancelBtn_Click(object sender, EventArgs e)
         {
             cuLoadTravleres();
-            tabController.SelectTab(4); // return to the flight tab 
+            tabController.SelectTab(5); // return to the flight tab 
         }
-
+        #endregion Payment
     }
 
 }
