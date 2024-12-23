@@ -3409,7 +3409,7 @@ namespace HappyJourneyAirline.Tabs
             bdEmailTxt.Text = selectedTraveller.Email;
             bdPhoneNumberTxt.Text = selectedTraveller.PhoneNumber;
             bdCPRTxt.Text = selectedTraveller.Cpr;
-
+            bdSeatNumTxt.Text = selectedTicket.Seat;
             bdTicketClassNameTxt.Text = TicketClass.GetTicketClassById(selectedTicket.TicketClassID).Name;
             bdTotalPriceTxt.Text = $"{Payment.GetPaymentById(selectedTicket.PaymentID).Amount}";
         }
