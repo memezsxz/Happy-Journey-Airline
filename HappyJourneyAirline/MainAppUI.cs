@@ -38,6 +38,9 @@ namespace ProjectSample
         {
             InitializeComponent();
 
+            ShowError(signupErrorTxt, "");
+            ShowError(loginErrorTxt, "");
+
             TravellerTabs travelTab = new TravellerTabs(appTabs);
             TabPage travelTabPage = new TabPage("Traveller Dashboard");
             travelTabPage.Controls.Add(travelTab);
@@ -57,6 +60,9 @@ namespace ProjectSample
 
         private void Login_Load(object sender, EventArgs e)
         {
+            ShowError(loginErrorTxt, "");
+            ShowError(signupErrorTxt, "");
+
             if (AuthService.IsUserLoggedIn())
             {
                 User currentLoggedInUser = User.GetUserById(AuthService.GetCurrentUserId());
@@ -160,6 +166,7 @@ namespace ProjectSample
 
         private void button2_Click(object sender, EventArgs e)
         {
+            ShowError(signupErrorTxt, "");
             String username = registerUsernameInput.Text;
             String password = passwordRegisterInput.Text;
             String firstName = firstNameRegisterInput.Text;
@@ -169,40 +176,41 @@ namespace ProjectSample
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                MessageBox.Show("Username is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(signupErrorTxt, "Username is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Password is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(signupErrorTxt, "Password is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(firstName))
             {
-                MessageBox.Show("First name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(signupErrorTxt, "First name is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(lastName))
             {
-                MessageBox.Show("Last name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(signupErrorTxt, "Last name is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(phoneNumber) || !Regex.IsMatch(phoneNumber, @"^\d{8}$"))
             {
-                MessageBox.Show("A valid 8-digit phone number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(signupErrorTxt, "A valid 8-digit phone number is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
-                MessageBox.Show("A valid email address is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(signupErrorTxt, "A valid email address is required.");
                 return;
             }
 
+            ShowError(signupErrorTxt, "");
 
             User newUser = new User
             {
@@ -220,22 +228,17 @@ namespace ProjectSample
 
             if (newUserId > 0)
             {
-                Console.WriteLine($"User created successfully! User ID: {newUserId}");
+                //Console.WriteLine($"User created successfully! User ID: {newUserId}");
                 AuthService.StoreUserId(newUserId);
 
                 appTabs.SelectTab(getAppRoute(APP_ROUTES.TRAVELLER_DASHBOARD_ROUTE));
             }
             else
             {
-                Console.WriteLine("Failed to create user.");
+                MessageBox.Show("Failed to create user, please contact support", "Failure");
             }
 
             
-        }
-
-        private void emailRegisterInput_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void ShowError(Label label, string message)

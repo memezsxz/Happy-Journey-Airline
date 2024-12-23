@@ -28,79 +28,94 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Label label20;
+            System.Windows.Forms.Label label19;
+            System.Windows.Forms.Label label18;
+            System.Windows.Forms.Label label17;
+            System.Windows.Forms.Label label16;
+            System.Windows.Forms.Label label15;
+            System.Windows.Forms.Label label8;
+            System.Windows.Forms.PictureBox pictureBox2;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.PictureBox pictureBox1;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label label21;
+            System.Windows.Forms.Label label10;
+            System.Windows.Forms.PictureBox pictureBox3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainAppUI));
             this.registerTab = new System.Windows.Forms.TabPage();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.phoneNumberRegisterInput = new System.Windows.Forms.TextBox();
             this.emailRegisterInput = new System.Windows.Forms.TextBox();
             this.lastNameRegisterInput = new System.Windows.Forms.TextBox();
             this.firstNameRegisterInput = new System.Windows.Forms.TextBox();
             this.passwordRegisterInput = new System.Windows.Forms.TextBox();
             this.registerUsernameInput = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.loginTab = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.mainMenuTab = new System.Windows.Forms.TabPage();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.appTabs = new System.Windows.Forms.TabControl();
             this.loginErrorTxt = new System.Windows.Forms.Label();
+            this.signupErrorTxt = new System.Windows.Forms.Label();
+            label20 = new System.Windows.Forms.Label();
+            label19 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            label21 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            pictureBox3 = new System.Windows.Forms.PictureBox();
             this.registerTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pictureBox2)).BeginInit();
             this.loginTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.mainMenuTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pictureBox3)).BeginInit();
             this.appTabs.SuspendLayout();
             this.SuspendLayout();
             // 
             // registerTab
             // 
             this.registerTab.BackColor = System.Drawing.Color.White;
-            this.registerTab.Controls.Add(this.label20);
-            this.registerTab.Controls.Add(this.label19);
-            this.registerTab.Controls.Add(this.label18);
-            this.registerTab.Controls.Add(this.label17);
-            this.registerTab.Controls.Add(this.label16);
-            this.registerTab.Controls.Add(this.label15);
+            this.registerTab.Controls.Add(this.signupErrorTxt);
+            this.registerTab.Controls.Add(label20);
+            this.registerTab.Controls.Add(label19);
+            this.registerTab.Controls.Add(label18);
+            this.registerTab.Controls.Add(label17);
+            this.registerTab.Controls.Add(label16);
+            this.registerTab.Controls.Add(label15);
             this.registerTab.Controls.Add(this.label9);
-            this.registerTab.Controls.Add(this.label8);
+            this.registerTab.Controls.Add(label8);
             this.registerTab.Controls.Add(this.phoneNumberRegisterInput);
             this.registerTab.Controls.Add(this.emailRegisterInput);
             this.registerTab.Controls.Add(this.lastNameRegisterInput);
             this.registerTab.Controls.Add(this.firstNameRegisterInput);
             this.registerTab.Controls.Add(this.passwordRegisterInput);
             this.registerTab.Controls.Add(this.registerUsernameInput);
-            this.registerTab.Controls.Add(this.pictureBox2);
-            this.registerTab.Controls.Add(this.label3);
+            this.registerTab.Controls.Add(pictureBox2);
+            this.registerTab.Controls.Add(label3);
             this.registerTab.Controls.Add(this.button2);
-            this.registerTab.Controls.Add(this.label4);
+            this.registerTab.Controls.Add(label4);
             this.registerTab.Location = new System.Drawing.Point(4, 31);
             this.registerTab.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.registerTab.Name = "registerTab";
@@ -112,63 +127,63 @@
             // 
             // label20
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(753, 663);
-            this.label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(130, 22);
-            this.label20.TabIndex = 23;
-            this.label20.Text = "Phone Number";
+            label20.AutoSize = true;
+            label20.Location = new System.Drawing.Point(753, 663);
+            label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(130, 22);
+            label20.TabIndex = 23;
+            label20.Text = "Phone Number";
             // 
             // label19
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(313, 663);
-            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(54, 22);
-            this.label19.TabIndex = 22;
-            this.label19.Text = "Email";
+            label19.AutoSize = true;
+            label19.Location = new System.Drawing.Point(313, 663);
+            label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(54, 22);
+            label19.TabIndex = 22;
+            label19.Text = "Email";
             // 
             // label18
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(753, 557);
-            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(96, 22);
-            this.label18.TabIndex = 21;
-            this.label18.Text = "Last Name";
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(753, 557);
+            label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(96, 22);
+            label18.TabIndex = 21;
+            label18.Text = "Last Name";
             // 
             // label17
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(313, 557);
-            this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 22);
-            this.label17.TabIndex = 20;
-            this.label17.Text = "First Name";
+            label17.AutoSize = true;
+            label17.Location = new System.Drawing.Point(313, 557);
+            label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(97, 22);
+            label17.TabIndex = 20;
+            label17.Text = "First Name";
             // 
             // label16
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(753, 452);
-            this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(89, 22);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "Password";
+            label16.AutoSize = true;
+            label16.Location = new System.Drawing.Point(753, 452);
+            label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(89, 22);
+            label16.TabIndex = 19;
+            label16.Text = "Password";
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(313, 448);
-            this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(92, 22);
-            this.label15.TabIndex = 18;
-            this.label15.Text = "Username";
+            label15.AutoSize = true;
+            label15.Location = new System.Drawing.Point(313, 448);
+            label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(92, 22);
+            label15.TabIndex = 18;
+            label15.Text = "Username";
             // 
             // label9
             // 
@@ -185,15 +200,15 @@
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label8.Location = new System.Drawing.Point(540, 905);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(444, 22);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "By using our system you accept the Terms & Conditions";
+            label8.AutoSize = true;
+            label8.BackColor = System.Drawing.Color.Transparent;
+            label8.ForeColor = System.Drawing.SystemColors.ControlDark;
+            label8.Location = new System.Drawing.Point(540, 905);
+            label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(444, 22);
+            label8.TabIndex = 16;
+            label8.Text = "By using our system you accept the Terms & Conditions";
             // 
             // phoneNumberRegisterInput
             // 
@@ -216,7 +231,6 @@
             this.emailRegisterInput.Name = "emailRegisterInput";
             this.emailRegisterInput.Size = new System.Drawing.Size(377, 68);
             this.emailRegisterInput.TabIndex = 14;
-            this.emailRegisterInput.TextChanged += new System.EventHandler(this.emailRegisterInput_TextChanged);
             // 
             // lastNameRegisterInput
             // 
@@ -264,25 +278,25 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::HappyJourneyAirline.Properties.Resources.logo;
-            this.pictureBox2.Location = new System.Drawing.Point(615, 37);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(150, 157);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
+            pictureBox2.Image = global::HappyJourneyAirline.Properties.Resources.logo;
+            pictureBox2.Location = new System.Drawing.Point(615, 37);
+            pictureBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(150, 157);
+            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(106)))), ((int)(((byte)(106)))));
-            this.label3.Location = new System.Drawing.Point(583, 408);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(345, 22);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Please Fill details below to create account";
+            label3.AutoSize = true;
+            label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(106)))), ((int)(((byte)(106)))));
+            label3.Location = new System.Drawing.Point(583, 408);
+            label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(345, 22);
+            label3.TabIndex = 10;
+            label3.Text = "Please Fill details below to create account";
             // 
             // button2
             // 
@@ -305,14 +319,14 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(515, 340);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(454, 38);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Welcome To Happy Journey";
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.Location = new System.Drawing.Point(515, 340);
+            label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(454, 38);
+            label4.TabIndex = 9;
+            label4.Text = "Welcome To Happy Journey";
             // 
             // loginTab
             // 
@@ -447,11 +461,11 @@
             // mainMenuTab
             // 
             this.mainMenuTab.BackColor = System.Drawing.Color.White;
-            this.mainMenuTab.Controls.Add(this.label21);
-            this.mainMenuTab.Controls.Add(this.label10);
+            this.mainMenuTab.Controls.Add(label21);
+            this.mainMenuTab.Controls.Add(label10);
             this.mainMenuTab.Controls.Add(this.button4);
             this.mainMenuTab.Controls.Add(this.button3);
-            this.mainMenuTab.Controls.Add(this.pictureBox3);
+            this.mainMenuTab.Controls.Add(pictureBox3);
             this.mainMenuTab.Location = new System.Drawing.Point(4, 31);
             this.mainMenuTab.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.mainMenuTab.Name = "mainMenuTab";
@@ -462,25 +476,25 @@
             // 
             // label21
             // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.Gray;
-            this.label21.Location = new System.Drawing.Point(622, 850);
-            this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(231, 22);
-            this.label21.TabIndex = 6;
-            this.label21.Text = "All Rights Reserved @2024";
+            label21.AutoSize = true;
+            label21.ForeColor = System.Drawing.Color.Gray;
+            label21.Location = new System.Drawing.Point(622, 850);
+            label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(231, 22);
+            label21.TabIndex = 6;
+            label21.Text = "All Rights Reserved @2024";
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(612, 575);
-            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(251, 38);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Happy Journey";
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label10.Location = new System.Drawing.Point(612, 575);
+            label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(251, 38);
+            label10.TabIndex = 5;
+            label10.Text = "Happy Journey";
             // 
             // button4
             // 
@@ -522,14 +536,14 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::HappyJourneyAirline.Properties.Resources.logo;
-            this.pictureBox3.Location = new System.Drawing.Point(612, 305);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(150, 157);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
+            pictureBox3.Image = global::HappyJourneyAirline.Properties.Resources.logo;
+            pictureBox3.Location = new System.Drawing.Point(612, 305);
+            pictureBox3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new System.Drawing.Size(150, 157);
+            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            pictureBox3.TabIndex = 1;
+            pictureBox3.TabStop = false;
             // 
             // appTabs
             // 
@@ -556,6 +570,18 @@
             this.loginErrorTxt.Text = "Invalid Email or password, please try again.";
             this.loginErrorTxt.Visible = false;
             // 
+            // signupErrorTxt
+            // 
+            this.signupErrorTxt.BackColor = System.Drawing.Color.Transparent;
+            this.signupErrorTxt.Font = new System.Drawing.Font("Calibri", 10.15951F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signupErrorTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.signupErrorTxt.Location = new System.Drawing.Point(485, 766);
+            this.signupErrorTxt.Name = "signupErrorTxt";
+            this.signupErrorTxt.Size = new System.Drawing.Size(453, 51);
+            this.signupErrorTxt.TabIndex = 41;
+            this.signupErrorTxt.Text = "Invalid Email or password, please try again.";
+            this.signupErrorTxt.Visible = false;
+            // 
             // MainAppUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -574,13 +600,13 @@
             this.Load += new System.EventHandler(this.Login_Load);
             this.registerTab.ResumeLayout(false);
             this.registerTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pictureBox2)).EndInit();
             this.loginTab.ResumeLayout(false);
             this.loginTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.mainMenuTab.ResumeLayout(false);
             this.mainMenuTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pictureBox3)).EndInit();
             this.appTabs.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -588,36 +614,24 @@
 
         #endregion
         private System.Windows.Forms.TabPage registerTab;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox phoneNumberRegisterInput;
         private System.Windows.Forms.TextBox emailRegisterInput;
         private System.Windows.Forms.TextBox lastNameRegisterInput;
         private System.Windows.Forms.TextBox firstNameRegisterInput;
         private System.Windows.Forms.TextBox passwordRegisterInput;
         private System.Windows.Forms.TextBox registerUsernameInput;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage loginTab;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage mainMenuTab;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TabControl appTabs;
         private System.Windows.Forms.Label loginErrorTxt;
+        private System.Windows.Forms.Label signupErrorTxt;
     }
 }
