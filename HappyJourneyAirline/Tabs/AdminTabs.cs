@@ -2652,6 +2652,7 @@ namespace HappyJourneyAirline.Tabs
             this.veAirCouCity.Size = new System.Drawing.Size(732, 720);
             this.veAirCouCity.TabIndex = 10;
             this.veAirCouCity.Text = "veAirCouCity";
+            this.veAirCouCity.Paint += new System.Windows.Forms.PaintEventHandler(this.veAirCouCity_Paint);
             // 
             // vlGenerateLocationsBtn
             // 
@@ -5501,6 +5502,7 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
+                MessageBox.Show("New Country has been added to the system", "New Country", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 addLoadCountries(); // Refresh the country list
                 addConDrop.SelectedIndex = addConDrop.Items.Count - 1;
                 addAirportConDrop.SelectedIndex = addAirportConDrop.Items.Count - 1;
@@ -5532,6 +5534,7 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
+                MessageBox.Show("New City has been added to the system", "New City", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 addAirportConDrop_SelectedIndexChanged(null, null); // Refresh city list
                 addAirportCityDrop.SelectedIndex = addAirportCityDrop.Items.Count - 1;
             }
@@ -5590,6 +5593,18 @@ namespace HappyJourneyAirline.Tabs
                 if (result == -1)
                 {
                     MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else {
+                    MessageBox.Show("New Airport has been added to the system", "New Airport", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    addContNameTxt.Text = "";
+                    addCitytNameTxt.Text = "";
+                    addConDrop.Text = string.Empty;
+                    addAirportNameTxt.Text = "";
+                    addAirportConDrop.Text = "";
+                    addAirportCityDrop.Text = "";
+                    addAirportLatitudeTxt.Text = "";
+                    addAirportLongitudeTxt.Text = "";
+                       
                 }
             }
         }
@@ -7043,5 +7058,9 @@ namespace HappyJourneyAirline.Tabs
         }
         #endregion Bookings
 
+        private void veAirCouCity_Paint(object sender, PaintEventArgs e)
+        {
+            setupViewAirCityCou();
+        }
     }
 }
