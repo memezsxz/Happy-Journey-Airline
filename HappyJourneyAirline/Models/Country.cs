@@ -22,6 +22,15 @@ namespace HappyJourneyAirline.Models
         public string Name { get; set; } // Nullable
 
         /// <summary>
+        /// Returns a string representation of the Country object.
+        /// </summary>
+        /// <returns>A string containing country details.</returns>
+        public override string ToString()
+        {
+            return $"Country [Id={Id}, Name={Name}]";
+        }
+
+        /// <summary>
         /// Retrieves all countries from the database.
         /// </summary>
         /// <returns>A list of all countries.</returns>

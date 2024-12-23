@@ -27,6 +27,15 @@ namespace HappyJourneyAirline.Models
         public string Description { get; set; } // NOT NULL
 
         /// <summary>
+        /// Returns a string representation of the FlightStatus object.
+        /// </summary>
+        /// <returns>A string containing flight status details.</returns>
+        public override string ToString()
+        {
+            return $"FlightStatus [Id={Id}, Name={Name}, Description={Description}]";
+        }
+
+        /// <summary>
         /// Retrieves all flight statuses from the database.
         /// </summary>
         /// <returns>A list of all flight statuses.</returns>

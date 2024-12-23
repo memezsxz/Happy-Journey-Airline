@@ -52,6 +52,18 @@ namespace HappyJourneyAirline.Models
         public decimal BasePrice { get; set; } // NOT NULL
 
         /// <summary>
+        /// Returns a string representation of the Flight object.
+        /// </summary>
+        /// <returns>A string containing flight details.</returns>
+        public override string ToString()
+        {
+            return $"Flight [Id={Id}, SourceAirportID={SourceAirportID}, DestinationAirportID={DestinationAirportID}, " +
+                   $"DepartureTimestamp={DepartureTimestamp}, ArrivalTimestamp={ArrivalTimestamp}, " +
+                   $"FlightStatusID={(FlightStatusID.HasValue ? FlightStatusID.ToString() : "None")}, PlaneID={PlaneID}, " +
+                   $"BasePrice={BasePrice}]";
+        }
+
+        /// <summary>
         /// Retrieves all flights from the database.
         /// </summary>
         /// <returns>A list of all flights.</returns>

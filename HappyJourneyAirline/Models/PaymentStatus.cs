@@ -27,6 +27,15 @@ namespace HappyJourneyAirline.Models
         public string Description { get; set; } // Nullable
 
         /// <summary>
+        /// Returns a string representation of the PaymentStatus object.
+        /// </summary>
+        /// <returns>A string containing payment status details.</returns>
+        public override string ToString()
+        {
+            return $"PaymentStatus [Id={Id}, Name={Name}, Description={Description}]";
+        }
+
+        /// <summary>
         /// Retrieves all payment statuses from the database.
         /// </summary>
         /// <returns>A list of all payment statuses.</returns>

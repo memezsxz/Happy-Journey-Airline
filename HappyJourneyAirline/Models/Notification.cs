@@ -41,6 +41,16 @@ namespace HappyJourneyAirline.Models
         /// </summary>
         public long UserId { get; set; } // Foreign Key (NOT NULL)
 
+
+        /// <summary>
+        /// Returns a string representation of the Notification object.
+        /// </summary>
+        /// <returns>A string containing notification details.</returns>
+        public override string ToString()
+        {
+            return $"Notification [Id={Id}, Source={Source}, Type={Type}, Title={Title}, Description={Description}, UserId={UserId}]";
+        }
+
         /// <summary>
         /// Retrieves all notifications from the database.
         /// </summary>

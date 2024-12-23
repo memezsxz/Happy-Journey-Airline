@@ -51,6 +51,16 @@ namespace HappyJourneyAirline.Models
         /// </summary>
         public long? AgencyID { get; set; } // Nullable Foreign Key (Agency)
 
+
+        /// <summary>
+        /// Returns a string representation of the Ticket object.
+        /// </summary>
+        /// <returns>A string containing ticket details.</returns>
+        public override string ToString()
+        {
+            return $"Ticket [Id={Id}, FlightID={FlightID}, UserID={UserID}, Seat={Seat}, TicketClassID={TicketClassID}, TicketStatusID={TicketStatusID}, PaymentID={PaymentID}, AgencyID={(AgencyID.HasValue ? AgencyID.ToString() : "None")}]";
+        }
+
         /// <summary>
         /// Retrieves all tickets from the database.
         /// </summary>

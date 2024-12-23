@@ -37,6 +37,15 @@ namespace HappyJourneyAirline.Models
         public int PaymentMethodID { get; set; } // Foreign Key
 
         /// <summary>
+        /// Returns a string representation of the Payment object.
+        /// </summary>
+        /// <returns>A string containing payment details.</returns>
+        public override string ToString()
+        {
+            return $"Payment [Id={Id}, Amount={Amount}, Date={Date}, PaymentStatusID={PaymentStatusID}, PaymentMethodID={PaymentMethodID}]";
+        }
+
+        /// <summary>
         /// Retrieves all payments from the database.
         /// </summary>
         /// <returns>A list of all payments.</returns>

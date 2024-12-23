@@ -66,6 +66,16 @@ namespace HappyJourneyAirline.Models
         /// </summary>
         public string Cpr { get; set; } // Nullable
 
+
+        /// <summary>
+        /// Returns a string representation of the User object.
+        /// </summary>
+        /// <returns>A string containing user details.</returns>
+        public override string ToString()
+        {
+            return $"User [Id={Id}, FirstName={FirstName}, LastName={LastName}, Username={Username}, Email={Email}, PhoneNumber={PhoneNumber}, Type={Type}, AgencyID={AgencyID}, CompanyName={CompanyName}, Cpr={Cpr}]";
+        }
+
         /// <summary>
         /// Retrieves all users from the database.
         /// </summary>
