@@ -1,4 +1,6 @@
-﻿namespace ProjectSample
+﻿using System.Windows.Forms;
+
+namespace ProjectSample
 {
     partial class MainAppUI
     {
@@ -13,11 +15,8 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
+            Application.Exit();
+
         }
 
         #region Windows Form Designer generated code
