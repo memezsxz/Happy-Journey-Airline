@@ -2678,6 +2678,7 @@ namespace HappyJourneyAirline.Tabs
             List<string> list = new List<string>();
             Boolean valid = true;
 
+
             if (setUsernameTxt.Text == "")
             {
                 list.Add("username");
@@ -2717,6 +2718,7 @@ namespace HappyJourneyAirline.Tabs
             if (valid == false)
             {
 
+
                 string message = list[0];
 
                 for (int i = 1; i < list.Count(); i++)
@@ -2733,6 +2735,41 @@ namespace HappyJourneyAirline.Tabs
             else
             {
 
+
+                // email validation
+                string txt = setEmailTxt.Text.Trim().ToLower();
+                string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+                if (!Regex.IsMatch(txt, emailPattern))
+                {
+                    setErrorLbl.Text = "Error: Invalid email.";
+                    setErrorLbl.Visible = true;
+                    return;
+                }
+
+
+                // phone Number validation
+                string pattern = @"^\+?(\d{1,4})?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}$";
+                Regex regex = new Regex(pattern);
+
+                if (!regex.IsMatch(setPhoneTxt.Text.Trim()))
+                {
+                    setErrorLbl.Text = "Error: Invalid phone number";
+                    setErrorLbl.Visible = true;
+                    return;
+                }
+
+               
+
+                // Username availability check
+                if (User.GetAllUsers().Any(user => user.Username == setUsernameTxt.Text && user.Username != currentUser.Username))
+                {
+                    setErrorLbl.Text = "Error: Username is not available.";
+                    setErrorLbl.Visible = true;
+                    return;
+                }
+
+                setErrorLbl.Text = "";
 
                 currentUser.PhoneNumber = setPhoneTxt.Text;
                 currentUser.Username = setUsernameTxt.Text;
