@@ -2570,7 +2570,7 @@ namespace HappyJourneyAirline.Tabs
 
         private void bookingTab_Click(object sender, EventArgs e)
         {
-            
+
             tabController.SelectTab(1);
             defultIcons();
             bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
@@ -2586,7 +2586,7 @@ namespace HappyJourneyAirline.Tabs
 
             tickets = Ticket.GetTicketsByAgencyId((int)AuthService.GetCurrentUserId());
             HashSet<long> flightIds = new HashSet<long>();
-            tickets.ForEach( T => { flightIds.Add(T.FlightID); });
+            tickets.ForEach(T => { flightIds.Add(T.FlightID); });
 
             foreach (long f_id in flightIds)
             {
@@ -2667,134 +2667,99 @@ namespace HappyJourneyAirline.Tabs
         #endregion Navigation
 
         #region Setings
+        /// <summary>
+        /// Handles the click event for the "Save Changes" button.
+        /// Validates user inputs, performs email and phone number validation, checks username availability, and updates the user's information.
+        /// </summary>
         private void setSaveChanesBtn_Click(object sender, EventArgs e)
         {
-
+            // Retrieve the current user's ID and information
             long id = AuthService.GetCurrentUserId();
             User currentUser = User.GetUserById(id);
 
-            List<string> list = new List<string>();
-            Boolean valid = true;
+            List<string> missingFields = new List<string>();
+            bool isValid = true;
 
+            // Validate required fields
+            if (string.IsNullOrWhiteSpace(setUsernameTxt.Text)) { missingFields.Add("Username"); isValid = false; }
+            if (string.IsNullOrWhiteSpace(setFirstNameTxt.Text)) { missingFields.Add("First Name"); isValid = false; }
+            if (string.IsNullOrWhiteSpace(setLastNameTxt.Text)) { missingFields.Add("Last Name"); isValid = false; }
+            if (string.IsNullOrWhiteSpace(setPasswordTxt.Text)) { missingFields.Add("Password"); isValid = false; }
+            if (string.IsNullOrWhiteSpace(setEmailTxt.Text)) { missingFields.Add("Email"); isValid = false; }
+            if (string.IsNullOrWhiteSpace(setPhoneTxt.Text)) { missingFields.Add("Phone Number"); isValid = false; }
 
-            if (setUsernameTxt.Text == "")
+            // Show error if validation fails
+            if (!isValid)
             {
-                list.Add("username");
-                valid = false;
-            }
-
-            if (setFirstNameTxt.Text == "")
-            {
-                list.Add("First Name");
-                valid = false;
-            }
-
-            if (setLastNameTxt.Text == "")
-            {
-                list.Add("Last Name");
-                valid = false;
-            }
-
-            if (setPasswordTxt.Text == "")
-            {
-                list.Add("Password");
-                valid = false;
-            }
-
-            if (setEmailTxt.Text == "")
-            {
-                list.Add("Email");
-                valid = false;
-            }
-
-            if (setPhoneTxt.Text == "")
-            {
-                list.Add("Phone Number");
-                valid = false;
-            }
-
-            if (valid == false)
-            {
-
-
-                string message = list[0];
-
-                for (int i = 1; i < list.Count(); i++)
-                {
-                    message += " ," + list[i].ToString();
-                }
-
+                string message = string.Join(", ", missingFields);
                 setErrorLbl.Visible = true;
-                setErrorLbl.Text = "Error: Please fill the follwing fileds: " + message;
+                setErrorLbl.Text = $"Error: Please fill the following fields: {message}";
 
-                MessageBox.Show("Error", "All fileds are required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("All fields are required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            // Email validation
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            if (!Regex.IsMatch(setEmailTxt.Text.Trim(), emailPattern))
             {
-
-
-                // email validation
-                string txt = setEmailTxt.Text.Trim().ToLower();
-                string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-
-                if (!Regex.IsMatch(txt, emailPattern))
-                {
-                    setErrorLbl.Text = "Error: Invalid email.";
-                    setErrorLbl.Visible = true;
-                    return;
-                }
-
-
-                // phone Number validation
-                string pattern = @"^\d{8}$";
-                Regex regex = new Regex(pattern);
-
-                if (!regex.IsMatch(setPhoneTxt.Text.Trim()))
-                {
-                    setErrorLbl.Text = "Error: Phone number must contain exactly 8 digits.";
-                    setErrorLbl.Visible = true;
-                    return;
-                }
-
-
-
-                // Username availability check
-                if (User.GetAllUsers().Any(user => user.Username == setUsernameTxt.Text && user.Username != currentUser.Username))
-                {
-                    setErrorLbl.Text = "Error: Username is not available.";
-                    setErrorLbl.Visible = true;
-                    return;
-                }
-
-                setErrorLbl.Text = "";
-
-                currentUser.PhoneNumber = setPhoneTxt.Text;
-                currentUser.Username = setUsernameTxt.Text;
-                currentUser.Email = setEmailTxt.Text;
-                currentUser.Password = setPasswordTxt.Text;
-                currentUser.FirstName = setFirstNameTxt.Text;
-                currentUser.LastName = setLastNameTxt.Text;
-                User.UpdateUser(currentUser);
-
-                MessageBox.Show("User Info Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                setErrorLbl.Text = "Error: Invalid email.";
+                setErrorLbl.Visible = true;
+                return;
             }
+
+            // Phone number validation (exactly 8 digits)
+            string phonePattern = @"^\d{8}$";
+            if (!Regex.IsMatch(setPhoneTxt.Text.Trim(), phonePattern))
+            {
+                setErrorLbl.Text = "Error: Phone number must contain exactly 8 digits.";
+                setErrorLbl.Visible = true;
+                return;
+            }
+
+            // Check for username availability
+            if (User.GetAllUsers().Any(user => user.Username == setUsernameTxt.Text && user.Username != currentUser.Username))
+            {
+                setErrorLbl.Text = "Error: Username is not available.";
+                setErrorLbl.Visible = true;
+                return;
+            }
+
+            // Clear error label
+            setErrorLbl.Text = "";
+
+            // Update user information
+            currentUser.PhoneNumber = setPhoneTxt.Text;
+            currentUser.Username = setUsernameTxt.Text;
+            currentUser.Email = setEmailTxt.Text;
+            currentUser.Password = setPasswordTxt.Text;
+            currentUser.FirstName = setFirstNameTxt.Text;
+            currentUser.LastName = setLastNameTxt.Text;
+            User.UpdateUser(currentUser);
+
+            // Display success message
+            MessageBox.Show("User Info Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// Handles the click event for the "Delete" button.
+        /// Prompts the user for confirmation, and if confirmed, deletes the current user.
+        /// </summary>
         private void setDeleteBtn_Click(object sender, EventArgs e)
         {
             long id = AuthService.GetCurrentUserId();
             User currentUser = User.GetUserById(id);
 
+            // Confirm deletion
             DialogResult result = MessageBox.Show(
-        "Warning! Are you sure you want to delete this user? This action cannot be undone.",
-        "Delete Confirmation",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Warning);
+                "Warning! Are you sure you want to delete this user? This action cannot be undone.",
+                "Delete Confirmation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
-
+                // Attempt to delete user
                 if (User.DeleteUser(currentUser.Id))
                 {
                     MessageBox.Show("User has been successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -2804,24 +2769,25 @@ namespace HappyJourneyAirline.Tabs
                 else
                 {
                     MessageBox.Show("An error occurred while deleting the user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
-
             }
             else
             {
+                // Notify user of cancellation
                 MessageBox.Show("Delete operation canceled.", "Cancellation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-
         }
+
         #endregion Setings
 
         #region Flights
+        /// <summary>
+        /// Handles the click event for the flight search icon.
+        /// Filters and displays flights based on user-selected criteria.
+        /// </summary>
         private void searchIcon_Click(object sender, EventArgs e)
         {
-
-            // Get selected dropdown values 
+            // Retrieve selected airports
             Airport selectedSource = depDrop.SelectedItem as Airport;
             Airport selectedDestination = arrivalDrop.SelectedItem as Airport;
 
@@ -2832,28 +2798,27 @@ namespace HappyJourneyAirline.Tabs
                 return;
             }
 
-            // Initialize SQL connection and command
+            // Construct SQL query
             using (SqlConnection conn = new SqlConnection(Database.connectionString))
             using (SqlCommand cmd = conn.CreateCommand())
             {
-                // Base query
                 string query = @"SELECT 
-                    'View' as 'View', 
-                    f.Id AS 'Flight ID',
-                    sa.name AS 'Source Airport Name', 
-                    da.name AS 'Destination Airport Name',
-                    f.departureTimestamp AS 'Departure Timestamp', 
-                    f.arrivalTimestamp AS 'Arrival Timestamp', 
-                    fs.name AS 'Flight Status', 
-                    f.planeID AS 'Plane ID',
-                    f.BasePrice AS 'Base Price'
-            FROM flights f
-            LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id
-            LEFT JOIN airports sa ON f.sourceAirportID = sa.Id
-            LEFT JOIN airports da ON f.destinationAirportID = da.Id
-            WHERE fs.name IN ('Scheduled', 'Delayed')"; // Always true to simplify adding conditions
+            'View' as 'View', 
+            f.Id AS 'Flight ID',
+            sa.name AS 'Source Airport Name', 
+            da.name AS 'Destination Airport Name',
+            f.departureTimestamp AS 'Departure Timestamp', 
+            f.arrivalTimestamp AS 'Arrival Timestamp', 
+            fs.name AS 'Flight Status', 
+            f.planeID AS 'Plane ID',
+            f.BasePrice AS 'Base Price'
+        FROM flights f
+        LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id
+        LEFT JOIN airports sa ON f.sourceAirportID = sa.Id
+        LEFT JOIN airports da ON f.destinationAirportID = da.Id
+        WHERE fs.name IN ('Scheduled', 'Delayed')";
 
-                // Add conditions for airports
+                // Add filters for source and destination airports
                 if (selectedSource.Name != "All")
                 {
                     query += " AND sa.Id = @sourceID";
@@ -2865,56 +2830,41 @@ namespace HappyJourneyAirline.Tabs
                     cmd.Parameters.AddWithValue("@destinationID", selectedDestination.Id);
                 }
 
-                // Add condition for date and time if checked
+                // Handle optional date and time filters
                 if (dateCheck.Checked || timeCheck.Checked)
                 {
-                    string dateAndTime = " ";
-
                     if (dateCheck.Checked)
                     {
-                        dateAndTime = date.Value.ToString("MM/dd/yyyy");
-
                         query += " AND CAST(f.departureTimestamp AS DATE) = CONVERT(DATE, @selectedDate, 101)";
-                        string checkDate = date.Value.ToString();
-                        cmd.Parameters.AddWithValue("@selectedDate", checkDate);
-                        // Ensure proper date format
+                        cmd.Parameters.AddWithValue("@selectedDate", date.Value.ToString("yyyy-MM-dd"));
                     }
 
                     if (timeCheck.Checked)
                     {
-                        // Append the condition to the query
-                        string selectedTime = time.Text;
-                        if (selectedTime == "Morning")
+                        if (time.Text == "Morning")
                         {
                             query += " AND RIGHT(CONVERT(VARCHAR, f.departureTimestamp, 100), 2) = 'AM'";
-
                         }
-                        else if (selectedTime == "Night")
+                        else if (time.Text == "Night")
                         {
                             query += " AND RIGHT(CONVERT(VARCHAR, f.departureTimestamp, 100), 2) = 'PM'";
                         }
                         else
                         {
-                            MessageBox.Show("Value must be selected in the Time filed", "Missing Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Select a valid time option.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
                         }
-
-
                     }
-
                 }
 
                 try
                 {
-                    // Assign final query to command
                     cmd.CommandText = query;
-
-                    // Execute the query and bind the results to the grid
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    int availableTickets = 0;
-                    // Check ticket availability and add a column for availability
+                    // Add available ticket column
                     dt.Columns.Add("Available Tickets", typeof(string));
                     foreach (DataRow row in dt.Rows)
                     {
@@ -2923,92 +2873,79 @@ namespace HappyJourneyAirline.Tabs
                         int capacity = Plane.GetPlaneById(planeId).Capacity;
                         int ticketCount = Ticket.GetTicketsByFlightId(flightId).Count;
 
-                        // Add availability info
-                        availableTickets = capacity - ticketCount;
-                        row["Available Tickets"] = availableTickets;
+                        row["Available Tickets"] = capacity - ticketCount;
                     }
 
-
-
                     gridflightsData.DataSource = dt;
-                    DataGridViewColumn viewColumn = gridflightsData.Columns[0];
-                    viewColumn.DefaultCellStyle = gridflightsData.Columns[2].DefaultCellStyle.Clone();
-                    viewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    viewColumn.DefaultCellStyle.ForeColor = Color.Blue;
+                    gridflightsData.Columns[0].DefaultCellStyle.ForeColor = Color.Blue;
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
+        /// <summary>
+        /// Loads flight data, populates dropdowns with airport options, and populates the grid with flight details.
+        /// </summary>
         private void flightDataLoad()
         {
-
             try
             {
-
-                List<Airport> airportList = new List<Airport>();
-                Airport handeler = new Airport();
-
-
-                airportList = Airport.GetAllAirports();
+                // Retrieve a list of all airports
+                List<Airport> airportList = Airport.GetAllAirports();
                 List<Airport> airportList2 = Airport.GetAllAirports();
 
+                // Handle case where no airports are available
                 if (airportList == null || airportList.Count == 0)
                 {
                     Console.WriteLine("No airports found.");
                     return;
                 }
-                else
+
+                // Add an "All" option to the airport lists
+                Airport allOption = new Airport
                 {
-                    Airport allOption = new Airport
-                    {
-                        Id = 0,
-                        Name = "All"
-                    };
+                    Id = 0,
+                    Name = "All"
+                };
+                airportList.Insert(0, allOption);
+                airportList2.Insert(0, allOption);
 
+                // Populate the dropdowns for departure and arrival airports
+                depDrop.DataSource = null;
+                depDrop.DataSource = airportList;
+                depDrop.DisplayMember = "Name";
 
-                    airportList.Insert(0, allOption);
-                    airportList2.Insert(0, allOption);
+                arrivalDrop.DataSource = null;
+                arrivalDrop.DataSource = airportList2;
+                arrivalDrop.DisplayMember = "Name";
 
-                    depDrop.DataSource = null;
-                    depDrop.DataSource = airportList;
-                    depDrop.DisplayMember = "Name";
-
-                    arrivalDrop.DataSource = null;
-                    arrivalDrop.DataSource = airportList2;
-                    arrivalDrop.DisplayMember = "Name";
-                }
-
-
-
-
+                // SQL connection to load flight data
                 SqlConnection conn = new SqlConnection(Database.connectionString);
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = $"SELECT " +
-                    $"'View' as 'View', " +
-                    $"f.Id AS 'Flight ID', " +
-                    $"sa.name AS 'Source Airport Name', " +
-                    $"da.name AS 'Destination Airport Name', " +
-                    $"f.departureTimestamp AS 'Departure Timestamp', " +
-                    $"f.arrivalTimestamp AS 'Arrival Timestamp', " +
-                    $"fs.name AS 'Flight Status', " +
-                    $"f.planeID AS 'Plane ID', " +
-                    $"f.BasePrice AS 'Base Price'" +
-                    $"FROM flights f " +
-                    $"LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id " +
-                    $"LEFT JOIN airports sa ON f.sourceAirportID = sa.Id " +
-                    $"LEFT JOIN airports da ON f.destinationAirportID = da.Id " +
-                    $"WHERE fs.name IN ('Scheduled', 'Delayed')";
+                cmd.CommandText = @"SELECT 
+            'View' as 'View', 
+            f.Id AS 'Flight ID', 
+            sa.name AS 'Source Airport Name', 
+            da.name AS 'Destination Airport Name', 
+            f.departureTimestamp AS 'Departure Timestamp', 
+            f.arrivalTimestamp AS 'Arrival Timestamp', 
+            fs.name AS 'Flight Status', 
+            f.planeID AS 'Plane ID', 
+            f.BasePrice AS 'Base Price' 
+        FROM flights f 
+        LEFT JOIN flight_statuses fs ON f.flightStatusID = fs.Id 
+        LEFT JOIN airports sa ON f.sourceAirportID = sa.Id 
+        LEFT JOIN airports da ON f.destinationAirportID = da.Id 
+        WHERE fs.name IN ('Scheduled', 'Delayed')";
+
                 SqlDataAdapter ad = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 ad.Fill(dt);
 
-
-                int availableTickets = 0;
-                // Check ticket availability and add a column for availability
+                // Add a column for available tickets
                 dt.Columns.Add("Available Tickets", typeof(string));
                 foreach (DataRow row in dt.Rows)
                 {
@@ -3017,51 +2954,52 @@ namespace HappyJourneyAirline.Tabs
                     int capacity = Plane.GetPlaneById(planeId).Capacity;
                     int ticketCount = Ticket.GetTicketsByFlightId(flightId).Count;
 
-                    // Add availability info
-                    availableTickets = capacity - ticketCount;
-                    row["Available Tickets"] = availableTickets;
+                    row["Available Tickets"] = capacity - ticketCount;
                 }
 
-
-
-
+                // Bind the data to the grid
                 gridflightsData.DataSource = dt;
-
                 DataGridViewColumn viewColumn = gridflightsData.Columns[0];
                 viewColumn.DefaultCellStyle = gridflightsData.Columns[2].DefaultCellStyle.Clone();
                 viewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 viewColumn.DefaultCellStyle.ForeColor = Color.Blue;
             }
-            catch
+            catch (Exception ex)
             {
-
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
+
+        /// <summary>
+        /// Handles the click event for the cancel icon.
+        /// Resets all filters and reloads flight data.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void cancelIcon_Click(object sender, EventArgs e)
         {
             dateCheck.CheckState = CheckState.Unchecked;
             timeCheck.CheckState = CheckState.Unchecked;
             arrivalDrop.SelectedIndex = 0;
             depDrop.SelectedIndex = 0;
-
-            depDrop.SelectedIndex = 0;
-            arrivalDrop.SelectedIndex = 0;
             flightDataLoad();
-            return;
         }
+
+        /// <summary>
+        /// Toggles the enabled state of the date picker based on the checkbox.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void dateCheck_CheckedChanged(object sender, EventArgs e)
         {
-            if (dateCheck.Checked)
-            {
-                date.Enabled = true;
-            }
-            else
-            {
-                date.Enabled = false;
-            }
-
+            date.Enabled = dateCheck.Checked;
         }
 
+        /// <summary>
+        /// Toggles the enabled state of the time dropdown based on the checkbox.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void timeCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (timeCheck.Checked)
@@ -3075,9 +3013,15 @@ namespace HappyJourneyAirline.Tabs
             }
         }
 
+        /// <summary>
+        /// Handles the cell click event for the flight grid.
+        /// Opens detailed flight information when the "View" column is clicked.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Provides data for the DataGridViewCellEventArgs.</param>
         private void gridflightsData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0) // "View" column
             {
                 previosTab = 0;
                 selectedFlight = Flight.GetFlightById((int)(gridflightsData.Rows[e.RowIndex].Cells[1].Value));
@@ -3090,47 +3034,44 @@ namespace HappyJourneyAirline.Tabs
 
 
         #region Flight Details
+        /// <summary>
+        /// Sets up the flight details view with data from the selected flight.
+        /// </summary>
         private void sutupFlightDetails()
         {
+            // Populate flight ID
             fdFlightNumTxt.Text = $"{selectedFlight.Id}";
 
+            // Retrieve departure and destination airport details
             Airport depAirport = Airport.GetAirportById(selectedFlight.SourceAirportID);
             Airport destAirport = Airport.GetAirportById(selectedFlight.DestinationAirportID);
 
+            // Retrieve cities associated with the airports
             City depCity = City.GetCityById(depAirport.CityId);
             City destCity = City.GetCityById(destAirport.CityId);
 
+            // Retrieve countries associated with the cities
             Country depCountry = Country.GetCountryById(depCity.CountryId);
             Country destCountry = Country.GetCountryById(destCity.CountryId);
 
+            // Set flight details in the text boxes
             fdArrTxt.Text = destAirport.Name;
             fdDepTxt.Text = depAirport.Name;
-
             fdFromTxt.Text = $"{depCity.Name} ({depCountry.Name})";
             fdToTxt.Text = $"{destCity.Name} ({destCountry.Name})";
-
             fdArrTimeTxt.Text = $"{selectedFlight.ArrivalTimestamp}";
             fdDepTimeTxt.Text = $"{selectedFlight.DepartureTimestamp}";
-
-            //long id = AuthService.GetCurrentUserId();
-            //fdTravellersDataGridView.DataSource = new BindingList<User>(Flight.GetTravellersForFlightByAgencyID(id, selectedFlight.Id));
-
-            //fdTravellersDataGridView.Columns["Id"].HeaderText = "Traveller ID";
-            //fdTravellersDataGridView.Columns["FirstName"].HeaderText = "First Name";
-            //fdTravellersDataGridView.Columns["LastName"].HeaderText = "Last Name";
-            //fdTravellersDataGridView.Columns["PhoneNumber"].HeaderText = "Phone Number";
-            //fdTravellersDataGridView.Columns["Cpr"].HeaderText = "CPR";
-
-
-            //fdTravellersDataGridView.Columns["Username"].Visible = false;
-            //fdTravellersDataGridView.Columns["Password"].Visible = false;
-            //fdTravellersDataGridView.Columns["Type"].Visible = false;
-            //fdTravellersDataGridView.Columns["AgencyID"].Visible = false;
-            //fdTravellersDataGridView.Columns["CompanyName"].Visible = false;
         }
+
+        /// <summary>
+        /// Handles cell click events in the travelers DataGridView.
+        /// Opens the booking details view when the "Edit" column is clicked.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments containing information about the clicked cell.</param>
         private void fdTravellersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0) // "Edit" column
             {
                 if (!string.IsNullOrEmpty(fdTravellersDataGridView.SelectedCells[0].Value as string))
                 {
@@ -3139,9 +3080,15 @@ namespace HappyJourneyAirline.Tabs
                     setupBookingDetails();
                     tabController.SelectTab(4);
                 }
-
             }
         }
+
+        /// <summary>
+        /// Handles the DataBindingComplete event for the travelers DataGridView.
+        /// Updates rows to show an "Edit" action for applicable users.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void fdTravellersDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             int i = 0;
@@ -3150,6 +3097,7 @@ namespace HappyJourneyAirline.Tabs
                 User u = allUsers[i];
                 i++;
 
+                // Skip users already in the temporary list
                 if (tempUsers.Contains(u))
                 {
                     continue;
@@ -3157,14 +3105,20 @@ namespace HappyJourneyAirline.Tabs
 
                 row.Cells[0].Value = "Edit";
             }
-
         }
+
+        /// <summary>
+        /// Handles the click event for the "Delete Traveler" button.
+        /// Deletes the selected traveler after confirmation.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void fdDeleteTravellerBtn_Click(object sender, EventArgs e)
         {
-            // Check if a single row or cell is selected
+            // Ensure a row or cell is selected
             if (fdTravellersDataGridView.SelectedRows.Count == 1 || fdTravellersDataGridView.SelectedCells.Count > 0)
             {
-                // Identify the row based on the selected cell if no full row is selected
+                // Identify the selected row
                 DataGridViewRow selectedRow;
                 if (fdTravellersDataGridView.SelectedRows.Count == 1)
                 {
@@ -3179,12 +3133,12 @@ namespace HappyJourneyAirline.Tabs
                 int userId = Convert.ToInt32(selectedRow.Cells[1].Value);
                 if (userId != null)
                 {
-                    // Ask for confirmation before deleting
+                    // Confirm deletion
                     DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete the traveler with ID {userId}?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (dialogResult == DialogResult.Yes)
                     {
-                        // Remove the selected row
+                        // Remove the selected traveler
                         if (userId != 0)
                         {
                             User.DeleteUser(userId);
@@ -3207,7 +3161,6 @@ namespace HappyJourneyAirline.Tabs
                                     break;
                                 }
                             }
-
                         }
                         cuLoadTravleres();
                     }
@@ -3219,7 +3172,7 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
-                // No row or cell selected; show an alert
+                // Alert if no selection is made
                 MessageBox.Show("Please select a row or a cell to delete.", "Delete Traveler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -3227,21 +3180,28 @@ namespace HappyJourneyAirline.Tabs
         #endregion Flight details
 
         #region Notification 
+        /// <summary>
+        /// Handles the Paint event for the traveler notification tab.
+        /// Configures the notification DataGridView and populates it with notifications for the current user.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Provides data for the Paint event.</param>
         private void travellerNotificationTab_Paint(object sender, PaintEventArgs e)
         {
+            // Set row height for all rows in the DataGridView
+            dataGridViewNotification.RowTemplate.Height = 60;
 
-            dataGridViewNotification.RowTemplate.Height = 60; // Sets all rows to 40 pixels
-
+            // Retrieve notifications for the currently authenticated user
             List<Notification> list = Notification.GetNotificationsByUserId(AuthService.GetCurrentUserId());
 
+            // Bind the notifications to the DataGridView
             dataGridViewNotification.DataSource = list;
-
             dataGridViewNotification.AutoGenerateColumns = false;
 
-            // Clear existing columns
+            // Clear any existing columns to reset the grid
             dataGridViewNotification.Columns.Clear();
 
-            // Add the "title" column
+            // Add a column for the notification title
             dataGridViewNotification.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "title",
@@ -3249,7 +3209,7 @@ namespace HappyJourneyAirline.Tabs
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             });
 
-            // Add the "description" column
+            // Add a column for the notification description
             dataGridViewNotification.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "description",
@@ -3257,42 +3217,71 @@ namespace HappyJourneyAirline.Tabs
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
 
-            // Bind the data
+            // Rebind the data to ensure updates are reflected
             dataGridViewNotification.DataSource = list;
         }
 
+        /// <summary>
+        /// Handles the click event for the "Show Selected" button.
+        /// Displays the details of the selected notification in a message box.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void vnShowSelectedBtn_Click(object sender, EventArgs e)
         {
             try
             {
+                // Retrieve the selected notification from the DataGridView
                 var selectedObject = dataGridViewNotification.SelectedCells[0].OwningRow.DataBoundItem as Notification;
 
+                // Display the notification details if a valid object is selected
                 if (selectedObject != null)
                 {
                     MessageBox.Show(selectedObject.Description, selectedObject.Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Handle exceptions silently or log if necessary
+                Console.WriteLine($"Error displaying notification: {ex.Message}");
+            }
         }
 
         #endregion Notification
 
         #region Create Traveller
+        /// <summary>
+        /// Handles the click event for adding a traveler.
+        /// Clears input fields, initializes dropdowns, and navigates to the traveler creation tab.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void fdAddTravelerBtn_Click(object sender, EventArgs e)
         {
+            // Clear all input fields
             cuFnameTxt.Text = "";
             cuLnameTxt.Text = "";
             cuEmailTxt.Text = "";
             cuPhoneTxt.Text = "";
             cuCPRTxt.Text = "";
+
+            // Hide error label
             atErrorLbl.Visible = false;
+
+            // Populate ticket class dropdown
             cuTickitClassDrop.DataSource = TicketClass.GetAllTicketClasses();
             cuTickitClassDrop.DisplayMember = "Name";
+
+            // Setup flight details and navigate to the traveler creation tab
             sutupFlightDetails();
             tabController.SelectTab(6);
         }
-
+        /// <summary>
+        /// Handles the click event for creating a user.
+        /// Validates user inputs, creates a new traveler, and adds them to temporary storage.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void cuCreateUserBtn_Click(object sender, EventArgs e)
         {
             User user = new User();
@@ -3322,7 +3311,7 @@ namespace HappyJourneyAirline.Tabs
             {
                 user.LastName = cuLnameTxt.Text.Trim();
             }
-            
+
             // email validation
             string txt = cuEmailTxt.Text.Trim().ToLower();
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
@@ -3374,14 +3363,16 @@ namespace HappyJourneyAirline.Tabs
             cuLoadTravleres();
             tabController.SelectTab(5);
         }
-
+        /// <summary>
+        /// Loads travelers associated with the current flight and populates the DataGridView.
+        /// </summary>
         private void cuLoadTravleres()
         {
 
             sysUsers.Clear();
 
 
-            sysUsers = new BindingList<User>( Flight.GetTravellersForFlightByAgencyID(AuthService.GetCurrentUserId(), selectedFlight.Id));
+            sysUsers = new BindingList<User>(Flight.GetTravellersForFlightByAgencyID(AuthService.GetCurrentUserId(), selectedFlight.Id));
 
             allUsers.Clear();
 
@@ -3396,10 +3387,10 @@ namespace HappyJourneyAirline.Tabs
             }
             fdTravellersDataGridView.DataSource = allUsers;
 
-                fdTravellersDataGridView.DataSource = allUsers;
+            fdTravellersDataGridView.DataSource = allUsers;
 
-                
-            
+
+
             fdTravellersDataGridView.Columns["Id"].HeaderText = "Traveller ID";
             fdTravellersDataGridView.Columns["FirstName"].HeaderText = "First Name";
             fdTravellersDataGridView.Columns["LastName"].HeaderText = "Last Name";
@@ -3414,6 +3405,12 @@ namespace HappyJourneyAirline.Tabs
             fdTravellersDataGridView.Columns["CompanyName"].Visible = false;
 
         }
+        /// <summary>
+        /// Handles the click event for the cancel button.
+        /// Navigates back to the traveler list tab.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void cuCancelBtn_Click(object sender, EventArgs e)
         {
             tabController.SelectTab(5);
@@ -3421,49 +3418,14 @@ namespace HappyJourneyAirline.Tabs
 
         #endregion Create Traveller
 
-        #region Booking
-        private void bookingTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var senderGrid = (DataGridView)sender;
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
-            {
-                //TODO - Button Clicked - Execute Code Here
-                int Ticketid = Convert.ToInt32(bookingTable.Rows[e.RowIndex].Cells[0].Value);
-
-                Ticket ticket = Ticket.GetTicketById(Ticketid);
-                Flight flight = Flight.GetFlightById(ticket.FlightID);
-
-                string dep = flight.DepartureTimestamp.ToString();
-                string arr = flight.ArrivalTimestamp.ToString();
-
-                Airport source = Airport.GetAirportById(flight.SourceAirportID);
-                Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
-
-                City sourceCity = City.GetCityById(source.CityId);
-                City destinationCity = City.GetCityById(destination.CityId);
-                Country sourceCountry = Country.GetCountryById(sourceCity.CountryId);
-                Country destinationCountry = Country.GetCountryById(destinationCity.CountryId);
-
-                bdIDTxt.Text = ticket.Id.ToString();
-                bdFlightNumTxt.Text = ticket.FlightID.ToString();
-                bdDepTimeTxt.Text = dep;
-                bdArrTimeTxt.Text = arr;
-                bdFromTxt.Text = sourceCity.Name.ToString() + " (" + sourceCountry.Name.ToString() + ")";
-                bdToTxt.Text = destinationCity.Name.ToString() + " (" + destinationCountry.Name.ToString() + ")";
-                bdDepTxt.Text = source.Name.ToString();
-                bdArrTxt.Text = destination.Name.ToString();
-                tabController.SelectTab(5);
-            }
-        }
-
-
-        #endregion Booking
-
         #region Booking Details
 
-       private void  setupBookingDetails()
+        /// <summary>
+        /// Sets up the booking details view with data from the selected flight and traveler.
+        /// </summary>
+        private void setupBookingDetails()
         {
+            // Populate flight-related details
             bdFlightNumTxt.Text = selectedFlight.Id.ToString();
             bdDepTimeTxt.Text = fdDepTimeTxt.Text;
             bdArrTimeTxt.Text = fdArrTimeTxt.Text;
@@ -3472,8 +3434,10 @@ namespace HappyJourneyAirline.Tabs
             bdDepTxt.Text = fdDepTxt.Text;
             bdArrTxt.Text = fdArrTxt.Text;
 
+            // Retrieve the ticket associated with the selected traveler and flight
             selectedTicket = Ticket.GetTicketByFlightAndUserID(selectedFlight.Id, selectedTraveller.Id);
 
+            // Populate traveler-related details
             bdIDTxt.Text = selectedTicket.Id.ToString();
             bdFNameTxt.Text = selectedTraveller.FirstName;
             bdLNameTxt.Text = selectedTraveller.LastName;
@@ -3481,9 +3445,18 @@ namespace HappyJourneyAirline.Tabs
             bdPhoneNumberTxt.Text = selectedTraveller.PhoneNumber;
             bdCPRTxt.Text = selectedTraveller.Cpr;
             bdSeatNumTxt.Text = selectedTicket.Seat;
+
+            // Populate ticket class and payment details
             bdTicketClassNameTxt.Text = TicketClass.GetTicketClassById(selectedTicket.TicketClassID).Name;
             bdTotalPriceTxt.Text = $"{Payment.GetPaymentById(selectedTicket.PaymentID).Amount}";
         }
+
+        /// <summary>
+        /// Handles the click event for the cancel button in the booking details view.
+        /// Prompts the user for confirmation and deletes the selected ticket if confirmed.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void bdCancelBtn_Click(object sender, EventArgs e)
         {
             // Confirm deletion with the user
@@ -3523,9 +3496,14 @@ namespace HappyJourneyAirline.Tabs
             }
         }
 
+
         #endregion Booking Details
 
 
+        /// <summary>
+        /// Creates and configures a new "Edit" column for a DataGridView.
+        /// </summary>
+        /// <returns>A configured DataGridViewTextBoxColumn for editing.</returns>
         private DataGridViewTextBoxColumn AddEditColumn()
         {
             DataGridViewTextBoxColumn editColumn = new DataGridViewTextBoxColumn
@@ -3544,6 +3522,12 @@ namespace HappyJourneyAirline.Tabs
 
 
         #region Payment
+        /// <summary>
+        /// Handles the click event for the "Pay All" button.
+        /// Prepares the payment form with necessary details for all unpaid travelers and navigates to the payment tab.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void fdPayAllBtn_Click(object sender, EventArgs e)
         {
             if (tempUsers.Count == 0)
@@ -3556,6 +3540,7 @@ namespace HappyJourneyAirline.Tabs
             ppFlightNumTxt.Text = $"{selectedFlight.Id}";
             ppNewTravellersNumTxt.Text = $"{tempUsers.Count}";
 
+            // Calculate total price for all travelers
             decimal totalPrice = 0;
             foreach (TicketClass tc in tempUsersTicketClass)
             {
@@ -3576,18 +3561,21 @@ namespace HappyJourneyAirline.Tabs
             tabController.SelectTab(7);
         }
 
+        /// <summary>
+        /// Handles the click event for the "Pay" button.
+        /// Processes payment for all unpaid travelers and generates tickets.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ppPayBtn_Click(object sender, EventArgs e)
         {
             paymentErrorLbl.Visible = false;
-      
 
             // Parse flight ID
             int flightId = Convert.ToInt32(ppFlightNumTxt.Text);
 
-
             // Determine selected payment method
             int paymentMethod;
-
             if (ppCcRadio.Checked)
             {
                 paymentMethod = 1; // MasterCard
@@ -3607,7 +3595,7 @@ namespace HappyJourneyAirline.Tabs
                 return;
             }
 
-
+            // Validate payment details
             if (string.IsNullOrWhiteSpace(ppCardNumTxt.Text))
             {
                 paymentErrorLbl.Visible = true;
@@ -3644,8 +3632,7 @@ namespace HappyJourneyAirline.Tabs
                 return;
             }
 
-
-
+            // Process payment for each traveler
             for (int i = 0; i < tempUsers.Count; i++)
             {
                 long id = User.AddUser(tempUsers[i]);
@@ -3655,6 +3642,7 @@ namespace HappyJourneyAirline.Tabs
                     MessageBox.Show("Problem saving to database user, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
                 // Generate a random seat assignment
                 string assignedSeat = GenerateRandomSeat();
 
@@ -3693,13 +3681,12 @@ namespace HappyJourneyAirline.Tabs
                     MessageBox.Show("Problem saving to database ticket, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
             }
 
             // Display success message to the user
             MessageBox.Show($"Tickets purchased successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Return to the booking tab
+            // Reset booking UI and reload data
             defultIcons();
             bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
             loadBookingTable();
@@ -3709,7 +3696,10 @@ namespace HappyJourneyAirline.Tabs
             tabController.SelectTab(5);
         }
 
-
+        /// <summary>
+        /// Generates a random seat assignment (e.g., "12C").
+        /// </summary>
+        /// <returns>A string representing a randomly assigned seat.</returns>
         private string GenerateRandomSeat()
         {
             Random random = new Random();
@@ -3718,31 +3708,59 @@ namespace HappyJourneyAirline.Tabs
             return $"{row}{column}";
         }
 
+        /// <summary>
+        /// Handles the click event for the "Cancel" button on the payment tab.
+        /// Navigates back to the traveler list tab.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ppCancelBtn_Click(object sender, EventArgs e)
         {
             cuLoadTravleres();
-            tabController.SelectTab(5); // return to the flight tab 
+            tabController.SelectTab(5); // Return to the flight tab
         }
+
         #endregion Payment
 
+        /// <summary>
+        /// Handles the cell click event for the booking table.
+        /// Navigates to the flight details tab when the "View" column is clicked.
+        /// </summary>
+        /// <param name="sender">The source of the event (DataGridView).</param>
+        /// <param name="e">Provides data for the DataGridViewCellEventArgs.</param>
         private void bookingTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0) {
+            if (e.ColumnIndex == 0) // "View" column
+            {
                 previosTab = 1;
-selectedFlight = Flight.GetFlightById((int) ((sender as DataGridView).Rows[e.RowIndex].Cells[1].Value));
+
+                // Retrieve the selected flight using its ID from the clicked row
+                selectedFlight = Flight.GetFlightById((int)((sender as DataGridView).Rows[e.RowIndex].Cells[1].Value));
+
+                // Set up flight details and load travelers for the selected flight
                 sutupFlightDetails();
                 cuLoadTravleres();
+
+                // Navigate to the flight details tab
                 tabController.SelectTab(5);
             }
-        
-
         }
 
+        /// <summary>
+        /// Handles the click event for the logout icon.
+        /// Logs out the current user and navigates to the login tab.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void logOutIcon_Click(object sender, EventArgs e)
         {
+            // Log out the current user
             AuthService.LogoutCurrentUser();
+
+            // Navigate to the login tab
             appTabs.SelectTab(0);
         }
+
     }
 
 }
