@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ProjectSample
 {
@@ -82,21 +83,6 @@ namespace ProjectSample
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -104,19 +90,21 @@ namespace ProjectSample
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            ShowError(loginErrorTxt, string.Empty);
             String username = textBox1.Text;
             String password = textBox2.Text;
 
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                MessageBox.Show("Username is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(loginErrorTxt, "Username is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Password is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError(loginErrorTxt, "Password is required.");
                 return;
             }
 
@@ -124,11 +112,12 @@ namespace ProjectSample
             User loggedInUser = userHandler.Login(username, password);
             
             if (loggedInUser == null) {
-                Console.WriteLine("Incorrect Credintials");
+                ShowError(loginErrorTxt, "Invalid login credentials.");
                 return;
             }
+
             AuthService.StoreUserId(loggedInUser.Id);
-            Console.WriteLine("Logged in user: " + loggedInUser.Email);
+            //Console.WriteLine("Logged in user: " + loggedInUser.Email);
 
             if (loggedInUser.Type == "traveller")
             {
@@ -157,11 +146,6 @@ namespace ProjectSample
         private void button3_Click(object sender, EventArgs e)
         {
             appTabs.SelectTab(getAppRoute(APP_ROUTES.LOGIN_ROUTE) );
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -252,6 +236,12 @@ namespace ProjectSample
         private void emailRegisterInput_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ShowError(Label label, string message)
+        {
+            label.Text = message;
+            label.Visible = !string.IsNullOrEmpty(message);
         }
     }
 }

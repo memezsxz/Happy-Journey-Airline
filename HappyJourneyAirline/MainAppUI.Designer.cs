@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Label label7;
+            System.Windows.Forms.Label label6;
+            System.Windows.Forms.PictureBox pictureBox1;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainAppUI));
             this.registerTab = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
@@ -49,15 +54,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.loginTab = new System.Windows.Forms.TabPage();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.mainMenuTab = new System.Windows.Forms.TabPage();
             this.label21 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -65,10 +65,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.appTabs = new System.Windows.Forms.TabControl();
+            this.loginErrorTxt = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            label2 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             this.registerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.loginTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.mainMenuTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.appTabs.SuspendLayout();
@@ -311,15 +317,16 @@
             // loginTab
             // 
             this.loginTab.BackColor = System.Drawing.Color.White;
-            this.loginTab.Controls.Add(this.label7);
-            this.loginTab.Controls.Add(this.label6);
+            this.loginTab.Controls.Add(this.loginErrorTxt);
+            this.loginTab.Controls.Add(label7);
+            this.loginTab.Controls.Add(label6);
             this.loginTab.Controls.Add(this.label5);
-            this.loginTab.Controls.Add(this.pictureBox1);
+            this.loginTab.Controls.Add(pictureBox1);
             this.loginTab.Controls.Add(this.textBox2);
             this.loginTab.Controls.Add(this.textBox1);
-            this.loginTab.Controls.Add(this.label2);
+            this.loginTab.Controls.Add(label2);
             this.loginTab.Controls.Add(this.button1);
-            this.loginTab.Controls.Add(this.label1);
+            this.loginTab.Controls.Add(label1);
             this.loginTab.Location = new System.Drawing.Point(4, 31);
             this.loginTab.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.loginTab.Name = "loginTab";
@@ -330,31 +337,30 @@
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(550, 653);
-            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 22);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Password";
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(550, 653);
+            label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(89, 22);
+            label7.TabIndex = 8;
+            label7.Text = "Password";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(550, 536);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 22);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Username";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(550, 536);
+            label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(92, 22);
+            label6.TabIndex = 7;
+            label6.Text = "Username";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(653, 887);
+            this.label5.Location = new System.Drawing.Point(653, 931);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(202, 24);
@@ -364,25 +370,24 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::HappyJourneyAirline.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(612, 103);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 157);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            pictureBox1.Image = global::HappyJourneyAirline.Properties.Resources.logo;
+            pictureBox1.Location = new System.Drawing.Point(612, 103);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(150, 157);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8773F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(553, 687);
             this.textBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(377, 68);
+            this.textBox2.Size = new System.Drawing.Size(377, 51);
             this.textBox2.TabIndex = 5;
             this.textBox2.UseSystemPasswordChar = true;
             // 
@@ -390,25 +395,24 @@
             // 
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8773F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(553, 570);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(377, 68);
+            this.textBox1.Size = new System.Drawing.Size(377, 51);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(106)))), ((int)(((byte)(106)))));
-            this.label2.Location = new System.Drawing.Point(580, 486);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(330, 22);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Please login to contiue using the system";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            label2.AutoSize = true;
+            label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(106)))), ((int)(((byte)(106)))));
+            label2.Location = new System.Drawing.Point(580, 486);
+            label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(330, 22);
+            label2.TabIndex = 4;
+            label2.Text = "Please login to contiue using the system";
             // 
             // button1
             // 
@@ -420,7 +424,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(555, 785);
+            this.button1.Location = new System.Drawing.Point(555, 829);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(375, 68);
@@ -431,15 +435,14 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(512, 406);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(454, 38);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Welcome To Happy Journey";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(512, 406);
+            label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(454, 38);
+            label1.TabIndex = 3;
+            label1.Text = "Welcome To Happy Journey";
             // 
             // mainMenuTab
             // 
@@ -541,6 +544,18 @@
             this.appTabs.TabIndex = 7;
             this.appTabs.TabStop = false;
             // 
+            // loginErrorTxt
+            // 
+            this.loginErrorTxt.BackColor = System.Drawing.Color.Transparent;
+            this.loginErrorTxt.Font = new System.Drawing.Font("Calibri", 10.15951F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginErrorTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.loginErrorTxt.Location = new System.Drawing.Point(547, 760);
+            this.loginErrorTxt.Name = "loginErrorTxt";
+            this.loginErrorTxt.Size = new System.Drawing.Size(453, 51);
+            this.loginErrorTxt.TabIndex = 40;
+            this.loginErrorTxt.Text = "Invalid Email or password, please try again.";
+            this.loginErrorTxt.Visible = false;
+            // 
             // MainAppUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -562,7 +577,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.loginTab.ResumeLayout(false);
             this.loginTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.mainMenuTab.ResumeLayout(false);
             this.mainMenuTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -592,15 +607,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage loginTab;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage mainMenuTab;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label10;
@@ -608,5 +618,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TabControl appTabs;
+        private System.Windows.Forms.Label loginErrorTxt;
     }
 }
