@@ -290,19 +290,6 @@ namespace HappyJourneyAirline.Models
             return result.Count > 0 ? result[0] : null;
         }
 
-        public override string ToString()
-        {
-            return $"Ticket Details:\n" +
-                   $"ID: {Id}\n" +
-                   $"Flight ID: {FlightID}\n" +
-                   $"User ID: {UserID}\n" +
-                   $"Seat: {Seat}\n" +
-                   $"Ticket Class ID: {TicketClassID}\n" +
-                   $"Ticket Status ID: {TicketStatusID}\n" +
-                   $"Payment ID: {PaymentID}\n" +
-                   $"Agency ID: {(AgencyID.HasValue ? AgencyID.ToString() : "None")}";
-        }
-
         public static List<Ticket> GetTicketsByAgencyId(long agencyID)
         {
             string query = @"
