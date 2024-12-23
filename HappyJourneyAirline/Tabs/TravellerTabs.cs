@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Drawing;
 using System.Net;
+using System.Text.RegularExpressions;
 namespace HappyJourneyAirline.Tabs
 {
 
@@ -2768,10 +2769,6 @@ namespace HappyJourneyAirline.Tabs
         /// <param name="e">The event data associated with the button click</param>
         private void setCancelBtn_Click(object sender, EventArgs e)
         {
-            tabController.SelectTab(0);
-            defultIcons();
-            flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
-
             //get the curren user 
             User currentUser = User.GetUserById(AuthService.GetCurrentUserId());
 
@@ -2857,6 +2854,43 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
+
+                // email validation
+                string txt = setEmailTxt.Text.Trim().ToLower();
+                string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+                if (!Regex.IsMatch(txt, emailPattern))
+                {
+                    setErrorLbl.Text = "Error: Invalid email.";
+                    setErrorLbl.Visible = true;
+                    return;
+                }
+
+
+                // phone Number validation
+                string pattern = @"^\d{8}$";
+                Regex regex = new Regex(pattern);
+
+                if (!regex.IsMatch(setPhoneTxt.Text.Trim()))
+                {
+                    setErrorLbl.Text = "Error: Phone number must contain exactly 8 digits.";
+                    setErrorLbl.Visible = true;
+                    return;
+                }
+
+
+
+                // Username availability check
+                if (User.GetAllUsers().Any(user => user.Username == setUsernameTxt.Text && user.Username != currentUser.Username))
+                {
+                    setErrorLbl.Text = "Error: Username is not available.";
+                    setErrorLbl.Visible = true;
+                    return;
+                }
+
+                setErrorLbl.Text = "";
+
+
                 // Update the user's information with the new values from the input fields
                 currentUser.PhoneNumber = setPhoneTxt.Text;
                 currentUser.Username = setUsernameTxt.Text;
