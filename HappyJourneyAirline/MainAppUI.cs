@@ -177,6 +177,7 @@ namespace ProjectSample
             if (string.IsNullOrWhiteSpace(username))
             {
                 ShowError(signupErrorTxt, "Username is required.");
+                Console.WriteLine("sdd");
                 return;
             }
 
