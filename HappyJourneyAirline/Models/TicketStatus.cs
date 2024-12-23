@@ -1,19 +1,35 @@
-﻿// Ticket Class Provider an interface to interact with stored ticket statuses in DB
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// The TicketStatus class provides an interface to interact with the stored ticket statuses in the database.
+    /// It includes methods for retrieving, adding, updating, and deleting ticket statuses.
+    /// </summary>
     public class TicketStatus
     {
-        // Ticket Status Attributes
+        /// <summary>
+        /// Gets or sets the unique ID of the ticket status (Primary Key).
+        /// </summary>
         public int Id { get; set; } // Primary Key
+
+        /// <summary>
+        /// Gets or sets the name of the ticket status (Nullable).
+        /// </summary>
         public string Name { get; set; } // Nullable
+
+        /// <summary>
+        /// Gets or sets the description of the ticket status (Nullable).
+        /// </summary>
         public string Description { get; set; } // Nullable
 
-        // Fetch all ticket statuses
+        /// <summary>
+        /// Retrieves all ticket statuses from the database.
+        /// </summary>
+        /// <returns>A list of all ticket statuses.</returns>
         public static List<TicketStatus> GetAllTicketStatuses()
         {
             string query = "SELECT Id, name, description FROM ticket_statuses";
@@ -25,7 +41,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new ticket status
+        /// <summary>
+        /// Adds a new ticket status to the database.
+        /// </summary>
+        /// <param name="ticketStatus">The ticket status object containing status details.</param>
+        /// <returns>The ID of the newly added ticket status, or -1 if the operation failed.</returns>
         public static int AddTicketStatus(TicketStatus ticketStatus)
         {
             string query = @"
@@ -67,7 +87,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing ticket status
+        /// <summary>
+        /// Updates an existing ticket status in the database.
+        /// </summary>
+        /// <param name="ticketStatus">The ticket status object containing updated status details.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdateTicketStatus(TicketStatus ticketStatus)
         {
             string query = @"
@@ -84,7 +108,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a ticket status
+        /// <summary>
+        /// Deletes a ticket status from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the ticket status to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeleteTicketStatus(int id)
         {
             string query = "DELETE FROM ticket_statuses WHERE Id = @Id";
@@ -95,7 +123,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a ticket status by ID
+        /// <summary>
+        /// Retrieves a ticket status from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the ticket status to retrieve.</param>
+        /// <returns>The ticket status object if found; otherwise, <c>null</c>.</returns>
         public static TicketStatus GetTicketStatusById(int id)
         {
             string query = "SELECT Id, name, description FROM ticket_statuses WHERE Id = @Id";

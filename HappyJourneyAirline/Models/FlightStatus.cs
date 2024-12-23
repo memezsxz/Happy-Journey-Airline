@@ -1,20 +1,35 @@
-﻿// This class provide interface to interact with the stored flight statuses in database.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// The FlightStatus class provides an interface to interact with the stored flight statuses in the database.
+    /// It includes methods for retrieving, adding, updating, and deleting flight statuses.
+    /// </summary>
     public class FlightStatus
     {
-        // Flight Status Attributes
+        /// <summary>
+        /// Gets or sets the unique ID of the flight status (Primary Key).
+        /// </summary>
         public int Id { get; set; } // Primary Key
+
+        /// <summary>
+        /// Gets or sets the name of the flight status (Required).
+        /// </summary>
         public string Name { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the description of the flight status (Required).
+        /// </summary>
         public string Description { get; set; } // NOT NULL
 
-        // Fetch all flight statuses
+        /// <summary>
+        /// Retrieves all flight statuses from the database.
+        /// </summary>
+        /// <returns>A list of all flight statuses.</returns>
         public static List<FlightStatus> GetAllFlightStatuses()
         {
             string query = "SELECT Id, name, description FROM flight_statuses";
@@ -26,7 +41,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new flight status
+        /// <summary>
+        /// Adds a new flight status to the database.
+        /// </summary>
+        /// <param name="flightStatus">The flight status object containing status details.</param>
+        /// <returns>The ID of the newly added flight status, or -1 if the operation failed.</returns>
         public static int AddFlightStatus(FlightStatus flightStatus)
         {
             string query = @"
@@ -68,7 +87,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing flight status
+        /// <summary>
+        /// Updates an existing flight status in the database.
+        /// </summary>
+        /// <param name="flightStatus">The flight status object containing updated status details.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdateFlightStatus(FlightStatus flightStatus)
         {
             string query = @"
@@ -85,7 +108,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a flight status
+        /// <summary>
+        /// Deletes a flight status from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the flight status to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeleteFlightStatus(int id)
         {
             string query = "DELETE FROM flight_statuses WHERE Id = @Id";
@@ -96,7 +123,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a flight status by ID
+        /// <summary>
+        /// Retrieves a flight status from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the flight status to retrieve.</param>
+        /// <returns>The flight status object if found; otherwise, <c>null</c>.</returns>
         public static FlightStatus GetFlightStatusById(int id)
         {
             string query = "SELECT Id, name, description FROM flight_statuses WHERE Id = @Id";

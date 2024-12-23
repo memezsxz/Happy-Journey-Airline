@@ -1,21 +1,45 @@
-﻿// Ticket Class Provide an interface to interact with stored ticket classes
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// The TicketClass class provides an interface to interact with the stored ticket classes in the database.
+    /// It includes methods for retrieving, adding, updating, and deleting ticket classes.
+    /// </summary>
     public class TicketClass
     {
-        // Ticket Class Attributes
+        /// <summary>
+        /// Gets or sets the unique ID of the ticket class (Primary Key).
+        /// </summary>
         public int Id { get; set; } // Primary Key
+
+        /// <summary>
+        /// Gets or sets the name of the ticket class (Nullable).
+        /// </summary>
         public string Name { get; set; } // Nullable
+
+        /// <summary>
+        /// Gets or sets the description of the ticket class (Nullable).
+        /// </summary>
         public string Description { get; set; } // Nullable
+
+        /// <summary>
+        /// Gets or sets the services offered in the ticket class (Nullable).
+        /// </summary>
         public string Services { get; set; } // Nullable
+
+        /// <summary>
+        /// Gets or sets the extra price associated with the ticket class. Default value is 0.00.
+        /// </summary>
         public decimal ExtraPrice { get; set; } // Default to 0.00
 
-        // Fetch all ticket classes
+        /// <summary>
+        /// Retrieves all ticket classes from the database.
+        /// </summary>
+        /// <returns>A list of all ticket classes.</returns>
         public static List<TicketClass> GetAllTicketClasses()
         {
             string query = "SELECT Id, name, description, services, extraPrice FROM ticket_classes";
@@ -29,7 +53,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new ticket class
+        /// <summary>
+        /// Adds a new ticket class to the database.
+        /// </summary>
+        /// <param name="ticketClass">The ticket class object containing class details.</param>
+        /// <returns>The ID of the newly added ticket class, or -1 if the operation failed.</returns>
         public static int AddTicketClass(TicketClass ticketClass)
         {
             string query = @"
@@ -73,7 +101,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing ticket class
+        /// <summary>
+        /// Updates an existing ticket class in the database.
+        /// </summary>
+        /// <param name="ticketClass">The ticket class object containing updated class details.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdateTicketClass(TicketClass ticketClass)
         {
             string query = @"
@@ -94,7 +126,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a ticket class
+        /// <summary>
+        /// Deletes a ticket class from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the ticket class to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeleteTicketClass(int id)
         {
             string query = "DELETE FROM ticket_classes WHERE Id = @Id";
@@ -105,7 +141,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a ticket class by ID
+        /// <summary>
+        /// Retrieves a ticket class from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the ticket class to retrieve.</param>
+        /// <returns>The ticket class object if found; otherwise, <c>null</c>.</returns>
         public static TicketClass GetTicketClassById(int id)
         {
             string query = "SELECT Id, name, description, services, extraPrice FROM ticket_classes WHERE Id = @Id";

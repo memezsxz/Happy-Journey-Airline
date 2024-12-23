@@ -1,25 +1,60 @@
-﻿// This class provide interface to interact with the stored flights in database.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using HappyJourneyAirline.Lib;
 
 namespace HappyJourneyAirline.Models
 {
+    /// <summary>
+    /// The Flight class provides an interface to interact with the stored flights in the database.
+    /// It includes methods for retrieving, adding, updating, and deleting flights, as well as fetching travelers based on agency and flight.
+    /// </summary>
     public class Flight
     {
-        // Flight Attributes
+        /// <summary>
+        /// Gets or sets the unique ID of the flight (Primary Key).
+        /// </summary>
         public int Id { get; set; } // Primary Key
+
+        /// <summary>
+        /// Gets or sets the source airport ID associated with the flight (Foreign Key).
+        /// </summary>
         public int SourceAirportID { get; set; } // Foreign Key
+
+        /// <summary>
+        /// Gets or sets the destination airport ID associated with the flight (Foreign Key).
+        /// </summary>
         public int DestinationAirportID { get; set; } // Foreign Key
+
+        /// <summary>
+        /// Gets or sets the departure timestamp of the flight (Required).
+        /// </summary>
         public DateTime DepartureTimestamp { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the arrival timestamp of the flight (Required).
+        /// </summary>
         public DateTime ArrivalTimestamp { get; set; } // NOT NULL
+
+        /// <summary>
+        /// Gets or sets the flight status ID (Nullable Foreign Key).
+        /// </summary>
         public int? FlightStatusID { get; set; } // Nullable Foreign Key
+
+        /// <summary>
+        /// Gets or sets the plane ID associated with the flight (Foreign Key).
+        /// </summary>
         public int PlaneID { get; set; } // Foreign Key
+
+        /// <summary>
+        /// Gets or sets the base price of the flight (Required).
+        /// </summary>
         public decimal BasePrice { get; set; } // NOT NULL
 
-        // Fetch all flights
+        /// <summary>
+        /// Retrieves all flights from the database.
+        /// </summary>
+        /// <returns>A list of all flights.</returns>
         public static List<Flight> GetAllFlights()
         {
             string query = @"
@@ -39,7 +74,11 @@ namespace HappyJourneyAirline.Models
             });
         }
 
-        // Add a new flight
+        /// <summary>
+        /// Adds a new flight to the database.
+        /// </summary>
+        /// <param name="flight">The flight object containing flight details.</param>
+        /// <returns>The ID of the newly added flight, or -1 if the operation failed.</returns>
         public static long AddFlight(Flight flight)
         {
             string query = @"
@@ -86,7 +125,11 @@ namespace HappyJourneyAirline.Models
             return -1; // Return -1 if the insertion failed
         }
 
-        // Update an existing flight
+        /// <summary>
+        /// Updates an existing flight in the database.
+        /// </summary>
+        /// <param name="flight">The flight object containing updated flight details.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public static bool UpdateFlight(Flight flight)
         {
             string query = @"
@@ -113,7 +156,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Delete a flight
+        /// <summary>
+        /// Deletes a flight from the database by ID.
+        /// </summary>
+        /// <param name="id">The ID of the flight to delete.</param>
+        /// <returns><c>true</c> if the deletion was successful; otherwise, <c>false</c>.</returns>
         public static bool DeleteFlight(long id)
         {
             string query = "DELETE FROM flights WHERE Id = @Id";
@@ -124,7 +171,11 @@ namespace HappyJourneyAirline.Models
             return Database.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Find a flight by ID
+        /// <summary>
+        /// Retrieves a flight from the database by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the flight to retrieve.</param>
+        /// <returns>The flight object if found; otherwise, <c>null</c>.</returns>
         public static Flight GetFlightById(long id)
         {
             string query = @"
@@ -150,20 +201,11 @@ namespace HappyJourneyAirline.Models
             return result.Count > 0 ? result[0] : null;
         }
 
-
-        public override string ToString()
-        {
-            return $"Flight Information:\n" +
-                   $"Plane ID: {PlaneID}\n" +
-                   $"Departure: {DepartureTimestamp}\n" +
-                   $"Arrival: {ArrivalTimestamp}\n" +
-                   $"Base Price: {BasePrice:C}\n" + // Format as currency
-                   $"Source Airport ID: {SourceAirportID}\n" +
-                   $"Destination Airport ID: {DestinationAirportID}\n" +
-                   $"Flight Status ID: {FlightStatusID}";
-        }
-
-
+        /// <summary>
+        /// Retrieves all travelers for a specific agency by agency ID.
+        /// </summary>
+        /// <param name="agencyID">The ID of the agency.</param>
+        /// <returns>A list of users associated with the agency.</returns>
         public static List<User> GetTravellersByAgencyID(long agencyID)
         {
             string query = @"
@@ -174,9 +216,9 @@ namespace HappyJourneyAirline.Models
         WHERE t.AgencyID = @AgencyID";
 
             var parameters = new Dictionary<string, object>
-    {
-        { "@AgencyID", agencyID }
-    };
+            {
+                { "@AgencyID", agencyID }
+            };
 
             return Database.Instance.Query(query, parameters, reader => new User
             {
@@ -188,6 +230,12 @@ namespace HappyJourneyAirline.Models
             });
         }
 
+        /// <summary>
+        /// Retrieves travelers for a specific flight and agency by their IDs.
+        /// </summary>
+        /// <param name="agencyID">The ID of the agency.</param>
+        /// <param name="flightID">The ID of the flight.</param>
+        /// <returns>A list of users associated with the flight and agency.</returns>
         public static List<User> GetTravellersForFlightByAgencyID(long agencyID, long flightID)
         {
             string query = @"
@@ -200,10 +248,10 @@ WHERE t.FlightID = @FlightID
 ";
 
             var parameters = new Dictionary<string, object>
-    {
-        { "@AgencyID", agencyID },
-        { "@FlightID", flightID }
-    };
+            {
+                { "@AgencyID", agencyID },
+                { "@FlightID", flightID }
+            };
 
             return Database.Instance.Query(query, parameters, reader => new User
             {
@@ -215,8 +263,5 @@ WHERE t.FlightID = @FlightID
                 Cpr = reader.GetString(5)
             });
         }
-
     }
-
-
 }
