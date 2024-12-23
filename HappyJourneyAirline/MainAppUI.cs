@@ -97,20 +97,21 @@ namespace ProjectSample
         private void button1_Click(object sender, EventArgs e)
         {
 
-            //ShowError(loginErrorTxt, string.Empty);
+            ShowError(loginValidationMessage, string.Empty);
             String username = textBox1.Text;
             String password = textBox2.Text;
 
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                //ShowError(loginErrorTxt, "Username is required.");
+                
+                ShowError(loginValidationMessage, "Username is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                //ShowError(loginErrorTxt, "Password is required.");
+                ShowError(loginValidationMessage, "Password is required.");
                 return;
             }
 
@@ -118,7 +119,7 @@ namespace ProjectSample
             User loggedInUser = userHandler.Login(username, password);
             
             if (loggedInUser == null) {
-                //ShowError(loginErrorTxt, "Invalid login credentials.");
+               ShowError(loginValidationMessage, "Invalid login credentials.");
                 return;
             }
 
@@ -166,7 +167,7 @@ namespace ProjectSample
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //ShowError(signupErrorTxt, "");
+            ShowError(registerValidationMessage, "");
             String username = registerUsernameInput.Text;
             String password = passwordRegisterInput.Text;
             String firstName = firstNameRegisterInput.Text;
@@ -176,42 +177,42 @@ namespace ProjectSample
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                //ShowError(signupErrorTxt, "Username is required.");
+                ShowError(registerValidationMessage, "Username is required.");
                 Console.WriteLine("sdd");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                //ShowError(signupErrorTxt, "Password is required.");
+                ShowError(registerValidationMessage, "Password is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(firstName))
             {
-                //ShowError(signupErrorTxt, "First name is required.");
+                ShowError(registerValidationMessage, "First name is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(lastName))
             {
-                //ShowError(signupErrorTxt, "Last name is required.");
+                ShowError(registerValidationMessage, "Last name is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(phoneNumber) || !Regex.IsMatch(phoneNumber, @"^\d{8}$"))
             {
-                //ShowError(signupErrorTxt, "A valid 8-digit phone number is required.");
+                ShowError(registerValidationMessage, "A valid 8-digit phone number is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
-                //ShowError(signupErrorTxt, "A valid email address is required.");
+                ShowError(registerValidationMessage, "A valid email address is required.");
                 return;
             }
 
-            //ShowError(signupErrorTxt, "");
+            ShowError(registerValidationMessage, "");
 
             User newUser = new User
             {
