@@ -232,7 +232,7 @@ namespace HappyJourneyAirline.Models
         /// </summary>
         /// <param name="flightId">The ID of the flight.</param>
         /// <returns>A list of tickets associated with the flight.</returns>
-        public static List<Ticket> GetTicketsByFlightId(int flightId)
+        public static List<Ticket> GetTicketsByFlightId(long flightId)
         {
             string query = @"
                 SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
