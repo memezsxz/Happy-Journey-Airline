@@ -6701,7 +6701,7 @@ namespace HappyJourneyAirline.Tabs
             }
 
             // Validate the type selection
-            if (comboBoxType.SelectedItem == null)
+            if (comboBoxType.SelectedItem == null || comboBoxType.SelectedIndex == 0)
             {
                 lblErrorType.Text = "Type is required";
                 valid = false;
