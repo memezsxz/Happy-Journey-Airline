@@ -745,7 +745,7 @@ namespace HappyJourneyAirline.Tabs
             this.cpCapacityErrorLbl.BackColor = System.Drawing.Color.Transparent;
             this.cpCapacityErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cpCapacityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cpCapacityErrorLbl.Location = new System.Drawing.Point(434, 344);
+            this.cpCapacityErrorLbl.Location = new System.Drawing.Point(395, 328);
             this.cpCapacityErrorLbl.Name = "cpCapacityErrorLbl";
             this.cpCapacityErrorLbl.Size = new System.Drawing.Size(131, 21);
             this.cpCapacityErrorLbl.TabIndex = 119;
@@ -758,7 +758,7 @@ namespace HappyJourneyAirline.Tabs
             this.cpModelErrorLbl.BackColor = System.Drawing.Color.Transparent;
             this.cpModelErrorLbl.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cpModelErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.cpModelErrorLbl.Location = new System.Drawing.Point(430, 233);
+            this.cpModelErrorLbl.Location = new System.Drawing.Point(391, 217);
             this.cpModelErrorLbl.Name = "cpModelErrorLbl";
             this.cpModelErrorLbl.Size = new System.Drawing.Size(131, 21);
             this.cpModelErrorLbl.TabIndex = 118;
@@ -770,7 +770,7 @@ namespace HappyJourneyAirline.Tabs
             label92.AutoSize = true;
             label92.BackColor = System.Drawing.Color.Transparent;
             label92.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label92.Location = new System.Drawing.Point(435, 273);
+            label92.Location = new System.Drawing.Point(396, 257);
             label92.Name = "label92";
             label92.Size = new System.Drawing.Size(112, 39);
             label92.TabIndex = 117;
@@ -782,7 +782,7 @@ namespace HappyJourneyAirline.Tabs
             label93.AutoSize = true;
             label93.BackColor = System.Drawing.Color.Transparent;
             label93.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label93.Location = new System.Drawing.Point(433, 162);
+            label93.Location = new System.Drawing.Point(394, 146);
             label93.Name = "label93";
             label93.Size = new System.Drawing.Size(158, 39);
             label93.TabIndex = 116;
@@ -793,9 +793,9 @@ namespace HappyJourneyAirline.Tabs
             // 
             this.cpCapacityTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cpCapacityTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpCapacityTxt.Location = new System.Drawing.Point(435, 308);
+            this.cpCapacityTxt.Location = new System.Drawing.Point(396, 292);
             this.cpCapacityTxt.Name = "cpCapacityTxt";
-            this.cpCapacityTxt.Size = new System.Drawing.Size(275, 40);
+            this.cpCapacityTxt.Size = new System.Drawing.Size(314, 40);
             this.cpCapacityTxt.TabIndex = 115;
             this.cpCapacityTxt.Text = "0";
             this.cpCapacityTxt.TextChanged += new System.EventHandler(this.cpCapacityTxt_TextChanged);
@@ -805,9 +805,9 @@ namespace HappyJourneyAirline.Tabs
             // 
             this.cpModelTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cpModelTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpModelTxt.Location = new System.Drawing.Point(433, 197);
+            this.cpModelTxt.Location = new System.Drawing.Point(394, 181);
             this.cpModelTxt.Name = "cpModelTxt";
-            this.cpModelTxt.Size = new System.Drawing.Size(275, 40);
+            this.cpModelTxt.Size = new System.Drawing.Size(314, 40);
             this.cpModelTxt.TabIndex = 114;
             this.cpModelTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
             // 
@@ -845,7 +845,7 @@ namespace HappyJourneyAirline.Tabs
             this.planesDataGridView.RowHeadersWidth = 70;
             this.planesDataGridView.RowTemplate.Height = 50;
             this.planesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.planesDataGridView.Size = new System.Drawing.Size(403, 547);
+            this.planesDataGridView.Size = new System.Drawing.Size(368, 547);
             this.planesDataGridView.TabIndex = 43;
             this.planesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.planesDataGridView_CellClick);
             this.planesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.planesDataGridView_DataBindingComplete);
@@ -857,9 +857,9 @@ namespace HappyJourneyAirline.Tabs
             this.createPlaneBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.createPlaneBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createPlaneBtn.ForeColor = System.Drawing.Color.White;
-            this.createPlaneBtn.Location = new System.Drawing.Point(462, 404);
+            this.createPlaneBtn.Location = new System.Drawing.Point(423, 388);
             this.createPlaneBtn.Name = "createPlaneBtn";
-            this.createPlaneBtn.Size = new System.Drawing.Size(223, 55);
+            this.createPlaneBtn.Size = new System.Drawing.Size(262, 55);
             this.createPlaneBtn.TabIndex = 42;
             this.createPlaneBtn.Text = "Create Plane";
             this.createPlaneBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
