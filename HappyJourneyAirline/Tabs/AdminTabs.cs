@@ -4567,9 +4567,6 @@ namespace HappyJourneyAirline.Tabs
 
         private void setCancelBtn_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab((int)Tabs.Flights);
-            defultIcons();
-            flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
 
             long id = AuthService.GetCurrentUserId();
             User currentUser = User.GetUserById(id);
@@ -6527,6 +6524,44 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
+
+                // email validation
+                string txt = setEmailTxt.Text.Trim().ToLower();
+                string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+                if (!Regex.IsMatch(txt, emailPattern))
+                {
+                    setErrorLbl.Text = "Error: Invalid email.";
+                    setErrorLbl.Visible = true;
+                    return;
+                }
+
+
+                // phone Number validation
+                string pattern = @"^\d{8}$";
+                Regex regex = new Regex(pattern);
+
+                if (!regex.IsMatch(setPhoneTxt.Text.Trim()))
+                {
+                    setErrorLbl.Text = "Error: Phone number must contain exactly 8 digits.";
+                    setErrorLbl.Visible = true;
+                    return;
+                }
+
+
+
+                // Username availability check
+                if (User.GetAllUsers().Any(user => user.Username == setUsernameTxt.Text && user.Username != currentUser.Username))
+                {
+                    setErrorLbl.Text = "Error: Username is not available.";
+                    setErrorLbl.Visible = true;
+                    return;
+                }
+
+                setErrorLbl.Text = "";
+
+
+
                 // Update user details if all inputs are valid
                 currentUser.Username = setUsernameTxt.Text;
                 currentUser.FirstName = setFirstNameTxt.Text;

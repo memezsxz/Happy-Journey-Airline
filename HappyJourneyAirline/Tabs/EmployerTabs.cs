@@ -2749,17 +2749,17 @@ namespace HappyJourneyAirline.Tabs
 
 
                 // phone Number validation
-                string pattern = @"^\+?(\d{1,4})?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}$";
+                string pattern = @"^\d{8}$";
                 Regex regex = new Regex(pattern);
 
                 if (!regex.IsMatch(setPhoneTxt.Text.Trim()))
                 {
-                    setErrorLbl.Text = "Error: Invalid phone number";
+                    setErrorLbl.Text = "Error: Phone number must contain exactly 8 digits.";
                     setErrorLbl.Visible = true;
                     return;
                 }
 
-               
+
 
                 // Username availability check
                 if (User.GetAllUsers().Any(user => user.Username == setUsernameTxt.Text && user.Username != currentUser.Username))
