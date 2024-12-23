@@ -103,6 +103,8 @@ namespace HappyJourneyAirline.Tabs
         private Button button2;
         private PictureBox bookingTab;
         private ComboBox ppTicketClassDrop;
+        int previosTab = 0;
+
         #endregion
 
         #region Added Atrebutes
@@ -2452,6 +2454,13 @@ namespace HappyJourneyAirline.Tabs
         private void gridflightsData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            if (e.ColumnIndex == 0)
+            {
+                previosTab = 0;
+                selectedFlight = Flight.GetFlightById((int)(gridflightsData.Rows[e.RowIndex].Cells[1].Value));
+                sutupFlightDetails();
+                tabController.SelectTab(4);
+            }
         }
 
 
