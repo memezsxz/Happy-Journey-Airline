@@ -38,8 +38,8 @@ namespace ProjectSample
         {
             InitializeComponent();
 
-            ShowError(signupErrorTxt, "");
-            ShowError(loginErrorTxt, "");
+            //ShowError(signupErrorTxt, "");
+            //ShowError(loginErrorTxt, "");
 
             TravellerTabs travelTab = new TravellerTabs(appTabs);
             TabPage travelTabPage = new TabPage("Traveller Dashboard");
@@ -60,8 +60,8 @@ namespace ProjectSample
 
         private void Login_Load(object sender, EventArgs e)
         {
-            ShowError(loginErrorTxt, "");
-            ShowError(signupErrorTxt, "");
+            //ShowError(loginErrorTxt, "");
+            //ShowError(signupErrorTxt, "");
 
             if (AuthService.IsUserLoggedIn())
             {
@@ -97,20 +97,20 @@ namespace ProjectSample
         private void button1_Click(object sender, EventArgs e)
         {
 
-            ShowError(loginErrorTxt, string.Empty);
+            //ShowError(loginErrorTxt, string.Empty);
             String username = textBox1.Text;
             String password = textBox2.Text;
 
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                ShowError(loginErrorTxt, "Username is required.");
+                //ShowError(loginErrorTxt, "Username is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                ShowError(loginErrorTxt, "Password is required.");
+                //ShowError(loginErrorTxt, "Password is required.");
                 return;
             }
 
@@ -118,7 +118,7 @@ namespace ProjectSample
             User loggedInUser = userHandler.Login(username, password);
             
             if (loggedInUser == null) {
-                ShowError(loginErrorTxt, "Invalid login credentials.");
+                //ShowError(loginErrorTxt, "Invalid login credentials.");
                 return;
             }
 
@@ -166,7 +166,7 @@ namespace ProjectSample
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ShowError(signupErrorTxt, "");
+            //ShowError(signupErrorTxt, "");
             String username = registerUsernameInput.Text;
             String password = passwordRegisterInput.Text;
             String firstName = firstNameRegisterInput.Text;
@@ -176,42 +176,42 @@ namespace ProjectSample
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                ShowError(signupErrorTxt, "Username is required.");
+                //ShowError(signupErrorTxt, "Username is required.");
                 Console.WriteLine("sdd");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                ShowError(signupErrorTxt, "Password is required.");
+                //ShowError(signupErrorTxt, "Password is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(firstName))
             {
-                ShowError(signupErrorTxt, "First name is required.");
+                //ShowError(signupErrorTxt, "First name is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(lastName))
             {
-                ShowError(signupErrorTxt, "Last name is required.");
+                //ShowError(signupErrorTxt, "Last name is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(phoneNumber) || !Regex.IsMatch(phoneNumber, @"^\d{8}$"))
             {
-                ShowError(signupErrorTxt, "A valid 8-digit phone number is required.");
+                //ShowError(signupErrorTxt, "A valid 8-digit phone number is required.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
-                ShowError(signupErrorTxt, "A valid email address is required.");
+                //ShowError(signupErrorTxt, "A valid email address is required.");
                 return;
             }
 
-            ShowError(signupErrorTxt, "");
+            //ShowError(signupErrorTxt, "");
 
             User newUser = new User
             {

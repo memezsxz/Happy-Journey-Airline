@@ -65,8 +65,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.appTabs = new System.Windows.Forms.TabControl();
-            this.loginErrorTxt = new System.Windows.Forms.Label();
-            this.signupErrorTxt = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -92,7 +90,6 @@
             this.registerTab.Controls.Add(this.label15);
             this.registerTab.Controls.Add(this.label9);
             this.registerTab.Controls.Add(this.label8);
-            this.loginTab.Controls.Add(this.signupErrorTxt);
             this.registerTab.Controls.Add(this.phoneNumberRegisterInput);
             this.registerTab.Controls.Add(this.emailRegisterInput);
             this.registerTab.Controls.Add(this.lastNameRegisterInput);
@@ -318,7 +315,6 @@
             // loginTab
             // 
             this.loginTab.BackColor = System.Drawing.Color.White;
-            this.loginTab.Controls.Add(this.loginErrorTxt);
             this.loginTab.Controls.Add(label7);
             this.loginTab.Controls.Add(label6);
             this.loginTab.Controls.Add(this.label5);
@@ -544,31 +540,6 @@
             this.appTabs.TabIndex = 7;
             this.appTabs.TabStop = false;
             // 
-            // loginErrorTxt
-            // 
-            this.loginErrorTxt.BackColor = System.Drawing.Color.Transparent;
-            this.loginErrorTxt.Font = new System.Drawing.Font("Calibri", 10.15951F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginErrorTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.loginErrorTxt.Location = new System.Drawing.Point(547, 760);
-            this.loginErrorTxt.Name = "loginErrorTxt";
-            this.loginErrorTxt.Size = new System.Drawing.Size(453, 51);
-            this.loginErrorTxt.TabIndex = 40;
-            this.loginErrorTxt.Text = "Invalid Email or password, please try again.";
-            this.loginErrorTxt.Visible = false;
-            // 
-            // signupErrorTxt
-            // 
-            this.signupErrorTxt.BackColor = System.Drawing.Color.Transparent;
-            this.signupErrorTxt.Font = new System.Drawing.Font("Calibri", 10.15951F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signupErrorTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.signupErrorTxt.Location = new System.Drawing.Point(808, 1296);
-            this.signupErrorTxt.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.signupErrorTxt.Name = "signupErrorTxt";
-            this.signupErrorTxt.Size = new System.Drawing.Size(755, 86);
-            this.signupErrorTxt.TabIndex = 41;
-            this.signupErrorTxt.Text = "Invalid Email or password, please try again.";
-            this.signupErrorTxt.Visible = true;
-            // 
             // MainAppUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,7 +602,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TabControl appTabs;
-        private System.Windows.Forms.Label loginErrorTxt;
-        private System.Windows.Forms.Label signupErrorTxt;
+
     }
 }
