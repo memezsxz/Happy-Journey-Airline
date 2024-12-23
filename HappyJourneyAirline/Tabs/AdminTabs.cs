@@ -66,7 +66,7 @@ namespace HappyJourneyAirline.Tabs
         private Label lblErrorType;
         private Label lblErrorFlight;
         private ComboBox comboBoxFlights;
-        private Button button1;
+        private Button createNotificationBtn;
         private Label lblErrorDescription;
         private Label lblErrorTitle;
         private TextBox txtDescription;
@@ -92,7 +92,7 @@ namespace HappyJourneyAirline.Tabs
         private Button editLocationBack;
         private Label label79;
         private TabPage veAirCouCity;
-        private Button button2;
+        private Button vlGenerateLocationsBtn;
         private GroupBox groupBox4;
         private DataGridView countriesDataGridView;
         private GroupBox groupBox5;
@@ -226,11 +226,6 @@ namespace HappyJourneyAirline.Tabs
         private TextBox setUsernameTxt;
         private TabPage travellerBookingsTab;
         private DataGridView bookingTable;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn from;
-        private DataGridViewTextBoxColumn to;
-        private DataGridViewTextBoxColumn dateTime;
-        private DataGridViewButtonColumn bookDetails;
         private TabPage travellerFlightsTab;
         private Button viewPlanesBtn;
         private DataGridView flightsDataGridView;
@@ -263,6 +258,10 @@ namespace HappyJourneyAirline.Tabs
         private Airport selectedAirport = null;
         private Plane selectedPlane = null;
         private BindingList<long> notificationFlights = new BindingList<long>();
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn from;
+        private DataGridViewTextBoxColumn to;
+        private DataGridViewTextBoxColumn dateTime;
         private static readonly double rand = new Random().NextDouble();
         #endregion
         public AdminTabs(TabControl appTabs)
@@ -276,6 +275,7 @@ namespace HappyJourneyAirline.Tabs
             citiesDataGridView.Columns.Insert(0, AddEditColumn());
             airportsDataGridView.Columns.Insert(0, AddEditColumn());
             planesDataGridView.Columns.Insert(0, AddDeleteColumn());
+            bookingTable.Columns.Insert(0, AddEditColumn());
             this.appTabs = appTabs;
         }
 
@@ -288,13 +288,12 @@ namespace HappyJourneyAirline.Tabs
             System.Windows.Forms.TabPage viewPlanes;
             System.Windows.Forms.Label label92;
             System.Windows.Forms.Label label93;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label87;
             System.Windows.Forms.Label label89;
             System.Windows.Forms.Label label22;
             System.Windows.Forms.Label label11;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminTabs));
             System.Windows.Forms.Label label88;
             System.Windows.Forms.Label label86;
             System.Windows.Forms.Label label84;
@@ -310,12 +309,6 @@ namespace HappyJourneyAirline.Tabs
             System.Windows.Forms.Label label77;
             System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
             System.Windows.Forms.Label label83;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label72;
             System.Windows.Forms.Label Locations;
             System.Windows.Forms.Label label62;
@@ -370,8 +363,6 @@ namespace HappyJourneyAirline.Tabs
             System.Windows.Forms.Label label35;
             System.Windows.Forms.Label label36;
             System.Windows.Forms.Label label37;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label17;
@@ -382,18 +373,55 @@ namespace HappyJourneyAirline.Tabs
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label8;
             System.Windows.Forms.Label label14;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label13;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminTabs));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cpCapacityErrorLbl = new System.Windows.Forms.Label();
             this.cpModelErrorLbl = new System.Windows.Forms.Label();
             this.cpCapacityTxt = new System.Windows.Forms.TextBox();
             this.cpModelTxt = new System.Windows.Forms.TextBox();
             this.planesDataGridView = new System.Windows.Forms.DataGridView();
             this.createPlaneBtn = new System.Windows.Forms.Button();
+            this.editLocationDelete = new System.Windows.Forms.Button();
+            this.editLocationSave = new System.Windows.Forms.Button();
+            this.editLocationBack = new System.Windows.Forms.Button();
+            this.label54 = new System.Windows.Forms.Label();
+            this.addAddCountryBtn = new System.Windows.Forms.Button();
+            this.addContErrorLbl = new System.Windows.Forms.Label();
+            this.addContNameTxt = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.addAddCityBtn = new System.Windows.Forms.Button();
+            this.addCitytNameTxt = new System.Windows.Forms.TextBox();
+            this.addCityErrorLbl = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.addConDrop = new System.Windows.Forms.ComboBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.addAirportConDrop = new System.Windows.Forms.ComboBox();
+            this.addAirportNameTxt = new System.Windows.Forms.TextBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.addAddAirportBtn = new System.Windows.Forms.Button();
+            this.addAirportLongitudeTxt = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
+            this.addAirportCityDrop = new System.Windows.Forms.ComboBox();
+            this.addAirportLatitudeTxt = new System.Windows.Forms.TextBox();
+            this.addAirportErrorLbl = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.efDeleteBtn = new System.Windows.Forms.Button();
+            this.efEditBtn = new System.Windows.Forms.Button();
+            this.efCancelBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.usersIcon = new System.Windows.Forms.PictureBox();
             this.logOutIcon = new System.Windows.Forms.PictureBox();
@@ -406,7 +434,7 @@ namespace HappyJourneyAirline.Tabs
             this.lblErrorType = new System.Windows.Forms.Label();
             this.lblErrorFlight = new System.Windows.Forms.Label();
             this.comboBoxFlights = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.createNotificationBtn = new System.Windows.Forms.Button();
             this.lblErrorDescription = new System.Windows.Forms.Label();
             this.lblErrorTitle = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -427,12 +455,9 @@ namespace HappyJourneyAirline.Tabs
             this.editCitytNameTxt = new System.Windows.Forms.TextBox();
             this.editCityErrorLbl = new System.Windows.Forms.Label();
             this.editConDrop = new System.Windows.Forms.ComboBox();
-            this.editLocationDelete = new System.Windows.Forms.Button();
-            this.editLocationSave = new System.Windows.Forms.Button();
-            this.editLocationBack = new System.Windows.Forms.Button();
             this.label79 = new System.Windows.Forms.Label();
             this.veAirCouCity = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.vlGenerateLocationsBtn = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.countriesDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -461,28 +486,6 @@ namespace HappyJourneyAirline.Tabs
             this.mtCancelBtn = new System.Windows.Forms.Button();
             this.label64 = new System.Windows.Forms.Label();
             this.AddAirCityConTab = new System.Windows.Forms.TabPage();
-            this.label54 = new System.Windows.Forms.Label();
-            this.addAddCountryBtn = new System.Windows.Forms.Button();
-            this.addContErrorLbl = new System.Windows.Forms.Label();
-            this.addContNameTxt = new System.Windows.Forms.TextBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.addAddCityBtn = new System.Windows.Forms.Button();
-            this.addCitytNameTxt = new System.Windows.Forms.TextBox();
-            this.addCityErrorLbl = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.addConDrop = new System.Windows.Forms.ComboBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.addAirportConDrop = new System.Windows.Forms.ComboBox();
-            this.addAirportNameTxt = new System.Windows.Forms.TextBox();
-            this.label68 = new System.Windows.Forms.Label();
-            this.addAddAirportBtn = new System.Windows.Forms.Button();
-            this.addAirportLongitudeTxt = new System.Windows.Forms.TextBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.addAirportCityDrop = new System.Windows.Forms.ComboBox();
-            this.addAirportLatitudeTxt = new System.Windows.Forms.TextBox();
-            this.addAirportErrorLbl = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
             this.addBackBtn = new System.Windows.Forms.Button();
             this.createUserTab = new System.Windows.Forms.TabPage();
             this.cuPhoneNumberErrorLbl = new System.Windows.Forms.Label();
@@ -506,9 +509,6 @@ namespace HappyJourneyAirline.Tabs
             this.cuPasswordTxt = new System.Windows.Forms.TextBox();
             this.cuUsernameTxt = new System.Windows.Forms.TextBox();
             this.editFlightTab = new System.Windows.Forms.TabPage();
-            this.efDeleteBtn = new System.Windows.Forms.Button();
-            this.efEditBtn = new System.Windows.Forms.Button();
-            this.efCancelBtn = new System.Windows.Forms.Button();
             this.efPriceErrorLbl = new System.Windows.Forms.Label();
             this.efStatusDrop = new System.Windows.Forms.ComboBox();
             this.efArrTimePick = new System.Windows.Forms.DateTimePicker();
@@ -567,17 +567,16 @@ namespace HappyJourneyAirline.Tabs
             this.setUsernameTxt = new System.Windows.Forms.TextBox();
             this.travellerBookingsTab = new System.Windows.Forms.TabPage();
             this.bookingTable = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.from = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.to = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookDetails = new System.Windows.Forms.DataGridViewButtonColumn();
             this.travellerFlightsTab = new System.Windows.Forms.TabPage();
             this.viewPlanesBtn = new System.Windows.Forms.Button();
             this.flightsDataGridView = new System.Windows.Forms.DataGridView();
             this.viewAirCityCouBtn = new System.Windows.Forms.Button();
             this.creatFlightBtn = new System.Windows.Forms.Button();
             this.tabControler = new System.Windows.Forms.TabControl();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.from = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.to = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             viewPlanes = new System.Windows.Forms.TabPage();
             label92 = new System.Windows.Forms.Label();
             label93 = new System.Windows.Forms.Label();
@@ -668,6 +667,11 @@ namespace HappyJourneyAirline.Tabs
             label13 = new System.Windows.Forms.Label();
             viewPlanes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.planesDataGridView)).BeginInit();
+            flowLayoutPanel6.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).BeginInit();
@@ -681,7 +685,6 @@ namespace HappyJourneyAirline.Tabs
             this.countryGroupBox.SuspendLayout();
             this.AirportGroupBox.SuspendLayout();
             this.cityGroupBox.SuspendLayout();
-            flowLayoutPanel6.SuspendLayout();
             this.veAirCouCity.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countriesDataGridView)).BeginInit();
@@ -697,16 +700,12 @@ namespace HappyJourneyAirline.Tabs
             this.mtAgencyPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.AddAirCityConTab.SuspendLayout();
-            groupBox3.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox1.SuspendLayout();
             this.createUserTab.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.cuFNamePanel.SuspendLayout();
             this.cuLNamePanel.SuspendLayout();
             this.cuCompanyNamePanel.SuspendLayout();
             this.editFlightTab.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
             this.createFlightTab.SuspendLayout();
             this.bookingDetailsTab.SuspendLayout();
             this.travellerUsersTab.SuspendLayout();
@@ -819,25 +818,25 @@ namespace HappyJourneyAirline.Tabs
             this.planesDataGridView.AllowUserToOrderColumns = true;
             this.planesDataGridView.AllowUserToResizeRows = false;
             this.planesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle29.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.planesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.planesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.planesDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.planesDataGridView.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.planesDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.planesDataGridView.Location = new System.Drawing.Point(13, 152);
             this.planesDataGridView.MultiSelect = false;
             this.planesDataGridView.Name = "planesDataGridView";
@@ -908,146 +907,6 @@ namespace HappyJourneyAirline.Tabs
             label11.TabIndex = 1;
             label11.Text = "Flights";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.usersIcon);
-            this.panel1.Controls.Add(this.logOutIcon);
-            this.panel1.Controls.Add(this.settingTab);
-            this.panel1.Controls.Add(this.flightsTab);
-            this.panel1.Controls.Add(this.logoIcon);
-            this.panel1.Controls.Add(this.bookingTab);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(160, 736);
-            this.panel1.TabIndex = 4;
-            // 
-            // usersIcon
-            // 
-            this.usersIcon.Image = ((System.Drawing.Image)(resources.GetObject("usersIcon.Image")));
-            this.usersIcon.Location = new System.Drawing.Point(32, 392);
-            this.usersIcon.Name = "usersIcon";
-            this.usersIcon.Size = new System.Drawing.Size(104, 80);
-            this.usersIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.usersIcon.TabIndex = 8;
-            this.usersIcon.TabStop = false;
-            this.usersIcon.Click += new System.EventHandler(this.users_Click);
-            // 
-            // logOutIcon
-            // 
-            this.logOutIcon.Image = ((System.Drawing.Image)(resources.GetObject("logOutIcon.Image")));
-            this.logOutIcon.Location = new System.Drawing.Point(32, 640);
-            this.logOutIcon.Name = "logOutIcon";
-            this.logOutIcon.Size = new System.Drawing.Size(100, 50);
-            this.logOutIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logOutIcon.TabIndex = 7;
-            this.logOutIcon.TabStop = false;
-            this.logOutIcon.Click += new System.EventHandler(this.logOutIcon_Click);
-            // 
-            // settingTab
-            // 
-            this.settingTab.Image = ((System.Drawing.Image)(resources.GetObject("settingTab.Image")));
-            this.settingTab.Location = new System.Drawing.Point(32, 520);
-            this.settingTab.Name = "settingTab";
-            this.settingTab.Size = new System.Drawing.Size(104, 72);
-            this.settingTab.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.settingTab.TabIndex = 6;
-            this.settingTab.TabStop = false;
-            this.settingTab.Click += new System.EventHandler(this.settingTab_Click);
-            // 
-            // flightsTab
-            // 
-            this.flightsTab.Image = ((System.Drawing.Image)(resources.GetObject("flightsTab.Image")));
-            this.flightsTab.Location = new System.Drawing.Point(31, 156);
-            this.flightsTab.Name = "flightsTab";
-            this.flightsTab.Size = new System.Drawing.Size(104, 80);
-            this.flightsTab.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.flightsTab.TabIndex = 4;
-            this.flightsTab.TabStop = false;
-            this.flightsTab.Click += new System.EventHandler(this.flightsTab_Click);
-            // 
-            // logoIcon
-            // 
-            this.logoIcon.Image = ((System.Drawing.Image)(resources.GetObject("logoIcon.Image")));
-            this.logoIcon.Location = new System.Drawing.Point(24, 16);
-            this.logoIcon.Name = "logoIcon";
-            this.logoIcon.Size = new System.Drawing.Size(113, 108);
-            this.logoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoIcon.TabIndex = 4;
-            this.logoIcon.TabStop = false;
-            // 
-            // bookingTab
-            // 
-            this.bookingTab.Image = ((System.Drawing.Image)(resources.GetObject("bookingTab.Image")));
-            this.bookingTab.Location = new System.Drawing.Point(32, 272);
-            this.bookingTab.Name = "bookingTab";
-            this.bookingTab.Size = new System.Drawing.Size(104, 80);
-            this.bookingTab.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bookingTab.TabIndex = 5;
-            this.bookingTab.TabStop = false;
-            this.bookingTab.Click += new System.EventHandler(this.bookingTab_Click);
-            // 
-            // btntabCreatenotifications
-            // 
-            this.btntabCreatenotifications.BackColor = System.Drawing.Color.Gainsboro;
-            this.btntabCreatenotifications.Controls.Add(this.comboBoxType);
-            this.btntabCreatenotifications.Controls.Add(this.lblErrorType);
-            this.btntabCreatenotifications.Controls.Add(label88);
-            this.btntabCreatenotifications.Controls.Add(label86);
-            this.btntabCreatenotifications.Controls.Add(this.lblErrorFlight);
-            this.btntabCreatenotifications.Controls.Add(this.comboBoxFlights);
-            this.btntabCreatenotifications.Controls.Add(this.button1);
-            this.btntabCreatenotifications.Controls.Add(this.lblErrorDescription);
-            this.btntabCreatenotifications.Controls.Add(this.lblErrorTitle);
-            this.btntabCreatenotifications.Controls.Add(label84);
-            this.btntabCreatenotifications.Controls.Add(this.txtDescription);
-            this.btntabCreatenotifications.Controls.Add(this.txtTitle);
-            this.btntabCreatenotifications.Controls.Add(label76);
-            this.btntabCreatenotifications.Controls.Add(label74);
-            this.btntabCreatenotifications.Location = new System.Drawing.Point(85, 4);
-            this.btntabCreatenotifications.Name = "btntabCreatenotifications";
-            this.btntabCreatenotifications.Padding = new System.Windows.Forms.Padding(3);
-            this.btntabCreatenotifications.Size = new System.Drawing.Size(693, 720);
-            this.btntabCreatenotifications.TabIndex = 12;
-            this.btntabCreatenotifications.Text = "Create Notifications";
-            this.btntabCreatenotifications.Paint += new System.Windows.Forms.PaintEventHandler(this.btntabCreatenotifications_Paint);
-            // 
-            // comboBoxType
-            // 
-            this.comboBoxType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Items.AddRange(new object[] {
-            "",
-            "Policy",
-            "Security",
-            "Alert",
-            "Refund",
-            "Cancellation",
-            "Discount",
-            "Delay",
-            "Registration",
-            "Reminder",
-            "Offer",
-            "Updat",
-            "Feedback",
-            "Payment",
-            "Booking"});
-            this.comboBoxType.Location = new System.Drawing.Point(31, 395);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(642, 39);
-            this.comboBoxType.TabIndex = 170;
-            this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // lblErrorType
-            // 
-            this.lblErrorType.AutoSize = true;
-            this.lblErrorType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorType.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorType.Location = new System.Drawing.Point(39, 430);
-            this.lblErrorType.Name = "lblErrorType";
-            this.lblErrorType.Size = new System.Drawing.Size(0, 29);
-            this.lblErrorType.TabIndex = 169;
-            // 
             // label88
             // 
             label88.AutoSize = true;
@@ -1072,61 +931,6 @@ namespace HappyJourneyAirline.Tabs
             label86.Text = "Flight";
             label86.UseCompatibleTextRendering = true;
             // 
-            // lblErrorFlight
-            // 
-            this.lblErrorFlight.AutoSize = true;
-            this.lblErrorFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorFlight.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorFlight.Location = new System.Drawing.Point(39, 543);
-            this.lblErrorFlight.Name = "lblErrorFlight";
-            this.lblErrorFlight.Size = new System.Drawing.Size(0, 29);
-            this.lblErrorFlight.TabIndex = 165;
-            // 
-            // comboBoxFlights
-            // 
-            this.comboBoxFlights.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxFlights.FormattingEnabled = true;
-            this.comboBoxFlights.Location = new System.Drawing.Point(31, 509);
-            this.comboBoxFlights.Name = "comboBoxFlights";
-            this.comboBoxFlights.Size = new System.Drawing.Size(642, 39);
-            this.comboBoxFlights.TabIndex = 164;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(243, 591);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(223, 55);
-            this.button1.TabIndex = 162;
-            this.button1.Text = "Create Notification";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // lblErrorDescription
-            // 
-            this.lblErrorDescription.AutoSize = true;
-            this.lblErrorDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorDescription.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorDescription.Location = new System.Drawing.Point(38, 319);
-            this.lblErrorDescription.Name = "lblErrorDescription";
-            this.lblErrorDescription.Size = new System.Drawing.Size(0, 29);
-            this.lblErrorDescription.TabIndex = 161;
-            // 
-            // lblErrorTitle
-            // 
-            this.lblErrorTitle.AutoSize = true;
-            this.lblErrorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorTitle.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorTitle.Location = new System.Drawing.Point(39, 163);
-            this.lblErrorTitle.Name = "lblErrorTitle";
-            this.lblErrorTitle.Size = new System.Drawing.Size(0, 29);
-            this.lblErrorTitle.TabIndex = 160;
-            // 
             // label84
             // 
             label84.AutoSize = true;
@@ -1138,27 +942,6 @@ namespace HappyJourneyAirline.Tabs
             label84.TabIndex = 158;
             label84.Text = "Description";
             label84.UseCompatibleTextRendering = true;
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescription.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(31, 240);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(642, 79);
-            this.txtDescription.TabIndex = 157;
-            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
-            // 
-            // txtTitle
-            // 
-            this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTitle.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(31, 123);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(642, 51);
-            this.txtTitle.TabIndex = 155;
-            this.txtTitle.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label76
             // 
@@ -1181,42 +964,6 @@ namespace HappyJourneyAirline.Tabs
             label74.TabIndex = 154;
             label74.Text = "Create Notifications";
             // 
-            // viewLocation
-            // 
-            this.viewLocation.BackColor = System.Drawing.Color.Gainsboro;
-            this.viewLocation.Controls.Add(this.flowLayoutPanel5);
-            this.viewLocation.Controls.Add(flowLayoutPanel6);
-            this.viewLocation.Controls.Add(this.label79);
-            this.viewLocation.Controls.Add(label83);
-            this.viewLocation.Location = new System.Drawing.Point(85, 4);
-            this.viewLocation.Name = "viewLocation";
-            this.viewLocation.Padding = new System.Windows.Forms.Padding(3);
-            this.viewLocation.Size = new System.Drawing.Size(693, 720);
-            this.viewLocation.TabIndex = 11;
-            this.viewLocation.Text = "veLocation";
-            // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.Controls.Add(this.countryGroupBox);
-            this.flowLayoutPanel5.Controls.Add(this.AirportGroupBox);
-            this.flowLayoutPanel5.Controls.Add(this.cityGroupBox);
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(13, 123);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(724, 458);
-            this.flowLayoutPanel5.TabIndex = 161;
-            // 
-            // countryGroupBox
-            // 
-            this.countryGroupBox.Controls.Add(label73);
-            this.countryGroupBox.Controls.Add(this.editContErrorLbl);
-            this.countryGroupBox.Controls.Add(this.editContNameTxt);
-            this.countryGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.countryGroupBox.Name = "countryGroupBox";
-            this.countryGroupBox.Size = new System.Drawing.Size(707, 150);
-            this.countryGroupBox.TabIndex = 147;
-            this.countryGroupBox.TabStop = false;
-            this.countryGroupBox.Text = "Country";
-            // 
             // label73
             // 
             label73.AutoSize = true;
@@ -1228,49 +975,6 @@ namespace HappyJourneyAirline.Tabs
             label73.TabIndex = 111;
             label73.Text = "Country Name:";
             label73.UseCompatibleTextRendering = true;
-            // 
-            // editContErrorLbl
-            // 
-            this.editContErrorLbl.AutoSize = true;
-            this.editContErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.editContErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editContErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.editContErrorLbl.Location = new System.Drawing.Point(278, 64);
-            this.editContErrorLbl.Name = "editContErrorLbl";
-            this.editContErrorLbl.Size = new System.Drawing.Size(429, 44);
-            this.editContErrorLbl.TabIndex = 132;
-            this.editContErrorLbl.Text = "Error: Country already Exist";
-            this.editContErrorLbl.Visible = false;
-            // 
-            // editContNameTxt
-            // 
-            this.editContNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editContNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editContNameTxt.Location = new System.Drawing.Point(20, 57);
-            this.editContNameTxt.Name = "editContNameTxt";
-            this.editContNameTxt.Size = new System.Drawing.Size(246, 51);
-            this.editContNameTxt.TabIndex = 109;
-            this.editContNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
-            // 
-            // AirportGroupBox
-            // 
-            this.AirportGroupBox.Controls.Add(label78);
-            this.AirportGroupBox.Controls.Add(this.editAirportConDrop);
-            this.AirportGroupBox.Controls.Add(this.editAirportNameTxt);
-            this.AirportGroupBox.Controls.Add(label80);
-            this.AirportGroupBox.Controls.Add(this.editAirportLongitudeTxt);
-            this.AirportGroupBox.Controls.Add(label81);
-            this.AirportGroupBox.Controls.Add(label82);
-            this.AirportGroupBox.Controls.Add(this.editAirportCityDrop);
-            this.AirportGroupBox.Controls.Add(this.editAirportLatitudeTxt);
-            this.AirportGroupBox.Controls.Add(this.editAirportErrorLbl);
-            this.AirportGroupBox.Controls.Add(label85);
-            this.AirportGroupBox.Location = new System.Drawing.Point(3, 159);
-            this.AirportGroupBox.Name = "AirportGroupBox";
-            this.AirportGroupBox.Size = new System.Drawing.Size(707, 237);
-            this.AirportGroupBox.TabIndex = 145;
-            this.AirportGroupBox.TabStop = false;
-            this.AirportGroupBox.Text = "Airport";
             // 
             // label78
             // 
@@ -1284,27 +988,6 @@ namespace HappyJourneyAirline.Tabs
             label78.Text = "Airport Name:";
             label78.UseCompatibleTextRendering = true;
             // 
-            // editAirportConDrop
-            // 
-            this.editAirportConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.editAirportConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.editAirportConDrop.FormattingEnabled = true;
-            this.editAirportConDrop.Location = new System.Drawing.Point(360, 57);
-            this.editAirportConDrop.Name = "editAirportConDrop";
-            this.editAirportConDrop.Size = new System.Drawing.Size(309, 52);
-            this.editAirportConDrop.TabIndex = 141;
-            this.editAirportConDrop.SelectedIndexChanged += new System.EventHandler(this.editAirportConDrop_SelectedIndexChanged);
-            // 
-            // editAirportNameTxt
-            // 
-            this.editAirportNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editAirportNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editAirportNameTxt.Location = new System.Drawing.Point(20, 57);
-            this.editAirportNameTxt.Name = "editAirportNameTxt";
-            this.editAirportNameTxt.Size = new System.Drawing.Size(320, 51);
-            this.editAirportNameTxt.TabIndex = 121;
-            this.editAirportNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
-            // 
             // label80
             // 
             label80.AutoSize = true;
@@ -1316,16 +999,6 @@ namespace HappyJourneyAirline.Tabs
             label80.TabIndex = 140;
             label80.Text = "Country Name:";
             label80.UseCompatibleTextRendering = true;
-            // 
-            // editAirportLongitudeTxt
-            // 
-            this.editAirportLongitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editAirportLongitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editAirportLongitudeTxt.Location = new System.Drawing.Point(494, 146);
-            this.editAirportLongitudeTxt.Name = "editAirportLongitudeTxt";
-            this.editAirportLongitudeTxt.Size = new System.Drawing.Size(175, 51);
-            this.editAirportLongitudeTxt.TabIndex = 138;
-            this.editAirportLongitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
             // 
             // label81
             // 
@@ -1351,39 +1024,6 @@ namespace HappyJourneyAirline.Tabs
             label82.Text = "Longitude:";
             label82.UseCompatibleTextRendering = true;
             // 
-            // editAirportCityDrop
-            // 
-            this.editAirportCityDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.editAirportCityDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.editAirportCityDrop.FormattingEnabled = true;
-            this.editAirportCityDrop.Location = new System.Drawing.Point(20, 145);
-            this.editAirportCityDrop.Name = "editAirportCityDrop";
-            this.editAirportCityDrop.Size = new System.Drawing.Size(246, 52);
-            this.editAirportCityDrop.TabIndex = 131;
-            // 
-            // editAirportLatitudeTxt
-            // 
-            this.editAirportLatitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editAirportLatitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editAirportLatitudeTxt.Location = new System.Drawing.Point(293, 146);
-            this.editAirportLatitudeTxt.Name = "editAirportLatitudeTxt";
-            this.editAirportLatitudeTxt.Size = new System.Drawing.Size(175, 51);
-            this.editAirportLatitudeTxt.TabIndex = 136;
-            this.editAirportLatitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
-            // 
-            // editAirportErrorLbl
-            // 
-            this.editAirportErrorLbl.AutoSize = true;
-            this.editAirportErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.editAirportErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editAirportErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.editAirportErrorLbl.Location = new System.Drawing.Point(178, 196);
-            this.editAirportErrorLbl.Name = "editAirportErrorLbl";
-            this.editAirportErrorLbl.Size = new System.Drawing.Size(418, 44);
-            this.editAirportErrorLbl.TabIndex = 134;
-            this.editAirportErrorLbl.Text = "Error: Airport already Exist";
-            this.editAirportErrorLbl.Visible = false;
-            // 
             // label85
             // 
             label85.AutoSize = true;
@@ -1395,20 +1035,6 @@ namespace HappyJourneyAirline.Tabs
             label85.TabIndex = 137;
             label85.Text = "Latitude:";
             label85.UseCompatibleTextRendering = true;
-            // 
-            // cityGroupBox
-            // 
-            this.cityGroupBox.Controls.Add(label75);
-            this.cityGroupBox.Controls.Add(this.editCitytNameTxt);
-            this.cityGroupBox.Controls.Add(this.editCityErrorLbl);
-            this.cityGroupBox.Controls.Add(label77);
-            this.cityGroupBox.Controls.Add(this.editConDrop);
-            this.cityGroupBox.Location = new System.Drawing.Point(3, 402);
-            this.cityGroupBox.Name = "cityGroupBox";
-            this.cityGroupBox.Size = new System.Drawing.Size(707, 155);
-            this.cityGroupBox.TabIndex = 146;
-            this.cityGroupBox.TabStop = false;
-            this.cityGroupBox.Text = "City";
             // 
             // label75
             // 
@@ -1422,29 +1048,6 @@ namespace HappyJourneyAirline.Tabs
             label75.Text = "City Name:";
             label75.UseCompatibleTextRendering = true;
             // 
-            // editCitytNameTxt
-            // 
-            this.editCitytNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.editCitytNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editCitytNameTxt.Location = new System.Drawing.Point(20, 62);
-            this.editCitytNameTxt.Name = "editCitytNameTxt";
-            this.editCitytNameTxt.Size = new System.Drawing.Size(246, 51);
-            this.editCitytNameTxt.TabIndex = 115;
-            this.editCitytNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
-            // 
-            // editCityErrorLbl
-            // 
-            this.editCityErrorLbl.AutoSize = true;
-            this.editCityErrorLbl.BackColor = System.Drawing.Color.Transparent;
-            this.editCityErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editCityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.editCityErrorLbl.Location = new System.Drawing.Point(302, 114);
-            this.editCityErrorLbl.Name = "editCityErrorLbl";
-            this.editCityErrorLbl.Size = new System.Drawing.Size(368, 44);
-            this.editCityErrorLbl.TabIndex = 133;
-            this.editCityErrorLbl.Text = "Error: City already Exist";
-            this.editCityErrorLbl.Visible = false;
-            // 
             // label77
             // 
             label77.AutoSize = true;
@@ -1456,16 +1059,6 @@ namespace HappyJourneyAirline.Tabs
             label77.TabIndex = 127;
             label77.Text = "Country Name:";
             label77.UseCompatibleTextRendering = true;
-            // 
-            // editConDrop
-            // 
-            this.editConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.editConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.editConDrop.FormattingEnabled = true;
-            this.editConDrop.Location = new System.Drawing.Point(293, 61);
-            this.editConDrop.Name = "editConDrop";
-            this.editConDrop.Size = new System.Drawing.Size(246, 52);
-            this.editConDrop.TabIndex = 130;
             // 
             // flowLayoutPanel6
             // 
@@ -1525,18 +1118,6 @@ namespace HappyJourneyAirline.Tabs
             this.editLocationBack.UseVisualStyleBackColor = false;
             this.editLocationBack.Click += new System.EventHandler(this.editLocationBack_Click);
             // 
-            // label79
-            // 
-            this.label79.AutoSize = true;
-            this.label79.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label79.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label79.Location = new System.Drawing.Point(17, 584);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(1444, 35);
-            this.label79.TabIndex = 157;
-            this.label79.Text = "Attention if you delete this location all its information and other locations rel" +
-    "ated to it will be deleted and can\'t be restored";
-            // 
             // label83
             // 
             label83.AutoSize = true;
@@ -1546,193 +1127,6 @@ namespace HappyJourneyAirline.Tabs
             label83.Size = new System.Drawing.Size(624, 100);
             label83.TabIndex = 153;
             label83.Text = "Manage Location";
-            // 
-            // veAirCouCity
-            // 
-            this.veAirCouCity.BackColor = System.Drawing.Color.Gainsboro;
-            this.veAirCouCity.Controls.Add(this.button2);
-            this.veAirCouCity.Controls.Add(this.groupBox4);
-            this.veAirCouCity.Controls.Add(this.groupBox5);
-            this.veAirCouCity.Controls.Add(this.groupBox6);
-            this.veAirCouCity.Controls.Add(this.addAirCityCouBtn);
-            this.veAirCouCity.Controls.Add(label72);
-            this.veAirCouCity.Controls.Add(Locations);
-            this.veAirCouCity.Location = new System.Drawing.Point(85, 4);
-            this.veAirCouCity.Name = "veAirCouCity";
-            this.veAirCouCity.Padding = new System.Windows.Forms.Padding(3);
-            this.veAirCouCity.Size = new System.Drawing.Size(693, 720);
-            this.veAirCouCity.TabIndex = 10;
-            this.veAirCouCity.Text = "veAirCouCity";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(480, 25);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(223, 55);
-            this.button2.TabIndex = 148;
-            this.button2.Text = "Generate Locations Report";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.countriesDataGridView);
-            this.groupBox4.Location = new System.Drawing.Point(7, 153);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(707, 150);
-            this.groupBox4.TabIndex = 147;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Country";
-            // 
-            // countriesDataGridView
-            // 
-            this.countriesDataGridView.AllowUserToAddRows = false;
-            this.countriesDataGridView.AllowUserToDeleteRows = false;
-            this.countriesDataGridView.AllowUserToOrderColumns = true;
-            this.countriesDataGridView.AllowUserToResizeRows = false;
-            this.countriesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.countriesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
-            this.countriesDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle32.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.countriesDataGridView.DefaultCellStyle = dataGridViewCellStyle32;
-            this.countriesDataGridView.Location = new System.Drawing.Point(7, 23);
-            this.countriesDataGridView.Name = "countriesDataGridView";
-            this.countriesDataGridView.RowHeadersVisible = false;
-            this.countriesDataGridView.RowHeadersWidth = 70;
-            this.countriesDataGridView.RowTemplate.Height = 50;
-            this.countriesDataGridView.Size = new System.Drawing.Size(694, 121);
-            this.countriesDataGridView.TabIndex = 0;
-            this.countriesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.countriesDataGridView_CellClick);
-            this.countriesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.citiesDataGridView);
-            this.groupBox5.Location = new System.Drawing.Point(7, 304);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(707, 155);
-            this.groupBox5.TabIndex = 146;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "City";
-            // 
-            // citiesDataGridView
-            // 
-            this.citiesDataGridView.AllowUserToAddRows = false;
-            this.citiesDataGridView.AllowUserToDeleteRows = false;
-            this.citiesDataGridView.AllowUserToOrderColumns = true;
-            this.citiesDataGridView.AllowUserToResizeRows = false;
-            this.citiesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle33.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.citiesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
-            this.citiesDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle34.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.citiesDataGridView.DefaultCellStyle = dataGridViewCellStyle34;
-            this.citiesDataGridView.Location = new System.Drawing.Point(6, 23);
-            this.citiesDataGridView.Name = "citiesDataGridView";
-            this.citiesDataGridView.RowHeadersVisible = false;
-            this.citiesDataGridView.RowHeadersWidth = 70;
-            this.citiesDataGridView.RowTemplate.Height = 50;
-            this.citiesDataGridView.Size = new System.Drawing.Size(694, 126);
-            this.citiesDataGridView.TabIndex = 1;
-            this.citiesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.citiesDataGridView_CellClick);
-            this.citiesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.airportsDataGridView);
-            this.groupBox6.Location = new System.Drawing.Point(7, 462);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(707, 237);
-            this.groupBox6.TabIndex = 145;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Airport";
-            // 
-            // airportsDataGridView
-            // 
-            this.airportsDataGridView.AllowUserToAddRows = false;
-            this.airportsDataGridView.AllowUserToDeleteRows = false;
-            this.airportsDataGridView.AllowUserToOrderColumns = true;
-            this.airportsDataGridView.AllowUserToResizeRows = false;
-            this.airportsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle35.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.airportsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
-            this.airportsDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle36.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.airportsDataGridView.DefaultCellStyle = dataGridViewCellStyle36;
-            this.airportsDataGridView.Location = new System.Drawing.Point(7, 23);
-            this.airportsDataGridView.Name = "airportsDataGridView";
-            this.airportsDataGridView.RowHeadersVisible = false;
-            this.airportsDataGridView.RowHeadersWidth = 70;
-            this.airportsDataGridView.RowTemplate.Height = 50;
-            this.airportsDataGridView.Size = new System.Drawing.Size(694, 208);
-            this.airportsDataGridView.TabIndex = 2;
-            this.airportsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.airportsDataGridView_CellClick);
-            this.airportsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
-            // 
-            // addAirCityCouBtn
-            // 
-            this.addAirCityCouBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.addAirCityCouBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.addAirCityCouBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.addAirCityCouBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAirCityCouBtn.ForeColor = System.Drawing.Color.White;
-            this.addAirCityCouBtn.Location = new System.Drawing.Point(480, 97);
-            this.addAirCityCouBtn.Name = "addAirCityCouBtn";
-            this.addAirCityCouBtn.Size = new System.Drawing.Size(223, 55);
-            this.addAirCityCouBtn.TabIndex = 39;
-            this.addAirCityCouBtn.Text = "Add Location";
-            this.addAirCityCouBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.addAirCityCouBtn.UseVisualStyleBackColor = false;
-            this.addAirCityCouBtn.Click += new System.EventHandler(this.addAirCityCouBtn_Click_1);
             // 
             // label72
             // 
@@ -1755,50 +1149,6 @@ namespace HappyJourneyAirline.Tabs
             Locations.TabIndex = 37;
             Locations.Text = "Locations";
             // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.Gainsboro;
-            this.tabPage1.Controls.Add(this.flowLayoutPanel3);
-            this.tabPage1.Controls.Add(this.mtAgencyPanel);
-            this.tabPage1.Controls.Add(this.mtUsernameTxt);
-            this.tabPage1.Controls.Add(this.mtPhoneTxt);
-            this.tabPage1.Controls.Add(this.mtEmailTxt);
-            this.tabPage1.Controls.Add(this.mtUserIDTxt);
-            this.tabPage1.Controls.Add(this.mtUserTypeTxt);
-            this.tabPage1.Controls.Add(label69);
-            this.tabPage1.Controls.Add(this.flowLayoutPanel1);
-            this.tabPage1.Controls.Add(label65);
-            this.tabPage1.Controls.Add(this.label64);
-            this.tabPage1.Controls.Add(label59);
-            this.tabPage1.Controls.Add(label60);
-            this.tabPage1.Controls.Add(label63);
-            this.tabPage1.Controls.Add(label18);
-            this.tabPage1.Location = new System.Drawing.Point(85, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(693, 720);
-            this.tabPage1.TabIndex = 9;
-            this.tabPage1.Text = "Manage User";
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.mtFirstNamePanel);
-            this.flowLayoutPanel3.Controls.Add(this.mtLastNamePanel);
-            this.flowLayoutPanel3.Controls.Add(this.mtCompanyNamePanel);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(17, 170);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(710, 92);
-            this.flowLayoutPanel3.TabIndex = 152;
-            // 
-            // mtFirstNamePanel
-            // 
-            this.mtFirstNamePanel.Controls.Add(label62);
-            this.mtFirstNamePanel.Controls.Add(this.mtFnameTxt);
-            this.mtFirstNamePanel.Location = new System.Drawing.Point(3, 3);
-            this.mtFirstNamePanel.Name = "mtFirstNamePanel";
-            this.mtFirstNamePanel.Size = new System.Drawing.Size(358, 82);
-            this.mtFirstNamePanel.TabIndex = 150;
-            // 
             // label62
             // 
             label62.AutoSize = true;
@@ -1810,27 +1160,6 @@ namespace HappyJourneyAirline.Tabs
             label62.TabIndex = 120;
             label62.Text = "First Name:";
             label62.UseCompatibleTextRendering = true;
-            // 
-            // mtFnameTxt
-            // 
-            this.mtFnameTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtFnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtFnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtFnameTxt.Location = new System.Drawing.Point(8, 38);
-            this.mtFnameTxt.Name = "mtFnameTxt";
-            this.mtFnameTxt.ReadOnly = true;
-            this.mtFnameTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtFnameTxt.TabIndex = 139;
-            this.mtFnameTxt.Text = "Employer/Traveler";
-            // 
-            // mtLastNamePanel
-            // 
-            this.mtLastNamePanel.Controls.Add(label61);
-            this.mtLastNamePanel.Controls.Add(this.mtLnameTxt);
-            this.mtLastNamePanel.Location = new System.Drawing.Point(367, 3);
-            this.mtLastNamePanel.Name = "mtLastNamePanel";
-            this.mtLastNamePanel.Size = new System.Drawing.Size(301, 82);
-            this.mtLastNamePanel.TabIndex = 151;
             // 
             // label61
             // 
@@ -1844,72 +1173,6 @@ namespace HappyJourneyAirline.Tabs
             label61.Text = "Last Name:";
             label61.UseCompatibleTextRendering = true;
             // 
-            // mtLnameTxt
-            // 
-            this.mtLnameTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtLnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtLnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtLnameTxt.Location = new System.Drawing.Point(7, 35);
-            this.mtLnameTxt.Name = "mtLnameTxt";
-            this.mtLnameTxt.ReadOnly = true;
-            this.mtLnameTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtLnameTxt.TabIndex = 141;
-            this.mtLnameTxt.Text = "Employer/Traveler";
-            // 
-            // mtCompanyNamePanel
-            // 
-            this.mtCompanyNamePanel.Controls.Add(this.mtCompanyNamelLbl);
-            this.mtCompanyNamePanel.Controls.Add(this.mtCompanyNamelTxt);
-            this.mtCompanyNamePanel.Location = new System.Drawing.Point(3, 91);
-            this.mtCompanyNamePanel.Name = "mtCompanyNamePanel";
-            this.mtCompanyNamePanel.Size = new System.Drawing.Size(336, 77);
-            this.mtCompanyNamePanel.TabIndex = 151;
-            // 
-            // mtCompanyNamelLbl
-            // 
-            this.mtCompanyNamelLbl.AutoSize = true;
-            this.mtCompanyNamelLbl.BackColor = System.Drawing.Color.Transparent;
-            this.mtCompanyNamelLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtCompanyNamelLbl.Location = new System.Drawing.Point(3, 0);
-            this.mtCompanyNamelLbl.Name = "mtCompanyNamelLbl";
-            this.mtCompanyNamelLbl.Size = new System.Drawing.Size(265, 51);
-            this.mtCompanyNamelLbl.TabIndex = 146;
-            this.mtCompanyNamelLbl.Text = "Company Name:";
-            this.mtCompanyNamelLbl.UseCompatibleTextRendering = true;
-            // 
-            // mtCompanyNamelTxt
-            // 
-            this.mtCompanyNamelTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtCompanyNamelTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtCompanyNamelTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtCompanyNamelTxt.Location = new System.Drawing.Point(10, 35);
-            this.mtCompanyNamelTxt.Name = "mtCompanyNamelTxt";
-            this.mtCompanyNamelTxt.ReadOnly = true;
-            this.mtCompanyNamelTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtCompanyNamelTxt.TabIndex = 148;
-            this.mtCompanyNamelTxt.Text = "Employer/Traveler";
-            // 
-            // mtAgencyPanel
-            // 
-            this.mtAgencyPanel.Controls.Add(this.mtAgencyIdTxt);
-            this.mtAgencyPanel.Controls.Add(mtAgencyIdLbl);
-            this.mtAgencyPanel.Location = new System.Drawing.Point(24, 426);
-            this.mtAgencyPanel.Name = "mtAgencyPanel";
-            this.mtAgencyPanel.Size = new System.Drawing.Size(301, 83);
-            this.mtAgencyPanel.TabIndex = 150;
-            // 
-            // mtAgencyIdTxt
-            // 
-            this.mtAgencyIdTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtAgencyIdTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtAgencyIdTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtAgencyIdTxt.Location = new System.Drawing.Point(11, 38);
-            this.mtAgencyIdTxt.Name = "mtAgencyIdTxt";
-            this.mtAgencyIdTxt.ReadOnly = true;
-            this.mtAgencyIdTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtAgencyIdTxt.TabIndex = 147;
-            this.mtAgencyIdTxt.Text = "Employer/Traveler";
-            // 
             // mtAgencyIdLbl
             // 
             mtAgencyIdLbl.AutoSize = true;
@@ -1921,66 +1184,6 @@ namespace HappyJourneyAirline.Tabs
             mtAgencyIdLbl.TabIndex = 145;
             mtAgencyIdLbl.Text = "Agency ID:";
             mtAgencyIdLbl.UseCompatibleTextRendering = true;
-            // 
-            // mtUsernameTxt
-            // 
-            this.mtUsernameTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtUsernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtUsernameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtUsernameTxt.Location = new System.Drawing.Point(30, 291);
-            this.mtUsernameTxt.Name = "mtUsernameTxt";
-            this.mtUsernameTxt.ReadOnly = true;
-            this.mtUsernameTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtUsernameTxt.TabIndex = 144;
-            this.mtUsernameTxt.Text = "Employer/Traveler";
-            // 
-            // mtPhoneTxt
-            // 
-            this.mtPhoneTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtPhoneTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtPhoneTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtPhoneTxt.Location = new System.Drawing.Point(391, 378);
-            this.mtPhoneTxt.Name = "mtPhoneTxt";
-            this.mtPhoneTxt.ReadOnly = true;
-            this.mtPhoneTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtPhoneTxt.TabIndex = 142;
-            this.mtPhoneTxt.Text = "Employer/Traveler";
-            // 
-            // mtEmailTxt
-            // 
-            this.mtEmailTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtEmailTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtEmailTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtEmailTxt.Location = new System.Drawing.Point(30, 378);
-            this.mtEmailTxt.Name = "mtEmailTxt";
-            this.mtEmailTxt.ReadOnly = true;
-            this.mtEmailTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtEmailTxt.TabIndex = 140;
-            this.mtEmailTxt.Text = "Employer/Traveler";
-            // 
-            // mtUserIDTxt
-            // 
-            this.mtUserIDTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtUserIDTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtUserIDTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtUserIDTxt.Location = new System.Drawing.Point(132, 124);
-            this.mtUserIDTxt.Name = "mtUserIDTxt";
-            this.mtUserIDTxt.ReadOnly = true;
-            this.mtUserIDTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtUserIDTxt.TabIndex = 138;
-            this.mtUserIDTxt.Text = "Employer/Traveler";
-            // 
-            // mtUserTypeTxt
-            // 
-            this.mtUserTypeTxt.BackColor = System.Drawing.Color.Gainsboro;
-            this.mtUserTypeTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mtUserTypeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtUserTypeTxt.Location = new System.Drawing.Point(391, 291);
-            this.mtUserTypeTxt.Name = "mtUserTypeTxt";
-            this.mtUserTypeTxt.ReadOnly = true;
-            this.mtUserTypeTxt.Size = new System.Drawing.Size(246, 44);
-            this.mtUserTypeTxt.TabIndex = 131;
-            this.mtUserTypeTxt.Text = "Employer/Traveler";
             // 
             // label69
             // 
@@ -1994,47 +1197,6 @@ namespace HappyJourneyAirline.Tabs
             label69.Text = "Username:";
             label69.UseCompatibleTextRendering = true;
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.mtDeleteBtn);
-            this.flowLayoutPanel1.Controls.Add(this.mtCancelBtn);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 611);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(537, 57);
-            this.flowLayoutPanel1.TabIndex = 137;
-            // 
-            // mtDeleteBtn
-            // 
-            this.mtDeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.mtDeleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.mtDeleteBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.mtDeleteBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtDeleteBtn.ForeColor = System.Drawing.Color.White;
-            this.mtDeleteBtn.Location = new System.Drawing.Point(3, 3);
-            this.mtDeleteBtn.Name = "mtDeleteBtn";
-            this.mtDeleteBtn.Size = new System.Drawing.Size(139, 43);
-            this.mtDeleteBtn.TabIndex = 128;
-            this.mtDeleteBtn.Text = "Delete Account";
-            this.mtDeleteBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.mtDeleteBtn.UseVisualStyleBackColor = false;
-            this.mtDeleteBtn.Click += new System.EventHandler(this.mtDeleteBtn_Click);
-            // 
-            // mtCancelBtn
-            // 
-            this.mtCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
-            this.mtCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.mtCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.mtCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtCancelBtn.ForeColor = System.Drawing.Color.White;
-            this.mtCancelBtn.Location = new System.Drawing.Point(148, 3);
-            this.mtCancelBtn.Name = "mtCancelBtn";
-            this.mtCancelBtn.Size = new System.Drawing.Size(139, 43);
-            this.mtCancelBtn.TabIndex = 129;
-            this.mtCancelBtn.Text = "Cancel";
-            this.mtCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.mtCancelBtn.UseVisualStyleBackColor = false;
-            this.mtCancelBtn.Click += new System.EventHandler(this.mtCancelBtn_Click);
-            // 
             // label65
             // 
             label65.AutoSize = true;
@@ -2046,18 +1208,6 @@ namespace HappyJourneyAirline.Tabs
             label65.TabIndex = 130;
             label65.Text = "User Type:";
             label65.UseCompatibleTextRendering = true;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label64.Location = new System.Drawing.Point(17, 584);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(1096, 35);
-            this.label64.TabIndex = 127;
-            this.label64.Text = "Attention if you delete your account all your information will be deleted and can" +
-    "t be restored";
             // 
             // label59
             // 
@@ -2104,21 +1254,6 @@ namespace HappyJourneyAirline.Tabs
             label18.Size = new System.Drawing.Size(493, 100);
             label18.TabIndex = 115;
             label18.Text = "Manage User";
-            // 
-            // AddAirCityConTab
-            // 
-            this.AddAirCityConTab.BackColor = System.Drawing.Color.Gainsboro;
-            this.AddAirCityConTab.Controls.Add(groupBox3);
-            this.AddAirCityConTab.Controls.Add(groupBox2);
-            this.AddAirCityConTab.Controls.Add(groupBox1);
-            this.AddAirCityConTab.Controls.Add(this.addBackBtn);
-            this.AddAirCityConTab.Controls.Add(label52);
-            this.AddAirCityConTab.Location = new System.Drawing.Point(85, 4);
-            this.AddAirCityConTab.Name = "AddAirCityConTab";
-            this.AddAirCityConTab.Padding = new System.Windows.Forms.Padding(3);
-            this.AddAirCityConTab.Size = new System.Drawing.Size(693, 720);
-            this.AddAirCityConTab.TabIndex = 8;
-            this.AddAirCityConTab.Text = "Add ar/city/cont";
             // 
             // groupBox3
             // 
@@ -2433,6 +1568,1520 @@ namespace HappyJourneyAirline.Tabs
             this.label53.Text = "Latitude:";
             this.label53.UseCompatibleTextRendering = true;
             // 
+            // label52
+            // 
+            label52.AutoSize = true;
+            label52.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label52.Location = new System.Drawing.Point(19, 25);
+            label52.Name = "label52";
+            label52.Size = new System.Drawing.Size(946, 100);
+            label52.TabIndex = 108;
+            label52.Text = "Add(Airport/City/Country)";
+            // 
+            // label47
+            // 
+            label47.AutoSize = true;
+            label47.BackColor = System.Drawing.Color.Transparent;
+            label47.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label47.Location = new System.Drawing.Point(0, 0);
+            label47.Name = "label47";
+            label47.Size = new System.Drawing.Size(188, 51);
+            label47.TabIndex = 45;
+            label47.Text = "First Name:";
+            label47.UseCompatibleTextRendering = true;
+            // 
+            // label46
+            // 
+            label46.AutoSize = true;
+            label46.BackColor = System.Drawing.Color.Transparent;
+            label46.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label46.Location = new System.Drawing.Point(3, 0);
+            label46.Name = "label46";
+            label46.Size = new System.Drawing.Size(183, 51);
+            label46.TabIndex = 46;
+            label46.Text = "Last Name:";
+            label46.UseCompatibleTextRendering = true;
+            // 
+            // label70
+            // 
+            label70.AutoSize = true;
+            label70.BackColor = System.Drawing.Color.Transparent;
+            label70.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label70.Location = new System.Drawing.Point(3, -1);
+            label70.Name = "label70";
+            label70.Size = new System.Drawing.Size(265, 51);
+            label70.TabIndex = 146;
+            label70.Text = "Company Name:";
+            label70.UseCompatibleTextRendering = true;
+            // 
+            // label51
+            // 
+            label51.AutoSize = true;
+            label51.BackColor = System.Drawing.Color.Transparent;
+            label51.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label51.Location = new System.Drawing.Point(26, 130);
+            label51.Name = "label51";
+            label51.Size = new System.Drawing.Size(175, 51);
+            label51.TabIndex = 109;
+            label51.Text = "User Type:";
+            label51.UseCompatibleTextRendering = true;
+            // 
+            // label50
+            // 
+            label50.AutoSize = true;
+            label50.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label50.Location = new System.Drawing.Point(12, 25);
+            label50.Name = "label50";
+            label50.Size = new System.Drawing.Size(437, 100);
+            label50.TabIndex = 107;
+            label50.Text = "Create User";
+            // 
+            // label44
+            // 
+            label44.AutoSize = true;
+            label44.BackColor = System.Drawing.Color.Transparent;
+            label44.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label44.Location = new System.Drawing.Point(332, 450);
+            label44.Name = "label44";
+            label44.Size = new System.Drawing.Size(253, 51);
+            label44.TabIndex = 48;
+            label44.Text = "Phone Number:";
+            label44.UseCompatibleTextRendering = true;
+            // 
+            // label45
+            // 
+            label45.AutoSize = true;
+            label45.BackColor = System.Drawing.Color.Transparent;
+            label45.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label45.Location = new System.Drawing.Point(27, 450);
+            label45.Name = "label45";
+            label45.Size = new System.Drawing.Size(106, 51);
+            label45.TabIndex = 47;
+            label45.Text = "Email:";
+            label45.UseCompatibleTextRendering = true;
+            // 
+            // label48
+            // 
+            label48.AutoSize = true;
+            label48.BackColor = System.Drawing.Color.Transparent;
+            label48.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label48.Location = new System.Drawing.Point(328, 228);
+            label48.Name = "label48";
+            label48.Size = new System.Drawing.Size(169, 51);
+            label48.TabIndex = 44;
+            label48.Text = "Password:";
+            label48.UseCompatibleTextRendering = true;
+            // 
+            // label49
+            // 
+            label49.AutoSize = true;
+            label49.BackColor = System.Drawing.Color.Transparent;
+            label49.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label49.Location = new System.Drawing.Point(27, 228);
+            label49.Name = "label49";
+            label49.Size = new System.Drawing.Size(179, 51);
+            label49.TabIndex = 43;
+            label49.Text = "Username:";
+            label49.UseCompatibleTextRendering = true;
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(this.efDeleteBtn);
+            flowLayoutPanel4.Controls.Add(this.efEditBtn);
+            flowLayoutPanel4.Controls.Add(this.efCancelBtn);
+            flowLayoutPanel4.Location = new System.Drawing.Point(23, 636);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new System.Drawing.Size(494, 56);
+            flowLayoutPanel4.TabIndex = 134;
+            // 
+            // efDeleteBtn
+            // 
+            this.efDeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.efDeleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.efDeleteBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.efDeleteBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efDeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.efDeleteBtn.Location = new System.Drawing.Point(3, 3);
+            this.efDeleteBtn.Name = "efDeleteBtn";
+            this.efDeleteBtn.Size = new System.Drawing.Size(139, 43);
+            this.efDeleteBtn.TabIndex = 129;
+            this.efDeleteBtn.Text = "Delete Flight";
+            this.efDeleteBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.efDeleteBtn.UseVisualStyleBackColor = false;
+            this.efDeleteBtn.Click += new System.EventHandler(this.efDeleteBtn_Click);
+            // 
+            // efEditBtn
+            // 
+            this.efEditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.efEditBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.efEditBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.efEditBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efEditBtn.ForeColor = System.Drawing.Color.White;
+            this.efEditBtn.Location = new System.Drawing.Point(148, 3);
+            this.efEditBtn.Name = "efEditBtn";
+            this.efEditBtn.Size = new System.Drawing.Size(139, 43);
+            this.efEditBtn.TabIndex = 123;
+            this.efEditBtn.Text = "Save Edits";
+            this.efEditBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.efEditBtn.UseVisualStyleBackColor = false;
+            this.efEditBtn.Click += new System.EventHandler(this.efEditBtn_Click);
+            // 
+            // efCancelBtn
+            // 
+            this.efCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
+            this.efCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.efCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.efCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efCancelBtn.ForeColor = System.Drawing.Color.White;
+            this.efCancelBtn.Location = new System.Drawing.Point(293, 3);
+            this.efCancelBtn.Name = "efCancelBtn";
+            this.efCancelBtn.Size = new System.Drawing.Size(139, 43);
+            this.efCancelBtn.TabIndex = 124;
+            this.efCancelBtn.Text = "Cancel";
+            this.efCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.efCancelBtn.UseVisualStyleBackColor = false;
+            this.efCancelBtn.Click += new System.EventHandler(this.efCancelBtn_Click);
+            // 
+            // label71
+            // 
+            label71.AutoSize = true;
+            label71.BackColor = System.Drawing.Color.Transparent;
+            label71.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label71.Location = new System.Drawing.Point(384, 537);
+            label71.Name = "label71";
+            label71.Size = new System.Drawing.Size(118, 51);
+            label71.TabIndex = 131;
+            label71.Text = "Status:";
+            label71.UseCompatibleTextRendering = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = System.Drawing.Color.Transparent;
+            label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.Location = new System.Drawing.Point(384, 431);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(177, 51);
+            label4.TabIndex = 121;
+            label4.Text = "Price in BD";
+            label4.UseCompatibleTextRendering = true;
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.BackColor = System.Drawing.Color.Transparent;
+            label26.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label26.Location = new System.Drawing.Point(23, 431);
+            label26.Name = "label26";
+            label26.Size = new System.Drawing.Size(95, 51);
+            label26.TabIndex = 119;
+            label26.Text = "Date:";
+            label26.UseCompatibleTextRendering = true;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.BackColor = System.Drawing.Color.Transparent;
+            label27.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label27.Location = new System.Drawing.Point(384, 338);
+            label27.Name = "label27";
+            label27.Size = new System.Drawing.Size(326, 51);
+            label27.TabIndex = 115;
+            label27.Text = "Arrival Airport Time:";
+            label27.UseCompatibleTextRendering = true;
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.BackColor = System.Drawing.Color.Transparent;
+            label28.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label28.Location = new System.Drawing.Point(23, 338);
+            label28.Name = "label28";
+            label28.Size = new System.Drawing.Size(396, 51);
+            label28.TabIndex = 114;
+            label28.Text = "Departure Airport Name:";
+            label28.UseCompatibleTextRendering = true;
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.BackColor = System.Drawing.Color.Transparent;
+            label39.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label39.Location = new System.Drawing.Point(384, 226);
+            label39.Name = "label39";
+            label39.Size = new System.Drawing.Size(208, 51);
+            label39.TabIndex = 112;
+            label39.Text = "Arrival Time:";
+            label39.UseCompatibleTextRendering = true;
+            // 
+            // label40
+            // 
+            label40.AutoSize = true;
+            label40.BackColor = System.Drawing.Color.Transparent;
+            label40.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label40.Location = new System.Drawing.Point(23, 226);
+            label40.Name = "label40";
+            label40.Size = new System.Drawing.Size(263, 51);
+            label40.TabIndex = 111;
+            label40.Text = "Departure Time:";
+            label40.UseCompatibleTextRendering = true;
+            // 
+            // label41
+            // 
+            label41.AutoSize = true;
+            label41.BackColor = System.Drawing.Color.Transparent;
+            label41.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label41.Location = new System.Drawing.Point(384, 129);
+            label41.Name = "label41";
+            label41.Size = new System.Drawing.Size(149, 51);
+            label41.TabIndex = 109;
+            label41.Text = "Plane ID:";
+            label41.UseCompatibleTextRendering = true;
+            // 
+            // label42
+            // 
+            label42.AutoSize = true;
+            label42.BackColor = System.Drawing.Color.Transparent;
+            label42.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label42.Location = new System.Drawing.Point(23, 127);
+            label42.Name = "label42";
+            label42.Size = new System.Drawing.Size(241, 51);
+            label42.TabIndex = 108;
+            label42.Text = "Flight Number:";
+            label42.UseCompatibleTextRendering = true;
+            // 
+            // label66
+            // 
+            label66.AutoSize = true;
+            label66.BackColor = System.Drawing.Color.Transparent;
+            label66.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label66.Location = new System.Drawing.Point(379, 539);
+            label66.Name = "label66";
+            label66.Size = new System.Drawing.Size(118, 51);
+            label66.TabIndex = 111;
+            label66.Text = "Status:";
+            label66.UseCompatibleTextRendering = true;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.BackColor = System.Drawing.Color.Transparent;
+            label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label19.Location = new System.Drawing.Point(379, 430);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(177, 51);
+            label19.TabIndex = 102;
+            label19.Text = "Price in BD";
+            label19.UseCompatibleTextRendering = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = System.Drawing.Color.Transparent;
+            label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label7.Location = new System.Drawing.Point(18, 430);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(95, 51);
+            label7.TabIndex = 99;
+            label7.Text = "Date:";
+            label7.UseCompatibleTextRendering = true;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = System.Drawing.Color.Transparent;
+            label5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label5.Location = new System.Drawing.Point(379, 329);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(341, 51);
+            label5.TabIndex = 90;
+            label5.Text = "Arrival Airport Name:";
+            label5.UseCompatibleTextRendering = true;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = System.Drawing.Color.Transparent;
+            label6.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label6.Location = new System.Drawing.Point(18, 329);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(396, 51);
+            label6.TabIndex = 89;
+            label6.Text = "Departure Airport Name:";
+            label6.UseCompatibleTextRendering = true;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.BackColor = System.Drawing.Color.Transparent;
+            label20.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label20.Location = new System.Drawing.Point(379, 223);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(208, 51);
+            label20.TabIndex = 82;
+            label20.Text = "Arrival Time:";
+            label20.UseCompatibleTextRendering = true;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.BackColor = System.Drawing.Color.Transparent;
+            label21.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label21.Location = new System.Drawing.Point(18, 223);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(263, 51);
+            label21.TabIndex = 81;
+            label21.Text = "Departure Time:";
+            label21.UseCompatibleTextRendering = true;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.BackColor = System.Drawing.Color.Transparent;
+            label23.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label23.Location = new System.Drawing.Point(383, 124);
+            label23.Name = "label23";
+            label23.Size = new System.Drawing.Size(149, 51);
+            label23.TabIndex = 78;
+            label23.Text = "Plane ID:";
+            label23.UseCompatibleTextRendering = true;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.BackColor = System.Drawing.Color.Transparent;
+            label24.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label24.Location = new System.Drawing.Point(22, 122);
+            label24.Name = "label24";
+            label24.Size = new System.Drawing.Size(241, 51);
+            label24.TabIndex = 77;
+            label24.Text = "Flight Number:";
+            label24.UseCompatibleTextRendering = true;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label25.Location = new System.Drawing.Point(8, 21);
+            label25.Name = "label25";
+            label25.Size = new System.Drawing.Size(468, 100);
+            label25.TabIndex = 75;
+            label25.Text = "Create Flight";
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.BackColor = System.Drawing.Color.Transparent;
+            label38.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label38.Location = new System.Drawing.Point(30, 105);
+            label38.Name = "label38";
+            label38.Size = new System.Drawing.Size(183, 51);
+            label38.TabIndex = 73;
+            label38.Text = "Booking ID:";
+            label38.UseCompatibleTextRendering = true;
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.BackColor = System.Drawing.Color.Transparent;
+            label29.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label29.Location = new System.Drawing.Point(391, 402);
+            label29.Name = "label29";
+            label29.Size = new System.Drawing.Size(326, 51);
+            label29.TabIndex = 69;
+            label29.Text = "Arrival Airport Time:";
+            label29.UseCompatibleTextRendering = true;
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.BackColor = System.Drawing.Color.Transparent;
+            label30.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label30.Location = new System.Drawing.Point(30, 402);
+            label30.Name = "label30";
+            label30.Size = new System.Drawing.Size(396, 51);
+            label30.TabIndex = 68;
+            label30.Text = "Departure Airport Name:";
+            label30.UseCompatibleTextRendering = true;
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.BackColor = System.Drawing.Color.Transparent;
+            label31.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label31.Location = new System.Drawing.Point(391, 324);
+            label31.Name = "label31";
+            label31.Size = new System.Drawing.Size(60, 51);
+            label31.TabIndex = 65;
+            label31.Text = "To:";
+            label31.UseCompatibleTextRendering = true;
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.BackColor = System.Drawing.Color.Transparent;
+            label32.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label32.Location = new System.Drawing.Point(30, 322);
+            label32.Name = "label32";
+            label32.Size = new System.Drawing.Size(102, 51);
+            label32.TabIndex = 64;
+            label32.Text = "From:";
+            label32.UseCompatibleTextRendering = true;
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.BackColor = System.Drawing.Color.Transparent;
+            label33.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label33.Location = new System.Drawing.Point(391, 236);
+            label33.Name = "label33";
+            label33.Size = new System.Drawing.Size(208, 51);
+            label33.TabIndex = 61;
+            label33.Text = "Arrival Time:";
+            label33.UseCompatibleTextRendering = true;
+            // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.BackColor = System.Drawing.Color.Transparent;
+            label34.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label34.Location = new System.Drawing.Point(30, 236);
+            label34.Name = "label34";
+            label34.Size = new System.Drawing.Size(263, 51);
+            label34.TabIndex = 60;
+            label34.Text = "Departure Time:";
+            label34.UseCompatibleTextRendering = true;
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.BackColor = System.Drawing.Color.Transparent;
+            label35.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label35.Location = new System.Drawing.Point(391, 161);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(95, 51);
+            label35.TabIndex = 57;
+            label35.Text = "Date:";
+            label35.UseCompatibleTextRendering = true;
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.BackColor = System.Drawing.Color.Transparent;
+            label36.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label36.Location = new System.Drawing.Point(30, 159);
+            label36.Name = "label36";
+            label36.Size = new System.Drawing.Size(241, 51);
+            label36.TabIndex = 56;
+            label36.Text = "Flight Number:";
+            label36.UseCompatibleTextRendering = true;
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label37.Location = new System.Drawing.Point(14, 18);
+            label37.Name = "label37";
+            label37.Size = new System.Drawing.Size(569, 100);
+            label37.TabIndex = 54;
+            label37.Text = "Booking Details";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            label2.Location = new System.Drawing.Point(26, 82);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(307, 35);
+            label2.TabIndex = 5;
+            label2.Text = "Manage users in this Page";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.Location = new System.Drawing.Point(19, 23);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(231, 100);
+            label3.TabIndex = 4;
+            label3.Text = "Users";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.BackColor = System.Drawing.Color.Transparent;
+            label17.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label17.Location = new System.Drawing.Point(380, 257);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(253, 51);
+            label17.TabIndex = 34;
+            label17.Text = "Phone Number:";
+            label17.UseCompatibleTextRendering = true;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.BackColor = System.Drawing.Color.Transparent;
+            label16.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label16.Location = new System.Drawing.Point(23, 257);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(106, 51);
+            label16.TabIndex = 33;
+            label16.Text = "Email:";
+            label16.UseCompatibleTextRendering = true;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.BackColor = System.Drawing.Color.Transparent;
+            label15.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label15.Location = new System.Drawing.Point(380, 186);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(183, 51);
+            label15.TabIndex = 32;
+            label15.Text = "Last Name:";
+            label15.UseCompatibleTextRendering = true;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = System.Drawing.Color.Transparent;
+            label12.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label12.Location = new System.Drawing.Point(23, 186);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(188, 51);
+            label12.TabIndex = 31;
+            label12.Text = "First Name:";
+            label12.UseCompatibleTextRendering = true;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = System.Drawing.Color.Transparent;
+            label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label10.Location = new System.Drawing.Point(380, 117);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(169, 51);
+            label10.TabIndex = 30;
+            label10.Text = "Password:";
+            label10.UseCompatibleTextRendering = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = System.Drawing.Color.Transparent;
+            label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label9.Location = new System.Drawing.Point(23, 117);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(179, 51);
+            label9.TabIndex = 29;
+            label9.Text = "Username:";
+            label9.UseCompatibleTextRendering = true;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            label8.Location = new System.Drawing.Point(18, 87);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(441, 35);
+            label8.TabIndex = 22;
+            label8.Text = "Here you can customize your account";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label14.Location = new System.Drawing.Point(12, 18);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(310, 100);
+            label14.TabIndex = 3;
+            label14.Text = "Settings";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            label1.Location = new System.Drawing.Point(24, 80);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(426, 35);
+            label1.TabIndex = 4;
+            label1.Text = "You can here modify bookings easily";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label13.Location = new System.Drawing.Point(16, 21);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(351, 100);
+            label13.TabIndex = 2;
+            label13.Text = "Bookings";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.usersIcon);
+            this.panel1.Controls.Add(this.logOutIcon);
+            this.panel1.Controls.Add(this.settingTab);
+            this.panel1.Controls.Add(this.flightsTab);
+            this.panel1.Controls.Add(this.logoIcon);
+            this.panel1.Controls.Add(this.bookingTab);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(160, 736);
+            this.panel1.TabIndex = 4;
+            // 
+            // usersIcon
+            // 
+            this.usersIcon.Image = ((System.Drawing.Image)(resources.GetObject("usersIcon.Image")));
+            this.usersIcon.Location = new System.Drawing.Point(32, 392);
+            this.usersIcon.Name = "usersIcon";
+            this.usersIcon.Size = new System.Drawing.Size(104, 80);
+            this.usersIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.usersIcon.TabIndex = 8;
+            this.usersIcon.TabStop = false;
+            this.usersIcon.Click += new System.EventHandler(this.users_Click);
+            // 
+            // logOutIcon
+            // 
+            this.logOutIcon.Image = ((System.Drawing.Image)(resources.GetObject("logOutIcon.Image")));
+            this.logOutIcon.Location = new System.Drawing.Point(32, 640);
+            this.logOutIcon.Name = "logOutIcon";
+            this.logOutIcon.Size = new System.Drawing.Size(100, 50);
+            this.logOutIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logOutIcon.TabIndex = 7;
+            this.logOutIcon.TabStop = false;
+            this.logOutIcon.Click += new System.EventHandler(this.logOutIcon_Click);
+            // 
+            // settingTab
+            // 
+            this.settingTab.Image = ((System.Drawing.Image)(resources.GetObject("settingTab.Image")));
+            this.settingTab.Location = new System.Drawing.Point(32, 520);
+            this.settingTab.Name = "settingTab";
+            this.settingTab.Size = new System.Drawing.Size(104, 72);
+            this.settingTab.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.settingTab.TabIndex = 6;
+            this.settingTab.TabStop = false;
+            this.settingTab.Click += new System.EventHandler(this.settingTab_Click);
+            // 
+            // flightsTab
+            // 
+            this.flightsTab.Image = ((System.Drawing.Image)(resources.GetObject("flightsTab.Image")));
+            this.flightsTab.Location = new System.Drawing.Point(31, 156);
+            this.flightsTab.Name = "flightsTab";
+            this.flightsTab.Size = new System.Drawing.Size(104, 80);
+            this.flightsTab.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.flightsTab.TabIndex = 4;
+            this.flightsTab.TabStop = false;
+            this.flightsTab.Click += new System.EventHandler(this.flightsTab_Click);
+            // 
+            // logoIcon
+            // 
+            this.logoIcon.Image = ((System.Drawing.Image)(resources.GetObject("logoIcon.Image")));
+            this.logoIcon.Location = new System.Drawing.Point(24, 16);
+            this.logoIcon.Name = "logoIcon";
+            this.logoIcon.Size = new System.Drawing.Size(113, 108);
+            this.logoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoIcon.TabIndex = 4;
+            this.logoIcon.TabStop = false;
+            // 
+            // bookingTab
+            // 
+            this.bookingTab.Image = ((System.Drawing.Image)(resources.GetObject("bookingTab.Image")));
+            this.bookingTab.Location = new System.Drawing.Point(32, 272);
+            this.bookingTab.Name = "bookingTab";
+            this.bookingTab.Size = new System.Drawing.Size(104, 80);
+            this.bookingTab.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bookingTab.TabIndex = 5;
+            this.bookingTab.TabStop = false;
+            this.bookingTab.Click += new System.EventHandler(this.bookingTab_Click);
+            // 
+            // btntabCreatenotifications
+            // 
+            this.btntabCreatenotifications.BackColor = System.Drawing.Color.Gainsboro;
+            this.btntabCreatenotifications.Controls.Add(this.comboBoxType);
+            this.btntabCreatenotifications.Controls.Add(this.lblErrorType);
+            this.btntabCreatenotifications.Controls.Add(label88);
+            this.btntabCreatenotifications.Controls.Add(label86);
+            this.btntabCreatenotifications.Controls.Add(this.lblErrorFlight);
+            this.btntabCreatenotifications.Controls.Add(this.comboBoxFlights);
+            this.btntabCreatenotifications.Controls.Add(this.createNotificationBtn);
+            this.btntabCreatenotifications.Controls.Add(this.lblErrorDescription);
+            this.btntabCreatenotifications.Controls.Add(this.lblErrorTitle);
+            this.btntabCreatenotifications.Controls.Add(label84);
+            this.btntabCreatenotifications.Controls.Add(this.txtDescription);
+            this.btntabCreatenotifications.Controls.Add(this.txtTitle);
+            this.btntabCreatenotifications.Controls.Add(label76);
+            this.btntabCreatenotifications.Controls.Add(label74);
+            this.btntabCreatenotifications.Location = new System.Drawing.Point(85, 4);
+            this.btntabCreatenotifications.Name = "btntabCreatenotifications";
+            this.btntabCreatenotifications.Padding = new System.Windows.Forms.Padding(3);
+            this.btntabCreatenotifications.Size = new System.Drawing.Size(693, 720);
+            this.btntabCreatenotifications.TabIndex = 12;
+            this.btntabCreatenotifications.Text = "Create Notifications";
+            this.btntabCreatenotifications.Paint += new System.Windows.Forms.PaintEventHandler(this.btntabCreatenotifications_Paint);
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Items.AddRange(new object[] {
+            "",
+            "Policy",
+            "Security",
+            "Alert",
+            "Refund",
+            "Cancellation",
+            "Discount",
+            "Delay",
+            "Registration",
+            "Reminder",
+            "Offer",
+            "Updat",
+            "Feedback",
+            "Payment",
+            "Booking"});
+            this.comboBoxType.Location = new System.Drawing.Point(31, 395);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(642, 39);
+            this.comboBoxType.TabIndex = 170;
+            // 
+            // lblErrorType
+            // 
+            this.lblErrorType.AutoSize = true;
+            this.lblErrorType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorType.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorType.Location = new System.Drawing.Point(39, 430);
+            this.lblErrorType.Name = "lblErrorType";
+            this.lblErrorType.Size = new System.Drawing.Size(0, 29);
+            this.lblErrorType.TabIndex = 169;
+            // 
+            // lblErrorFlight
+            // 
+            this.lblErrorFlight.AutoSize = true;
+            this.lblErrorFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorFlight.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorFlight.Location = new System.Drawing.Point(39, 543);
+            this.lblErrorFlight.Name = "lblErrorFlight";
+            this.lblErrorFlight.Size = new System.Drawing.Size(0, 29);
+            this.lblErrorFlight.TabIndex = 165;
+            // 
+            // comboBoxFlights
+            // 
+            this.comboBoxFlights.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFlights.FormattingEnabled = true;
+            this.comboBoxFlights.Location = new System.Drawing.Point(31, 509);
+            this.comboBoxFlights.Name = "comboBoxFlights";
+            this.comboBoxFlights.Size = new System.Drawing.Size(642, 39);
+            this.comboBoxFlights.TabIndex = 164;
+            // 
+            // createNotificationBtn
+            // 
+            this.createNotificationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.createNotificationBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.createNotificationBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.createNotificationBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createNotificationBtn.ForeColor = System.Drawing.Color.White;
+            this.createNotificationBtn.Location = new System.Drawing.Point(243, 591);
+            this.createNotificationBtn.Name = "createNotificationBtn";
+            this.createNotificationBtn.Size = new System.Drawing.Size(223, 55);
+            this.createNotificationBtn.TabIndex = 162;
+            this.createNotificationBtn.Text = "Create Notification";
+            this.createNotificationBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.createNotificationBtn.UseVisualStyleBackColor = false;
+            this.createNotificationBtn.Click += new System.EventHandler(this.createNotificationBtn_Click);
+            // 
+            // lblErrorDescription
+            // 
+            this.lblErrorDescription.AutoSize = true;
+            this.lblErrorDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorDescription.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorDescription.Location = new System.Drawing.Point(38, 319);
+            this.lblErrorDescription.Name = "lblErrorDescription";
+            this.lblErrorDescription.Size = new System.Drawing.Size(0, 29);
+            this.lblErrorDescription.TabIndex = 161;
+            // 
+            // lblErrorTitle
+            // 
+            this.lblErrorTitle.AutoSize = true;
+            this.lblErrorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorTitle.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorTitle.Location = new System.Drawing.Point(39, 163);
+            this.lblErrorTitle.Name = "lblErrorTitle";
+            this.lblErrorTitle.Size = new System.Drawing.Size(0, 29);
+            this.lblErrorTitle.TabIndex = 160;
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescription.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Location = new System.Drawing.Point(31, 240);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(642, 79);
+            this.txtDescription.TabIndex = 157;
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTitle.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.Location = new System.Drawing.Point(31, 123);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(642, 51);
+            this.txtTitle.TabIndex = 155;
+            // 
+            // viewLocation
+            // 
+            this.viewLocation.BackColor = System.Drawing.Color.Gainsboro;
+            this.viewLocation.Controls.Add(this.flowLayoutPanel5);
+            this.viewLocation.Controls.Add(flowLayoutPanel6);
+            this.viewLocation.Controls.Add(this.label79);
+            this.viewLocation.Controls.Add(label83);
+            this.viewLocation.Location = new System.Drawing.Point(85, 4);
+            this.viewLocation.Name = "viewLocation";
+            this.viewLocation.Padding = new System.Windows.Forms.Padding(3);
+            this.viewLocation.Size = new System.Drawing.Size(693, 720);
+            this.viewLocation.TabIndex = 11;
+            this.viewLocation.Text = "veLocation";
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.countryGroupBox);
+            this.flowLayoutPanel5.Controls.Add(this.AirportGroupBox);
+            this.flowLayoutPanel5.Controls.Add(this.cityGroupBox);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(13, 123);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(724, 458);
+            this.flowLayoutPanel5.TabIndex = 161;
+            // 
+            // countryGroupBox
+            // 
+            this.countryGroupBox.Controls.Add(label73);
+            this.countryGroupBox.Controls.Add(this.editContErrorLbl);
+            this.countryGroupBox.Controls.Add(this.editContNameTxt);
+            this.countryGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.countryGroupBox.Name = "countryGroupBox";
+            this.countryGroupBox.Size = new System.Drawing.Size(707, 150);
+            this.countryGroupBox.TabIndex = 147;
+            this.countryGroupBox.TabStop = false;
+            this.countryGroupBox.Text = "Country";
+            // 
+            // editContErrorLbl
+            // 
+            this.editContErrorLbl.AutoSize = true;
+            this.editContErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.editContErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editContErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editContErrorLbl.Location = new System.Drawing.Point(278, 64);
+            this.editContErrorLbl.Name = "editContErrorLbl";
+            this.editContErrorLbl.Size = new System.Drawing.Size(429, 44);
+            this.editContErrorLbl.TabIndex = 132;
+            this.editContErrorLbl.Text = "Error: Country already Exist";
+            this.editContErrorLbl.Visible = false;
+            // 
+            // editContNameTxt
+            // 
+            this.editContNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editContNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editContNameTxt.Location = new System.Drawing.Point(20, 57);
+            this.editContNameTxt.Name = "editContNameTxt";
+            this.editContNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.editContNameTxt.TabIndex = 109;
+            this.editContNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            // 
+            // AirportGroupBox
+            // 
+            this.AirportGroupBox.Controls.Add(label78);
+            this.AirportGroupBox.Controls.Add(this.editAirportConDrop);
+            this.AirportGroupBox.Controls.Add(this.editAirportNameTxt);
+            this.AirportGroupBox.Controls.Add(label80);
+            this.AirportGroupBox.Controls.Add(this.editAirportLongitudeTxt);
+            this.AirportGroupBox.Controls.Add(label81);
+            this.AirportGroupBox.Controls.Add(label82);
+            this.AirportGroupBox.Controls.Add(this.editAirportCityDrop);
+            this.AirportGroupBox.Controls.Add(this.editAirportLatitudeTxt);
+            this.AirportGroupBox.Controls.Add(this.editAirportErrorLbl);
+            this.AirportGroupBox.Controls.Add(label85);
+            this.AirportGroupBox.Location = new System.Drawing.Point(3, 159);
+            this.AirportGroupBox.Name = "AirportGroupBox";
+            this.AirportGroupBox.Size = new System.Drawing.Size(707, 237);
+            this.AirportGroupBox.TabIndex = 145;
+            this.AirportGroupBox.TabStop = false;
+            this.AirportGroupBox.Text = "Airport";
+            // 
+            // editAirportConDrop
+            // 
+            this.editAirportConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editAirportConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.editAirportConDrop.FormattingEnabled = true;
+            this.editAirportConDrop.Location = new System.Drawing.Point(360, 57);
+            this.editAirportConDrop.Name = "editAirportConDrop";
+            this.editAirportConDrop.Size = new System.Drawing.Size(309, 52);
+            this.editAirportConDrop.TabIndex = 141;
+            this.editAirportConDrop.SelectedIndexChanged += new System.EventHandler(this.editAirportConDrop_SelectedIndexChanged);
+            // 
+            // editAirportNameTxt
+            // 
+            this.editAirportNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editAirportNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportNameTxt.Location = new System.Drawing.Point(20, 57);
+            this.editAirportNameTxt.Name = "editAirportNameTxt";
+            this.editAirportNameTxt.Size = new System.Drawing.Size(320, 51);
+            this.editAirportNameTxt.TabIndex = 121;
+            this.editAirportNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyDotUnderscore_KeyPress);
+            // 
+            // editAirportLongitudeTxt
+            // 
+            this.editAirportLongitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editAirportLongitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportLongitudeTxt.Location = new System.Drawing.Point(494, 146);
+            this.editAirportLongitudeTxt.Name = "editAirportLongitudeTxt";
+            this.editAirportLongitudeTxt.Size = new System.Drawing.Size(175, 51);
+            this.editAirportLongitudeTxt.TabIndex = 138;
+            this.editAirportLongitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
+            // 
+            // editAirportCityDrop
+            // 
+            this.editAirportCityDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editAirportCityDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.editAirportCityDrop.FormattingEnabled = true;
+            this.editAirportCityDrop.Location = new System.Drawing.Point(20, 145);
+            this.editAirportCityDrop.Name = "editAirportCityDrop";
+            this.editAirportCityDrop.Size = new System.Drawing.Size(246, 52);
+            this.editAirportCityDrop.TabIndex = 131;
+            // 
+            // editAirportLatitudeTxt
+            // 
+            this.editAirportLatitudeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editAirportLatitudeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportLatitudeTxt.Location = new System.Drawing.Point(293, 146);
+            this.editAirportLatitudeTxt.Name = "editAirportLatitudeTxt";
+            this.editAirportLatitudeTxt.Size = new System.Drawing.Size(175, 51);
+            this.editAirportLatitudeTxt.TabIndex = 136;
+            this.editAirportLatitudeTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLatitudeLongitude_KeyPress);
+            // 
+            // editAirportErrorLbl
+            // 
+            this.editAirportErrorLbl.AutoSize = true;
+            this.editAirportErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.editAirportErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAirportErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editAirportErrorLbl.Location = new System.Drawing.Point(178, 196);
+            this.editAirportErrorLbl.Name = "editAirportErrorLbl";
+            this.editAirportErrorLbl.Size = new System.Drawing.Size(418, 44);
+            this.editAirportErrorLbl.TabIndex = 134;
+            this.editAirportErrorLbl.Text = "Error: Airport already Exist";
+            this.editAirportErrorLbl.Visible = false;
+            // 
+            // cityGroupBox
+            // 
+            this.cityGroupBox.Controls.Add(label75);
+            this.cityGroupBox.Controls.Add(this.editCitytNameTxt);
+            this.cityGroupBox.Controls.Add(this.editCityErrorLbl);
+            this.cityGroupBox.Controls.Add(label77);
+            this.cityGroupBox.Controls.Add(this.editConDrop);
+            this.cityGroupBox.Location = new System.Drawing.Point(3, 402);
+            this.cityGroupBox.Name = "cityGroupBox";
+            this.cityGroupBox.Size = new System.Drawing.Size(707, 155);
+            this.cityGroupBox.TabIndex = 146;
+            this.cityGroupBox.TabStop = false;
+            this.cityGroupBox.Text = "City";
+            // 
+            // editCitytNameTxt
+            // 
+            this.editCitytNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editCitytNameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCitytNameTxt.Location = new System.Drawing.Point(20, 62);
+            this.editCitytNameTxt.Name = "editCitytNameTxt";
+            this.editCitytNameTxt.Size = new System.Drawing.Size(246, 51);
+            this.editCitytNameTxt.TabIndex = 115;
+            this.editCitytNameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnlyLetters_KeyPress);
+            // 
+            // editCityErrorLbl
+            // 
+            this.editCityErrorLbl.AutoSize = true;
+            this.editCityErrorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.editCityErrorLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCityErrorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.editCityErrorLbl.Location = new System.Drawing.Point(302, 114);
+            this.editCityErrorLbl.Name = "editCityErrorLbl";
+            this.editCityErrorLbl.Size = new System.Drawing.Size(368, 44);
+            this.editCityErrorLbl.TabIndex = 133;
+            this.editCityErrorLbl.Text = "Error: City already Exist";
+            this.editCityErrorLbl.Visible = false;
+            // 
+            // editConDrop
+            // 
+            this.editConDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editConDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.editConDrop.FormattingEnabled = true;
+            this.editConDrop.Location = new System.Drawing.Point(293, 61);
+            this.editConDrop.Name = "editConDrop";
+            this.editConDrop.Size = new System.Drawing.Size(246, 52);
+            this.editConDrop.TabIndex = 130;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label79.Location = new System.Drawing.Point(17, 584);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(1444, 35);
+            this.label79.TabIndex = 157;
+            this.label79.Text = "Attention if you delete this location all its information and other locations rel" +
+    "ated to it will be deleted and can\'t be restored";
+            // 
+            // veAirCouCity
+            // 
+            this.veAirCouCity.BackColor = System.Drawing.Color.Gainsboro;
+            this.veAirCouCity.Controls.Add(this.vlGenerateLocationsBtn);
+            this.veAirCouCity.Controls.Add(this.groupBox4);
+            this.veAirCouCity.Controls.Add(this.groupBox5);
+            this.veAirCouCity.Controls.Add(this.groupBox6);
+            this.veAirCouCity.Controls.Add(this.addAirCityCouBtn);
+            this.veAirCouCity.Controls.Add(label72);
+            this.veAirCouCity.Controls.Add(Locations);
+            this.veAirCouCity.Location = new System.Drawing.Point(85, 4);
+            this.veAirCouCity.Name = "veAirCouCity";
+            this.veAirCouCity.Padding = new System.Windows.Forms.Padding(3);
+            this.veAirCouCity.Size = new System.Drawing.Size(693, 720);
+            this.veAirCouCity.TabIndex = 10;
+            this.veAirCouCity.Text = "veAirCouCity";
+            // 
+            // vlGenerateLocationsBtn
+            // 
+            this.vlGenerateLocationsBtn.BackColor = System.Drawing.Color.MidnightBlue;
+            this.vlGenerateLocationsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.vlGenerateLocationsBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.vlGenerateLocationsBtn.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vlGenerateLocationsBtn.ForeColor = System.Drawing.Color.White;
+            this.vlGenerateLocationsBtn.Location = new System.Drawing.Point(480, 25);
+            this.vlGenerateLocationsBtn.Name = "vlGenerateLocationsBtn";
+            this.vlGenerateLocationsBtn.Size = new System.Drawing.Size(223, 55);
+            this.vlGenerateLocationsBtn.TabIndex = 148;
+            this.vlGenerateLocationsBtn.Text = "Generate Locations Report";
+            this.vlGenerateLocationsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.vlGenerateLocationsBtn.UseVisualStyleBackColor = false;
+            this.vlGenerateLocationsBtn.Click += new System.EventHandler(this.vlGenerateLocationsBtn_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.countriesDataGridView);
+            this.groupBox4.Location = new System.Drawing.Point(7, 153);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(707, 150);
+            this.groupBox4.TabIndex = 147;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Country";
+            // 
+            // countriesDataGridView
+            // 
+            this.countriesDataGridView.AllowUserToAddRows = false;
+            this.countriesDataGridView.AllowUserToDeleteRows = false;
+            this.countriesDataGridView.AllowUserToOrderColumns = true;
+            this.countriesDataGridView.AllowUserToResizeRows = false;
+            this.countriesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.countriesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.countriesDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.countriesDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.countriesDataGridView.Location = new System.Drawing.Point(7, 23);
+            this.countriesDataGridView.Name = "countriesDataGridView";
+            this.countriesDataGridView.RowHeadersVisible = false;
+            this.countriesDataGridView.RowHeadersWidth = 70;
+            this.countriesDataGridView.RowTemplate.Height = 50;
+            this.countriesDataGridView.Size = new System.Drawing.Size(694, 121);
+            this.countriesDataGridView.TabIndex = 0;
+            this.countriesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.countriesDataGridView_CellClick);
+            this.countriesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.firstColumnEdit_DataBindingComplete);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.citiesDataGridView);
+            this.groupBox5.Location = new System.Drawing.Point(7, 304);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(707, 155);
+            this.groupBox5.TabIndex = 146;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "City";
+            // 
+            // citiesDataGridView
+            // 
+            this.citiesDataGridView.AllowUserToAddRows = false;
+            this.citiesDataGridView.AllowUserToDeleteRows = false;
+            this.citiesDataGridView.AllowUserToOrderColumns = true;
+            this.citiesDataGridView.AllowUserToResizeRows = false;
+            this.citiesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.citiesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.citiesDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.citiesDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.citiesDataGridView.Location = new System.Drawing.Point(6, 23);
+            this.citiesDataGridView.Name = "citiesDataGridView";
+            this.citiesDataGridView.RowHeadersVisible = false;
+            this.citiesDataGridView.RowHeadersWidth = 70;
+            this.citiesDataGridView.RowTemplate.Height = 50;
+            this.citiesDataGridView.Size = new System.Drawing.Size(694, 126);
+            this.citiesDataGridView.TabIndex = 1;
+            this.citiesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.citiesDataGridView_CellClick);
+            this.citiesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.firstColumnEdit_DataBindingComplete);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.airportsDataGridView);
+            this.groupBox6.Location = new System.Drawing.Point(7, 462);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(707, 237);
+            this.groupBox6.TabIndex = 145;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Airport";
+            // 
+            // airportsDataGridView
+            // 
+            this.airportsDataGridView.AllowUserToAddRows = false;
+            this.airportsDataGridView.AllowUserToDeleteRows = false;
+            this.airportsDataGridView.AllowUserToOrderColumns = true;
+            this.airportsDataGridView.AllowUserToResizeRows = false;
+            this.airportsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.airportsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.airportsDataGridView.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.airportsDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            this.airportsDataGridView.Location = new System.Drawing.Point(7, 23);
+            this.airportsDataGridView.Name = "airportsDataGridView";
+            this.airportsDataGridView.RowHeadersVisible = false;
+            this.airportsDataGridView.RowHeadersWidth = 70;
+            this.airportsDataGridView.RowTemplate.Height = 50;
+            this.airportsDataGridView.Size = new System.Drawing.Size(694, 208);
+            this.airportsDataGridView.TabIndex = 2;
+            this.airportsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.airportsDataGridView_CellClick);
+            this.airportsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.firstColumnEdit_DataBindingComplete);
+            // 
+            // addAirCityCouBtn
+            // 
+            this.addAirCityCouBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
+            this.addAirCityCouBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addAirCityCouBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.addAirCityCouBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAirCityCouBtn.ForeColor = System.Drawing.Color.White;
+            this.addAirCityCouBtn.Location = new System.Drawing.Point(480, 97);
+            this.addAirCityCouBtn.Name = "addAirCityCouBtn";
+            this.addAirCityCouBtn.Size = new System.Drawing.Size(223, 55);
+            this.addAirCityCouBtn.TabIndex = 39;
+            this.addAirCityCouBtn.Text = "Add Location";
+            this.addAirCityCouBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.addAirCityCouBtn.UseVisualStyleBackColor = false;
+            this.addAirCityCouBtn.Click += new System.EventHandler(this.addAirCityCouBtn_Click_1);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage1.Controls.Add(this.flowLayoutPanel3);
+            this.tabPage1.Controls.Add(this.mtAgencyPanel);
+            this.tabPage1.Controls.Add(this.mtUsernameTxt);
+            this.tabPage1.Controls.Add(this.mtPhoneTxt);
+            this.tabPage1.Controls.Add(this.mtEmailTxt);
+            this.tabPage1.Controls.Add(this.mtUserIDTxt);
+            this.tabPage1.Controls.Add(this.mtUserTypeTxt);
+            this.tabPage1.Controls.Add(label69);
+            this.tabPage1.Controls.Add(this.flowLayoutPanel1);
+            this.tabPage1.Controls.Add(label65);
+            this.tabPage1.Controls.Add(this.label64);
+            this.tabPage1.Controls.Add(label59);
+            this.tabPage1.Controls.Add(label60);
+            this.tabPage1.Controls.Add(label63);
+            this.tabPage1.Controls.Add(label18);
+            this.tabPage1.Location = new System.Drawing.Point(85, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(693, 720);
+            this.tabPage1.TabIndex = 9;
+            this.tabPage1.Text = "Manage User";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.mtFirstNamePanel);
+            this.flowLayoutPanel3.Controls.Add(this.mtLastNamePanel);
+            this.flowLayoutPanel3.Controls.Add(this.mtCompanyNamePanel);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(17, 170);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(710, 92);
+            this.flowLayoutPanel3.TabIndex = 152;
+            // 
+            // mtFirstNamePanel
+            // 
+            this.mtFirstNamePanel.Controls.Add(label62);
+            this.mtFirstNamePanel.Controls.Add(this.mtFnameTxt);
+            this.mtFirstNamePanel.Location = new System.Drawing.Point(3, 3);
+            this.mtFirstNamePanel.Name = "mtFirstNamePanel";
+            this.mtFirstNamePanel.Size = new System.Drawing.Size(358, 82);
+            this.mtFirstNamePanel.TabIndex = 150;
+            // 
+            // mtFnameTxt
+            // 
+            this.mtFnameTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtFnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtFnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtFnameTxt.Location = new System.Drawing.Point(8, 38);
+            this.mtFnameTxt.Name = "mtFnameTxt";
+            this.mtFnameTxt.ReadOnly = true;
+            this.mtFnameTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtFnameTxt.TabIndex = 139;
+            this.mtFnameTxt.Text = "Employer/Traveler";
+            // 
+            // mtLastNamePanel
+            // 
+            this.mtLastNamePanel.Controls.Add(label61);
+            this.mtLastNamePanel.Controls.Add(this.mtLnameTxt);
+            this.mtLastNamePanel.Location = new System.Drawing.Point(367, 3);
+            this.mtLastNamePanel.Name = "mtLastNamePanel";
+            this.mtLastNamePanel.Size = new System.Drawing.Size(301, 82);
+            this.mtLastNamePanel.TabIndex = 151;
+            // 
+            // mtLnameTxt
+            // 
+            this.mtLnameTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtLnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtLnameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtLnameTxt.Location = new System.Drawing.Point(7, 35);
+            this.mtLnameTxt.Name = "mtLnameTxt";
+            this.mtLnameTxt.ReadOnly = true;
+            this.mtLnameTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtLnameTxt.TabIndex = 141;
+            this.mtLnameTxt.Text = "Employer/Traveler";
+            // 
+            // mtCompanyNamePanel
+            // 
+            this.mtCompanyNamePanel.Controls.Add(this.mtCompanyNamelLbl);
+            this.mtCompanyNamePanel.Controls.Add(this.mtCompanyNamelTxt);
+            this.mtCompanyNamePanel.Location = new System.Drawing.Point(3, 91);
+            this.mtCompanyNamePanel.Name = "mtCompanyNamePanel";
+            this.mtCompanyNamePanel.Size = new System.Drawing.Size(336, 77);
+            this.mtCompanyNamePanel.TabIndex = 151;
+            // 
+            // mtCompanyNamelLbl
+            // 
+            this.mtCompanyNamelLbl.AutoSize = true;
+            this.mtCompanyNamelLbl.BackColor = System.Drawing.Color.Transparent;
+            this.mtCompanyNamelLbl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtCompanyNamelLbl.Location = new System.Drawing.Point(3, 0);
+            this.mtCompanyNamelLbl.Name = "mtCompanyNamelLbl";
+            this.mtCompanyNamelLbl.Size = new System.Drawing.Size(265, 51);
+            this.mtCompanyNamelLbl.TabIndex = 146;
+            this.mtCompanyNamelLbl.Text = "Company Name:";
+            this.mtCompanyNamelLbl.UseCompatibleTextRendering = true;
+            // 
+            // mtCompanyNamelTxt
+            // 
+            this.mtCompanyNamelTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtCompanyNamelTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtCompanyNamelTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtCompanyNamelTxt.Location = new System.Drawing.Point(10, 35);
+            this.mtCompanyNamelTxt.Name = "mtCompanyNamelTxt";
+            this.mtCompanyNamelTxt.ReadOnly = true;
+            this.mtCompanyNamelTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtCompanyNamelTxt.TabIndex = 148;
+            this.mtCompanyNamelTxt.Text = "Employer/Traveler";
+            // 
+            // mtAgencyPanel
+            // 
+            this.mtAgencyPanel.Controls.Add(this.mtAgencyIdTxt);
+            this.mtAgencyPanel.Controls.Add(mtAgencyIdLbl);
+            this.mtAgencyPanel.Location = new System.Drawing.Point(24, 426);
+            this.mtAgencyPanel.Name = "mtAgencyPanel";
+            this.mtAgencyPanel.Size = new System.Drawing.Size(301, 83);
+            this.mtAgencyPanel.TabIndex = 150;
+            // 
+            // mtAgencyIdTxt
+            // 
+            this.mtAgencyIdTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtAgencyIdTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtAgencyIdTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtAgencyIdTxt.Location = new System.Drawing.Point(11, 38);
+            this.mtAgencyIdTxt.Name = "mtAgencyIdTxt";
+            this.mtAgencyIdTxt.ReadOnly = true;
+            this.mtAgencyIdTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtAgencyIdTxt.TabIndex = 147;
+            this.mtAgencyIdTxt.Text = "Employer/Traveler";
+            // 
+            // mtUsernameTxt
+            // 
+            this.mtUsernameTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtUsernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtUsernameTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtUsernameTxt.Location = new System.Drawing.Point(30, 291);
+            this.mtUsernameTxt.Name = "mtUsernameTxt";
+            this.mtUsernameTxt.ReadOnly = true;
+            this.mtUsernameTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtUsernameTxt.TabIndex = 144;
+            this.mtUsernameTxt.Text = "Employer/Traveler";
+            // 
+            // mtPhoneTxt
+            // 
+            this.mtPhoneTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtPhoneTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtPhoneTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtPhoneTxt.Location = new System.Drawing.Point(391, 378);
+            this.mtPhoneTxt.Name = "mtPhoneTxt";
+            this.mtPhoneTxt.ReadOnly = true;
+            this.mtPhoneTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtPhoneTxt.TabIndex = 142;
+            this.mtPhoneTxt.Text = "Employer/Traveler";
+            // 
+            // mtEmailTxt
+            // 
+            this.mtEmailTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtEmailTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtEmailTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtEmailTxt.Location = new System.Drawing.Point(30, 378);
+            this.mtEmailTxt.Name = "mtEmailTxt";
+            this.mtEmailTxt.ReadOnly = true;
+            this.mtEmailTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtEmailTxt.TabIndex = 140;
+            this.mtEmailTxt.Text = "Employer/Traveler";
+            // 
+            // mtUserIDTxt
+            // 
+            this.mtUserIDTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtUserIDTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtUserIDTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtUserIDTxt.Location = new System.Drawing.Point(132, 124);
+            this.mtUserIDTxt.Name = "mtUserIDTxt";
+            this.mtUserIDTxt.ReadOnly = true;
+            this.mtUserIDTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtUserIDTxt.TabIndex = 138;
+            this.mtUserIDTxt.Text = "Employer/Traveler";
+            // 
+            // mtUserTypeTxt
+            // 
+            this.mtUserTypeTxt.BackColor = System.Drawing.Color.Gainsboro;
+            this.mtUserTypeTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtUserTypeTxt.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtUserTypeTxt.Location = new System.Drawing.Point(391, 291);
+            this.mtUserTypeTxt.Name = "mtUserTypeTxt";
+            this.mtUserTypeTxt.ReadOnly = true;
+            this.mtUserTypeTxt.Size = new System.Drawing.Size(246, 44);
+            this.mtUserTypeTxt.TabIndex = 131;
+            this.mtUserTypeTxt.Text = "Employer/Traveler";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.mtDeleteBtn);
+            this.flowLayoutPanel1.Controls.Add(this.mtCancelBtn);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 611);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(537, 57);
+            this.flowLayoutPanel1.TabIndex = 137;
+            // 
+            // mtDeleteBtn
+            // 
+            this.mtDeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.mtDeleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.mtDeleteBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.mtDeleteBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtDeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.mtDeleteBtn.Location = new System.Drawing.Point(3, 3);
+            this.mtDeleteBtn.Name = "mtDeleteBtn";
+            this.mtDeleteBtn.Size = new System.Drawing.Size(139, 43);
+            this.mtDeleteBtn.TabIndex = 128;
+            this.mtDeleteBtn.Text = "Delete Account";
+            this.mtDeleteBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.mtDeleteBtn.UseVisualStyleBackColor = false;
+            this.mtDeleteBtn.Click += new System.EventHandler(this.mtDeleteBtn_Click);
+            // 
+            // mtCancelBtn
+            // 
+            this.mtCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
+            this.mtCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.mtCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.mtCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtCancelBtn.ForeColor = System.Drawing.Color.White;
+            this.mtCancelBtn.Location = new System.Drawing.Point(148, 3);
+            this.mtCancelBtn.Name = "mtCancelBtn";
+            this.mtCancelBtn.Size = new System.Drawing.Size(139, 43);
+            this.mtCancelBtn.TabIndex = 129;
+            this.mtCancelBtn.Text = "Cancel";
+            this.mtCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.mtCancelBtn.UseVisualStyleBackColor = false;
+            this.mtCancelBtn.Click += new System.EventHandler(this.mtCancelBtn_Click);
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label64.Location = new System.Drawing.Point(17, 584);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(1096, 35);
+            this.label64.TabIndex = 127;
+            this.label64.Text = "Attention if you delete your account all your information will be deleted and can" +
+    "t be restored";
+            // 
+            // AddAirCityConTab
+            // 
+            this.AddAirCityConTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.AddAirCityConTab.Controls.Add(groupBox3);
+            this.AddAirCityConTab.Controls.Add(groupBox2);
+            this.AddAirCityConTab.Controls.Add(groupBox1);
+            this.AddAirCityConTab.Controls.Add(this.addBackBtn);
+            this.AddAirCityConTab.Controls.Add(label52);
+            this.AddAirCityConTab.Location = new System.Drawing.Point(85, 4);
+            this.AddAirCityConTab.Name = "AddAirCityConTab";
+            this.AddAirCityConTab.Padding = new System.Windows.Forms.Padding(3);
+            this.AddAirCityConTab.Size = new System.Drawing.Size(693, 720);
+            this.AddAirCityConTab.TabIndex = 8;
+            this.AddAirCityConTab.Text = "Add ar/city/cont";
+            // 
             // addBackBtn
             // 
             this.addBackBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
@@ -2448,16 +3097,6 @@ namespace HappyJourneyAirline.Tabs
             this.addBackBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.addBackBtn.UseVisualStyleBackColor = false;
             this.addBackBtn.Click += new System.EventHandler(this.addBackBtn_Click);
-            // 
-            // label52
-            // 
-            label52.AutoSize = true;
-            label52.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label52.Location = new System.Drawing.Point(19, 25);
-            label52.Name = "label52";
-            label52.Size = new System.Drawing.Size(946, 100);
-            label52.TabIndex = 108;
-            label52.Text = "Add(Airport/City/Country)";
             // 
             // createUserTab
             // 
@@ -2559,18 +3198,6 @@ namespace HappyJourneyAirline.Tabs
             this.cuFNamePanel.Size = new System.Drawing.Size(290, 100);
             this.cuFNamePanel.TabIndex = 113;
             // 
-            // label47
-            // 
-            label47.AutoSize = true;
-            label47.BackColor = System.Drawing.Color.Transparent;
-            label47.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label47.Location = new System.Drawing.Point(0, 0);
-            label47.Name = "label47";
-            label47.Size = new System.Drawing.Size(188, 51);
-            label47.TabIndex = 45;
-            label47.Text = "First Name:";
-            label47.UseCompatibleTextRendering = true;
-            // 
             // cuFnameTxt
             // 
             this.cuFnameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -2590,18 +3217,6 @@ namespace HappyJourneyAirline.Tabs
             this.cuLNamePanel.Name = "cuLNamePanel";
             this.cuLNamePanel.Size = new System.Drawing.Size(297, 96);
             this.cuLNamePanel.TabIndex = 114;
-            // 
-            // label46
-            // 
-            label46.AutoSize = true;
-            label46.BackColor = System.Drawing.Color.Transparent;
-            label46.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label46.Location = new System.Drawing.Point(3, 0);
-            label46.Name = "label46";
-            label46.Size = new System.Drawing.Size(183, 51);
-            label46.TabIndex = 46;
-            label46.Text = "Last Name:";
-            label46.UseCompatibleTextRendering = true;
             // 
             // cuLnameTxt
             // 
@@ -2644,18 +3259,6 @@ namespace HappyJourneyAirline.Tabs
             this.cuCoumpanyNameTxt.Size = new System.Drawing.Size(246, 51);
             this.cuCoumpanyNameTxt.TabIndex = 153;
             // 
-            // label70
-            // 
-            label70.AutoSize = true;
-            label70.BackColor = System.Drawing.Color.Transparent;
-            label70.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label70.Location = new System.Drawing.Point(3, -1);
-            label70.Name = "label70";
-            label70.Size = new System.Drawing.Size(265, 51);
-            label70.TabIndex = 146;
-            label70.Text = "Company Name:";
-            label70.UseCompatibleTextRendering = true;
-            // 
             // cuUserNameErrorLbl
             // 
             this.cuUserNameErrorLbl.AutoSize = true;
@@ -2678,28 +3281,6 @@ namespace HappyJourneyAirline.Tabs
             this.cuUserTypeDrop.Size = new System.Drawing.Size(246, 52);
             this.cuUserTypeDrop.TabIndex = 110;
             this.cuUserTypeDrop.SelectedIndexChanged += new System.EventHandler(this.cuUserTypeDrop_SelectedIndexChanged);
-            // 
-            // label51
-            // 
-            label51.AutoSize = true;
-            label51.BackColor = System.Drawing.Color.Transparent;
-            label51.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label51.Location = new System.Drawing.Point(26, 130);
-            label51.Name = "label51";
-            label51.Size = new System.Drawing.Size(175, 51);
-            label51.TabIndex = 109;
-            label51.Text = "User Type:";
-            label51.UseCompatibleTextRendering = true;
-            // 
-            // label50
-            // 
-            label50.AutoSize = true;
-            label50.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label50.Location = new System.Drawing.Point(12, 25);
-            label50.Name = "label50";
-            label50.Size = new System.Drawing.Size(437, 100);
-            label50.TabIndex = 107;
-            label50.Text = "Create User";
             // 
             // cuCancelBtn
             // 
@@ -2732,54 +3313,6 @@ namespace HappyJourneyAirline.Tabs
             this.cuCreateUserBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.cuCreateUserBtn.UseVisualStyleBackColor = false;
             this.cuCreateUserBtn.Click += new System.EventHandler(this.cuCreateUserBtn_Click);
-            // 
-            // label44
-            // 
-            label44.AutoSize = true;
-            label44.BackColor = System.Drawing.Color.Transparent;
-            label44.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label44.Location = new System.Drawing.Point(332, 450);
-            label44.Name = "label44";
-            label44.Size = new System.Drawing.Size(253, 51);
-            label44.TabIndex = 48;
-            label44.Text = "Phone Number:";
-            label44.UseCompatibleTextRendering = true;
-            // 
-            // label45
-            // 
-            label45.AutoSize = true;
-            label45.BackColor = System.Drawing.Color.Transparent;
-            label45.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label45.Location = new System.Drawing.Point(27, 450);
-            label45.Name = "label45";
-            label45.Size = new System.Drawing.Size(106, 51);
-            label45.TabIndex = 47;
-            label45.Text = "Email:";
-            label45.UseCompatibleTextRendering = true;
-            // 
-            // label48
-            // 
-            label48.AutoSize = true;
-            label48.BackColor = System.Drawing.Color.Transparent;
-            label48.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label48.Location = new System.Drawing.Point(328, 228);
-            label48.Name = "label48";
-            label48.Size = new System.Drawing.Size(169, 51);
-            label48.TabIndex = 44;
-            label48.Text = "Password:";
-            label48.UseCompatibleTextRendering = true;
-            // 
-            // label49
-            // 
-            label49.AutoSize = true;
-            label49.BackColor = System.Drawing.Color.Transparent;
-            label49.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label49.Location = new System.Drawing.Point(27, 228);
-            label49.Name = "label49";
-            label49.Size = new System.Drawing.Size(179, 51);
-            label49.TabIndex = 43;
-            label49.Text = "Username:";
-            label49.UseCompatibleTextRendering = true;
             // 
             // cuPhoneTxt
             // 
@@ -2851,64 +3384,6 @@ namespace HappyJourneyAirline.Tabs
             this.editFlightTab.TabIndex = 6;
             this.editFlightTab.Text = "Edit Flight";
             // 
-            // flowLayoutPanel4
-            // 
-            flowLayoutPanel4.Controls.Add(this.efDeleteBtn);
-            flowLayoutPanel4.Controls.Add(this.efEditBtn);
-            flowLayoutPanel4.Controls.Add(this.efCancelBtn);
-            flowLayoutPanel4.Location = new System.Drawing.Point(23, 636);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(494, 56);
-            flowLayoutPanel4.TabIndex = 134;
-            // 
-            // efDeleteBtn
-            // 
-            this.efDeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
-            this.efDeleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.efDeleteBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.efDeleteBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efDeleteBtn.ForeColor = System.Drawing.Color.White;
-            this.efDeleteBtn.Location = new System.Drawing.Point(3, 3);
-            this.efDeleteBtn.Name = "efDeleteBtn";
-            this.efDeleteBtn.Size = new System.Drawing.Size(139, 43);
-            this.efDeleteBtn.TabIndex = 129;
-            this.efDeleteBtn.Text = "Delete Flight";
-            this.efDeleteBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.efDeleteBtn.UseVisualStyleBackColor = false;
-            this.efDeleteBtn.Click += new System.EventHandler(this.efDeleteBtn_Click);
-            // 
-            // efEditBtn
-            // 
-            this.efEditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
-            this.efEditBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.efEditBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.efEditBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efEditBtn.ForeColor = System.Drawing.Color.White;
-            this.efEditBtn.Location = new System.Drawing.Point(148, 3);
-            this.efEditBtn.Name = "efEditBtn";
-            this.efEditBtn.Size = new System.Drawing.Size(139, 43);
-            this.efEditBtn.TabIndex = 123;
-            this.efEditBtn.Text = "Save Edits";
-            this.efEditBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.efEditBtn.UseVisualStyleBackColor = false;
-            this.efEditBtn.Click += new System.EventHandler(this.efEditBtn_Click);
-            // 
-            // efCancelBtn
-            // 
-            this.efCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
-            this.efCancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.efCancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.efCancelBtn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efCancelBtn.ForeColor = System.Drawing.Color.White;
-            this.efCancelBtn.Location = new System.Drawing.Point(293, 3);
-            this.efCancelBtn.Name = "efCancelBtn";
-            this.efCancelBtn.Size = new System.Drawing.Size(139, 43);
-            this.efCancelBtn.TabIndex = 124;
-            this.efCancelBtn.Text = "Cancel";
-            this.efCancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.efCancelBtn.UseVisualStyleBackColor = false;
-            this.efCancelBtn.Click += new System.EventHandler(this.efCancelBtn_Click);
-            // 
             // efPriceErrorLbl
             // 
             this.efPriceErrorLbl.AutoSize = true;
@@ -2930,18 +3405,6 @@ namespace HappyJourneyAirline.Tabs
             this.efStatusDrop.Name = "efStatusDrop";
             this.efStatusDrop.Size = new System.Drawing.Size(338, 52);
             this.efStatusDrop.TabIndex = 132;
-            // 
-            // label71
-            // 
-            label71.AutoSize = true;
-            label71.BackColor = System.Drawing.Color.Transparent;
-            label71.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label71.Location = new System.Drawing.Point(384, 537);
-            label71.Name = "label71";
-            label71.Size = new System.Drawing.Size(118, 51);
-            label71.TabIndex = 131;
-            label71.Text = "Status:";
-            label71.UseCompatibleTextRendering = true;
             // 
             // efArrTimePick
             // 
@@ -3023,30 +3486,6 @@ namespace HappyJourneyAirline.Tabs
             this.efDatePick.TabIndex = 122;
             this.efDatePick.Value = new System.DateTime(2024, 12, 16, 0, 0, 0, 0);
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = System.Drawing.Color.Transparent;
-            label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label4.Location = new System.Drawing.Point(384, 431);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(177, 51);
-            label4.TabIndex = 121;
-            label4.Text = "Price in BD";
-            label4.UseCompatibleTextRendering = true;
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.BackColor = System.Drawing.Color.Transparent;
-            label26.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label26.Location = new System.Drawing.Point(23, 431);
-            label26.Name = "label26";
-            label26.Size = new System.Drawing.Size(95, 51);
-            label26.TabIndex = 119;
-            label26.Text = "Date:";
-            label26.UseCompatibleTextRendering = true;
-            // 
             // efPlaneIdDrop
             // 
             this.efPlaneIdDrop.Font = new System.Drawing.Font("Calibri", 15.75F);
@@ -3055,78 +3494,6 @@ namespace HappyJourneyAirline.Tabs
             this.efPlaneIdDrop.Name = "efPlaneIdDrop";
             this.efPlaneIdDrop.Size = new System.Drawing.Size(246, 52);
             this.efPlaneIdDrop.TabIndex = 116;
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.BackColor = System.Drawing.Color.Transparent;
-            label27.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label27.Location = new System.Drawing.Point(384, 338);
-            label27.Name = "label27";
-            label27.Size = new System.Drawing.Size(326, 51);
-            label27.TabIndex = 115;
-            label27.Text = "Arrival Airport Time:";
-            label27.UseCompatibleTextRendering = true;
-            // 
-            // label28
-            // 
-            label28.AutoSize = true;
-            label28.BackColor = System.Drawing.Color.Transparent;
-            label28.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label28.Location = new System.Drawing.Point(23, 338);
-            label28.Name = "label28";
-            label28.Size = new System.Drawing.Size(396, 51);
-            label28.TabIndex = 114;
-            label28.Text = "Departure Airport Name:";
-            label28.UseCompatibleTextRendering = true;
-            // 
-            // label39
-            // 
-            label39.AutoSize = true;
-            label39.BackColor = System.Drawing.Color.Transparent;
-            label39.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label39.Location = new System.Drawing.Point(384, 226);
-            label39.Name = "label39";
-            label39.Size = new System.Drawing.Size(208, 51);
-            label39.TabIndex = 112;
-            label39.Text = "Arrival Time:";
-            label39.UseCompatibleTextRendering = true;
-            // 
-            // label40
-            // 
-            label40.AutoSize = true;
-            label40.BackColor = System.Drawing.Color.Transparent;
-            label40.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label40.Location = new System.Drawing.Point(23, 226);
-            label40.Name = "label40";
-            label40.Size = new System.Drawing.Size(263, 51);
-            label40.TabIndex = 111;
-            label40.Text = "Departure Time:";
-            label40.UseCompatibleTextRendering = true;
-            // 
-            // label41
-            // 
-            label41.AutoSize = true;
-            label41.BackColor = System.Drawing.Color.Transparent;
-            label41.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label41.Location = new System.Drawing.Point(384, 129);
-            label41.Name = "label41";
-            label41.Size = new System.Drawing.Size(149, 51);
-            label41.TabIndex = 109;
-            label41.Text = "Plane ID:";
-            label41.UseCompatibleTextRendering = true;
-            // 
-            // label42
-            // 
-            label42.AutoSize = true;
-            label42.BackColor = System.Drawing.Color.Transparent;
-            label42.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label42.Location = new System.Drawing.Point(23, 127);
-            label42.Name = "label42";
-            label42.Size = new System.Drawing.Size(241, 51);
-            label42.TabIndex = 108;
-            label42.Text = "Flight Number:";
-            label42.UseCompatibleTextRendering = true;
             // 
             // label43
             // 
@@ -3181,18 +3548,6 @@ namespace HappyJourneyAirline.Tabs
             this.cfStatusDrop.Name = "cfStatusDrop";
             this.cfStatusDrop.Size = new System.Drawing.Size(338, 52);
             this.cfStatusDrop.TabIndex = 112;
-            // 
-            // label66
-            // 
-            label66.AutoSize = true;
-            label66.BackColor = System.Drawing.Color.Transparent;
-            label66.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label66.Location = new System.Drawing.Point(379, 539);
-            label66.Name = "label66";
-            label66.Size = new System.Drawing.Size(118, 51);
-            label66.TabIndex = 111;
-            label66.Text = "Status:";
-            label66.UseCompatibleTextRendering = true;
             // 
             // cfTimeErrorLbl
             // 
@@ -3292,18 +3647,6 @@ namespace HappyJourneyAirline.Tabs
             this.cfDatePick.Size = new System.Drawing.Size(338, 51);
             this.cfDatePick.TabIndex = 103;
             // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.BackColor = System.Drawing.Color.Transparent;
-            label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label19.Location = new System.Drawing.Point(379, 430);
-            label19.Name = "label19";
-            label19.Size = new System.Drawing.Size(177, 51);
-            label19.TabIndex = 102;
-            label19.Text = "Price in BD";
-            label19.UseCompatibleTextRendering = true;
-            // 
             // cfPriceTxt
             // 
             this.cfPriceTxt.BackColor = System.Drawing.Color.White;
@@ -3329,18 +3672,6 @@ namespace HappyJourneyAirline.Tabs
             this.cfFlightNumTxt.Size = new System.Drawing.Size(246, 44);
             this.cfFlightNumTxt.TabIndex = 76;
             this.cfFlightNumTxt.Text = "123";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = System.Drawing.Color.Transparent;
-            label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label7.Location = new System.Drawing.Point(18, 430);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(95, 51);
-            label7.TabIndex = 99;
-            label7.Text = "Date:";
-            label7.UseCompatibleTextRendering = true;
             // 
             // cfArrDrop
             // 
@@ -3373,88 +3704,6 @@ namespace HappyJourneyAirline.Tabs
             this.cfPlaneIdDrop.Name = "cfPlaneIdDrop";
             this.cfPlaneIdDrop.Size = new System.Drawing.Size(246, 52);
             this.cfPlaneIdDrop.TabIndex = 96;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = System.Drawing.Color.Transparent;
-            label5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label5.Location = new System.Drawing.Point(379, 329);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(341, 51);
-            label5.TabIndex = 90;
-            label5.Text = "Arrival Airport Name:";
-            label5.UseCompatibleTextRendering = true;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = System.Drawing.Color.Transparent;
-            label6.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label6.Location = new System.Drawing.Point(18, 329);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(396, 51);
-            label6.TabIndex = 89;
-            label6.Text = "Departure Airport Name:";
-            label6.UseCompatibleTextRendering = true;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.BackColor = System.Drawing.Color.Transparent;
-            label20.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label20.Location = new System.Drawing.Point(379, 223);
-            label20.Name = "label20";
-            label20.Size = new System.Drawing.Size(208, 51);
-            label20.TabIndex = 82;
-            label20.Text = "Arrival Time:";
-            label20.UseCompatibleTextRendering = true;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.BackColor = System.Drawing.Color.Transparent;
-            label21.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label21.Location = new System.Drawing.Point(18, 223);
-            label21.Name = "label21";
-            label21.Size = new System.Drawing.Size(263, 51);
-            label21.TabIndex = 81;
-            label21.Text = "Departure Time:";
-            label21.UseCompatibleTextRendering = true;
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.BackColor = System.Drawing.Color.Transparent;
-            label23.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label23.Location = new System.Drawing.Point(383, 124);
-            label23.Name = "label23";
-            label23.Size = new System.Drawing.Size(149, 51);
-            label23.TabIndex = 78;
-            label23.Text = "Plane ID:";
-            label23.UseCompatibleTextRendering = true;
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.BackColor = System.Drawing.Color.Transparent;
-            label24.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label24.Location = new System.Drawing.Point(22, 122);
-            label24.Name = "label24";
-            label24.Size = new System.Drawing.Size(241, 51);
-            label24.TabIndex = 77;
-            label24.Text = "Flight Number:";
-            label24.UseCompatibleTextRendering = true;
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label25.Location = new System.Drawing.Point(8, 21);
-            label25.Name = "label25";
-            label25.Size = new System.Drawing.Size(468, 100);
-            label25.TabIndex = 75;
-            label25.Text = "Create Flight";
             // 
             // bookingDetailsTab
             // 
@@ -3629,18 +3878,6 @@ namespace HappyJourneyAirline.Tabs
             this.bdUsrTypeLbl.Text = "Booking ID:";
             this.bdUsrTypeLbl.UseCompatibleTextRendering = true;
             // 
-            // label38
-            // 
-            label38.AutoSize = true;
-            label38.BackColor = System.Drawing.Color.Transparent;
-            label38.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label38.Location = new System.Drawing.Point(30, 105);
-            label38.Name = "label38";
-            label38.Size = new System.Drawing.Size(183, 51);
-            label38.TabIndex = 73;
-            label38.Text = "Booking ID:";
-            label38.UseCompatibleTextRendering = true;
-            // 
             // bdBackBtn
             // 
             this.bdBackBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(131)))));
@@ -3673,112 +3910,6 @@ namespace HappyJourneyAirline.Tabs
             this.bdCancelBtn.UseVisualStyleBackColor = false;
             this.bdCancelBtn.Click += new System.EventHandler(this.bdCancelBtn_Click);
             // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.BackColor = System.Drawing.Color.Transparent;
-            label29.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label29.Location = new System.Drawing.Point(391, 402);
-            label29.Name = "label29";
-            label29.Size = new System.Drawing.Size(326, 51);
-            label29.TabIndex = 69;
-            label29.Text = "Arrival Airport Time:";
-            label29.UseCompatibleTextRendering = true;
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.BackColor = System.Drawing.Color.Transparent;
-            label30.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label30.Location = new System.Drawing.Point(30, 402);
-            label30.Name = "label30";
-            label30.Size = new System.Drawing.Size(396, 51);
-            label30.TabIndex = 68;
-            label30.Text = "Departure Airport Name:";
-            label30.UseCompatibleTextRendering = true;
-            // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.BackColor = System.Drawing.Color.Transparent;
-            label31.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label31.Location = new System.Drawing.Point(391, 324);
-            label31.Name = "label31";
-            label31.Size = new System.Drawing.Size(60, 51);
-            label31.TabIndex = 65;
-            label31.Text = "To:";
-            label31.UseCompatibleTextRendering = true;
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.BackColor = System.Drawing.Color.Transparent;
-            label32.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label32.Location = new System.Drawing.Point(30, 322);
-            label32.Name = "label32";
-            label32.Size = new System.Drawing.Size(102, 51);
-            label32.TabIndex = 64;
-            label32.Text = "From:";
-            label32.UseCompatibleTextRendering = true;
-            // 
-            // label33
-            // 
-            label33.AutoSize = true;
-            label33.BackColor = System.Drawing.Color.Transparent;
-            label33.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label33.Location = new System.Drawing.Point(391, 236);
-            label33.Name = "label33";
-            label33.Size = new System.Drawing.Size(208, 51);
-            label33.TabIndex = 61;
-            label33.Text = "Arrival Time:";
-            label33.UseCompatibleTextRendering = true;
-            // 
-            // label34
-            // 
-            label34.AutoSize = true;
-            label34.BackColor = System.Drawing.Color.Transparent;
-            label34.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label34.Location = new System.Drawing.Point(30, 236);
-            label34.Name = "label34";
-            label34.Size = new System.Drawing.Size(263, 51);
-            label34.TabIndex = 60;
-            label34.Text = "Departure Time:";
-            label34.UseCompatibleTextRendering = true;
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.BackColor = System.Drawing.Color.Transparent;
-            label35.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label35.Location = new System.Drawing.Point(391, 161);
-            label35.Name = "label35";
-            label35.Size = new System.Drawing.Size(95, 51);
-            label35.TabIndex = 57;
-            label35.Text = "Date:";
-            label35.UseCompatibleTextRendering = true;
-            // 
-            // label36
-            // 
-            label36.AutoSize = true;
-            label36.BackColor = System.Drawing.Color.Transparent;
-            label36.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label36.Location = new System.Drawing.Point(30, 159);
-            label36.Name = "label36";
-            label36.Size = new System.Drawing.Size(241, 51);
-            label36.TabIndex = 56;
-            label36.Text = "Flight Number:";
-            label36.UseCompatibleTextRendering = true;
-            // 
-            // label37
-            // 
-            label37.AutoSize = true;
-            label37.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label37.Location = new System.Drawing.Point(14, 18);
-            label37.Name = "label37";
-            label37.Size = new System.Drawing.Size(569, 100);
-            label37.TabIndex = 54;
-            label37.Text = "Booking Details";
-            // 
             // travellerUsersTab
             // 
             this.travellerUsersTab.BackColor = System.Drawing.Color.Gainsboro;
@@ -3808,7 +3939,7 @@ namespace HappyJourneyAirline.Tabs
             this.btnReportUsers.Text = "Generate Users Report";
             this.btnReportUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnReportUsers.UseVisualStyleBackColor = false;
-            this.btnReportUsers.Click += new System.EventHandler(this.button2_Click);
+            this.btnReportUsers.Click += new System.EventHandler(this.btnReportUsers_Click);
             // 
             // addNotifications
             // 
@@ -3826,25 +3957,25 @@ namespace HappyJourneyAirline.Tabs
             this.usersDataGridView.AllowUserToAddRows = false;
             this.usersDataGridView.AllowUserToOrderColumns = true;
             this.usersDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle37.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.usersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.usersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.usersDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle38.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.usersDataGridView.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.usersDataGridView.DefaultCellStyle = dataGridViewCellStyle10;
             this.usersDataGridView.Location = new System.Drawing.Point(22, 249);
             this.usersDataGridView.MultiSelect = false;
             this.usersDataGridView.Name = "usersDataGridView";
@@ -3857,7 +3988,7 @@ namespace HappyJourneyAirline.Tabs
             this.usersDataGridView.Size = new System.Drawing.Size(695, 451);
             this.usersDataGridView.TabIndex = 39;
             this.usersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersDataGridView_CellClick);
-            this.usersDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.usersDataGridView_DataBindingComplete);
+            this.usersDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.firstColumnEdit_DataBindingComplete);
             // 
             // userCreateUserBtn
             // 
@@ -3874,27 +4005,6 @@ namespace HappyJourneyAirline.Tabs
             this.userCreateUserBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.userCreateUserBtn.UseVisualStyleBackColor = false;
             this.userCreateUserBtn.Click += new System.EventHandler(this.userCreateUserBtn_Click);
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            label2.Location = new System.Drawing.Point(26, 82);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(307, 35);
-            label2.TabIndex = 5;
-            label2.Text = "Manage users in this Page";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.Location = new System.Drawing.Point(19, 23);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(231, 100);
-            label3.TabIndex = 4;
-            label3.Text = "Users";
             // 
             // travellerSettingsTab
             // 
@@ -3985,78 +4095,6 @@ namespace HappyJourneyAirline.Tabs
             this.setSaveChanesBtn.UseVisualStyleBackColor = false;
             this.setSaveChanesBtn.Click += new System.EventHandler(this.setSaveChanesBtn_Click);
             // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.BackColor = System.Drawing.Color.Transparent;
-            label17.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label17.Location = new System.Drawing.Point(380, 257);
-            label17.Name = "label17";
-            label17.Size = new System.Drawing.Size(253, 51);
-            label17.TabIndex = 34;
-            label17.Text = "Phone Number:";
-            label17.UseCompatibleTextRendering = true;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.BackColor = System.Drawing.Color.Transparent;
-            label16.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label16.Location = new System.Drawing.Point(23, 257);
-            label16.Name = "label16";
-            label16.Size = new System.Drawing.Size(106, 51);
-            label16.TabIndex = 33;
-            label16.Text = "Email:";
-            label16.UseCompatibleTextRendering = true;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.BackColor = System.Drawing.Color.Transparent;
-            label15.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label15.Location = new System.Drawing.Point(380, 186);
-            label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(183, 51);
-            label15.TabIndex = 32;
-            label15.Text = "Last Name:";
-            label15.UseCompatibleTextRendering = true;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.BackColor = System.Drawing.Color.Transparent;
-            label12.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label12.Location = new System.Drawing.Point(23, 186);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(188, 51);
-            label12.TabIndex = 31;
-            label12.Text = "First Name:";
-            label12.UseCompatibleTextRendering = true;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.BackColor = System.Drawing.Color.Transparent;
-            label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label10.Location = new System.Drawing.Point(380, 117);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(169, 51);
-            label10.TabIndex = 30;
-            label10.Text = "Password:";
-            label10.UseCompatibleTextRendering = true;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = System.Drawing.Color.Transparent;
-            label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label9.Location = new System.Drawing.Point(23, 117);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(179, 51);
-            label9.TabIndex = 29;
-            label9.Text = "Username:";
-            label9.UseCompatibleTextRendering = true;
-            // 
             // setPhoneTxt
             // 
             this.setPhoneTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -4111,27 +4149,6 @@ namespace HappyJourneyAirline.Tabs
             this.setUsernameTxt.Size = new System.Drawing.Size(321, 51);
             this.setUsernameTxt.TabIndex = 23;
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            label8.Location = new System.Drawing.Point(18, 87);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(441, 35);
-            label8.TabIndex = 22;
-            label8.Text = "Here you can customize your account";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label14.Location = new System.Drawing.Point(12, 18);
-            label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(310, 100);
-            label14.TabIndex = 3;
-            label14.Text = "Settings";
-            // 
             // travellerBookingsTab
             // 
             this.travellerBookingsTab.BackColor = System.Drawing.Color.Gainsboro;
@@ -4149,31 +4166,30 @@ namespace HappyJourneyAirline.Tabs
             // 
             this.bookingTable.AllowUserToAddRows = false;
             this.bookingTable.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle39.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bookingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bookingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.bookingTable.ColumnHeadersHeight = 40;
             this.bookingTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.from,
             this.to,
-            this.dateTime,
-            this.bookDetails});
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle40.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bookingTable.DefaultCellStyle = dataGridViewCellStyle40;
+            this.dateTime});
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bookingTable.DefaultCellStyle = dataGridViewCellStyle12;
             this.bookingTable.Location = new System.Drawing.Point(28, 147);
             this.bookingTable.Name = "bookingTable";
             this.bookingTable.ReadOnly = true;
@@ -4182,69 +4198,8 @@ namespace HappyJourneyAirline.Tabs
             this.bookingTable.RowTemplate.Height = 50;
             this.bookingTable.Size = new System.Drawing.Size(686, 519);
             this.bookingTable.TabIndex = 6;
-            this.bookingTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bookingTable_CellContentClick);
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 76;
-            // 
-            // from
-            // 
-            this.from.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.from.HeaderText = "From";
-            this.from.MinimumWidth = 6;
-            this.from.Name = "from";
-            this.from.ReadOnly = true;
-            // 
-            // to
-            // 
-            this.to.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.to.HeaderText = "To";
-            this.to.MinimumWidth = 6;
-            this.to.Name = "to";
-            this.to.ReadOnly = true;
-            // 
-            // dateTime
-            // 
-            this.dateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateTime.HeaderText = "Date and Time";
-            this.dateTime.MinimumWidth = 6;
-            this.dateTime.Name = "dateTime";
-            this.dateTime.ReadOnly = true;
-            // 
-            // bookDetails
-            // 
-            this.bookDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.bookDetails.HeaderText = "Booking Details";
-            this.bookDetails.MinimumWidth = 6;
-            this.bookDetails.Name = "bookDetails";
-            this.bookDetails.ReadOnly = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            label1.Location = new System.Drawing.Point(24, 80);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(426, 35);
-            label1.TabIndex = 4;
-            label1.Text = "You can here modify bookings easily";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label13.Location = new System.Drawing.Point(16, 21);
-            label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(351, 100);
-            label13.TabIndex = 2;
-            label13.Text = "Bookings";
+            this.bookingTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bookingTable_CellClick);
+            this.bookingTable.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.firstColumnEdit_DataBindingComplete);
             // 
             // travellerFlightsTab
             // 
@@ -4285,25 +4240,25 @@ namespace HappyJourneyAirline.Tabs
             this.flightsDataGridView.AllowUserToOrderColumns = true;
             this.flightsDataGridView.AllowUserToResizeRows = false;
             this.flightsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle41.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.flightsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flightsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.flightsDataGridView.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle42.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.flightsDataGridView.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flightsDataGridView.DefaultCellStyle = dataGridViewCellStyle14;
             this.flightsDataGridView.Location = new System.Drawing.Point(18, 231);
             this.flightsDataGridView.Name = "flightsDataGridView";
             this.flightsDataGridView.RowHeadersVisible = false;
@@ -4369,6 +4324,39 @@ namespace HappyJourneyAirline.Tabs
             this.tabControler.Size = new System.Drawing.Size(782, 728);
             this.tabControler.TabIndex = 1;
             // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 76;
+            // 
+            // from
+            // 
+            this.from.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.from.HeaderText = "From";
+            this.from.MinimumWidth = 6;
+            this.from.Name = "from";
+            this.from.ReadOnly = true;
+            // 
+            // to
+            // 
+            this.to.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.to.HeaderText = "To";
+            this.to.MinimumWidth = 6;
+            this.to.Name = "to";
+            this.to.ReadOnly = true;
+            // 
+            // dateTime
+            // 
+            this.dateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateTime.HeaderText = "Date and Time";
+            this.dateTime.MinimumWidth = 6;
+            this.dateTime.Name = "dateTime";
+            this.dateTime.ReadOnly = true;
+            // 
             // AdminTabs
             // 
             this.Controls.Add(this.tabControler);
@@ -4378,6 +4366,14 @@ namespace HappyJourneyAirline.Tabs
             viewPlanes.ResumeLayout(false);
             viewPlanes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.planesDataGridView)).EndInit();
+            flowLayoutPanel6.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.usersIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logOutIcon)).EndInit();
@@ -4396,7 +4392,6 @@ namespace HappyJourneyAirline.Tabs
             this.AirportGroupBox.PerformLayout();
             this.cityGroupBox.ResumeLayout(false);
             this.cityGroupBox.PerformLayout();
-            flowLayoutPanel6.ResumeLayout(false);
             this.veAirCouCity.ResumeLayout(false);
             this.veAirCouCity.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -4419,12 +4414,6 @@ namespace HappyJourneyAirline.Tabs
             this.flowLayoutPanel1.ResumeLayout(false);
             this.AddAirCityConTab.ResumeLayout(false);
             this.AddAirCityConTab.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             this.createUserTab.ResumeLayout(false);
             this.createUserTab.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -4436,7 +4425,6 @@ namespace HappyJourneyAirline.Tabs
             this.cuCompanyNamePanel.PerformLayout();
             this.editFlightTab.ResumeLayout(false);
             this.editFlightTab.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
             this.createFlightTab.ResumeLayout(false);
             this.createFlightTab.PerformLayout();
             this.bookingDetailsTab.ResumeLayout(false);
@@ -4458,45 +4446,26 @@ namespace HappyJourneyAirline.Tabs
 
         }
 
+        #region Navigation
         private void flightsTab_Click(object sender, EventArgs e)
         {
             setupFlightTab();
-            tabControler.SelectTab(0);
+            tabControler.SelectTab((int)Tabs.Flights);
             defultIcons();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
         }
 
         private void bookingTab_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab(1);
+            loadBookingTable();
+            tabControler.SelectTab((int)Tabs.Bookings);
             defultIcons();
             bookingTab.Image = global::HappyJourneyAirline.Properties.Resources.Bookings_Active;
-
-            loadBookingTable();
-        }
-
-        private void loadBookingTable()
-        {
-            bookingTable.Rows.Clear();
-            // display Booking list
-            List<Ticket> tickets = new List<Ticket>();
-
-            tickets = Ticket.GetAllTickets();
-
-            foreach (Ticket ticket in tickets)
-            {
-                //Console.WriteLine("-, "+ticket.Id);
-                Flight flight = Flight.GetFlightById(ticket.FlightID);
-                //Console.WriteLine("--, " + flight.SourceAirportID);
-                Airport source = Airport.GetAirportById(flight.SourceAirportID);
-                Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
-                bookingTable.Rows.Add(ticket.Id, source.Name, destination.Name, flight.DepartureTimestamp, "View Details");
-            }
         }
 
         private void settingTab_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab(2);
+            tabControler.SelectTab((int)Tabs.Settings);
             defultIcons();
             settingTab.Image = global::HappyJourneyAirline.Properties.Resources.Settings_Active;
 
@@ -4515,7 +4484,7 @@ namespace HappyJourneyAirline.Tabs
         private void users_Click(object sender, EventArgs e)
         {
             setupUsers();
-            tabControler.SelectTab(3);
+            tabControler.SelectTab((int)Tabs.Users);
             defultIcons();
             usersIcon.Image = global::HappyJourneyAirline.Properties.Resources.Users_Active;
         }
@@ -4566,39 +4535,39 @@ namespace HappyJourneyAirline.Tabs
             setupCreateFlightTab();
 
             cfDepDrop_SelectedIndexChanged(null, null);
-            tabControler.SelectTab(5);
+            tabControler.SelectTab((int)Tabs.CreateFlight);
 
         }
 
         private void cuCancelBtn_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab(3);
+            tabControler.SelectTab((int)Tabs.Users);
         }
 
         private void userCreateUserBtn_Click(object sender, EventArgs e)
         {
             sutupCreateUserScreen();
-            tabControler.SelectTab(7);
+            tabControler.SelectTab((int)Tabs.CreateUser);
         }
 
         private void cfCancelBtn_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab(0);
+            tabControler.SelectTab((int)Tabs.Flights);
         }
 
         private void efCancelBtn_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab(0);
+            tabControler.SelectTab((int)Tabs.Flights);
         }
 
         private void bdBackBtn_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab(1);
+            tabControler.SelectTab((int)Tabs.Bookings);
         }
 
         private void setCancelBtn_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab(0);
+            tabControler.SelectTab((int)Tabs.Flights);
             defultIcons();
             flightsTab.Image = global::HappyJourneyAirline.Properties.Resources.Flights_Active;
 
@@ -4617,12 +4586,12 @@ namespace HappyJourneyAirline.Tabs
         private void addAirCityCouBtn_Click(object sender, EventArgs e)
         {
             setupViewAirCityCou();
-            tabControler.SelectTab(10);
+            tabControler.SelectTab((int)Tabs.ViewCountriesCitiesAirports);
         }
         private void addAirCityCouBtn_Click_1(object sender, EventArgs e)
         {
             setupAddAirCityCou();
-            tabControler.SelectTab(8);
+            tabControler.SelectTab((int)Tabs.AddCountryCiyAirport);
         }
         private void addBackBtn_Click(object sender, EventArgs e)
         {
@@ -4634,90 +4603,134 @@ namespace HappyJourneyAirline.Tabs
             tabControler.SelectTab((int)Tabs.ViewPlanes);
         }
 
+        private void addNotifications_Click(object sender, EventArgs e)
+        {
+            tabControler.SelectTab((int)Tabs.CreateNotification);
+        }
+        private void logOutIcon_Click(object sender, EventArgs e)
+        {
+            AuthService.LogoutCurrentUser();
+            appTabs.SelectTab(0);
+        }
+
+        #endregion Navigaion
+
 
         #region flights
+        /// <summary>
+        /// Sets up the "Flights" tab by loading flight data into the DataGridView, configuring columns, 
+        /// and ensuring all cells are read-only except for interactive columns.
+        /// </summary>
         private void setupFlightTab()
         {
+            // Load flight data into the DataGridView
             loadFlights();
 
+            // Make all columns read-only
             for (int i = 0; i < flightsDataGridView.Columns.Count; i++)
             {
                 flightsDataGridView.Columns[i].ReadOnly = true;
             }
+
+            // Allow cell selection only
             flightsDataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
 
-
+            // Adjust specific columns for better visibility
             if (flightsDataGridView.Columns[3] != null)
             {
                 flightsDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
-
             if (flightsDataGridView.Columns[4] != null)
             {
                 flightsDataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
-
             if (flightsDataGridView.Columns[5] != null)
             {
                 flightsDataGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
-
             if (flightsDataGridView.Columns["ArrivalTimestamp"] != null)
             {
                 flightsDataGridView.Columns["ArrivalTimestamp"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
-
         }
 
-        // should be in db
+        /// <summary>
+        /// Loads flight data from the database and binds it to the DataGridView.
+        /// Also configures the "Edit" column to be visually distinct.
+        /// </summary>
         private void loadFlights()
         {
+            // Retrieve flights data
             flights = new BindingList<Flight>(Flight.GetAllFlights());
 
+            // Establish a connection to the database
             SqlConnection sqlConnection = new SqlConnection(Database.connectionString);
             sqlConnection.Open();
+
+            // Create and execute SQL command to retrieve flight details
             SqlCommand command = sqlConnection.CreateCommand();
-            command.CommandText = $"SELECT " +
-                $"'Edit' AS 'Edit', " +
-                $"f.Id AS 'Flight ID', " +
-                $"f_s.name AS 'Flight Status', " +
-                $"s_a.name AS 'Source Airport Name', " +
-                $"d_a.name AS 'Destination Airport Name', " +
-                $"f.departureTimestamp AS 'Departure Timestamp', " +
-                $"f.arrivalTimestamp  AS 'Arrival Timestamp' " +
-                $"FROM flights f " +
-                $"LEFT JOIN flight_statuses f_s ON f.flightStatusID = f_s.Id " +
-                $"LEFT JOIN airports s_a ON f.sourceAirportID = s_a.Id " +
-                $"LEFT JOIN airports d_a ON f.destinationAirportID = d_a.Id;";
+            command.CommandText = @"
+        SELECT 
+            'Edit' AS 'Edit', 
+            f.Id AS 'Flight ID', 
+            f_s.name AS 'Flight Status', 
+            s_a.name AS 'Source Airport Name', 
+            d_a.name AS 'Destination Airport Name', 
+            f.departureTimestamp AS 'Departure Timestamp', 
+            f.arrivalTimestamp AS 'Arrival Timestamp'
+        FROM flights f
+        LEFT JOIN flight_statuses f_s ON f.flightStatusID = f_s.Id
+        LEFT JOIN airports s_a ON f.sourceAirportID = s_a.Id
+        LEFT JOIN airports d_a ON f.destinationAirportID = d_a.Id;";
 
+            // Populate the DataGridView with data
             DataSet ds = new DataSet();
-            DataAdapter da = new SqlDataAdapter(command); // Ensure DataAdapter is of type SqlDataAdapter
-            da.Fill(ds); // Fill the DataSet with the data from the database
-            flightsDataGridView.DataSource = ds.Tables[0]; // Set the DataSource to the first table in the DataSet
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            da.Fill(ds);
+            flightsDataGridView.DataSource = ds.Tables[0];
 
+            // Configure the "Edit" column
             DataGridViewColumn editColumn = flightsDataGridView.Columns[0];
             editColumn.DefaultCellStyle = flightsDataGridView.Columns[2].DefaultCellStyle.Clone();
             editColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             editColumn.DefaultCellStyle.ForeColor = Color.Blue;
 
+            // Clean up database resources
             command.Dispose();
             sqlConnection.Close();
         }
 
+        /// <summary>
+        /// Handles the cell click event in the Flights DataGridView. 
+        /// Navigates to the flight editing screen when the "Edit" column is clicked.
+        /// </summary>
+        /// <param name="sender">The DataGridView triggering the event.</param>
+        /// <param name="e">Event arguments containing row and column indices.</param>
         private void flightsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0) // Check if the clicked cell is in the "Edit" column
             {
+                // Retrieve the flight ID from the DataGridView and fetch the corresponding flight details
                 selectedFlight = Flight.GetFlightById((int)(flightsDataGridView.Rows[e.RowIndex].Cells[1].Value));
-                setupEditFlight();
-                tabControler.SelectTab(6);
+
+                if (selectedFlight != null)
+                {
+                    // Navigate to the edit screen and populate it with flight details
+                    setupEditFlight();
+                    tabControler.SelectTab(6); // Replace "6" with the actual tab index for the edit screen
+                }
             }
         }
 
         #region edit flight 
 
+        /// <summary>
+        /// Sets up the "Edit Flight" screen by initializing controls with the selected flight's details
+        /// and adjusting control visibility and availability based on the flight status.
+        /// </summary>
         private void setupEditFlight()
         {
+            // Initialize date and time pickers
             efDepTimePick.Format = DateTimePickerFormat.Time;
             efDepTimePick.ShowUpDown = true;
             efDepTimePick.Value = selectedFlight.DepartureTimestamp;
@@ -4726,62 +4739,72 @@ namespace HappyJourneyAirline.Tabs
             efArrTimePick.ShowUpDown = true;
             efArrTimePick.Value = selectedFlight.ArrivalTimestamp;
 
+            // Populate text fields with flight details
             efDepTxt.Text = Airport.GetAirportById(selectedFlight.SourceAirportID).Name;
             efArrTxt.Text = Airport.GetAirportById(selectedFlight.DestinationAirportID).Name;
-
             efFlightNumTxt.Text = $"{selectedFlight.Id}";
 
+            // Set date picker's minimum date and value
             efDatePick.MinDate = selectedFlight.DepartureTimestamp;
             efDatePick.Value = selectedFlight.DepartureTimestamp;
 
+            // Populate flight status dropdown
             flightsStatuses = new BindingList<FlightStatus>(FlightStatus.GetAllFlightStatuses());
-            efStatusDrop.DataSource = FlightStatus.GetAllFlightStatuses();
+            efStatusDrop.DataSource = flightsStatuses;
             efStatusDrop.DisplayMember = "Name";
             efStatusDrop.SelectedIndex = flightsStatuses.ToList().FindIndex(s => s.Id == selectedFlight.FlightStatusID);
 
+            // Populate plane dropdown
             planes = new BindingList<Plane>(Plane.GetAllPlanes());
             efPlaneIdDrop.DataSource = planes;
             efPlaneIdDrop.DisplayMember = "Id";
             efPlaneIdDrop.SelectedIndex = planes.ToList().FindIndex(p => p.Id == selectedFlight.PlaneID);
 
-
+            // Adjust controls based on the flight status
             string flightStatus = FlightStatus.GetFlightStatusById((int)selectedFlight.FlightStatusID).Name.ToLower();
 
             if (flightStatus == "scheduled")
             {
+                // Enable controls for editing scheduled flights
                 efDepTimePick.Enabled = true;
                 efPlaneIdDrop.Enabled = true;
                 efDatePick.Enabled = true;
                 efPriceTxt.Enabled = true;
                 efStatusDrop.Enabled = true;
                 efEditBtn.Visible = true;
-                efDeleteBtn.Visible = false;
+                efDeleteBtn.Visible = true;
             }
             else
             {
+                // Disable editing for non-scheduled flights
                 efDepTimePick.Enabled = false;
                 efPlaneIdDrop.Enabled = false;
                 efDatePick.Enabled = false;
                 efPriceTxt.Enabled = false;
-                efEditBtn.Visible = false;
-                efDeleteBtn.Visible = true;
+                efDeleteBtn.Visible = false;
                 efStatusDrop.Enabled = true;
+
                 if (flightStatus == "cancelled" || flightStatus == "landed")
                 {
+                    // Disable status dropdown for cancelled or landed flights
                     efDeleteBtn.Visible = true;
+                    efEditBtn.Visible = false;
                     efStatusDrop.Enabled = false;
                 }
             }
         }
 
+        /// <summary>
+        /// Handles text changes in the flight price textbox. Validates the input and displays an error if invalid.
+        /// </summary>
         private void efPriceTxt_TextChanged(object sender, EventArgs e)
         {
-
             if (string.IsNullOrEmpty(efPriceTxt.Text))
             {
                 efPriceTxt.Text = "0";
                 efPriceTxt.SelectionStart = efPriceTxt.Text.Length;
             }
+
             if (decimal.Parse(efPriceTxt.Text) <= 0)
             {
                 ShowError(efPriceErrorLbl, "Error: Flight price cannot be 0$");
@@ -4789,27 +4812,32 @@ namespace HappyJourneyAirline.Tabs
             else
             {
                 ShowError(efPriceErrorLbl, string.Empty);
-
             }
         }
+
+        /// <summary>
+        /// Updates the arrival time based on the selected departure time and the calculated travel time.
+        /// </summary>
         private void efDepTimePick_ValueChanged(object sender, EventArgs e)
         {
             efDepTimePick.Value = efDatePick.Value.Date.Add(efDepTimePick.Value.TimeOfDay);
             Airport dep = Airport.GetAirportById(selectedFlight.SourceAirportID);
             Airport arr = Airport.GetAirportById(selectedFlight.DestinationAirportID);
 
+            // Calculate travel time based on distance and speed
             double distance = CalculateDistance((double)dep.Latitude, (double)dep.Longitude, (double)arr.Latitude, (double)arr.Longitude);
-            double speed = rand * (900 - 800) + 800; ; // Speed in km/h
+            double speed = new Random().Next(800, 900); // Random speed between 800 and 900 km/h
             double time = distance / speed; // Time in hours
             TimeSpan travelTime = TimeSpan.FromHours(time);
 
             efArrTimePick.Value = efDepTimePick.Value + travelTime;
-
         }
 
+        /// <summary>
+        /// Handles the "Delete Flight" button click event. Deletes the selected flight from the database.
+        /// </summary>
         private void efDeleteBtn_Click(object sender, EventArgs e)
         {
-
             bool result = Flight.DeleteFlight(selectedFlight.Id);
 
             if (!result)
@@ -4818,16 +4846,19 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
-                selectedFlight = null;
-                flightsTab_Click(null, null);
+                selectedFlight = null; // Reset the selected flight
+                flightsTab_Click(null, null); // Refresh the flights tab
             }
         }
 
+        /// <summary>
+        /// Handles the "Edit Flight" button click event. Validates the input and updates the flight details in the database.
+        /// </summary>
         private void efEditBtn_Click(object sender, EventArgs e)
         {
-            if (efPriceErrorLbl.Visible) { return; }
+            if (efPriceErrorLbl.Visible) return; // Exit if there are validation errors
 
-            if (efPlaneIdDrop.Enabled)
+            if (efPlaneIdDrop.Enabled) // Editing flight details
             {
                 selectedFlight.PlaneID = (efPlaneIdDrop.SelectedItem as Plane).Id;
                 selectedFlight.DepartureTimestamp = efDatePick.Value.Date + efDepTimePick.Value.TimeOfDay;
@@ -4835,7 +4866,7 @@ namespace HappyJourneyAirline.Tabs
                 selectedFlight.BasePrice = decimal.Parse(efPriceTxt.Text);
                 selectedFlight.FlightStatusID = (efStatusDrop.SelectedItem as FlightStatus).Id;
             }
-            else
+            else // Only updating flight status
             {
                 selectedFlight.FlightStatusID = (efStatusDrop.SelectedItem as FlightStatus).Id;
             }
@@ -4848,16 +4879,20 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
-                flightsTab_Click(sender, e);
+                flightsTab_Click(sender, e); // Refresh the flights tab
             }
         }
 
         #endregion edit flight
 
         #region View [Airport, Country, City]
+        /// <summary>
+        /// Sets up the "View Locations" screen by populating the data grids for countries, cities, and airports,
+        /// and adjusting the display properties for the airport grid.
+        /// </summary>
         private void setupViewAirCityCou()
         {
-
+            // Load data for countries, cities, and airports
             countries = new BindingList<Country>(Country.GetAllCountries());
             countriesDataGridView.DataSource = countries;
 
@@ -4867,39 +4902,50 @@ namespace HappyJourneyAirline.Tabs
             airports = new BindingList<Airport>(Airport.GetAllAirports());
             airportsDataGridView.DataSource = airports;
 
-
-            if (airportsDataGridView.Columns["Name"] != null) // Replace "Name" with the actual column name for the airport name
+            // Adjust the column size for the airport name column
+            if (airportsDataGridView.Columns["Name"] != null)
             {
                 var nameColumn = airportsDataGridView.Columns["Name"];
-                nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // Automatically adjust size to fit content
+                nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
         }
+
+        /// <summary>
+        /// Handles the cell click event in the Cities DataGridView. Opens the edit screen for the selected city.
+        /// </summary>
         private void citiesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0) // Edit button column
             {
                 selectedCity = citiesDataGridView.Rows[e.RowIndex].DataBoundItem as City;
                 cityGroupBox.Visible = true;
                 countryGroupBox.Visible = false;
                 AirportGroupBox.Visible = false;
 
+                // Populate city edit fields
                 editCitytNameTxt.Text = selectedCity.Name;
                 countries = new BindingList<Country>(Country.GetAllCountries());
                 editConDrop.DataSource = countries;
                 editConDrop.DisplayMember = "Name";
                 editConDrop.SelectedItem = countries.First(c => c.Id == selectedCity.CountryId);
-                tabControler.SelectTab(11);
+
+                tabControler.SelectTab(11); // Navigate to the edit tab
             }
         }
+
+        /// <summary>
+        /// Handles the cell click event in the Airports DataGridView. Opens the edit screen for the selected airport.
+        /// </summary>
         private void airportsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0) // Edit button column
             {
                 selectedAirport = airportsDataGridView.Rows[e.RowIndex].DataBoundItem as Airport;
                 cityGroupBox.Visible = false;
                 countryGroupBox.Visible = false;
                 AirportGroupBox.Visible = true;
 
+                // Populate airport edit fields
                 editAirportNameTxt.Text = selectedAirport.Name;
 
                 City city = City.GetCityById(selectedAirport.CityId);
@@ -4916,38 +4962,124 @@ namespace HappyJourneyAirline.Tabs
                 editAirportLatitudeTxt.Text = $"{selectedAirport.Latitude}";
                 editAirportLongitudeTxt.Text = $"{selectedAirport.Longitude}";
 
-                tabControler.SelectTab(11);
+                tabControler.SelectTab(11); // Navigate to the edit tab
             }
         }
+
+        /// <summary>
+        /// Handles the cell click event in the Countries DataGridView. Opens the edit screen for the selected country.
+        /// </summary>
         private void countriesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0) // Edit button column
             {
                 selectedCountry = countriesDataGridView.Rows[e.RowIndex].DataBoundItem as Country;
                 cityGroupBox.Visible = false;
                 countryGroupBox.Visible = true;
                 AirportGroupBox.Visible = false;
 
+                // Populate country edit fields
                 editContNameTxt.Text = selectedCountry.Name;
-                tabControler.SelectTab(11);
+
+                tabControler.SelectTab(11); // Navigate to the edit tab
             }
+        }
+
+        /// <summary>
+        /// Handles the "Generate Locations Report" button click event. Generates and saves a report of all countries, cities, and airports.
+        /// </summary>
+        private void vlGenerateLocationsBtn_Click(object sender, EventArgs e)
+        {
+            Thread staThread = new Thread(() =>
+            {
+                using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
+                {
+                    saveFileDialog1.Filter = "Text File |*.txt";
+                    saveFileDialog1.Title = "Save Locations Report";
+                    saveFileDialog1.FileName = "LocationsReport.txt";
+
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
+                    {
+                        try
+                        {
+                            // Retrieve all locations
+                            List<City> cityList = City.GetAllCities();
+                            List<Country> countriesList = Country.GetAllCountries();
+                            List<Airport> airportList = Airport.GetAllAirports();
+
+                            // Generate report content
+                            StringBuilder locationInfo = new StringBuilder();
+                            locationInfo.AppendLine("Locations Report");
+                            locationInfo.AppendLine("--------------------------------\n\n");
+
+                            // Add country data
+                            locationInfo.AppendLine("--------- Countries ---------");
+                            foreach (var country in countriesList)
+                            {
+                                locationInfo.AppendLine($"Country ID: {country.Id}, Country Name: {country.Name}");
+                            }
+
+                            // Add city data
+                            locationInfo.AppendLine("\n--------- Cities ---------");
+                            foreach (var city in cityList)
+                            {
+                                locationInfo.AppendLine($"City ID: {city.Id}, City Name: {city.Name}, Country ID: {city.CountryId}");
+                            }
+
+                            // Add airport data
+                            locationInfo.AppendLine("\n--------- Airports ---------");
+                            foreach (var airport in airportList)
+                            {
+                                locationInfo.AppendLine($"Airport ID: {airport.Id}, Airport Name: {airport.Name}, City ID: {airport.CityId}");
+                            }
+
+                            // Add summary
+                            locationInfo.AppendLine($"\n\nTotal Countries: {countriesList.Count}");
+                            locationInfo.AppendLine($"Total Cities: {cityList.Count}");
+                            locationInfo.AppendLine($"Total Airports: {airportList.Count}");
+
+                            // Save report to file
+                            File.WriteAllText(saveFileDialog1.FileName, locationInfo.ToString());
+
+                            MessageBox.Show("Report saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle errors during file save
+                            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            });
+
+            staThread.SetApartmentState(ApartmentState.STA);
+            staThread.Start();
+            staThread.Join(); // Wait for thread to complete
         }
 
         #endregion View [Airport, Country, City]
 
         #region Edit [Airport, Country, City]
 
+        /// <summary>
+        /// Handles the "Back" button click event in the edit location screen.
+        /// Resets the selected location and navigates back to the main location tab.
+        /// </summary>
         private void editLocationBack_Click(object sender, EventArgs e)
         {
-            tabControler.SelectTab(10);
-            selectedAirport = null;
-            selectedCity = null;
-            selectedCountry = null;
+            tabControler.SelectTab(10); // Navigate back to the main location tab
+            selectedAirport = null; // Reset selected airport
+            selectedCity = null; // Reset selected city
+            selectedCountry = null; // Reset selected country
         }
 
+        /// <summary>
+        /// Handles the "Save" button click event in the edit location screen.
+        /// Validates the input and updates the selected location in the database if valid.
+        /// </summary>
         private void editLocationSave_Click(object sender, EventArgs e)
         {
-            if (AirportGroupBox.Visible)
+            if (AirportGroupBox.Visible) // Editing an airport
             {
                 bool isValid = false;
                 string airportName = string.Empty;
@@ -4955,19 +5087,22 @@ namespace HappyJourneyAirline.Tabs
                 decimal? airportLatitude = 0;
                 decimal? airportLongitude = 0;
 
-                validateAirport(editAirportNameTxt, editAirportErrorLbl, editAirportConDrop, editAirportCityDrop, editAirportLatitudeTxt,
-                    editAirportLongitudeTxt, out isValid, out airportName, out airportCityId, out airportLatitude, out airportLongitude);
+                // Validate airport input
+                validateAirport(editAirportNameTxt, editAirportErrorLbl, editAirportConDrop, editAirportCityDrop,
+                                editAirportLatitudeTxt, editAirportLongitudeTxt,
+                                out isValid, out airportName, out airportCityId, out airportLatitude, out airportLongitude);
 
+                if (!isValid) return; // Exit if validation fails
 
-                if (!isValid) { return; }
+                ShowError(editAirportErrorLbl, string.Empty); // Clear error message
 
-                ShowError(editAirportErrorLbl, string.Empty);
-
+                // Update airport properties
                 selectedAirport.Name = airportName;
                 selectedAirport.CityId = (long)airportCityId;
                 selectedAirport.Latitude = (decimal)airportLatitude;
                 selectedAirport.Longitude = (decimal)airportLongitude;
 
+                // Save changes to the database
                 bool result = Airport.UpdateAirport(selectedAirport);
 
                 if (!result)
@@ -4976,25 +5111,27 @@ namespace HappyJourneyAirline.Tabs
                 }
                 else
                 {
-                    tabControler.SelectTab(10);
-
+                    tabControler.SelectTab(10); // Navigate back to the main location tab
                 }
             }
-            else if (cityGroupBox.Visible)
+            else if (cityGroupBox.Visible) // Editing a city
             {
                 bool isValid = false;
                 string cityName = string.Empty;
                 long? countryId = null;
 
+                // Validate city input
                 validateCity(editCitytNameTxt, editCityErrorLbl, editConDrop, out isValid, out cityName, out countryId);
 
-                if (!isValid) { return; }
+                if (!isValid) return; // Exit if validation fails
 
-                ShowError(editCityErrorLbl, string.Empty); // Hide error
+                ShowError(editCityErrorLbl, string.Empty); // Clear error message
 
+                // Update city properties
                 selectedCity.Name = cityName;
                 selectedCity.CountryId = (long)countryId;
 
+                // Save changes to the database
                 bool result = City.UpdateCity(selectedCity);
 
                 if (!result)
@@ -5003,22 +5140,25 @@ namespace HappyJourneyAirline.Tabs
                 }
                 else
                 {
-                    tabControler.SelectTab(10);
+                    tabControler.SelectTab(10); // Navigate back to the main location tab
                 }
             }
-            else
+            else // Editing a country
             {
                 bool isValid = false;
                 string countryName = null;
 
+                // Validate country input
                 validateCountry(editContNameTxt, editContErrorLbl, out isValid, out countryName);
 
-                if (!isValid) { return; }
+                if (!isValid) return; // Exit if validation fails
 
-                ShowError(editContErrorLbl, string.Empty);
+                ShowError(editContErrorLbl, string.Empty); // Clear error message
 
+                // Update country properties
                 selectedCountry.Name = countryName;
 
+                // Save changes to the database
                 bool result = Country.UpdateCountry(selectedCountry);
 
                 if (!result)
@@ -5027,64 +5167,84 @@ namespace HappyJourneyAirline.Tabs
                 }
                 else
                 {
-                    tabControler.SelectTab(10);
+                    tabControler.SelectTab(10); // Navigate back to the main location tab
                 }
-
             }
         }
 
+        /// <summary>
+        /// Handles the selection change event for the airport country dropdown. 
+        /// Filters the list of cities based on the selected country.
+        /// </summary>
         private void editAirportConDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Country c = editAirportConDrop.SelectedItem as Country;
-            if (c == null)
+            Country selectedCountry = editAirportConDrop.SelectedItem as Country;
+
+            if (selectedCountry == null)
             {
                 Console.WriteLine("No country selected.");
             }
             else
             {
-                cities = new BindingList<City>(City.GetAllCities());
-                editAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
+                // Filter cities by the selected country
+                cities = new BindingList<City>(City.GetCitiesByCountryId(selectedCountry.Id));
+                editAirportCityDrop.DataSource = cities;
                 editAirportCityDrop.DisplayMember = "Name";
             }
-
         }
 
+        /// <summary>
+        /// Handles the "Delete" button click event in the edit location screen.
+        /// Prompts for confirmation and deletes the selected location if confirmed.
+        /// </summary>
         private void editLocationDelete_Click(object sender, EventArgs e)
         {
-            bool result = false;
+            // Show confirmation dialog
+            DialogResult result = MessageBox.Show(
+                "Attention: Deleting this location will remove all related information and cannot be undone.",
+                "Confirm Deletion",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning);
 
-            DialogResult r = MessageBox.Show("Attention if you delete this location all its information and other locations related to it will be deleted and can't be restored", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (r == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
+                bool isDeleted = false;
 
+                // Determine which location to delete
                 if (AirportGroupBox.Visible)
                 {
-                    result = Airport.DeleteAirport(selectedAirport.Id);
+                    isDeleted = Airport.DeleteAirport(selectedAirport.Id);
                 }
                 else if (cityGroupBox.Visible)
                 {
-                    result = City.DeleteCity(selectedCity.Id);
+                    isDeleted = City.DeleteCity(selectedCity.Id);
                 }
                 else
                 {
-                    result = Country.DeleteCountry(selectedCountry.Id);
+                    isDeleted = Country.DeleteCountry(selectedCountry.Id);
                 }
 
-
-                if (!result)
+                if (!isDeleted)
                 {
                     MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    tabControler.SelectTab(10);
+                    tabControler.SelectTab(10); // Navigate back to the main location tab
                 }
             }
         }
-
         #endregion Edit [Airport, Country, City]
 
         #region [Country, City, Airport] Validation
+        /// <summary>
+        /// Validates the input for adding or editing a country. Ensures the name is not empty 
+        /// and checks for duplicates in the existing country list.
+        /// </summary>
+        /// <param name="nameTextBox">The TextBox containing the country name.</param>
+        /// <param name="errorLabel">The Label to display validation errors.</param>
+        /// <param name="isValid">Output flag indicating if the input is valid.</param>
+        /// <param name="countryName">Output variable holding the valid country name.</param>
         private void validateCountry(TextBox nameTextBox, Label errorLabel, out bool isValid, out string countryName)
         {
             isValid = false;
@@ -5102,16 +5262,27 @@ namespace HappyJourneyAirline.Tabs
             {
                 if (countries.Any(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
                 {
-                    ShowError(errorLabel, "Error: Country already Exist");
+                    ShowError(errorLabel, "Error: Country already exists");
                     return;
                 }
             }
-            ShowError(errorLabel, string.Empty);
 
+            // Validation passed
+            ShowError(errorLabel, string.Empty);
             isValid = true;
             countryName = name;
-            return;
         }
+
+        /// <summary>
+        /// Validates the input for adding or editing a city. Ensures the name is not empty, 
+        /// a country is selected, and checks for duplicates in the existing city list for the selected country.
+        /// </summary>
+        /// <param name="nameTextBox">The TextBox containing the city name.</param>
+        /// <param name="errorLabel">The Label to display validation errors.</param>
+        /// <param name="countryComboBox">The ComboBox containing the selected country.</param>
+        /// <param name="isValid">Output flag indicating if the input is valid.</param>
+        /// <param name="cityName">Output variable holding the valid city name.</param>
+        /// <param name="countryId">Output variable holding the valid country ID.</param>
         private void validateCity(TextBox nameTextBox, Label errorLabel, ComboBox countryComboBox, out bool isValid, out string cityName, out long? countryId)
         {
             isValid = false;
@@ -5137,17 +5308,35 @@ namespace HappyJourneyAirline.Tabs
             {
                 if (cities.Any(c => c.Name.Equals(inCityName, StringComparison.OrdinalIgnoreCase) && c.CountryId == country.Id))
                 {
-                    ShowError(addCityErrorLbl, "Error: City already exists");
+                    ShowError(errorLabel, "Error: City already exists");
                     return;
                 }
             }
+
+            // Validation passed
             isValid = true;
             cityName = inCityName;
             countryId = country.Id;
-            return;
         }
-        private void validateAirport(TextBox nameTextBox, Label errorLabel, ComboBox countryComboBox, ComboBox cityComboBox, TextBox latitudeTextBox, TextBox longitudeTextBox,
-    out bool isValid, out string airportName, out long? airportCityId, out decimal? airportLatitude, out decimal? airportLongitude)
+
+        /// <summary>
+        /// Validates the input for adding or editing an airport. Ensures all fields are valid, 
+        /// including name, associated country and city, latitude, and longitude. Checks for duplicates in the existing airports.
+        /// </summary>
+        /// <param name="nameTextBox">The TextBox containing the airport name.</param>
+        /// <param name="errorLabel">The Label to display validation errors.</param>
+        /// <param name="countryComboBox">The ComboBox containing the selected country.</param>
+        /// <param name="cityComboBox">The ComboBox containing the selected city.</param>
+        /// <param name="latitudeTextBox">The TextBox containing the latitude.</param>
+        /// <param name="longitudeTextBox">The TextBox containing the longitude.</param>
+        /// <param name="isValid">Output flag indicating if the input is valid.</param>
+        /// <param name="airportName">Output variable holding the valid airport name.</param>
+        /// <param name="airportCityId">Output variable holding the valid city ID for the airport.</param>
+        /// <param name="airportLatitude">Output variable holding the valid latitude.</param>
+        /// <param name="airportLongitude">Output variable holding the valid longitude.</param>
+        private void validateAirport(TextBox nameTextBox, Label errorLabel, ComboBox countryComboBox, ComboBox cityComboBox,
+                                     TextBox latitudeTextBox, TextBox longitudeTextBox,
+                                     out bool isValid, out string airportName, out long? airportCityId, out decimal? airportLatitude, out decimal? airportLongitude)
         {
             isValid = false;
             airportName = null;
@@ -5156,6 +5345,8 @@ namespace HappyJourneyAirline.Tabs
             airportLongitude = null;
 
             string name = nameTextBox.Text.Trim();
+
+            // Validate airport name
             if (name.Length == 0)
             {
                 ShowError(errorLabel, "Error: Airport name cannot be empty");
@@ -5185,24 +5376,21 @@ namespace HappyJourneyAirline.Tabs
 
             if (nameTextBox == addAirportNameTxt)
             {
-                if (Airport.GetAirportsByCityId(city.Id).Any(a =>
-        a.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
-        ))
+                if (Airport.GetAirportsByCityId(city.Id).Any(a => a.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
                 {
-                    ShowError(errorLabel, "Error: Airport Already exists");
+                    ShowError(errorLabel, "Error: Airport already exists");
                     return;
                 }
             }
 
-            decimal la = 0;
-            decimal lo = 0;
-
+            // Validate latitude and longitude
+            decimal la = 0, lo = 0;
             string laText = latitudeTextBox.Text.Trim();
             string loText = longitudeTextBox.Text.Trim();
 
             if (laText.Length == 0 || loText.Length == 0)
             {
-                ShowError(errorLabel, "Error: latitude and longitude coordinates are not provided");
+                ShowError(errorLabel, "Error: Latitude and longitude coordinates are not provided");
                 return;
             }
 
@@ -5213,24 +5401,25 @@ namespace HappyJourneyAirline.Tabs
             }
             catch
             {
-                ShowError(errorLabel, "Error: numbers are too big");
+                ShowError(errorLabel, "Error: Invalid numeric format for coordinates");
                 return;
             }
 
             if (la < -90 || la > 90)
             {
-                ShowError(errorLabel, "Error: Latitude range should be between -90 and 90");
+                ShowError(errorLabel, "Error: Latitude range must be between -90 and 90");
                 return;
             }
 
             if (lo < -180 || lo > 180)
             {
-                ShowError(errorLabel, "Error: Longitude range should be between -180 and 180");
+                ShowError(errorLabel, "Error: Longitude range must be between -180 and 180");
                 return;
             }
 
+            // Validation passed
             isValid = true;
-            airportName = nameTextBox.Text.Trim();
+            airportName = name;
             airportCityId = city.Id;
             airportLatitude = la;
             airportLongitude = lo;
@@ -5240,32 +5429,39 @@ namespace HappyJourneyAirline.Tabs
 
 
         #region Add [Country, City, Airport]
+        /// <summary>
+        /// Initializes the "Add Airport, City, and Country" tab by loading data for countries and cities,
+        /// resetting input fields, and clearing validation error messages.
+        /// </summary>
         private void setupAddAirCityCou()
         {
             addLoadCountries();
             addAirportConDrop_SelectedIndexChanged(null, null);
             addLoadCities();
 
+            // Clear input fields
             addContNameTxt.Text = string.Empty;
             addCitytNameTxt.Text = string.Empty;
             addAirportNameTxt.Text = string.Empty;
             addAirportLatitudeTxt.Text = string.Empty;
             addAirportLongitudeTxt.Text = string.Empty;
 
+            // Hide error labels
             addContErrorLbl.Visible = false;
             addCityErrorLbl.Visible = false;
             addAirportErrorLbl.Visible = false;
         }
+
+        /// <summary>
+        /// Loads the list of countries into the respective dropdowns for adding cities and airports.
+        /// </summary>
         private void addLoadCountries()
         {
             countries = new BindingList<Country>(Country.GetAllCountries());
 
-            BindingSource source1 = new BindingSource();
-
-            BindingSource source2 = new BindingSource();
-
-            source2.DataSource = countries;
-            source1.DataSource = countries;
+            // Bind the country list to both dropdowns
+            BindingSource source1 = new BindingSource { DataSource = countries };
+            BindingSource source2 = new BindingSource { DataSource = countries };
 
             addConDrop.DataSource = source1;
             addConDrop.DisplayMember = "Name";
@@ -5273,31 +5469,34 @@ namespace HappyJourneyAirline.Tabs
             addAirportConDrop.DataSource = source2;
             addAirportConDrop.DisplayMember = "Name";
         }
+
+        /// <summary>
+        /// Loads the list of cities into the dropdown for adding airports.
+        /// </summary>
         private void addLoadCities()
         {
             cities = new BindingList<City>(City.GetAllCities());
-
             addAirportCityDrop.DataSource = cities;
             addAirportCityDrop.DisplayMember = "Name";
         }
 
+        /// <summary>
+        /// Handles the "Add Country" button click event. Validates the input and adds a new country if valid.
+        /// </summary>
         private void addAddCountryBtn_Click(object sender, EventArgs e)
         {
             bool isValid = false;
             string countryName = null;
 
+            // Validate country input
             validateCountry(addContNameTxt, addContErrorLbl, out isValid, out countryName);
 
-            if (!isValid) { return; }
+            if (!isValid) return; // Exit if validation fails
 
+            ShowError(addContErrorLbl, string.Empty); // Clear error message
 
-            ShowError(addContErrorLbl, string.Empty);
-
-
-            bool result = Country.AddCountry(new Country
-            {
-                Name = addContNameTxt.Text
-            });
+            // Add the new country to the database
+            bool result = Country.AddCountry(new Country { Name = addContNameTxt.Text });
 
             if (!result)
             {
@@ -5305,26 +5504,29 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
-                addLoadCountries();
+                addLoadCountries(); // Refresh the country list
                 addConDrop.SelectedIndex = addConDrop.Items.Count - 1;
                 addAirportConDrop.SelectedIndex = addAirportConDrop.Items.Count - 1;
             }
-
         }
 
+        /// <summary>
+        /// Handles the "Add City" button click event. Validates the input and adds a new city if valid.
+        /// </summary>
         private void addAddCityBtn_Click(object sender, EventArgs e)
         {
-
             bool isValid = false;
             string cityName = string.Empty;
             long? countryId = null;
 
+            // Validate city input
             validateCity(addCitytNameTxt, addCityErrorLbl, addConDrop, out isValid, out cityName, out countryId);
 
-            if (!isValid) { return; }
+            if (!isValid) return; // Exit if validation fails
 
-            ShowError(addCityErrorLbl, string.Empty); // Hide error
+            ShowError(addCityErrorLbl, string.Empty); // Clear error message
 
+            // Add the new city to the database
             bool result = City.AddCity(new City { Name = cityName, CountryId = (long)countryId });
 
             if (!result)
@@ -5333,26 +5535,35 @@ namespace HappyJourneyAirline.Tabs
             }
             else
             {
-                addAirportConDrop_SelectedIndexChanged(null, null);
+                addAirportConDrop_SelectedIndexChanged(null, null); // Refresh city list
                 addAirportCityDrop.SelectedIndex = addAirportCityDrop.Items.Count - 1;
             }
-
         }
+
+        /// <summary>
+        /// Handles the selection change in the airport country dropdown. 
+        /// Filters the list of cities based on the selected country.
+        /// </summary>
         private void addAirportConDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Country c = addAirportConDrop.SelectedItem as Country;
-            if (c == null)
+            Country selectedCountry = addAirportConDrop.SelectedItem as Country;
+
+            if (selectedCountry == null)
             {
                 Console.WriteLine("No country selected.");
             }
             else
             {
-                cities = new BindingList<City>(City.GetAllCities());
-                addAirportCityDrop.DataSource = new BindingList<City>(City.GetCitiesByCountryId(c.Id));
+                // Filter cities by the selected country
+                cities = new BindingList<City>(City.GetCitiesByCountryId(selectedCountry.Id));
+                addAirportCityDrop.DataSource = cities;
                 addAirportCityDrop.DisplayMember = "Name";
             }
         }
 
+        /// <summary>
+        /// Handles the "Add Airport" button click event. Validates the input and adds a new airport if valid.
+        /// </summary>
         private void addAddAirportBtn_Click(object sender, EventArgs e)
         {
             bool isValid = false;
@@ -5361,14 +5572,16 @@ namespace HappyJourneyAirline.Tabs
             decimal? airportLatitude = 0;
             decimal? airportLongitude = 0;
 
-            validateAirport(addAirportNameTxt, addAirportErrorLbl, addAirportConDrop, addAirportCityDrop, addAirportLatitudeTxt,
-                addAirportLongitudeTxt, out isValid, out airportName, out airportCityId, out airportLatitude, out airportLongitude);
-
+            // Validate airport input
+            validateAirport(addAirportNameTxt, addAirportErrorLbl, addAirportConDrop, addAirportCityDrop,
+                            addAirportLatitudeTxt, addAirportLongitudeTxt,
+                            out isValid, out airportName, out airportCityId, out airportLatitude, out airportLongitude);
 
             if (isValid)
             {
-                ShowError(addAirportErrorLbl, string.Empty);
+                ShowError(addAirportErrorLbl, string.Empty); // Clear error message
 
+                // Add the new airport to the database
                 int result = Airport.AddAirport(new Airport
                 {
                     Name = airportName,
@@ -5386,62 +5599,81 @@ namespace HappyJourneyAirline.Tabs
         #endregion
 
         #region Create Flight Screen
+        /// <summary>
+        /// Sets up the "Create Flight" tab by initializing default values, 
+        /// populating dropdowns, and clearing any validation error messages.
+        /// </summary>
         private void setupCreateFlightTab()
         {
+            // Set default flight number and date values
             cfFlightNumTxt.Text = $"{Flight.GetAllFlights().Count + 1}";
             cfDatePick.MinDate = DateTime.Today;
-
             cfDatePick.Value = DateTime.Now + TimeSpan.FromDays(7);
+
+            // Set default flight price
             cfPriceTxt.Text = "300";
+
+            // Populate the flight status dropdown
             cfStatusDrop.DataSource = FlightStatus.GetAllFlightStatuses();
             cfStatusDrop.DisplayMember = "Name";
             cfStatusDrop.SelectedIndex = 0;
 
+            // Clear error messages
             cfTimeErrorLbl.Visible = false;
             cfAirportsErrorLbl.Visible = false;
             cfPriceErrorLbl.Visible = false;
 
+            // Load available planes and airports
             cfLoadPlanes();
             cfLoadAirports();
         }
+
+        /// <summary>
+        /// Loads the list of available planes into the plane selection dropdown.
+        /// Displays an error if no planes are available at the selected time.
+        /// </summary>
         private void cfLoadPlanes()
         {
-            // TODO: need tp get only avaliable planes for the spicific time and date
-            cfPlaneIdDrop.DataSource = planes;
+            cfPlaneIdDrop.DataSource = planes; // Load planes into the dropdown
             cfPlaneIdDrop.DisplayMember = "Id";
+
             if (planes.Count != 0)
             {
                 cfPlaneIdDrop.SelectedIndex = 0;
             }
             else
             {
-                MessageBox.Show("There are no planes avaliable at the selected time",
-                    "Problem",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("There are no planes available at the selected time.",
+                                "Problem",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// Loads the list of airports into the departure and arrival dropdowns.
+        /// </summary>
         private void cfLoadAirports()
         {
-            BindingSource depSource = new BindingSource
-            {
-                DataSource = airports
-            };
+            // Bind airports to departure dropdown
+            BindingSource depSource = new BindingSource { DataSource = airports };
             cfDepDrop.DataSource = depSource;
             cfDepDrop.DisplayMember = "Name";
 
-            BindingSource arrSource = new BindingSource
-            {
-                DataSource = airports
-            };
+            // Bind airports to arrival dropdown
+            BindingSource arrSource = new BindingSource { DataSource = airports };
             cfArrDrop.DataSource = arrSource;
             cfArrDrop.DisplayMember = "Name";
 
+            // Set default selections
             cfDepDrop.SelectedIndex = 0;
-
             cfArrDrop.SelectedIndex = 1;
-
         }
+
+        /// <summary>
+        /// Handles the selection change for the departure airport dropdown. 
+        /// Ensures the departure and arrival airports are not the same.
+        /// </summary>
         private void cfDepDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cfDepDrop.SelectedItem == cfArrDrop.SelectedItem)
@@ -5454,6 +5686,11 @@ namespace HappyJourneyAirline.Tabs
                 cfDepTimePick_ValueChanged(null, null);
             }
         }
+
+        /// <summary>
+        /// Handles the selection change for the arrival airport dropdown. 
+        /// Ensures the departure and arrival airports are not the same.
+        /// </summary>
         private void cfArrDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cfDepDrop.SelectedItem == cfArrDrop.SelectedItem)
@@ -5465,29 +5702,42 @@ namespace HappyJourneyAirline.Tabs
                 cfAirportsErrorLbl.Visible = false;
                 cfDepTimePick_ValueChanged(null, null);
             }
-
         }
+
+        /// <summary>
+        /// Updates the arrival time based on the selected departure time and the calculated flight duration.
+        /// </summary>
         private void cfDepTimePick_ValueChanged(object sender, EventArgs e)
         {
-            if ((cfDepDrop.SelectedItem != null && cfArrDrop.SelectedItem != null)
-                &&
+            if ((cfDepDrop.SelectedItem != null && cfArrDrop.SelectedItem != null) &&
                 (cfDepDrop.SelectedItem != cfArrDrop.SelectedItem))
             {
                 cfDepTimePick.Value = cfDatePick.Value.Date.Add(cfDepTimePick.Value.TimeOfDay);
+
                 Airport dep = cfDepDrop.SelectedItem as Airport;
                 Airport arr = cfArrDrop.SelectedItem as Airport;
 
+                // Calculate travel time based on distance and speed
                 double distance = CalculateDistance((double)dep.Latitude, (double)dep.Longitude, (double)arr.Latitude, (double)arr.Longitude);
-                double speed = rand * (900 - 800) + 800; ; // Speed in km/h
+                double speed = new Random().Next(800, 900); // Random speed between 800 and 900 km/h
                 double time = distance / speed; // Time in hours
                 TimeSpan travelTime = TimeSpan.FromHours(time);
 
                 cfArrTimePick.Value = cfDepTimePick.Value + travelTime;
             }
         }
+
+        /// <summary>
+        /// Calculates the distance between two geographical coordinates using the Haversine formula.
+        /// </summary>
+        /// <param name="lat1">Latitude of the first point.</param>
+        /// <param name="lon1">Longitude of the first point.</param>
+        /// <param name="lat2">Latitude of the second point.</param>
+        /// <param name="lon2">Longitude of the second point.</param>
+        /// <returns>The distance in kilometers.</returns>
         private double CalculateDistance(double lat1, double lon1, double lat2, double lon2)
         {
-            const double R = 6371.0; // Earth's radius in km
+            const double R = 6371.0; // Earth's radius in kilometers
             double dLat = ToRadians(lat2 - lat1);
             double dLon = ToRadians(lon2 - lon1);
 
@@ -5501,20 +5751,33 @@ namespace HappyJourneyAirline.Tabs
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
             return R * c;
         }
+
+        /// <summary>
+        /// Converts degrees to radians.
+        /// </summary>
+        /// <param name="degrees">Angle in degrees.</param>
+        /// <returns>Angle in radians.</returns>
         private double ToRadians(double degrees)
         {
             return degrees * Math.PI / 180.0;
         }
+
+        /// <summary>
+        /// Handles the "Create Flight" button click event. 
+        /// Validates the input and creates a new flight if the input is valid.
+        /// </summary>
         private void cfCreateBtn_Click(object sender, EventArgs e)
         {
+            if (cfAirportsErrorLbl.Visible || cfPriceErrorLbl.Visible) return;
 
-            if (cfAirportsErrorLbl.Visible || cfPriceErrorLbl.Visible) { return; }
+            // Validate that departure and arrival airports are different
             if (cfAirportsErrorLbl.Visible)
             {
                 ShowError(cfAirportsErrorLbl, "Departure and Arrival Airports cannot be the same");
                 return;
             }
 
+            // Create a new flight instance
             Flight flight = new Flight
             {
                 PlaneID = (cfPlaneIdDrop.SelectedItem as Plane).Id,
@@ -5523,12 +5786,19 @@ namespace HappyJourneyAirline.Tabs
                 BasePrice = Convert.ToDecimal(cfPriceTxt.Text),
                 DestinationAirportID = (cfArrDrop.SelectedItem as Airport).Id,
                 SourceAirportID = (cfDepDrop.SelectedItem as Airport).Id,
-                FlightStatusID = 1
+                FlightStatusID = 1 // Default to "Scheduled" status
             };
 
+            // Add the flight to the database
             Flight.AddFlight(flight);
+
+            // Refresh the flights tab
             flightsTab_Click(sender, e);
         }
+
+        /// <summary>
+        /// Validates the flight price input. Ensures it is not empty or zero.
+        /// </summary>
         private void cfPriceTxt_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cfPriceTxt.Text))
@@ -5536,6 +5806,7 @@ namespace HappyJourneyAirline.Tabs
                 cfPriceTxt.Text = "0";
                 cfPriceTxt.SelectionStart = cfPriceTxt.Text.Length;
             }
+
             if (decimal.Parse(cfPriceTxt.Text) <= 0)
             {
                 ShowError(cfPriceErrorLbl, "Error: Flight price cannot be 0$");
@@ -5543,7 +5814,6 @@ namespace HappyJourneyAirline.Tabs
             else
             {
                 ShowError(cfPriceErrorLbl, string.Empty);
-
             }
         }
         #endregion Create Flight Screen
@@ -5553,11 +5823,31 @@ namespace HappyJourneyAirline.Tabs
 
 
         #region for all
+        /// <summary>
+        /// Sets the value of the first column in the DataGridView to "Edit" after data binding is complete.
+        /// </summary>
+        private void firstColumnEdit_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewRow row in (sender as DataGridView).Rows)
+            {
+                row.Cells[0].Value = "Edit";
+            }
+        }
+
+        /// <summary>
+        /// Displays an error message on the specified label or hides it if the message is empty.
+        /// </summary>
+        /// <param name="label">The label to display the error message on.</param>
+        /// <param name="message">The error message to display.</param>
         private void ShowError(Label label, string message)
         {
             label.Text = message;
             label.Visible = !string.IsNullOrEmpty(message);
         }
+
+        /// <summary>
+        /// Restricts input in the Email TextBox to valid email characters and ensures email format consistency.
+        /// </summary>
         private void EmailTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsControl(e.KeyChar))
@@ -5565,23 +5855,25 @@ namespace HappyJourneyAirline.Tabs
                 return;
             }
 
+            // Allow only specific characters for email
             if (!(e.KeyChar == '@' || e.KeyChar == '.' || e.KeyChar == '-' || e.KeyChar == '_' || char.IsLetterOrDigit(e.KeyChar)))
             {
                 e.Handled = true;
                 return;
             }
 
-
             if (sender is TextBox textBox)
             {
                 string txt = textBox.Text + e.KeyChar;
 
+                // Ensure only one '@' character is present
                 if (txt.Count(c => c == '@') > 1)
                 {
                     e.Handled = true;
                     return;
                 }
 
+                // Ensure valid domain and '.' placement
                 if (txt.Contains("@"))
                 {
                     string[] parts = txt.Split('@');
@@ -5591,22 +5883,20 @@ namespace HappyJourneyAirline.Tabs
                     }
                 }
 
-                if (txt.Contains("@") && txt.Split('@')[1].StartsWith(".") && e.KeyChar == '.')
-                {
-                    e.Handled = true;
-                    return;
-                }
-
+                // Prevent invalid patterns like ".@" or "-."
                 if (txt.Contains("-"))
                 {
                     if (txt.StartsWith("-") || txt.EndsWith("-") || txt.Contains("-.") || txt.Contains(".-"))
                     {
                         e.Handled = true;
-                        return;
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// Restricts input in the Phone Number TextBox to valid phone number characters.
+        /// </summary>
         private void PhoneTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsControl(e.KeyChar))
@@ -5614,13 +5904,17 @@ namespace HappyJourneyAirline.Tabs
                 return;
             }
 
+            // Allow only characters that match the phone number pattern
             string allowedPattern = "[+\\d\\s()-]";
             if (!Regex.IsMatch(e.KeyChar.ToString(), allowedPattern))
             {
                 e.Handled = true;
-                return;
             }
         }
+
+        /// <summary>
+        /// Allows only letters and spaces in the specified TextBox.
+        /// </summary>
         private void txtOnlyLetters_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
@@ -5628,7 +5922,11 @@ namespace HappyJourneyAirline.Tabs
                 e.Handled = true;
             }
         }
-        // for airport name
+
+        /// <summary>
+        /// Allows only letters, digits, dots, hyphens, and spaces in the specified TextBox.
+        /// Commonly used for airport names.
+        /// </summary>
         private void txtOnlyDotUnderscore_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsControl(e.KeyChar))
@@ -5643,6 +5941,10 @@ namespace HappyJourneyAirline.Tabs
 
             e.Handled = true;
         }
+
+        /// <summary>
+        /// Restricts input to valid latitude/longitude values, allowing only digits, one '.', and one '+' or '-' at the start.
+        /// </summary>
         private void txtLatitudeLongitude_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -5663,6 +5965,10 @@ namespace HappyJourneyAirline.Tabs
 
             e.Handled = true;
         }
+
+        /// <summary>
+        /// Allows only numbers and a single '.' in the specified TextBox.
+        /// </summary>
         private void txtOnlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -5677,6 +5983,10 @@ namespace HappyJourneyAirline.Tabs
                 }
             }
         }
+
+        /// <summary>
+        /// Restricts input to integers in the specified TextBox.
+        /// </summary>
         private void txtOnlyIntgers_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -5684,6 +5994,11 @@ namespace HappyJourneyAirline.Tabs
                 e.Handled = true;
             }
         }
+
+        /// <summary>
+        /// Creates and configures a new "Edit" column for a DataGridView.
+        /// </summary>
+        /// <returns>A configured DataGridViewTextBoxColumn for editing.</returns>
         private DataGridViewTextBoxColumn AddEditColumn()
         {
             DataGridViewTextBoxColumn editColumn = new DataGridViewTextBoxColumn
@@ -5697,30 +6012,42 @@ namespace HappyJourneyAirline.Tabs
             editColumn.DefaultCellStyle.ForeColor = Color.Blue;
             return editColumn;
         }
+
+        /// <summary>
+        /// Creates and configures a new "Delete" column for a DataGridView.
+        /// </summary>
+        /// <returns>A configured DataGridViewTextBoxColumn for deletion.</returns>
         private DataGridViewTextBoxColumn AddDeleteColumn()
         {
-            DataGridViewTextBoxColumn editColumn = new DataGridViewTextBoxColumn
+            DataGridViewTextBoxColumn deleteColumn = new DataGridViewTextBoxColumn
             {
                 Name = "DeleteColumn",
                 HeaderText = "Delete",
                 ReadOnly = true,
                 DefaultCellStyle = usersDataGridView.Columns[2].DefaultCellStyle.Clone()
             };
-            editColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            editColumn.DefaultCellStyle.ForeColor = Color.Red;
-            return editColumn;
+            deleteColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            deleteColumn.DefaultCellStyle.ForeColor = Color.Red;
+            return deleteColumn;
         }
 
         #endregion
 
         #region users screen
+        /// <summary>
+        /// Configures the "Users" DataGridView by binding the list of users to the control, 
+        /// setting column properties, and enabling specific adjustments for better readability.
+        /// </summary>
         private void setupUsers()
         {
+            // Fetch and bind the list of users to the DataGridView
             users = new BindingList<User>(User.GetAllUsers());
-
             usersDataGridView.DataSource = users;
+
+            // Clear any existing selection in the DataGridView
             usersDataGridView.ClearSelection();
 
+            // Configure column visibility, headers, and properties
             usersDataGridView.Columns["Password"].Visible = false;
             usersDataGridView.Columns["Id"].ReadOnly = true;
             usersDataGridView.Columns["FirstName"].HeaderText = "First Name";
@@ -5729,45 +6056,141 @@ namespace HappyJourneyAirline.Tabs
             usersDataGridView.Columns["Type"].HeaderText = "User Type";
             usersDataGridView.Columns["AgencyID"].ReadOnly = true;
 
+            // Set all columns except the first as read-only
             for (int i = 1; i < usersDataGridView.Columns.Count; i++)
             {
                 usersDataGridView.Columns[i].ReadOnly = true;
             }
+
+            // Enable cell selection for the DataGridView
             usersDataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
 
-
-            // Adjust the AutoSizeMode for specific columns to display full content
+            // Adjust specific columns to fit their content
             usersDataGridView.Columns["Username"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             usersDataGridView.Columns["Email"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             usersDataGridView.Columns["CompanyName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
         }
+
+        /// <summary>
+        /// Handles cell click events in the Users DataGridView. If the first column is clicked, 
+        /// sets up the "View User" screen with the selected user's details and switches to the corresponding tab.
+        /// </summary>
+        /// <param name="sender">The DataGridView control triggering the event.</param>
+        /// <param name="e">Event data containing information about the clicked cell.</param>
         private void usersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Check if the clicked cell is in the first column
             if (e.ColumnIndex == 0)
             {
+                // Retrieve the selected user and set up the "View User" screen
                 selectedUser = usersDataGridView.Rows[e.RowIndex].DataBoundItem as User;
                 setupViewUser();
+
+                // Switch to the "View User" tab
                 tabControler.SelectTab(9);
             }
         }
 
+        /// <summary>
+        /// Handles the "Generate User Report" button click event. Generates a report of all users 
+        /// and saves it as a text file at a location selected by the user.
+        /// </summary>
+        /// <param name="sender">The button triggering the event.</param>
+        /// <param name="e">Event data for the button click event.</param>
+        private void btnReportUsers_Click(object sender, EventArgs e)
+        {
+            // Run the Save File dialog in an STA thread
+            Thread staThread = new Thread(() =>
+            {
+                using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
+                {
+                    saveFileDialog1.Filter = "Text File |*.txt";
+                    saveFileDialog1.Title = "Save User Report";
+                    saveFileDialog1.FileName = "UserReport.txt";
+
+                    // Show the dialog and save the report if a valid file name is provided
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
+                    {
+                        try
+                        {
+                            // Fetch the list of users
+                            List<User> userList = User.GetAllUsers();
+
+                            // Prepare the report content
+                            StringBuilder userInfo = new StringBuilder();
+                            userInfo.AppendLine("User Report");
+                            userInfo.AppendLine("--------------------------");
+                            bool adminHeaderAdded = false;
+                            bool travellerHeaderAdded = false;
+                            bool agencyHeaderAdded = false;
+
+                            foreach (var user in userList)
+                            {
+                                // Add headers for user types if not already added
+                                if (user.Type == "admin" && !adminHeaderAdded)
+                                {
+                                    userInfo.AppendLine("\n--------- Admin Users ---------");
+                                    adminHeaderAdded = true;
+                                }
+                                else if (user.Type == "agency" && !agencyHeaderAdded)
+                                {
+                                    userInfo.AppendLine("\n--------- Agency Users ---------");
+                                    agencyHeaderAdded = true;
+                                }
+                                else if (user.Type == "traveller" && !travellerHeaderAdded)
+                                {
+                                    userInfo.AppendLine("\n--------- Traveller Users ---------");
+                                    travellerHeaderAdded = true;
+                                }
+
+                                // Add user details to the report
+                                userInfo.AppendLine($"ID: {user.Id}, Name: {user.Username}, Email: {user.Email}, Username: {user.Username}, Password: {user.Password}, CPR: {user.Cpr}");
+                            }
+
+                            userInfo.AppendLine($"\n\nTotal Number of Users: {userList.Count}");
+
+                            // Save the report to the selected file
+                            File.WriteAllText(saveFileDialog1.FileName, userInfo.ToString());
+
+                            // Notify the user of success
+                            MessageBox.Show("Report saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle errors during the save process
+                            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            });
+
+            staThread.SetApartmentState(ApartmentState.STA);
+            staThread.Start();
+            staThread.Join(); // Wait for the thread to complete
+        }
+
         #region view user screen 
+        /// <summary>
+        /// Sets up the "View User" screen by displaying the selected user's details and 
+        /// updating the UI based on their type and agency affiliation.
+        /// </summary>
         private void setupViewUser()
         {
+            // Adjust UI panels based on the user type
             if (selectedUser.Type == "traveller" || selectedUser.Type == "admin")
             {
                 mtCompanyNamePanel.Visible = false;
                 mtLastNamePanel.Visible = true;
                 mtFirstNamePanel.Visible = true;
             }
-            else
+            else // User is an agency
             {
                 mtCompanyNamePanel.Visible = true;
                 mtLastNamePanel.Visible = false;
                 mtFirstNamePanel.Visible = false;
             }
 
+            // Show or hide the agency panel based on the user's agency affiliation
             if (selectedUser.AgencyID == null || selectedUser.Type == "agency")
             {
                 mtAgencyPanel.Visible = false;
@@ -5777,6 +6200,7 @@ namespace HappyJourneyAirline.Tabs
                 mtAgencyPanel.Visible = true;
             }
 
+            // Populate the UI fields with the user's information
             mtUserIDTxt.Text = $"{selectedUser.Id:D}";
             mtFnameTxt.Text = selectedUser.FirstName;
             mtLnameTxt.Text = selectedUser.LastName;
@@ -5787,22 +6211,46 @@ namespace HappyJourneyAirline.Tabs
             mtCompanyNamelTxt.Text = $"{selectedUser.CompanyName}";
             mtAgencyIdTxt.Text = $"{selectedUser.AgencyID}";
         }
+
+        /// <summary>
+        /// Handles the "Delete" button click event in the "View User" screen. 
+        /// Prompts the user for confirmation and deletes the account if confirmed.
+        /// </summary>
+        /// <param name="sender">The button triggering the event.</param>
+        /// <param name="e">Event data for the button click event.</param>
         private void mtDeleteBtn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Attention if you delete your account all your information will be deleted and cant be restored", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            // Show a confirmation dialog before deletion
+            DialogResult result = MessageBox.Show(
+                "Attention: If you delete this account, all associated information will be permanently deleted and cannot be restored.",
+                "Confirm Deletion",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning);
+
             if (result == DialogResult.OK)
             {
-                bool val = User.DeleteUser(selectedUser.Id);
-                if (val)
+                // Attempt to delete the user
+                bool isDeleted = User.DeleteUser(selectedUser.Id);
+
+                if (isDeleted)
                 {
+                    // Refresh the user view if deletion is successful
                     users_Click(null, null);
                 }
                 else
                 {
+                    // Notify the user if deletion fails
                     MessageBox.Show("Problem applying changes to the database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
+        /// <summary>
+        /// Handles the "Cancel" button click event in the "View User" screen. 
+        /// Closes or resets the user details view.
+        /// </summary>
+        /// <param name="sender">The button triggering the event.</param>
+        /// <param name="e">Event data for the button click event.</param>
         private void mtCancelBtn_Click(object sender, EventArgs e)
         {
             users_Click(null, null);
@@ -5810,24 +6258,21 @@ namespace HappyJourneyAirline.Tabs
 
         #endregion view user screen
 
-        private void usersDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            foreach (DataGridViewRow row in (sender as DataGridView).Rows)
-            {
-                row.Cells[0].Value = "Edit";
-            }
-        }
 
         #region create user screen
+        /// <summary>
+        /// Sets up the "Create User" screen by initializing the user type dropdown, clearing input fields, 
+        /// and resetting validation error labels.
+        /// </summary>
         private void sutupCreateUserScreen()
         {
+            // Initialize user type dropdown options
             cuUserTypeDrop.Items.Clear();
-
             cuUserTypeDrop.Items.Add("Agency");
             cuUserTypeDrop.Items.Add("Admin");
-
             cuUserTypeDrop.SelectedIndex = 0;
 
+            // Clear input fields
             cuUsernameTxt.Text = string.Empty;
             cuPasswordTxt.Text = string.Empty;
             cuFnameTxt.Text = string.Empty;
@@ -5836,7 +6281,7 @@ namespace HappyJourneyAirline.Tabs
             cuEmailTxt.Text = string.Empty;
             cuPhoneTxt.Text = string.Empty;
 
-
+            // Hide error labels
             cuUserNameErrorLbl.Visible = false;
             cuPasswordErrorLbl.Visible = false;
             cuFCoumpanyNameErrorLbl.Visible = false;
@@ -5844,41 +6289,56 @@ namespace HappyJourneyAirline.Tabs
             cuEmailErrorLbl.Visible = false;
             cuPhoneNumberErrorLbl.Visible = false;
 
+            // Update UI based on the selected user type
             cuUserTypeDrop_SelectedIndexChanged(null, null);
         }
+
+        /// <summary>
+        /// Updates the UI dynamically based on the selected user type in the dropdown (Admin or Agency).
+        /// For Admin, hides company-related fields. For Agency, hides personal name fields.
+        /// </summary>
+        /// <param name="sender">The control triggering the event.</param>
+        /// <param name="e">Event data for the selection change event.</param>
         private void cuUserTypeDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cuUserTypeDrop.SelectedIndex == 1)
+            if (cuUserTypeDrop.SelectedIndex == 1) // Admin selected
             {
-                cuCompanyNamePanel.Visible = false;
-                cuCoumpanyNameTxt.Text = "";
-                cuEmailTxt.Text = $"admin{User.GetAllUsers().Count() + 1}@happy.airlines.org";
-                cuEmailTxt.ReadOnly = true;
-                cuFNamePanel.Visible = true;
-                cuLNamePanel.Visible = true;
+                cuCompanyNamePanel.Visible = false; // Hide company name field
+                cuCoumpanyNameTxt.Text = "";       // Clear company name
+                cuEmailTxt.Text = $"admin{User.GetAllUsers().Count() + 1}@happy.airlines.org"; // Generate admin email
+                cuEmailTxt.ReadOnly = true;        // Make email field read-only
+                cuFNamePanel.Visible = true;      // Show first name field
+                cuLNamePanel.Visible = true;      // Show last name field
             }
-            else
+            else // Agency selected
             {
-                cuCompanyNamePanel.Visible = true;
-                cuFNamePanel.Visible = false;
-                cuLNamePanel.Visible = false;
-                cuFnameTxt.Text = "";
-                cuLnameTxt.Text = "";
-                cuEmailTxt.Text = string.Empty;
-                cuEmailTxt.ReadOnly = false;
-
+                cuCompanyNamePanel.Visible = true; // Show company name field
+                cuFNamePanel.Visible = false;     // Hide first name field
+                cuLNamePanel.Visible = false;     // Hide last name field
+                cuFnameTxt.Text = "";             // Clear first name
+                cuLnameTxt.Text = "";             // Clear last name
+                cuEmailTxt.Text = string.Empty;   // Clear email
+                cuEmailTxt.ReadOnly = false;      // Make email field editable
             }
         }
+
+        /// <summary>
+        /// Handles the "Create User" button click event. Validates input fields, 
+        /// creates a new user (Admin or Agency) based on the selected user type, 
+        /// and saves the user to the database if all inputs are valid.
+        /// </summary>
+        /// <param name="sender">The button triggering the event.</param>
+        /// <param name="e">Event data for the button click event.</param>
         private void cuCreateUserBtn_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            bool isValidData = true;  // Start assuming the data is valid
+            User user = new User(); // New user instance
+            bool isValidData = true; // Flag to track if all inputs are valid
 
-            // Username validation
+            // Validate username
             if (cuUsernameTxt.Text.Trim().Length < 3)
             {
                 ShowError(cuUserNameErrorLbl, "Error: Username must contain at least 3 characters");
-                isValidData = false;  // Mark as invalid if this check fails
+                isValidData = false;
             }
             else
             {
@@ -5886,11 +6346,11 @@ namespace HappyJourneyAirline.Tabs
                 user.Username = cuUsernameTxt.Text.Trim();
             }
 
-            // Password validation
+            // Validate password
             if (cuPasswordTxt.Text.Trim().Length < 6)
             {
                 ShowError(cuPasswordErrorLbl, "Error: Password must contain at least 6 characters");
-                isValidData = false;  // Mark as invalid if this check fails
+                isValidData = false;
             }
             else
             {
@@ -5898,10 +6358,11 @@ namespace HappyJourneyAirline.Tabs
                 user.Password = cuPasswordTxt.Text.Trim();
             }
 
-            if (cuUserTypeDrop.SelectedIndex == 1) // creating admin
+            if (cuUserTypeDrop.SelectedIndex == 1) // Admin user creation
             {
                 user.Type = "admin";
-                // first Name validation
+
+                // Validate first name
                 if (string.IsNullOrEmpty(cuFnameTxt.Text.Trim()))
                 {
                     ShowError(cuFCoumpanyNameErrorLbl, "Error: First name cannot be empty");
@@ -5913,7 +6374,7 @@ namespace HappyJourneyAirline.Tabs
                     user.FirstName = cuFnameTxt.Text.Trim();
                 }
 
-                // last Name validation
+                // Validate last name
                 if (string.IsNullOrEmpty(cuLnameTxt.Text.Trim()))
                 {
                     ShowError(cuLNameErrorLbl, "Error: Last name cannot be empty");
@@ -5925,13 +6386,15 @@ namespace HappyJourneyAirline.Tabs
                     user.LastName = cuLnameTxt.Text.Trim();
                 }
 
-                user.Email = cuEmailTxt.Text.Trim();
+                user.Email = cuEmailTxt.Text.Trim(); // Admin email is pre-populated
             }
-            else // creating agency
+            else // Agency user creation
             {
                 user.Type = "agency";
+
+                // Validate company name
                 string companyName = cuCoumpanyNameTxt.Text.Trim();
-                if (companyName.Count() < 6)
+                if (companyName.Length < 6)
                 {
                     ShowError(cuFCoumpanyNameErrorLbl, "Error: Company name must contain at least 6 characters");
                     isValidData = false;
@@ -5944,36 +6407,34 @@ namespace HappyJourneyAirline.Tabs
                 else
                 {
                     ShowError(cuFCoumpanyNameErrorLbl, string.Empty);
-                    user.CompanyName = cuCoumpanyNameTxt.Text.Trim();
+                    user.CompanyName = companyName;
                 }
 
-                // email validation
-                string txt = cuEmailTxt.Text.Trim().ToLower();
+                // Validate email
+                string email = cuEmailTxt.Text.Trim().ToLower();
                 string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-
-                if (!Regex.IsMatch(txt, emailPattern))
+                if (!Regex.IsMatch(email, emailPattern))
                 {
                     ShowError(cuEmailErrorLbl, "Error: Invalid email.");
                     isValidData = false;
                 }
-                else if (users.Any(u => u.Email.Equals(txt, StringComparison.OrdinalIgnoreCase)))
+                else if (users.Any(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase)))
                 {
-                    ShowError(cuEmailErrorLbl, "Error: Email entered is already in use.");
+                    ShowError(cuEmailErrorLbl, "Error: Email is already in use.");
                     isValidData = false;
                 }
                 else
                 {
                     ShowError(cuEmailErrorLbl, string.Empty);
-                    user.Email = txt;
+                    user.Email = email;
                 }
-
             }
 
-            // phone Number validation
-            string pattern = @"^\+?(\d{1,4})?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}$";
-            Regex regex = new Regex(pattern);
+            // Validate phone number
+            string phonePattern = @"^\+?(\d{1,4})?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}$";
+            Regex phoneRegex = new Regex(phonePattern);
 
-            if (!regex.IsMatch(cuPhoneTxt.Text.Trim()))
+            if (!phoneRegex.IsMatch(cuPhoneTxt.Text.Trim()))
             {
                 ShowError(cuPhoneNumberErrorLbl, "Error: Invalid phone number");
                 isValidData = false;
@@ -5984,6 +6445,7 @@ namespace HappyJourneyAirline.Tabs
                 user.PhoneNumber = cuPhoneTxt.Text.Trim();
             }
 
+            // Save the user if all inputs are valid
             if (isValidData)
             {
                 long result = User.AddUser(user);
@@ -5994,9 +6456,9 @@ namespace HappyJourneyAirline.Tabs
                 }
                 else
                 {
-                    selectedUser = User.GetUserById(result);
-                    setupViewUser();
-                    tabControler.SelectTab(9);
+                    selectedUser = User.GetUserById(result); // Retrieve the created user
+                    setupViewUser();                        // Refresh the user view
+                    tabControler.SelectTab(9);              // Switch to the user view tab
                 }
             }
         }
@@ -6006,224 +6468,92 @@ namespace HappyJourneyAirline.Tabs
 
         #endregion users screen
 
+        #region Settings
+        /// <summary>
+        /// Handles the "Save Changes" button click event in the user settings tab. 
+        /// Validates input fields, updates the current user's information, and displays appropriate messages.
+        /// </summary>
+        /// <param name="sender">The button triggering the event.</param>
+        /// <param name="e">Event data for the button click event.</param>
         private void setSaveChanesBtn_Click(object sender, EventArgs e)
         {
-
+            // Retrieve the current user's ID and details
             long id = AuthService.GetCurrentUserId();
             User currentUser = User.GetUserById(id);
 
-            List<string> list = new List<string>();
-            Boolean valid = true;
-
-            if (setUsernameTxt.Text == "")
-            {
-                list.Add("username");
-                valid = false;
-            }
-
-            if (setFirstNameTxt.Text == "")
-            {
-                list.Add("First Name");
-                valid = false;
-            }
-
-            if (setLastNameTxt.Text == "")
-            {
-                list.Add("Last Name");
-                valid = false;
-            }
-
-            if (setPasswordTxt.Text == "")
-            {
-                list.Add("Password");
-                valid = false;
-            }
-
-            if (setEmailTxt.Text == "")
-            {
-                list.Add("Email");
-                valid = false;
-            }
-
-            if (setPhoneTxt.Text == "")
-            {
-                list.Add("Phone Number");
-                valid = false;
-            }
-
-            if (valid == false)
-            {
-
-                string message = list[0];
-
-                for (int i = 1; i < list.Count(); i++)
-                {
-                    message += " ," + list[i].ToString();
-                }
-
-                setErrorLbl.Visible = true;
-                setErrorLbl.Text = "Error: Please fill the follwing fileds: " + message;
-
-                MessageBox.Show("Error", "All fileds are required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            else
-            {
-
-
-                currentUser.PhoneNumber = setPhoneTxt.Text;
-                currentUser.Username = setUsernameTxt.Text;
-                currentUser.Email = setEmailTxt.Text;
-                currentUser.Password = setPasswordTxt.Text;
-                currentUser.FirstName = setFirstNameTxt.Text;
-                currentUser.LastName = setLastNameTxt.Text;
-                User.UpdateUser(currentUser);
-
-                MessageBox.Show("User Info Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDescription_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btntabCreatenotifications_Paint(object sender, PaintEventArgs e)
-        {
-
-            SqlConnection con = new SqlConnection(Database.connectionString);
-            con.Open();
-            SqlCommand com = con.CreateCommand();
-            com.CommandText = "select f.id , a.name , b.name from flights f , airports a , airports b where f.sourceAirportID = a.Id and f.destinationAirportID = b.Id and (f.flightStatusID = 1 or f.flightStatusID = 2);";
-
-            SqlDataAdapter ad = new SqlDataAdapter(com);
-            DataTable dt = new DataTable();
-            ad.Fill(dt);
-
-            comboBoxFlights.Items.Clear();
-            comboBoxFlights.Items.Add(" ");
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-
-                string id = dt.Rows[i]["id"].ToString();                // Flight ID
-                string sourceAirport = dt.Rows[i]["name"].ToString();  // Source airport name
-                string destinationAirport = dt.Rows[i]["name"].ToString(); // Destination airport name
-
-                // Add a readable format to the comboBox
-                comboBoxFlights.Items.Add($"ID: {id}   {sourceAirport} --> {destinationAirport}");
-
-                notificationFlights.Add(long.Parse(id));
-            }
-
-
-
-            con.Close();
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
+            List<string> missingFields = new List<string>(); // Tracks missing required fields
             bool valid = true;
 
-            if (txtTitle.Text == "")
+            // Validate each input field and add missing fields to the list
+            if (string.IsNullOrWhiteSpace(setUsernameTxt.Text))
             {
-                lblErrorTitle.Text = "Title is required";
+                missingFields.Add("Username");
                 valid = false;
+            }
+            if (string.IsNullOrWhiteSpace(setFirstNameTxt.Text))
+            {
+                missingFields.Add("First Name");
+                valid = false;
+            }
+            if (string.IsNullOrWhiteSpace(setLastNameTxt.Text))
+            {
+                missingFields.Add("Last Name");
+                valid = false;
+            }
+            if (string.IsNullOrWhiteSpace(setPasswordTxt.Text))
+            {
+                missingFields.Add("Password");
+                valid = false;
+            }
+            if (string.IsNullOrWhiteSpace(setEmailTxt.Text))
+            {
+                missingFields.Add("Email");
+                valid = false;
+            }
+            if (string.IsNullOrWhiteSpace(setPhoneTxt.Text))
+            {
+                missingFields.Add("Phone Number");
+                valid = false;
+            }
+
+            if (!valid)
+            {
+                // Display error for missing fields
+                string message = string.Join(", ", missingFields);
+                setErrorLbl.Visible = true;
+                setErrorLbl.Text = $"Error: Please fill the following fields: {message}";
+
+                MessageBox.Show("All fields are required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                lblErrorTitle.Text = "";
+                // Update user details if all inputs are valid
+                currentUser.Username = setUsernameTxt.Text;
+                currentUser.FirstName = setFirstNameTxt.Text;
+                currentUser.LastName = setLastNameTxt.Text;
+                currentUser.Email = setEmailTxt.Text;
+                currentUser.Password = setPasswordTxt.Text;
+                currentUser.PhoneNumber = setPhoneTxt.Text;
+
+                User.UpdateUser(currentUser); // Save changes to the database
+
+                MessageBox.Show("User information saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            if (txtDescription.Text == "")
-            {
-                lblErrorDescription.Text = "Description is required";
-                valid = false;
-            }
-            else
-            {
-                lblErrorDescription.Text = "";
-            }
-
-            if (comboBoxFlights.SelectedItem == null)
-            {
-                lblErrorFlight.Text = "Flight is required";
-                valid = false;
-            }
-            else
-            {
-                lblErrorFlight.Text = "";
-            }
-
-            if (comboBoxType.SelectedItem == null)
-            {
-                lblErrorType.Text = "Type is required";
-                valid = false;
-            }
-            else
-            {
-                lblErrorType.Text = "";
-
-            }
-
-            if (valid)
-            {
-
-                List<Ticket> ticketsList = Ticket.GetTicketsByFlightId(notificationFlights[comboBoxFlights.SelectedIndex]);
-
-                foreach (Ticket t in ticketsList) {
-                    Notification notification =
-                        new NotificationBuilder()
-                        .SetTitle(txtTitle.Text.Trim())
-                        .SetDescription(txtDescription.Text.Trim())
-                        .SetSource("Admin")
-                        .SetType(comboBoxType.SelectedItem.ToString())
-                        .SetUserId(t.UserID)
-                        .GetResult();
-
-                    Notification.AddNotification(notification);
-                }
-
-                MessageBox.Show("All the notifications sends to the users sucssfuly", "Notification sends", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                txtTitle.Text = "";
-                txtDescription.Text = "";
-                comboBoxFlights.SelectedIndex = 0;
-                comboBoxType.SelectedIndex = 0;
-
-            }
-
-
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            tabControler.SelectTab(12);
-            defultIcons();
-        }
-
-        private void addNotifications_Click(object sender, EventArgs e)
-        {
-            tabControler.SelectTab(12);
-        }
-
-        //load the user information on the textfileds in event of clicking the settings tab
+        /// <summary>
+        /// Handles the Paint event for the traveller settings tab. 
+        /// Loads and displays the current user's information in the appropriate input fields.
+        /// </summary>
+        /// <param name="sender">The control triggering the event.</param>
+        /// <param name="e">Event data for the Paint event.</param>
         private void travellerSettingsTab_Paint(object sender, PaintEventArgs e)
         {
+            // Retrieve the current user's ID and details
             long id = AuthService.GetCurrentUserId();
             User currentUser = User.GetUserById(id);
 
+            // Populate the input fields with the user's information
             setUsernameTxt.Text = currentUser.Username;
             setFirstNameTxt.Text = currentUser.FirstName;
             setLastNameTxt.Text = currentUser.LastName;
@@ -6232,12 +6562,17 @@ namespace HappyJourneyAirline.Tabs
             setPhoneTxt.Text = currentUser.PhoneNumber;
         }
 
+        /// <summary>
+        /// Handles the "Backup" button click event. 
+        /// Opens a folder browser dialog for the user to select a folder and creates a backup of the database.
+        /// </summary>
+        /// <param name="sender">The button triggering the event.</param>
+        /// <param name="e">Event data for the button click event.</param>
         private void btnBackup_Click(object sender, EventArgs e)
         {
+            string selectedPath = null; // Stores the selected folder path
 
-            string selectedPath = null;
-
-            // Create an STA thread for the FolderBrowserDialog
+            // Run the folder browser dialog in an STA thread
             Thread staThread = new Thread(() =>
             {
                 using (FolderBrowserDialog folderDlg = new FolderBrowserDialog())
@@ -6253,225 +6588,393 @@ namespace HappyJourneyAirline.Tabs
                 }
             });
 
-            // Set the thread to STA and start it
             staThread.SetApartmentState(ApartmentState.STA);
             staThread.Start();
             staThread.Join(); // Wait for the thread to complete
 
             if (!string.IsNullOrEmpty(selectedPath))
             {
-                // the file formate 
+                // Generate a timestamped filename for the backup
                 string timestamp = DateTime.Now.ToString("ddMMyyyy_HHmmss");
-
-                // Construct the filename with the formatted date and time
                 string filename = $"HappyJourneyAirline_DB_Backup_{timestamp}.bak";
 
-
-                // Call the backup method with the generated filename
+                // Call the database backup method with the selected folder path
                 Database.BackupDatabase(filename, selectedPath);
 
-                MessageBox.Show($"Selected folder for the backup file: {selectedPath}", "Folder Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Notify the user of the successful backup
+                MessageBox.Show($"Backup saved to: {selectedPath}", "Backup Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
+        #endregion Settings
 
+        #region Notificaion 
+        /// <summary>
+        /// Handles the Paint event for the "Create Notifications" button. 
+        /// Populates the flights combo box with a list of flights that have specific statuses 
+        /// (e.g., flight statuses Scheduled or Boarding).
+        /// </summary>
+        /// <param name="sender">The control triggering the event.</param>
+        /// <param name="e">Event data for the Paint event.</param>
+        private void btntabCreatenotifications_Paint(object sender, PaintEventArgs e)
+        {
+            // Open a connection to the database
+            SqlConnection con = new SqlConnection(Database.connectionString);
+            con.Open();
+
+            // Query to fetch flight data with specific statuses
+            SqlCommand com = con.CreateCommand();
+            com.CommandText = @"
+        SELECT f.id, a.name AS SourceName, b.name AS DestinationName
+        FROM flights f
+        JOIN airports a ON f.sourceAirportID = a.Id
+        JOIN airports b ON f.destinationAirportID = b.Id
+        WHERE f.flightStatusID = 1 OR f.flightStatusID = 2";
+
+            // Execute the query and fetch results into a DataTable
+            SqlDataAdapter ad = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            ad.Fill(dt);
+
+            // Clear existing items and add an empty selection
+            comboBoxFlights.Items.Clear();
+            comboBoxFlights.Items.Add(" ");
+
+            // Populate the combo box with flight data
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                string id = dt.Rows[i]["id"].ToString();                   // Flight ID
+                string sourceAirport = dt.Rows[i]["SourceName"].ToString(); // Source airport name
+                string destinationAirport = dt.Rows[i]["DestinationName"].ToString(); // Destination airport name
+
+                // Add a readable format for the flight in the combo box
+                comboBoxFlights.Items.Add($"ID: {id}   {sourceAirport} --> {destinationAirport}");
+
+                // Keep track of flight IDs for notifications
+                notificationFlights.Add(long.Parse(id));
             }
 
+            con.Close(); // Close the database connection
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the click event for the "Create Notification" button. 
+        /// Validates user inputs, generates notifications for the selected flight, and sends them to users.
+        /// </summary>
+        /// <param name="sender">The button triggering the event.</param>
+        /// <param name="e">Event data for the button click event.</param>
+        private void createNotificationBtn_Click(object sender, EventArgs e)
         {
+            bool valid = true; // Track overall validation status
 
-            Thread staThread = new Thread(() =>
+            // Validate the title field
+            if (string.IsNullOrWhiteSpace(txtTitle.Text))
             {
-                using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
+                lblErrorTitle.Text = "Title is required";
+                valid = false;
+            }
+            else
+            {
+                lblErrorTitle.Text = "";
+            }
+
+            // Validate the description field
+            if (string.IsNullOrWhiteSpace(txtDescription.Text))
+            {
+                lblErrorDescription.Text = "Description is required";
+                valid = false;
+            }
+            else
+            {
+                lblErrorDescription.Text = "";
+            }
+
+            // Validate the flight selection
+            if (comboBoxFlights.SelectedItem == null || comboBoxFlights.SelectedIndex == 0)
+            {
+                lblErrorFlight.Text = "Flight is required";
+                valid = false;
+            }
+            else
+            {
+                lblErrorFlight.Text = "";
+            }
+
+            // Validate the type selection
+            if (comboBoxType.SelectedItem == null)
+            {
+                lblErrorType.Text = "Type is required";
+                valid = false;
+            }
+            else
+            {
+                lblErrorType.Text = "";
+            }
+
+            // Proceed if all inputs are valid
+            if (valid)
+            {
+                // Retrieve tickets associated with the selected flight
+                long selectedFlightId = notificationFlights[comboBoxFlights.SelectedIndex - 1];
+                List<Ticket> ticketsList = Ticket.GetTicketsByFlightId(selectedFlightId);
+
+                // Create and send notifications for each ticket
+                foreach (Ticket t in ticketsList)
                 {
-                    saveFileDialog1.Filter = "Text File |*.txt";
-                    saveFileDialog1.Title = "Save User Report";
-                    saveFileDialog1.FileName = "UserReport.txt";
+                    Notification notification =
+                        new NotificationBuilder()
+                        .SetTitle(txtTitle.Text.Trim())
+                        .SetDescription(txtDescription.Text.Trim())
+                        .SetSource("Admin")
+                        .SetType(comboBoxType.SelectedItem.ToString())
+                        .SetUserId(t.UserID)
+                        .GetResult();
 
-                    // Show the dialog and process the save if a file name is provided
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
+                    Notification.AddNotification(notification);
+                }
+
+                // Notify the user of success
+                MessageBox.Show("All notifications have been sent successfully to the users.", "Notifications Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Clear input fields and reset selections
+                txtTitle.Text = "";
+                txtDescription.Text = "";
+                comboBoxFlights.SelectedIndex = 0;
+                comboBoxType.SelectedIndex = 0;
+            }
+        }
+        #endregion
+
+
+        #region Planes
+        /// <summary>
+        /// Sets up the initial view for managing planes by binding the data grid to the list of planes 
+        /// and clearing any existing error messages or input fields.
+        /// </summary>
+        private void setupViewPlanes()
+        {
+            // Bind the list of planes to the DataGridView
+            planes = new BindingList<Plane>(Plane.GetAllPlanes());
+            planesDataGridView.DataSource = planes;
+
+            // Clear error labels
+            ShowError(cpModelErrorLbl, string.Empty);
+            ShowError(cpCapacityErrorLbl, string.Empty);
+
+            // Reset input fields
+            cpModelTxt.Text = "";
+            cpCapacityTxt.Text = "";
+        }
+
+        /// <summary>
+        /// Handles cell click events in the planes DataGridView. If the "Delete" button is clicked, 
+        /// prompts the user for confirmation and deletes the selected plane if confirmed.
+        /// </summary>
+        /// <param name="sender">The DataGridView control where the event occurred.</param>
+        /// <param name="e">Event data containing the clicked cell's row and column indices.</param>
+        private void planesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if the clicked column is the "Delete" button column
+            if (e.ColumnIndex == 0)
+            {
+                // Get the selected plane from the DataGridView
+                selectedPlane = planesDataGridView.Rows[e.RowIndex].DataBoundItem as Plane;
+
+                // Prompt the user for confirmation
+                DialogResult result = MessageBox.Show(
+                    $"Are you sure you want to delete plane {selectedPlane.Id}? Deleting it will remove all related information.",
+                    "Confirm Deletion",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning);
+
+                if (result == DialogResult.OK)
+                {
+                    // Attempt to delete the plane
+                    if (Plane.DeletePlane(selectedPlane.Id))
                     {
-                        try
-                        {
-                            // Step 1: Retrieve the list of users
-                            List<User> userList = User.GetAllUsers();
-
-                            // Step 2: Create the content for the file
-                            StringBuilder userInfo = new StringBuilder();
-                            userInfo.AppendLine("User Report");
-                            userInfo.AppendLine("--------------------------");
-                            bool adminHeaderAdded = false;
-                            bool travellerHeaderAdded = false;
-                            bool agencyHeaderAdded = false;
-
-                            foreach (var user in userList)
-                            {
-                                if (user.Type == "admin" && !adminHeaderAdded)
-                                {
-                                    userInfo.AppendLine("");
-                                    userInfo.AppendLine("--------- Admin Users ---------");
-                                    adminHeaderAdded = true;
-                                }
-                                else if (user.Type == "agency" && !agencyHeaderAdded)
-                                {
-                                    userInfo.AppendLine("");
-                                    userInfo.AppendLine("--------- Employeer Users ---------");
-                                    agencyHeaderAdded = true;
-                                }
-                                else if (user.Type == "traveller" && !travellerHeaderAdded)
-                                {
-                                    userInfo.AppendLine("");
-                                    userInfo.AppendLine("--------- Traveller Users ---------");
-                                    travellerHeaderAdded = true;
-                                }
-
-                                userInfo.AppendLine($"ID: {user.Id}, Name: {user.Username}, Email: {user.Email}, Username: {user.Username}, Password: {user.Password}, CPR: {user.Cpr}");
-                            }
-
-
-                            userInfo.AppendLine("\n\nTotal Number of Users: " + userList.Count);
-                            // Step 3: Write the content to the selected file
-                            File.WriteAllText(saveFileDialog1.FileName, userInfo.ToString());
-
-                            // Step 4: Notify the user of success
-                            MessageBox.Show("Report saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle any errors during the save process
-                            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        // Refresh the plane list after deletion
+                        planes = new BindingList<Plane>(Plane.GetAllPlanes());
+                        planesDataGridView.DataSource = planes;
+                    }
+                    else
+                    {
+                        // Notify the user if the deletion fails
+                        MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            });
-
-            staThread.SetApartmentState(ApartmentState.STA);
-            staThread.Start();
-            staThread.Join(); // Wait for the thread to complete
-
+            }
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the data binding complete event for the planes DataGridView by setting 
+        /// the first column's value to "Delete" for all rows.
+        /// </summary>
+        /// <param name="sender">The DataGridView control whose data binding is complete.</param>
+        /// <param name="e">Event data for the data binding completion event.</param>
+        private void planesDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            Thread staThread = new Thread(() =>
+            // Set the text for the "Delete" button in each row
+            foreach (DataGridViewRow row in (sender as DataGridView).Rows)
             {
-                using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
-                {
-                    saveFileDialog1.Filter = "Text File |*.txt";
-                    saveFileDialog1.Title = "Save User Report";
-                    saveFileDialog1.FileName = "LocationsReport.txt";
-
-                    // Show the dialog and process the save if a file name is provided
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
-                    {
-                        try
-                        {
-                            // Step 1: Retrieve the list of users
-                            List<City> cityList = City.GetAllCities();
-                            List<Country> countriesList = Country.GetAllCountries();
-                            List<Airport> airportList = Airport.GetAllAirports();
-
-                            // Step 2: Create the content for the file
-                            StringBuilder locationInfo = new StringBuilder();
-                            locationInfo.AppendLine("Locations Report");
-                            locationInfo.AppendLine("--------------------------------\n\n");
-
-
-
-                            locationInfo.AppendLine("--------- Country ---------");
-                            foreach (var country in countriesList)
-                            {
-                                locationInfo.AppendLine($"Country ID: {country.Id}, Country Name: {country.Name}");
-                            }
-
-
-                            locationInfo.AppendLine("--------- City ---------");
-                            foreach (var city in cityList)
-                            {
-                                locationInfo.AppendLine($"City ID: {city.Id}, City Name: {city.Name}, Country ID: {city.CountryId}");
-                            }
-
-                            locationInfo.AppendLine("--------- Airport ---------");
-                            foreach (var airport in airportList)
-                            {
-                                locationInfo.AppendLine($"Airport ID: {airport.Id}, Airport Name: {airport.Name}, City ID: {airport.CityId}");
-                            }
-
-
-                            locationInfo.AppendLine("\n\nTotal Number of Country: " + countriesList.Count);
-                            locationInfo.AppendLine("\n\nTotal Number of City: " + cityList.Count);
-                            locationInfo.AppendLine("\n\nTotal Number of Airport: " + airportList.Count);
-
-                            // Step 3: Write the content to the selected file
-                            File.WriteAllText(saveFileDialog1.FileName, locationInfo.ToString());
-
-                            // Step 4: Notify the user of success
-                            MessageBox.Show("Report saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle any errors during the save process
-                            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            });
-
-            staThread.SetApartmentState(ApartmentState.STA);
-            staThread.Start();
-            staThread.Join(); // Wait for the thread to complete
-
+                row.Cells[0].Value = "Delete";
+            }
         }
 
-        private void bookingTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Handles the creation of a new plane. Validates the input fields, shows errors if validation fails, 
+        /// and adds the plane to the database if validation succeeds.
+        /// </summary>
+        /// <param name="sender">The button control that triggered the event.</param>
+        /// <param name="e">Event data for the button click event.</param>
+        private void createPlaneBtn_Click(object sender, EventArgs e)
         {
-            var senderGrid = (DataGridView)sender;
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
-            {
-                //TODO - Button Clicked - Execute Code Here
-                int Ticketid = Convert.ToInt32(bookingTable.Rows[e.RowIndex].Cells[0].Value);
+            bool isValid = true; // Track overall validation status
+            string txt = cpModelTxt.Text.Trim(); // Get the plane model input
 
-                Ticket ticket = Ticket.GetTicketById(Ticketid);
+            // Validate the plane model name
+            if (txt.Length != 5)
+            {
+                ShowError(cpModelErrorLbl, "Error: Plane model name should contain exactly 5 characters.");
+                isValid = false;
+            }
+            else
+            {
+                ShowError(cpModelErrorLbl, string.Empty); // Clear error if validation passes
+            }
+
+            // Validate the plane capacity
+            int cap = 0;
+            bool val = int.TryParse(cpCapacityTxt.Text, out cap);
+            if (!val)
+            {
+                ShowError(cpCapacityErrorLbl, "Error: Plane capacity number is too big.");
+                isValid = false;
+            }
+            else if (cap == 0)
+            {
+                ShowError(cpCapacityErrorLbl, "Error: Plane capacity cannot be 0.");
+                isValid = false;
+            }
+            else
+            {
+                ShowError(cpCapacityErrorLbl, string.Empty); // Clear error if validation passes
+            }
+
+            // Exit if validation fails
+            if (!isValid) { return; }
+
+            // Add the new plane to the database
+            if (Plane.AddPlane(new Plane { Capacity = cap, Model = txt }) != -1)
+            {
+                // Refresh the plane list and reset input fields
+                planes = new BindingList<Plane>(Plane.GetAllPlanes());
+                planesDataGridView.DataSource = planes;
+                cpModelTxt.Text = "";
+                cpCapacityTxt.Text = "";
+            }
+            else
+            {
+                // Notify the user if adding the plane fails
+                MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles changes to the plane capacity input field, ensuring it is never empty or invalid.
+        /// </summary>
+        /// <param name="sender">The TextBox control where the text change occurred.</param>
+        /// <param name="e">Event data for the text change event.</param>
+        private void cpCapacityTxt_TextChanged(object sender, EventArgs e)
+        {
+            // Ensure the input is not empty by setting a default value of "0"
+            if (string.IsNullOrEmpty((sender as TextBox).Text))
+            {
+                (sender as TextBox).Text = "0";
+                (sender as TextBox).SelectionStart = (sender as TextBox).Text.Length; // Move cursor to the end
+            }
+        }
+        #endregion Planes
+
+
+        #region Bookings
+        /// <summary>
+        /// Loads the booking table with ticket information, including source and destination airports,
+        /// flight details, and other relevant information.
+        /// </summary>
+        private void loadBookingTable()
+        {
+            bookingTable.Rows.Clear(); // Clear existing rows
+
+            List<Ticket> tickets = Ticket.GetAllTickets(); // Fetch all tickets
+
+            foreach (Ticket ticket in tickets)
+            {
+                // Fetch related flight, source, and destination data
                 Flight flight = Flight.GetFlightById(ticket.FlightID);
-
-                string dep = flight.DepartureTimestamp.ToString();
-                string arr = flight.ArrivalTimestamp.ToString();
-
                 Airport source = Airport.GetAirportById(flight.SourceAirportID);
                 Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
 
+                // Add the ticket to the booking table
+                bookingTable.Rows.Add("Edit", ticket.Id, source.Name, destination.Name, flight.DepartureTimestamp);
+            }
+        }
+
+        /// <summary>
+        /// Handles the click event for the cells in the booking table. 
+        /// If the "View Details" button is clicked, it fetches detailed information about the ticket 
+        /// and related entities and populates the details section.
+        /// </summary>
+        /// <param name="sender">The DataGridView control that triggered the event.</param>
+        /// <param name="e">Event data containing information about the clicked cell.</param>
+        private void bookingTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0) // Edit button column
+            {
+                // Fetch the ticket and flight details
+                int Ticketid = Convert.ToInt32(bookingTable.Rows[e.RowIndex].Cells[1].Value);
+                Ticket ticket = Ticket.GetTicketById(Ticketid);
+                Flight flight = Flight.GetFlightById(ticket.FlightID);
+
+                // Fetch additional information about airports, cities, and countries
+                Airport source = Airport.GetAirportById(flight.SourceAirportID);
+                Airport destination = Airport.GetAirportById(flight.DestinationAirportID);
                 City sourceCity = City.GetCityById(source.CityId);
                 City destinationCity = City.GetCityById(destination.CityId);
                 Country sourceCountry = Country.GetCountryById(sourceCity.CountryId);
                 Country destinationCountry = Country.GetCountryById(destinationCity.CountryId);
 
-                bdUsrTypeLbl.Text = $"{User.GetUserById(ticket.UserID).Type.ToString()} ID: ";
+                // Populate details fields
+                bdUsrTypeLbl.Text = $"{User.GetUserById(ticket.UserID).Type} ID: ";
                 bdUsrIDLbl.Text = ticket.UserID.ToString();
-
                 bdIDTxt.Text = ticket.Id.ToString();
                 bdFlightNumTxt.Text = ticket.FlightID.ToString();
-                bdDateTxt.Text = dep.Split(' ')[0];
-                bdDepTimeTxt.Text = dep;
-                bdArrTimeTxt.Text = arr;
-                bdFromTxt.Text = sourceCity.Name.ToString() + " (" + sourceCountry.Name.ToString() + ")";
-                bdToTxt.Text = destinationCity.Name.ToString() + " (" + destinationCountry.Name.ToString() + ")";
-                bdDepTxt.Text = source.Name.ToString();
-                bdArrTxt.Text = destination.Name.ToString();
-                tabControler.SelectTab(4);
+                bdDateTxt.Text = flight.DepartureTimestamp.ToString("yyyy-MM-dd");
+                bdDepTimeTxt.Text = flight.DepartureTimestamp.ToString();
+                bdArrTimeTxt.Text = flight.ArrivalTimestamp.ToString();
+                bdFromTxt.Text = $"{sourceCity.Name} ({sourceCountry.Name})";
+                bdToTxt.Text = $"{destinationCity.Name} ({destinationCountry.Name})";
+                bdDepTxt.Text = source.Name;
+                bdArrTxt.Text = destination.Name;
+
+                tabControler.SelectTab((int)Tabs.BookingDetails); // Switch to the details tab
+
             }
         }
 
+        /// <summary>
+        /// Handles the "Cancel" button click event to delete a ticket. 
+        /// Prompts the user for confirmation before deleting and provides feedback on success or failure.
+        /// </summary>
+        /// <param name="sender">The control that triggered the event.</param>
+        /// <param name="e">Event data for the click event.</param>
         private void bdCancelBtn_Click(object sender, EventArgs e)
         {
-            // Validate input and parse Ticket ID
             if (!int.TryParse(bdIDTxt.Text, out int ticketId) || ticketId <= 0)
             {
                 MessageBox.Show("Please enter a valid Ticket ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Confirm deletion with the user
             var confirmResult = MessageBox.Show(
                 $"Are you sure you want to delete Ticket ID {ticketId}?",
                 "Confirm Deletion",
@@ -6482,14 +6985,11 @@ namespace HappyJourneyAirline.Tabs
             {
                 try
                 {
-                    // Attempt to delete the ticket
-                    bool isDeleted = Ticket.DeleteTicket(ticketId);
-
-                    if (isDeleted)
+                    if (Ticket.DeleteTicket(ticketId))
                     {
                         MessageBox.Show("Ticket deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadBookingTable();
-                        tabControler.SelectTab(1);
+                        tabControler.SelectTab(1); // Return to the booking tab
                     }
                     else
                     {
@@ -6498,7 +6998,6 @@ namespace HappyJourneyAirline.Tabs
                 }
                 catch (Exception ex)
                 {
-                    // Handle any unexpected errors
                     MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -6507,112 +7006,7 @@ namespace HappyJourneyAirline.Tabs
                 MessageBox.Show("Deletion cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        #endregion Bookings
 
-        #region Planes
-        private void setupViewPlanes()
-        {
-            planes = new BindingList<Plane>(Plane.GetAllPlanes());
-            planesDataGridView.DataSource = planes;
-
-            ShowError(cpModelErrorLbl, string.Empty);
-            ShowError(cpCapacityErrorLbl, string.Empty);
-
-            cpModelTxt.Text = "";
-            cpCapacityTxt.Text = "";
-        }
-        private void planesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                selectedPlane = planesDataGridView.Rows[e.RowIndex].DataBoundItem as Plane;
-                DialogResult result = MessageBox.Show($"Are you sure you want to delete plane {selectedPlane.Id}, deleting it will result in all related information being deleted too.", "Are you sure?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.OK)
-                {
-                    if (Plane.DeletePlane(selectedPlane.Id))
-                    {
-                        planes = new BindingList<Plane>(Plane.GetAllPlanes());
-                        planesDataGridView.DataSource = planes;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-
-        }
-        private void planesDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            foreach (DataGridViewRow row in (sender as DataGridView).Rows)
-            {
-                row.Cells[0].Value = "Delete";
-            }
-
-        }
-
-        private void createPlaneBtn_Click(object sender, EventArgs e)
-        {
-            bool isValid = true;
-            string txt = cpModelTxt.Text.Trim();
-
-            if (txt.Length != 5)
-            {
-                ShowError(cpModelErrorLbl, "Error: Plane model name can should contain 5 charecters");
-                isValid = false;
-            }
-            else
-            {
-                ShowError(cpModelErrorLbl, string.Empty);
-            }
-
-            int cap = 0;
-            bool val = int.TryParse(cpCapacityTxt.Text, out cap);
-            if (!val)
-            {
-                ShowError(cpCapacityErrorLbl, "Error: Plane Capacity number is too big");
-                isValid = false;
-            }
-            else if (cap == 0)
-            {
-                ShowError(cpCapacityErrorLbl, "Error: Plane capacity canot be 0");
-                isValid = false;
-            }
-            else
-            {
-                ShowError(cpCapacityErrorLbl, string.Empty);
-
-            }
-
-
-            if (!isValid) { return; }
-            if (Plane.AddPlane(new Plane { Capacity = cap, Model = txt }) != -1)
-            {
-                planes = new BindingList<Plane>(Plane.GetAllPlanes());
-                planesDataGridView.DataSource = planes;
-                cpModelTxt.Text = "";
-                cpCapacityTxt.Text = "";
-            }
-            else
-            {
-                MessageBox.Show("Problem saving to database, try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void cpCapacityTxt_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty((sender as TextBox).Text))
-            {
-                (sender as TextBox).Text = "0";
-                (sender as TextBox).SelectionStart = (sender as TextBox).Text.Length;
-            }
-
-        }
-        #endregion Planes
-
-        private void logOutIcon_Click(object sender, EventArgs e)
-        {
-            AuthService.LogoutCurrentUser();
-            appTabs.SelectTab(0);
-        }
     }
 }
