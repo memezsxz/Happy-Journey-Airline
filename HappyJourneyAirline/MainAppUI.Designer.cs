@@ -48,6 +48,7 @@
             System.Windows.Forms.PictureBox pictureBox3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainAppUI));
             this.registerTab = new System.Windows.Forms.TabPage();
+            this.registerValidationMessage = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.phoneNumberRegisterInput = new System.Windows.Forms.TextBox();
             this.emailRegisterInput = new System.Windows.Forms.TextBox();
@@ -57,6 +58,7 @@
             this.registerUsernameInput = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.loginTab = new System.Windows.Forms.TabPage();
+            this.loginValidationMessage = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -65,8 +67,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.appTabs = new System.Windows.Forms.TabControl();
-            this.loginValidationMessage = new System.Windows.Forms.Label();
-            this.registerValidationMessage = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -86,11 +86,11 @@
             label10 = new System.Windows.Forms.Label();
             pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
-            this.registerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pictureBox3)).BeginInit();
+            this.registerTab.SuspendLayout();
             this.loginTab.SuspendLayout();
             this.mainMenuTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(pictureBox3)).BeginInit();
             this.appTabs.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,37 +146,6 @@
             label1.Size = new System.Drawing.Size(276, 24);
             label1.TabIndex = 3;
             label1.Text = "Welcome To Happy Journey";
-            // 
-            // registerTab
-            // 
-            this.registerTab.BackColor = System.Drawing.Color.White;
-            this.registerTab.Controls.Add(this.registerValidationMessage);
-            this.registerTab.Controls.Add(label20);
-            this.registerTab.Controls.Add(label19);
-            this.registerTab.Controls.Add(label18);
-            this.registerTab.Controls.Add(label17);
-            this.registerTab.Controls.Add(label16);
-            this.registerTab.Controls.Add(label15);
-            this.registerTab.Controls.Add(this.label9);
-            this.registerTab.Controls.Add(label8);
-            this.registerTab.Controls.Add(this.phoneNumberRegisterInput);
-            this.registerTab.Controls.Add(this.emailRegisterInput);
-            this.registerTab.Controls.Add(this.lastNameRegisterInput);
-            this.registerTab.Controls.Add(this.firstNameRegisterInput);
-            this.registerTab.Controls.Add(this.passwordRegisterInput);
-            this.registerTab.Controls.Add(this.registerUsernameInput);
-            this.registerTab.Controls.Add(pictureBox2);
-            this.registerTab.Controls.Add(label3);
-            this.registerTab.Controls.Add(this.button2);
-            this.registerTab.Controls.Add(label4);
-            this.registerTab.Location = new System.Drawing.Point(4, 22);
-            this.registerTab.Margin = new System.Windows.Forms.Padding(5);
-            this.registerTab.Name = "registerTab";
-            this.registerTab.Padding = new System.Windows.Forms.Padding(3);
-            this.registerTab.Size = new System.Drawing.Size(918, 716);
-            this.registerTab.TabIndex = 1;
-            this.registerTab.Text = "Register";
-            this.registerTab.Click += new System.EventHandler(this.registerTab_Click);
             // 
             // label20
             // 
@@ -238,6 +207,125 @@
             label15.TabIndex = 18;
             label15.Text = "Username";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = System.Drawing.Color.Transparent;
+            label8.ForeColor = System.Drawing.SystemColors.ControlDark;
+            label8.Location = new System.Drawing.Point(324, 535);
+            label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(261, 13);
+            label8.TabIndex = 16;
+            label8.Text = "By using our system you accept the Terms & Conditions";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = global::HappyJourneyAirline.Properties.Resources.logo;
+            pictureBox2.Location = new System.Drawing.Point(369, 22);
+            pictureBox2.Margin = new System.Windows.Forms.Padding(5);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(150, 157);
+            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(106)))), ((int)(((byte)(106)))));
+            label3.Location = new System.Drawing.Point(350, 241);
+            label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(205, 13);
+            label3.TabIndex = 10;
+            label3.Text = "Please Fill details below to create account";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.Location = new System.Drawing.Point(309, 201);
+            label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(276, 24);
+            label4.TabIndex = 9;
+            label4.Text = "Welcome To Happy Journey";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.ForeColor = System.Drawing.Color.Gray;
+            label21.Location = new System.Drawing.Point(373, 502);
+            label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(138, 13);
+            label21.TabIndex = 6;
+            label21.Text = "All Rights Reserved @2024";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label10.Location = new System.Drawing.Point(367, 340);
+            label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(151, 24);
+            label10.TabIndex = 5;
+            label10.Text = "Happy Journey";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = global::HappyJourneyAirline.Properties.Resources.logo;
+            pictureBox3.Location = new System.Drawing.Point(367, 180);
+            pictureBox3.Margin = new System.Windows.Forms.Padding(5);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new System.Drawing.Size(150, 157);
+            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            pictureBox3.TabIndex = 1;
+            pictureBox3.TabStop = false;
+            // 
+            // registerTab
+            // 
+            this.registerTab.BackColor = System.Drawing.Color.White;
+            this.registerTab.Controls.Add(this.registerValidationMessage);
+            this.registerTab.Controls.Add(label20);
+            this.registerTab.Controls.Add(label19);
+            this.registerTab.Controls.Add(label18);
+            this.registerTab.Controls.Add(label17);
+            this.registerTab.Controls.Add(label16);
+            this.registerTab.Controls.Add(label15);
+            this.registerTab.Controls.Add(this.label9);
+            this.registerTab.Controls.Add(label8);
+            this.registerTab.Controls.Add(this.phoneNumberRegisterInput);
+            this.registerTab.Controls.Add(this.emailRegisterInput);
+            this.registerTab.Controls.Add(this.lastNameRegisterInput);
+            this.registerTab.Controls.Add(this.firstNameRegisterInput);
+            this.registerTab.Controls.Add(this.passwordRegisterInput);
+            this.registerTab.Controls.Add(this.registerUsernameInput);
+            this.registerTab.Controls.Add(pictureBox2);
+            this.registerTab.Controls.Add(label3);
+            this.registerTab.Controls.Add(this.button2);
+            this.registerTab.Controls.Add(label4);
+            this.registerTab.Location = new System.Drawing.Point(4, 22);
+            this.registerTab.Margin = new System.Windows.Forms.Padding(5);
+            this.registerTab.Name = "registerTab";
+            this.registerTab.Padding = new System.Windows.Forms.Padding(3);
+            this.registerTab.Size = new System.Drawing.Size(918, 716);
+            this.registerTab.TabIndex = 1;
+            this.registerTab.Text = "Register";
+            this.registerTab.Click += new System.EventHandler(this.registerTab_Click);
+            // 
+            // registerValidationMessage
+            // 
+            this.registerValidationMessage.AutoSize = true;
+            this.registerValidationMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerValidationMessage.ForeColor = System.Drawing.Color.Red;
+            this.registerValidationMessage.Location = new System.Drawing.Point(271, 459);
+            this.registerValidationMessage.Name = "registerValidationMessage";
+            this.registerValidationMessage.Size = new System.Drawing.Size(0, 15);
+            this.registerValidationMessage.TabIndex = 24;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -250,18 +338,6 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Already Have Account ?";
             this.label9.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = System.Drawing.Color.Transparent;
-            label8.ForeColor = System.Drawing.SystemColors.ControlDark;
-            label8.Location = new System.Drawing.Point(324, 535);
-            label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(261, 13);
-            label8.TabIndex = 16;
-            label8.Text = "By using our system you accept the Terms & Conditions";
             // 
             // phoneNumberRegisterInput
             // 
@@ -329,28 +405,6 @@
             this.registerUsernameInput.Size = new System.Drawing.Size(226, 40);
             this.registerUsernameInput.TabIndex = 7;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = global::HappyJourneyAirline.Properties.Resources.logo;
-            pictureBox2.Location = new System.Drawing.Point(369, 22);
-            pictureBox2.Margin = new System.Windows.Forms.Padding(5);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new System.Drawing.Size(150, 157);
-            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            pictureBox2.TabIndex = 6;
-            pictureBox2.TabStop = false;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(106)))), ((int)(((byte)(106)))));
-            label3.Location = new System.Drawing.Point(350, 241);
-            label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(205, 13);
-            label3.TabIndex = 10;
-            label3.Text = "Please Fill details below to create account";
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(100)))), ((int)(((byte)(198)))));
@@ -369,17 +423,6 @@
             this.button2.Text = "Register Traveller";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label4.Location = new System.Drawing.Point(309, 201);
-            label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(276, 24);
-            label4.TabIndex = 9;
-            label4.Text = "Welcome To Happy Journey";
             // 
             // loginTab
             // 
@@ -401,6 +444,16 @@
             this.loginTab.Size = new System.Drawing.Size(918, 716);
             this.loginTab.TabIndex = 0;
             this.loginTab.Text = "Login";
+            // 
+            // loginValidationMessage
+            // 
+            this.loginValidationMessage.AutoSize = true;
+            this.loginValidationMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginValidationMessage.ForeColor = System.Drawing.Color.Red;
+            this.loginValidationMessage.Location = new System.Drawing.Point(330, 444);
+            this.loginValidationMessage.Name = "loginValidationMessage";
+            this.loginValidationMessage.Size = new System.Drawing.Size(0, 15);
+            this.loginValidationMessage.TabIndex = 9;
             // 
             // label5
             // 
@@ -470,31 +523,9 @@
             this.mainMenuTab.Margin = new System.Windows.Forms.Padding(5);
             this.mainMenuTab.Name = "mainMenuTab";
             this.mainMenuTab.Padding = new System.Windows.Forms.Padding(3);
-            this.mainMenuTab.Size = new System.Drawing.Size(918, 716);
+            this.mainMenuTab.Size = new System.Drawing.Size(918, 739);
             this.mainMenuTab.TabIndex = 5;
             this.mainMenuTab.Text = "MainMenuPage";
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.ForeColor = System.Drawing.Color.Gray;
-            label21.Location = new System.Drawing.Point(373, 502);
-            label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            label21.Name = "label21";
-            label21.Size = new System.Drawing.Size(138, 13);
-            label21.TabIndex = 6;
-            label21.Text = "All Rights Reserved @2024";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label10.Location = new System.Drawing.Point(367, 340);
-            label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(151, 24);
-            label10.TabIndex = 5;
-            label10.Text = "Happy Journey";
             // 
             // button4
             // 
@@ -534,49 +565,18 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = global::HappyJourneyAirline.Properties.Resources.logo;
-            pictureBox3.Location = new System.Drawing.Point(367, 180);
-            pictureBox3.Margin = new System.Windows.Forms.Padding(5);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new System.Drawing.Size(150, 157);
-            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            pictureBox3.TabIndex = 1;
-            pictureBox3.TabStop = false;
-            // 
             // appTabs
             // 
             this.appTabs.Controls.Add(this.mainMenuTab);
             this.appTabs.Controls.Add(this.loginTab);
             this.appTabs.Controls.Add(this.registerTab);
-            this.appTabs.Location = new System.Drawing.Point(-6, 1);
+            this.appTabs.Location = new System.Drawing.Point(-6, -22);
             this.appTabs.Margin = new System.Windows.Forms.Padding(5);
             this.appTabs.Name = "appTabs";
             this.appTabs.SelectedIndex = 0;
-            this.appTabs.Size = new System.Drawing.Size(926, 742);
+            this.appTabs.Size = new System.Drawing.Size(926, 765);
             this.appTabs.TabIndex = 7;
             this.appTabs.TabStop = false;
-            // 
-            // loginValidationMessage
-            // 
-            this.loginValidationMessage.AutoSize = true;
-            this.loginValidationMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginValidationMessage.ForeColor = System.Drawing.Color.Red;
-            this.loginValidationMessage.Location = new System.Drawing.Point(330, 444);
-            this.loginValidationMessage.Name = "loginValidationMessage";
-            this.loginValidationMessage.Size = new System.Drawing.Size(0, 15);
-            this.loginValidationMessage.TabIndex = 9;
-            // 
-            // registerValidationMessage
-            // 
-            this.registerValidationMessage.AutoSize = true;
-            this.registerValidationMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerValidationMessage.ForeColor = System.Drawing.Color.Red;
-            this.registerValidationMessage.Location = new System.Drawing.Point(271, 459);
-            this.registerValidationMessage.Name = "registerValidationMessage";
-            this.registerValidationMessage.Size = new System.Drawing.Size(0, 15);
-            this.registerValidationMessage.TabIndex = 24;
             // 
             // MainAppUI
             // 
@@ -595,14 +595,14 @@
             this.Text = "Happy Journey Airline";
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pictureBox3)).EndInit();
             this.registerTab.ResumeLayout(false);
             this.registerTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(pictureBox2)).EndInit();
             this.loginTab.ResumeLayout(false);
             this.loginTab.PerformLayout();
             this.mainMenuTab.ResumeLayout(false);
             this.mainMenuTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(pictureBox3)).EndInit();
             this.appTabs.ResumeLayout(false);
             this.ResumeLayout(false);
 
