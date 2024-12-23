@@ -126,6 +126,8 @@ namespace ProjectSample
             AuthService.StoreUserId(loggedInUser.Id);
             //Console.WriteLine("Logged in user: " + loggedInUser.Email);
 
+            textBox1.Text = "";
+            textBox2.Text = "";
             if (loggedInUser.Type == "traveller")
             {
                 appTabs.SelectTab(3);
