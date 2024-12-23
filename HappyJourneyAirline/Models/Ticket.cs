@@ -254,5 +254,66 @@ namespace HappyJourneyAirline.Models
                 AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
             });
         }
+
+        public static Ticket GetTicketByFlightAndUserID(long flightId, long userId)
+        {
+            string query = @"
+                SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
+                FROM tickets 
+                WHERE flightID = @FlightID AND userID = @UserID";
+            var parameters = new Dictionary<string, object>
+            {
+                { "@FlightID", flightId },
+                { "@UserID", userId }
+            };
+            var result = Database.Instance.Query(query, parameters, reader => new Ticket
+            {
+                Id = reader.GetInt32(0),
+                FlightID = reader.GetInt32(1),
+                UserID = reader.GetInt64(2),
+                Seat = reader.GetString(3),
+                TicketClassID = reader.GetInt32(4),
+                TicketStatusID = reader.GetInt32(5),
+                PaymentID = reader.GetInt32(6),
+                AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
+            });
+            return result.Count > 0 ? result[0] : null;
+        }
+
+        public override string ToString()
+        {
+            return $"Ticket Details:\n" +
+                   $"ID: {Id}\n" +
+                   $"Flight ID: {FlightID}\n" +
+                   $"User ID: {UserID}\n" +
+                   $"Seat: {Seat}\n" +
+                   $"Ticket Class ID: {TicketClassID}\n" +
+                   $"Ticket Status ID: {TicketStatusID}\n" +
+                   $"Payment ID: {PaymentID}\n" +
+                   $"Agency ID: {(AgencyID.HasValue ? AgencyID.ToString() : "None")}";
+        }
+
+        public static List<Ticket> GetTicketsByAgencyId(long agencyID)
+        {
+            string query = @"
+                SELECT Id, flightID, userID, seat, ticketClassID, ticketStatusID, paymentID, agencyID 
+                FROM tickets 
+                WHERE agencyID = @AgencyID";
+            var parameters = new Dictionary<string, object>
+            {
+                { "@AgencyID", agencyID }
+            };
+            return Database.Instance.Query(query, parameters, reader => new Ticket
+            {
+                Id = reader.GetInt32(0),
+                FlightID = reader.GetInt32(1),
+                UserID = reader.GetInt64(2),
+                Seat = reader.GetString(3),
+                TicketClassID = reader.GetInt32(4),
+                TicketStatusID = reader.GetInt32(5),
+                PaymentID = reader.GetInt32(6),
+                AgencyID = !reader.IsDBNull(7) ? reader.GetInt64(7) : (long?)null
+            });
+        }
     }
 }
