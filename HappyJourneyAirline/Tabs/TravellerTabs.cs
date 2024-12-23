@@ -2360,6 +2360,26 @@ namespace HappyJourneyAirline.Tabs
                 DataTable dt = new DataTable();
                 ad.Fill(dt);
 
+
+
+                int availableTickets = 0;
+                // Check ticket availability and add a column for availability
+                dt.Columns.Add("Available Tickets", typeof(string));
+                foreach (DataRow row in dt.Rows)
+                {
+                    int planeId = Convert.ToInt32(row["Plane ID"]);
+                    int flightId = Convert.ToInt32(row["Flight ID"]);
+                    int capacity = Plane.GetPlaneById(planeId).Capacity;
+                    int ticketCount = Ticket.GetTicketsByFlightId(flightId).Count;
+
+                    // Add availability info
+                     availableTickets = capacity - ticketCount;
+                    row["Available Tickets"] = availableTickets;
+                }
+
+                
+
+
                 //set the data in the gridview 
                 gridflightsData.DataSource = dt;
 
